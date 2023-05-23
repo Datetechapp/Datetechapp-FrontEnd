@@ -1,7 +1,7 @@
 import type { FC, ChangeEvent, FocusEvent } from "react"
 
 interface InputProps {
-       value: string;
+       value?: string;
        className?: string;
        type?: string;
        autoComplete?: string;

@@ -134,9 +134,7 @@ input[type="checkbox"]:checked::after {
        align-items: center;
 }
 
-button:active:not([disabled]) {
-       background-color: #B71A78;
-}
+
 
 .btnContinue {
        margin-top: 45px;
@@ -152,6 +150,8 @@ button:active:not([disabled]) {
        cursor: pointer;
 }
 
+
+
 .btnFocused {
        margin-top: 45px;
        padding: 22px 18px;
@@ -166,7 +166,7 @@ button:active:not([disabled]) {
 }
 
 .btnFocusedValid {
-       margin-top: 40px;
+       margin-top: 45px;
        padding: 22px 18px;
        border-radius: 5px;
        font-family: 'Montserrat', Arial, sans-serif;
@@ -176,6 +176,10 @@ button:active:not([disabled]) {
        letter-spacing: -0.5px;
        color: #E9E3F5;
        background: linear-gradient(0deg, rgba(0, 0, 0, 0.27), rgba(0, 0, 0, 0.27)), linear-gradient(180deg, #9747FF 0%, #E551E8 100%);
+}
+
+.btnFocusedValid:active {
+       background: #B71A78;
 }
 
 

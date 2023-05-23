@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import css from "./login.module.css"
-import questionSign from "../../../assets/ModalAuth/questionSign.svg"
-import { Button, Input, Checkbox } from "../../common"
-
-
+import css from "./login.module.css";
+import questionSign from "../../../assets/ModalAuth/questionSign.svg";
+import { Button, Input, Checkbox } from "../../common";
+import validator from 'validator';
 
 export const Login = () => {
-       const [email, setEmail] = useState("");
-       const [phone, setPhone] = useState("");
-       const [rememberPassword, setRememberPassword] = useState(false);
-       const [errorMessage, setErrorMessage] = useState("");
+       const [value, setValue] = useState('');
+       const [type, setType] = useState<'email' | 'phone'>('email');
+       const [rememberLogin, setRememberLogin] = useState(false);
+       const [errorMessage, setErrorMessage] = useState('');
        const [isFocused, setIsFocused] = useState(false);
+
 
        const handleFocus = () => {
               setIsFocused(true);
@@ -20,49 +20,33 @@ export const Login = () => {
               setIsFocused(false);
        };
 
-       const validateEmail = (email: string) => {
-              const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-              return emailRegex.test(email);
-       };
-
-       const validatePhone = (phone: string) => {
-              const phoneRegex = /^\+(?:[0-9] ?){6,14}[0-9]$/;
-              return phoneRegex.test(phone);
-       };
-
        const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-              const { name, value } = e.target;
+              const newValue = e.target.value;
+              setValue(newValue);
 
-              if (name === "email") {
-                     setEmail(value);
-              } else {
-                     setPhone(value);
+              if (validator.isEmail(newValue)) {
+                     setType('email');
+              } else if (validator.isMobilePhone(newValue, 'any')) {
+                     setType('phone');
               }
-       };
-
-       const isValid = (value: string) => {
-              return validateEmail(value) || validatePhone(value);
        };
 
        const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
               e.preventDefault();
 
-              if (isValid(email)) {
-                     // логика авторизации с использованием email
-              } else if (isValid(phone)) {
-                     // логика авторизации с использованием номера телефона
-              } else {
-                     // вывод соответствующего сообщения об ошибке
-                     if (!email) {
-                            setErrorMessage("Попробуйте войти с помощью телефона");
-                     } else if (!phone) {
-                            setErrorMessage("Попробуйте войти с помощью email");
-                     }
+              if (type === 'email') {
+                     console.log(`Your email is ${value}`);
+              } else if (type === 'phone') {
+                     console.log(`Your phone number is ${value}`);
+              }
+
+              if (!validator.isEmail(value) && !validator.isMobilePhone(value, 'any')) {
+                     setErrorMessage(type === 'email' ? 'Try logging in with your phone number' : 'Try logging in with your email');
               }
        };
 
-       const handleRememberPasswordChange = () => {
-              setRememberPassword(!rememberPassword);
+       const handleRememberLoginChange = () => {
+              setRememberLogin(prevState => !prevState);
        };
 
        return (
@@ -77,7 +61,7 @@ export const Login = () => {
                                           type="text"
                                           autoComplete="off"
                                           name="email"
-                                          value={email ? email : phone}
+                                          value={value}
                                           onChange={handleInputChange}
                                           placeholder="E-mail or Phone number"
                                           onFocus={handleFocus}
@@ -88,8 +72,8 @@ export const Login = () => {
                                    <label className={css.labelForCheckbox}>
                                           <Checkbox
                                                  className={css.checkboxForPassword}
-                                                 checked={rememberPassword}
-                                                 onChange={handleRememberPasswordChange}
+                                                 checked={rememberLogin}
+                                                 onChange={handleRememberLoginChange}
                                           />
                                           Remember the Login
                                    </label>
@@ -101,19 +85,27 @@ export const Login = () => {
                                           />
                                           <div className={css.saveLoginBlock}>
                                                  <p className={css.saveLoginTitle}>Save Login</p>
-                                                 <p className={css.saveLoginText}>Select to save your account details for quick login on this device</p>
+                                                 <p className={css.saveLoginText}>
+                                                        Select to save your account details for quick login on this device
+                                                 </p>
                                           </div>
                                    </div>
                             </div>
                             <Button
-                                   className={!isFocused ? css.btnContinue : isFocused && (isValid(email) || isValid(phone)) ? css.btnFocusedValid : css.btnFocused}
-                                   disabled={!isValid(email) && !isValid(phone)}
+                                   className={
+                                          !isFocused && value.length === 0
+                                          ? css.btnContinue
+                                          : (validator.isEmail(value) || validator.isMobilePhone(value)) 
+                                          ? css.btnFocusedValid 
+                                          : css.btnFocused
+                                   }
+                                   disabled={!validator.isEmail(value) && !validator.isMobilePhone(value)}
                             >
                                    Continue
                             </Button>
-
                             {errorMessage && <div>{errorMessage}</div>}
                      </form>
               </div>
        );
 };
+
