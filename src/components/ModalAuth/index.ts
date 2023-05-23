@@ -1,1 +1,1 @@
-import { ModalAuth } from "./ModalAuth"
+export { ModalAuth } from "./ModalAuth"

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import css from "./login.module.css"
-import questionSign from "../../assets/ModalAuth/questionSign.svg"
-import { Button, Input, Checkbox } from "../common"
+import questionSign from "../../../assets/ModalAuth/questionSign.svg"
+import { Button, Input, Checkbox } from "../../common"
 
 
 
@@ -26,7 +26,7 @@ export const Login = () => {
        };
 
        const validatePhone = (phone: string) => {
-              const phoneRegex = /^\+?[1-9]\d{1,14}$/;
+              const phoneRegex = /^\+(?:[0-9] ?){6,14}[0-9]$/;
               return phoneRegex.test(phone);
        };
 
@@ -67,6 +67,9 @@ export const Login = () => {
 
        return (
               <div>
+                     <h2 className={css.messageLogIn}>
+                            Log in to your account with E-mail or Phone number
+                     </h2>
                      <form className={css.formForEmail} onSubmit={handleSubmit}>
                             <div className={css.inputBlock}>
                                    <Input

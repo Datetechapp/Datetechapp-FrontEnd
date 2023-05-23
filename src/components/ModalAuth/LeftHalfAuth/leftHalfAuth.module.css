@@ -1,0 +1,56 @@
+.logo {
+       margin-top: 65px;
+       display: inline-block;
+}
+
+.tagline {
+       width: 338px;
+       padding: 14px 79px;
+       margin: 0;
+       display: inline-block;
+       font-family: 'Montserrat', Arial, sans-serif;
+       font-size: 28px;
+       font-weight: 600;
+       color: #E9E3F5;
+       letter-spacing: -0.5px;
+       line-height: 31px;
+}
+
+.lastWords {
+       color: #EB53A2;
+}
+
+.downloadText {
+       margin-top: 44px;
+       padding: 10px;
+       font-family: 'Montserrat', Arial, sans-serif;
+       font-size: 20px;
+       font-weight: 600;
+       color: #E9E3F5;
+       line-height: 17px;
+}
+
+.downloadLinks {
+       display: flex;
+       flex-direction: row;
+       gap: 20px;
+       justify-content: center;
+       margin-top: 16px;
+}
+
+.messagePrivacy {
+       width: 496px;
+       height: 43px;
+       display: inline-block;
+       margin-top: 98px;
+       margin-bottom: 66px;
+       font-family: 'Montserrat', Arial, sans-serif;
+       font-size: 16px;
+       font-weight: 500;
+       line-height: 25px;
+       color: #E9E3F5;
+}
+
+.privacyPolicy {
+       color: #EB53A2;
+}

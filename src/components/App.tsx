@@ -1,5 +1,5 @@
 import React from "react"
-import { ModalAuth } from "./ModalAuth/ModalAuth";
+import { ModalAuth } from "./ModalAuth";
 
 
 export const App = () => {
