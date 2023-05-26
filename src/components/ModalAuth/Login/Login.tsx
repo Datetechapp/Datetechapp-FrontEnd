@@ -1,47 +1,84 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef, FC } from "react";
 import css from "./login.module.css";
-import questionSign from "../../../assets/ModalAuth/questionSign.svg";
-import { Button, Input, Checkbox } from "../../common";
+import { Button } from "../../common";
 import validator from 'validator';
+import { ModalForgotPassword } from "../ModalForgotPassword/ModalForgotPassword";
+import { EmailOrPhoneInput } from "../EmailOrPhoneInput";
+import { PasswordInput } from "../PasswordInput";
+import { CheckboxBlock } from "../CheckboxBlock";
 
-export const Login = () => {
+const loginText = "Log in to your account with E-mail or Phone number"
+const passwordText = "To log in, you need to enter a password"
+const buttonLoginText = "Continue"
+const buttonPasswordText = "Sign In"
+const rememberTheLogin = "Remember the Login"
+const rememberThePassword = "Remember the Password"
+const verifyYourAccount = "Verify your Account"
+const confirmText = "Confirm"
+
+export const Login: FC = () => {
        const [value, setValue] = useState('');
        const [type, setType] = useState<'email' | 'phone'>('email');
        const [rememberLogin, setRememberLogin] = useState(false);
        const [errorMessage, setErrorMessage] = useState('');
        const [isFocused, setIsFocused] = useState(false);
+       const [authorized, setAuthorized] = useState(false);
+       const [showModal, setShowModal] = useState(false);
+       const [requestNewPassword, setRequestNewPassword] = useState(false)
+
+       const inputRef = useRef<HTMLInputElement>(null);
+
+       const handleShowModal = () => {
+              setShowModal(prevShowModal => !prevShowModal);
+       }
 
 
-       const handleFocus = () => {
-              setIsFocused(true);
-       };
-
-       const handleBlur = () => {
-              setIsFocused(false);
+       const handleFocusChange = () => {
+              setIsFocused(prevIsFocused => !prevIsFocused);
        };
 
        const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
               const newValue = e.target.value;
               setValue(newValue);
 
-              if (validator.isEmail(newValue)) {
-                     setType('email');
-              } else if (validator.isMobilePhone(newValue, 'any')) {
-                     setType('phone');
+              if (!authorized) {
+                     if (validator.isEmail(newValue)) {
+                            setType('email');
+                     } else if (validator.isMobilePhone(newValue, 'any')) {
+                            setType('phone');
+                     }
               }
        };
 
-       const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+
+       const handleSubmit = (e: React.FormEvent<HTMLFormElement> | React.KeyboardEvent<HTMLInputElement>) => {
               e.preventDefault();
 
-              if (type === 'email') {
-                     console.log(`Your email is ${value}`);
-              } else if (type === 'phone') {
-                     console.log(`Your phone number is ${value}`);
-              }
+              if (authorized && !requestNewPassword) {
+                     if (value.length < 8) {
+                            setErrorMessage("Incorrect password. Password must be at least 8 characters");
+                     } else {
+                            // тут будет логика запроса на сервер с email и паролем пользователя
+                            setErrorMessage("");
+                     }
 
-              if (!validator.isEmail(value) && !validator.isMobilePhone(value, 'any')) {
-                     setErrorMessage(type === 'email' ? 'Try logging in with your phone number' : 'Try logging in with your email');
+              } else if (requestNewPassword) {
+                     // пока что к примеру пароль должен быть минимум 5 символов
+                     if (value.length < 4) {
+                            setErrorMessage("Incorrect verification code. Please enter the correct code.");
+                     } else {
+                            setErrorMessage("");
+                     }
+              }
+              else {
+                     if (!validator.isEmail(value) && !validator.isMobilePhone(value, 'any')) {
+                            setErrorMessage(type === 'email' ? 'Try logging in with your phone number' : 'Try logging in with your email');
+                     } else {
+                            // тут будет логика отправки на сервер запроса с email/телефоном пользователя
+                            console.log(`Your ${type} is ${value}`);
+                            setValue("");
+                            setAuthorized(true);
+                     }
               }
        };
 
@@ -49,62 +86,84 @@ export const Login = () => {
               setRememberLogin(prevState => !prevState);
        };
 
+       const handleSetRequestNewPassword = () => {
+              setRequestNewPassword(prevState => !prevState)
+              setShowModal(prevShowModal => !prevShowModal)
+              setErrorMessage("");
+       }
+       
+       useEffect(() => {
+              if (authorized && inputRef.current) {
+                     inputRef.current.focus();
+              }
+       }, [authorized]);
+
        return (
               <div>
                      <h2 className={css.messageLogIn}>
-                            Log in to your account with E-mail or Phone number
+                            {!authorized ? loginText : authorized && requestNewPassword ? verifyYourAccount : passwordText}
                      </h2>
+                     {requestNewPassword && <p className={css.enterVerificCode}>Enter your Verification code</p>}
                      <form className={css.formForEmail} onSubmit={handleSubmit}>
-                            <div className={css.inputBlock}>
-                                   <Input
-                                          className={css.inputForEmail}
-                                          type="text"
-                                          autoComplete="off"
-                                          name="email"
-                                          value={value}
-                                          onChange={handleInputChange}
-                                          placeholder="E-mail or Phone number"
-                                          onFocus={handleFocus}
-                                          onBlur={handleBlur}
+                            <div>
+                                   {!authorized ? <div className={css.inputBlock}>
+                                          <EmailOrPhoneInput
+                                                 value={value}
+                                                 type={type}
+                                                 onChange={handleInputChange}
+                                                 onFocus={handleFocusChange}
+                                                 onBlur={handleFocusChange}
+                                          /></div>
+                                          : requestNewPassword
+                                                 ? <div className={css.blockInputVerificate}>
+                                                        <PasswordInput
+                                                               value={value}
+                                                               onChange={handleInputChange}
+                                                               errorMessage={errorMessage}
+                                                               isFocused={isFocused}
+                                                               onFocus={handleFocusChange}
+                                                               onBlur={handleFocusChange}
+                                                               placeholder="Verification code"
+                                                        />
+                                                 </div>
+                                                 : <div className={css.blockInputPassword}>
+                                                        <PasswordInput
+                                                               value={value}
+                                                               onChange={handleInputChange}
+                                                               errorMessage={errorMessage}
+                                                               isFocused={isFocused}
+                                                               onFocus={handleFocusChange}
+                                                               onBlur={handleFocusChange}
+                                                               placeholder="Password"
+                                                        />
+                                                 </div>}
+                                   {errorMessage && <div className={css.errorMsg}>{errorMessage}</div>}
+                            </div>
+                            {(!errorMessage && !requestNewPassword) &&
+                                   <CheckboxBlock
+                                          rememberLogin={rememberLogin}
+                                          handleRememberLoginChange={handleRememberLoginChange}
+                                          authorized={authorized}
+                                          rememberTheLogin={rememberTheLogin}
+                                          rememberThePassword={rememberThePassword}
                                    />
-                            </div>
-                            <div className={css.blockCheckbox}>
-                                   <label className={css.labelForCheckbox}>
-                                          <Checkbox
-                                                 className={css.checkboxForPassword}
-                                                 checked={rememberLogin}
-                                                 onChange={handleRememberLoginChange}
-                                          />
-                                          Remember the Login
-                                   </label>
-                                   <div className={css.blockHoverIcon}>
-                                          <img
-                                                 className={css.questionIcon}
-                                                 src={questionSign}
-                                                 alt="questionSign"
-                                          />
-                                          <div className={css.saveLoginBlock}>
-                                                 <p className={css.saveLoginTitle}>Save Login</p>
-                                                 <p className={css.saveLoginText}>
-                                                        Select to save your account details for quick login on this device
-                                                 </p>
-                                          </div>
-                                   </div>
-                            </div>
+                            }
+                            {requestNewPassword && <p className={css.resendVerificate}>Resend  Verification code</p>}
                             <Button
                                    className={
                                           !isFocused && value.length === 0
-                                          ? css.btnContinue
-                                          : (validator.isEmail(value) || validator.isMobilePhone(value)) 
-                                          ? css.btnFocusedValid 
-                                          : css.btnFocused
+                                                 ? css.btnContinue
+                                                 : (validator.isEmail(value) || validator.isMobilePhone(value))
+                                                        ? css.btnFocusedValid
+                                                        : css.btnFocused
                                    }
-                                   disabled={!validator.isEmail(value) && !validator.isMobilePhone(value)}
+                                   disabled={!authorized && !validator.isEmail(value) && !validator.isMobilePhone(value)}
                             >
-                                   Continue
+                                   {!authorized ? buttonLoginText : requestNewPassword ? confirmText : buttonPasswordText}
                             </Button>
-                            {errorMessage && <div>{errorMessage}</div>}
                      </form>
+                     {authorized && errorMessage && !requestNewPassword && <p className={css.forgotPassword} onClick={handleShowModal}>Forgot Password?</p>}
+                     <ModalForgotPassword isOpen={showModal} onRequestClose={handleShowModal} onGetNewPassword={handleSetRequestNewPassword} />
               </div>
        );
 };

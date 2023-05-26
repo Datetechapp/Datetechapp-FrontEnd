@@ -1,0 +1,1 @@
+import { ModalForgotPassword } from "./ModalForgotPassword"

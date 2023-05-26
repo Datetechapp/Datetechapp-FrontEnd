@@ -1,0 +1,34 @@
+.passwordToggle {
+       position: absolute;
+       top: 50%;
+       transform: translateY(-50%);
+       right: 21px;
+       cursor: pointer;
+       display: flex;
+       flex-direction: column;
+       align-items: stretch;
+}
+
+.openEyeFocused path {
+       fill: #C896EF
+}
+
+.closeEyeFocused path {
+       fill: #C896EF
+}
+
+.openEyeError path {
+       fill: #D75048
+}
+
+.closeEyeError path {
+       fill: #D75048
+}
+
+.passwordToggle .openEye path {
+       flex-shrink: 0;
+}
+
+.passwordToggle .closeEye path {
+       flex-shrink: 0;     
+}

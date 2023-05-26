@@ -1,0 +1,48 @@
+.inputForEmail:-webkit-autofill,
+.inputForEmail:-webkit-autofill:hover,
+.inputForEmail:-webkit-autofill:focus,
+.inputForEmail:-webkit-autofill:active {
+       transition: background-color 5000s;
+       -webkit-text-fill-color: #fff !important;
+}
+
+.inputForEmail {
+       width: 326px;
+       height: 18px;
+       padding: 22px 50px 22px 20px;
+       border-radius: 5px;
+       border: 1.5px solid #5F4F7F;
+       background-color: #201B27;
+       color: #E9E3F5;
+       font-family: 'Montserrat', Arial, sans-serif;
+       font-size: 18px;
+       font-weight: 400;
+       line-height: 25px;
+       letter-spacing: -0.5px;
+}
+
+
+
+.inputForEmail {
+       background-image: url("../../../assets/ModalAuth/Union.svg");
+       background-repeat: no-repeat;
+       background-position: right 22.5px center;
+}
+
+.inputForEmail:focus {
+       background-image: url("../../../assets/ModalAuth/UnionFocus.svg");
+       background-repeat: no-repeat;
+       background-position: right 22.5px center;
+       outline: none;
+       border-color: #C896EF;
+}
+
+
+.inputForEmail::placeholder {
+       font-family: 'Montserrat', Arial, sans-serif;
+       font-size: 18px;
+       font-weight: 600;
+       line-height: 25px;
+       letter-spacing: -0.5px;
+       color: #5F4F7F;
+}
