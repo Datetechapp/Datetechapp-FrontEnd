@@ -1,0 +1,271 @@
+a,
+button {
+       cursor: pointer;
+}
+
+.messageLogIn {
+       width: 396px;
+       margin: 65px auto 0;
+       text-align: center;
+       font-family: 'Montserrat', Arial, sans-serif;
+       font-size: 28px;
+       font-weight: 600;
+       line-height: 40px;
+       letter-spacing: -0.5px;
+       color: #E9E3F5;
+}
+
+.formForEmail {
+       display: flex;
+       flex-direction: column;
+       width: 396px;
+       justify-content: center;
+       margin: 0 auto;
+}
+
+.inputBlock {
+       margin-top: 70px;
+}
+
+.blockInputPassword {
+       margin-top: 70px;
+}
+
+
+/* .blockCheckbox {
+       margin-top: 16px;
+       display: flex;
+} */
+
+
+
+/* .checkboxForPassword[type="checkbox"] {
+       position: relative;
+       width: 20px;
+       height: 20px;
+       margin: 0 8px 0 0;
+}
+
+.checkboxForPassword[type="checkbox"]::before {
+       content: "";
+       display: block;
+       position: absolute;
+       top: 0;
+       left: 0;
+       width: 100%;
+       height: 100%;
+       background-color: #1F1D2B;
+       border: 1px solid #ccc;
+       border-radius: 3px;
+}
+
+.checkboxForPassword[type="checkbox"]:checked::before {
+       background-color: #fcfcfc;
+}
+
+.checkboxForPassword[type="checkbox"]::after {
+       content: url("../../../assets/ModalAuth/checkMark.svg");
+       display: none;
+       position: absolute;
+       top: 60%;
+       left: 50%;
+       transform: translate(-50%, -50%);
+       color: #5F4F7F;
+}
+
+.checkboxForPassword[type="checkbox"]:checked::after {
+       display: block;
+} */
+
+/* .labelForCheckbox {
+       display: flex;
+       align-items: center;
+       font-family: 'Montserrat', Arial, sans-serif;
+       font-size: 16px;
+       font-weight: 400;
+       line-height: 17px;
+       color: #E9E3F5;
+       letter-spacing: -0.5px;
+} */
+
+/* .questionIcon {
+       margin-left: 4px;
+       display: flex;
+       align-items: center;
+} */
+
+/* .blockHoverIcon:hover .questionIcon path {
+       fill: #C896EF;
+} */
+
+
+
+.btnContinue {
+       margin-top: 45px;
+       padding: 22px 18px;
+       border-radius: 5px;
+       background-color: #302E3D;
+       font-family: 'Montserrat', Arial, sans-serif;
+       font-size: 18px;
+       font-weight: 400;
+       line-height: 17px;
+       letter-spacing: -0.5px;
+       color: #635874;
+       cursor: pointer;
+}
+
+
+
+.btnFocused {
+       margin-top: 45px;
+       padding: 22px 18px;
+       border-radius: 5px;
+       background: linear-gradient(180deg, #9747FF 0%, #E551E8 100%);
+       font-family: 'Montserrat', Arial, sans-serif;
+       font-size: 18px;
+       font-weight: 400;
+       line-height: 17px;
+       letter-spacing: -0.5px;
+       color: #E9E3F5
+}
+
+.btnFocusedValid {
+       margin-top: 45px;
+       padding: 22px 18px;
+       border-radius: 5px;
+       font-family: 'Montserrat', Arial, sans-serif;
+       font-size: 18px;
+       font-weight: 400;
+       line-height: 17px;
+       letter-spacing: -0.5px;
+       color: #E9E3F5;
+       background: linear-gradient(0deg, rgba(0, 0, 0, 0.27), rgba(0, 0, 0, 0.27)), linear-gradient(180deg, #9747FF 0%, #E551E8 100%);
+}
+
+.btnFocusedValid:active {
+       background: #B71A78;
+}
+
+.btnContinue:active:not(:disabled) {
+       background: #B71A78;
+}
+
+.btnFocused:active:not(:disabled) {
+       background: #B71A78;
+}
+
+
+/* .saveLoginBlock {
+       position: absolute;
+       width: 268px;
+       padding: 15px 16px;
+       background-color: #E9E3F5;
+       border-radius: 5px;
+       top: 34px;
+       left: -134px;
+}
+
+.saveLoginBlock::after {
+       content: "";
+       position: absolute;
+       width: 0;
+       height: 0;
+       border: 15px solid transparent;
+       border-bottom: 14px solid #E9E3F5;
+       bottom: 95px;
+       left: 133px;
+}
+
+.blockHoverIcon {
+       position: relative;
+}
+
+.saveLoginTitle {
+       margin: 0;
+       font-family: 'Montserrat', Arial, sans-serif;
+       font-weight: 600;
+       font-size: 18px;
+       line-height: 25px;
+       letter-spacing: -0.5px;
+       color: #5F4F7F;
+}
+
+.saveLoginText {
+       margin: 4px 0 0;
+       font-family: 'Montserrat', Arial, sans-serif;
+       font-weight: 500;
+       font-size: 16px;
+       line-height: 20px;
+       letter-spacing: -0.5px;
+       color: #5F4F7F;
+}
+
+.blockHoverIcon:hover .saveLoginBlock {
+       opacity: 1;
+       pointer-events: all;
+}
+
+.blockHoverIcon .saveLoginBlock {
+       opacity: 0;
+       pointer-events: none;
+} */
+
+.blockInputPassword {
+       position: relative;
+}
+
+.errorMsg {
+       margin-top: 6px;
+       font-family: 'Montserrat', Arial, sans-serif;
+       font-weight: 400;
+       font-size: 16px;
+       line-height: 17px;
+       letter-spacing: -0.5px;
+       color: #D75048;
+       text-align: initial;
+
+}
+
+
+.forgotPassword {
+       margin-top: 20px;
+       font-family: 'Montserrat', Arial, sans-serif;
+       font-weight: 500;
+       font-size: 16px;
+       line-height: 17px;
+       letter-spacing: -0.5px;
+       color: #E9E3F5;
+       text-align: center;
+       text-decoration: underline;
+       text-underline-offset: 3px;
+       cursor: pointer;
+}
+
+.enterVerificCode {
+       font-family: 'Montserrat';
+       font-weight: 500;
+       font-size: 18px;
+       line-height: 25px;
+       letter-spacing: -0.5px;
+       color: #E9E3F5;
+       text-align: center;
+       margin: 48px 0 0 0;
+}
+
+.blockInputVerificate {
+       margin-top: 36px;
+       position: relative;
+}
+
+.resendVerificate {
+       margin: 20px 0 0 0;
+       font-family: 'Montserrat';
+       font-weight: 500;
+       font-size: 16px;
+       line-height: 25px;
+       letter-spacing: -0.5px;
+       text-decoration-line: underline;
+       color: #FCFCFC;
+       text-align: center;
+       cursor: pointer;
+}

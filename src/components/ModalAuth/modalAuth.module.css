@@ -1,0 +1,25 @@
+a,
+button {
+       cursor: pointer;
+}
+
+.modalAuth {
+       display: flex;
+       width: 1227px;
+       border: 1px solid #E9E3F5;
+       overflow: hidden;
+       border-radius: 5px;
+}
+
+.leftHalfAuth {
+       width: 707px;
+       background-color: gray;
+       text-align: center;
+}
+
+
+
+.rightHalfAuth {
+       width: 520px;
+       background-color: #1F1D2B;
+}
