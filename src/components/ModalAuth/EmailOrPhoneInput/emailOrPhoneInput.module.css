@@ -21,12 +21,37 @@
        letter-spacing: -0.5px;
 }
 
+.inputForEmailError {
+       width: 326px;
+       height: 18px;
+       padding: 22px 50px 22px 20px;
+       border-radius: 5px;
+       border: 1.5px solid #D75048;
+       background-color: #201B27;
+       color: #E9E3F5;
+       font-family: 'Montserrat', Arial, sans-serif;
+       font-size: 18px;
+       font-weight: 400;
+       line-height: 25px;
+       letter-spacing: -0.5px;
+}
+
 
 
 .inputForEmail {
        background-image: url("../../../assets/ModalAuth/Union.svg");
        background-repeat: no-repeat;
        background-position: right 22.5px center;
+}
+
+.inputForEmailError {
+       background-image: url("../../../assets/ModalAuth/ErrorIcon.svg");
+       background-repeat: no-repeat;
+       background-position: right 22.5px center;
+}
+
+.inputForEmailError:focus {
+       outline: none;
 }
 
 .inputForEmail:focus {

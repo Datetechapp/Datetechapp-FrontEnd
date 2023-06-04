@@ -1,17 +1,16 @@
-import css from "./modalAuth.module.css"
-import { Login } from "./Login"
-import { LeftHalfAuth } from "./LeftHalfAuth"
 import { Link } from "react-router-dom"
+import { LeftHalfAuth } from "../../ModalAuth/LeftHalfAuth"
+import css from "./modalRegister.module.css"
+import { Registration } from "./Registration"
 
-
-export const ModalAuth = () => {
+export const ModalRegister = () => {
        return (
-              <div className={css.modalAuth}>
+              <div className={css.modalRegistration}>
                      <div className={css.leftHalfAuth}>
                             <LeftHalfAuth />
                      </div>
                      <div className={css.rightHalfAuth}>
-                            <Login />
+                            <Registration />
                             
                      </div>
               </div>

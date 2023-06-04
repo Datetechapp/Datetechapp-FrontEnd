@@ -15,11 +15,11 @@ export const Eye: FC<EyeProps> = ({ showPassword, onVisiblePassword, isFocused, 
               <span className={css.passwordToggle} onMouseDown={onVisiblePassword}>
                      {!showPassword ? (
                             <OpenEye
-                                   className={!isFocused && !errorMessage.length ? css.openEye : errorMessage.length ? css.openEyeError : css.openEyeFocused}
+                                   className={!isFocused && !errorMessage ? css.openEye : errorMessage ? css.openEyeError : css.openEyeFocused}
                             />
                      ) : (
                             <CloseEye
-                                   className={!isFocused && !errorMessage.length ? css.closeEye : errorMessage.length ? css.closeEyeError : css.closeEyeFocused}
+                                   className={!isFocused && !errorMessage ? css.closeEye : errorMessage ? css.closeEyeError : css.closeEyeFocused}
                             />
                      )}
               </span>

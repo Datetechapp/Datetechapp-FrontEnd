@@ -12,10 +12,6 @@ interface ModalForgotPasswordProps {
 
 export const ModalForgotPassword: FC<ModalForgotPasswordProps> = ({ isOpen, onRequestClose, onGetNewPassword }) => {
 
-       const handleGetPasswordRequest = () => {
-              // Будет запрос на новый пароль на бэк
-              console.log("Держите новый пароль")
-       }
 
        return (
               <Modal
@@ -24,11 +20,10 @@ export const ModalForgotPassword: FC<ModalForgotPasswordProps> = ({ isOpen, onRe
                      className={css.modalForgotPassword}
                      overlayClassName={css.overlayModal}
               >
-                     
-                            <img className={css.cancel} src={cancel} alt="cancel" onClick={onRequestClose}/>
-                            <h2 className={css.modalForgotPasswordTitle}>Forgot your password?</h2>
-                            <Button className={css.btnGetNewPassword} onClick={onGetNewPassword}>Get new password</Button>
-                     
+                     <img className={css.cancel} src={cancel} alt="cancel" onClick={onRequestClose} />
+                     <h2 className={css.modalForgotPasswordTitle}>Forgot your password?</h2>
+                     <Button className={css.btnGetNewPassword} onClick={onGetNewPassword}>Get new password</Button>
+
               </Modal>
        )
 }
