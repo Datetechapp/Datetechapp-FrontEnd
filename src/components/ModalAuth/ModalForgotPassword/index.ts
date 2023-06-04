@@ -1,1 +1,1 @@
-import { ModalForgotPassword } from "./ModalForgotPassword"
+export { ModalForgotPassword } from "./ModalForgotPassword"

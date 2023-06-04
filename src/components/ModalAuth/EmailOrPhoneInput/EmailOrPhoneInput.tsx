@@ -3,6 +3,7 @@ import css from "./emailOrPhoneInput.module.css";
 import { Input } from "../../common";
 
 type Props = {
+       errorMessage?: string;
        value: string;
        type: "email" | "phone";
        onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -10,12 +11,12 @@ type Props = {
        onBlur: () => void;
 };
 
-export const EmailOrPhoneInput: React.FC<Props> = ({ value, type, onChange, onFocus, onBlur }) => {
+export const EmailOrPhoneInput: React.FC<Props> = ({ value, type, onChange, onFocus, onBlur, errorMessage }) => {
        
 
        return (
               <Input
-                     className={css.inputForEmail}
+                     className={!errorMessage ? css.inputForEmail : css.inputForEmailError}
                      type={type === "email" ? "email" : "tel"}
                      autoComplete="off"
                      name="email-or-phone"

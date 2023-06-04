@@ -1,9 +1,9 @@
 import { FC, useState } from "react";
 import css from "./passwordInput.module.css";
 import { Input } from "../../common";
-import { Eye } from "../Eye";
+import { Eye } from "..";
 
-type PasswordInputProps = {
+ type PasswordInputProps = {
        value: string;
        onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
        errorMessage: string;
@@ -24,7 +24,7 @@ export const PasswordInput: FC<PasswordInputProps> = ({value, onChange, errorMes
        return (
               <div className={css.blockInputPassword}>
                      <Input
-                            className={!errorMessage.length ? css.inputForPassword : css.inputForPasswordError}
+                            className={!errorMessage ? css.inputForPassword : css.inputForPasswordError}
                             type={showPassword ? "text" : "password"}
                             autoComplete="off"
                             name="password"

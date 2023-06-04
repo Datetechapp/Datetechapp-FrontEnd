@@ -3,7 +3,7 @@ button {
        cursor: pointer;
 }
 
-.modalAuth {
+.modalRegistration {
        display: flex;
        width: 1227px;
        border: 1px solid #E9E3F5;
