@@ -1,12 +1,22 @@
 import { FC, PropsWithChildren } from "react"
 import './ModalBase.css'
 interface PropsModalBase {
-    active?: boolean
+    height?: string,
+    width?: string,
 }
-export const ModalBase = ({active, children} :PropsWithChildren<PropsModalBase>)=>{
+
+export const ModalBase = ({children, width, height} :PropsWithChildren<PropsModalBase>)=>{
+    const styleModalBase = {
+        width: width,
+        height: height,
+        backgroundColor: "#FCFCFC",
+        overflow: "hidden",
+      }
     return(
         <div className="ModalBase">
-          {children}
+        <div style={styleModalBase}>
+           {children} 
+        </div> 
         </div>
     )
 }

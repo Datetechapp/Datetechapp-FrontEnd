@@ -15,7 +15,7 @@ export const ModalWelcome = () =>{
     return(
         <>
         {stateModal?(
-        <ModalBase>
+        <ModalBase  width='600px' height='600px'>
         <div className='ModalWelcome' >
             <div  className='ModalWelcome_CloseModal'>
                <button className='CloseModal__Btn-close' onClick={()=>setModal(false)}><img className='Btn-close_img' src={close} alt="close" /></button>    

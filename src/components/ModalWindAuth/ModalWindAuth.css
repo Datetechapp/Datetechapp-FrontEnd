@@ -1,0 +1,35 @@
+.ModalWindAuth-Wraper{
+    font-family: 'Montserrat';
+    font-style: normal;
+}
+.ModalWindAuth_title{
+    font-family: 'Montserrat';
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 17px;
+    text-align: center;
+    letter-spacing: -0.5px;
+    color: #EB53A2;
+    /* margin-top: 32px; */
+}
+.ModalWindAuth_img{
+    width: 100px;
+    height: 100px;
+    display: block;
+    /* margin: 76.67px auto 56px; */
+}
+.ModalWindAuth_text{
+    width: 281px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    letter-spacing: -0.5px;
+    margin: 0 auto 36px;
+    color: #5F4F7F;
+}
+.ModalWindAuth_text span{
+    color: #EB53A2;
+    font-weight: 600;
+    line-height: 25px;
+}
