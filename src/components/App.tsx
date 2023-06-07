@@ -1,3 +1,4 @@
+import React from "react"
 import { ModalAuth } from "./ModalAuth";
 import { ModalRegister } from "./pages/ModalRegister";
 
