@@ -1,8 +1,6 @@
 import './Header.css'
 import logo from "../../assets/ModalAuth/mod_welc-logo.svg"
-import { LanguagesSwich } from './LanguagesSwich'
 import { LanguageSelect } from './LanguageSelect/LanguageSelect'
-import { languages } from './language'
 import { BtnSignUp } from './BtnSignUp/BtnSignUp'
 export const Header = () =>{
     return(
