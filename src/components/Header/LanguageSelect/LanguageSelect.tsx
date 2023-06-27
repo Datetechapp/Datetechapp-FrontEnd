@@ -9,6 +9,9 @@ export const LanguageSelect = () =>{
     const [activeNoVisible, setActiveNoVisible] = useState<string>('No-visible')
     const [activeArrow, setActiveArrow] = useState<string>('')
 
+    const startLang = languages.filter(item=>item.key===1).map(item=>item.lang).join()
+    const [selectLang, setselectLang] = useState<string>(startLang)
+  
     return(
        <div onClick={()=>{
         if(!activeVisible){
@@ -24,11 +27,10 @@ export const LanguageSelect = () =>{
             }, 1000);
         }
     
-        console.log(activeVisible)
         }} className="LanguageSelect">
-            <p>English</p>
+            <p>{selectLang}</p>
             <div className={`LanguageSelect__Arrow ${activeArrow}`}></div>
-            <LanguagesSwich nameClass={activeVisible|| activeNoVisible}  language={languages}/>
+            <LanguagesSwich ChangeLang={setselectLang} nameClass={activeVisible|| activeNoVisible}  language={languages}/>
         </div>
        
     )

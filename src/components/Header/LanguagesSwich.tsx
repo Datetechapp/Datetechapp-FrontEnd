@@ -6,10 +6,12 @@ type Language = {
 interface LanguagesSwichType {
     language: Language[],
     nameClass: string,
+    ChangeLang: (x:string)=>void
 }
 
-export const LanguagesSwich = ({ language, nameClass}:LanguagesSwichType) =>{
-    const lang = language.map(item=><li key={item.key}>{item.lang}</li>)
+export const LanguagesSwich = ({ language, nameClass, ChangeLang}:LanguagesSwichType) =>{
+
+    const lang = language.map(item=><li onClick={()=>ChangeLang(item.lang)} key={item.key}>{item.lang}</li>)
     return(
         <div className={`Languages ${nameClass}`}>
             <div>
