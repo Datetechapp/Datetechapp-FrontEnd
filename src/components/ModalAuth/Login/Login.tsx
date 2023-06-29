@@ -199,7 +199,7 @@ export const Login: FC = () => {
                                    {(!authorized || newPassword) ? buttonLoginText : requestNewPassword ? confirmText : buttonPasswordText}
                             </Button>
                      </form>
-                     {authorized && errorMessage && !requestNewPassword && <p className={css.forgotPassword} onClick={handleShowModal}>Forgot Password?</p>}
+                     {authorized && errorMessage && !requestNewPassword && !newPassword && <p className={css.forgotPassword} onClick={handleShowModal}>Forgot Password?</p>}
                      {!newPassword && <SocialAuth />}
                      <ModalForgotPassword isOpen={showModal} onRequestClose={handleNotShowModal} onGetNewPassword={handleSetRequestNewPassword} />
                      <Link to="/registration">

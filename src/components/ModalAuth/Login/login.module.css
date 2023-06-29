@@ -43,7 +43,6 @@ button {
        line-height: 17px;
        letter-spacing: -0.5px;
        color: #635874;
-       cursor: pointer;
 }
 
 
@@ -156,7 +155,7 @@ button {
 }
 
 .linkToSignUp {
-       margin: 66px 0 0 0;
+       margin: 66px 0 65px 0;
        font-family: 'Montserrat';
        font-weight: 500;
        font-size: 16px;
@@ -168,7 +167,7 @@ button {
 }
 
 .linkToSignUpWithMargin {
-       margin: 128px 0 0 0;
+       margin: 128px 0 66px 0;
        font-family: 'Montserrat';
        font-weight: 500;
        font-size: 16px;

@@ -1,24 +1,26 @@
-.BtnSignUp{
+.BtnSignUp {
     width: 184px;
     height: 56px;
     border: 1px solid #E9E3F5;
     background: none;
-	color: inherit;
+    color: #E9E3F5;
     text-transform: capitalize;
     font: inherit;
-	cursor: pointer;
-	outline: inherit;
+    cursor: pointer;
+    outline: inherit;
     font-style: normal;
     font-weight: 600;
     font-size: 18px;
     line-height: 25px;
     border-radius: 5px;
     margin-left: 65px;
-    
+
 }
-.BtnSignUp:hover{
-  backdrop-filter: blur(12px);  
+
+.BtnSignUp:hover {
+    backdrop-filter: blur(12px);
 }
-.BtnSignUp:active{
+
+.BtnSignUp:active {
     background: #5F4F7F;
-  }
+}

@@ -1,0 +1,12 @@
+.genderDropdawnWrapper {
+       display: flex;
+       flex-direction: column;
+       
+       width: 396px;
+}
+
+.blockForRadio {
+       display: flex;
+       justify-content: space-between;
+       margin-top: 20px;
+}

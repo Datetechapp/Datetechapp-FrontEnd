@@ -1,0 +1,40 @@
+.blockForPhotoUploader {
+       position: relative;
+       width: 186px;
+       height: 186px;
+       margin: 70px 0 0 0;
+       background: #5F4F7F;
+       outline: 1.5px dashed #C896EF;
+       box-sizing: border-box;
+       border-radius: 10px;
+       outline-style: dashed;
+       
+}
+
+
+
+.blockForPhotoUploader canvas {
+       border-radius: 10px;
+}
+
+.photoIcon {
+       position: absolute;
+       top: 62px;
+       left: 56px;
+       width: 73px;
+       height: 61px;
+}
+
+.photoIcon path {
+       stroke: #C896EF;
+       position: absolute;
+       top: 64px;
+       left: 56px;
+}
+
+.closeIcon {
+       position: absolute;
+       top: 5px;
+       right: 5px;
+       cursor: pointer;
+}

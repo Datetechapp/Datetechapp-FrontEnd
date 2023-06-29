@@ -3,6 +3,7 @@ import css from "./modalForgotPassword.module.css"
 import { FC } from "react"
 import { Button } from "../../common/button"
 import cancel from "../../../assets/ModalAuth/Cancel.svg"
+import { ReactComponent as Fol} from "../../../assets/CreateAccountForm/DropdawnArrowDown.svg"
 
 interface ModalForgotPasswordProps {
        isOpen: boolean;
