@@ -5,7 +5,7 @@ import { ReactComponent as AddFile } from '../../../../assets/CreateAccountForm/
 
 interface UploadButtonProps {
   onUpload: (file: File) => void;
-  inputId: string;
+  inputId?: string;
   accept?: string;
 }
 

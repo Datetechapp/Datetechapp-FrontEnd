@@ -1,7 +1,7 @@
 import './LanguagesSwich.css'
 
 type Language = {
-    key: number;
+    key: number,
     lang: string
 }
 interface LanguagesSwichType {

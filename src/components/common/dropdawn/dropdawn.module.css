@@ -85,18 +85,15 @@
 
 
 .dropdawnOptions::-webkit-scrollbar {
-       width: 12px;
-       scrollbar-width: thin;
-       scrollbar-color: #bbb #f5f5f5;
+       width: 4px;
 }
 
 .dropdawnOptions::-webkit-scrollbar-track {
-       background-color: #E9E3F5;
+       background-color: #5F4F7F;
 }
 
 .dropdawnOptions::-webkit-scrollbar-thumb {
        background-color: #C896EF;
-       border-radius: 16px ;
 }
 
 .blockForOption {
@@ -107,7 +104,7 @@
 }
 
 .blockForOption:not(:last-child) {
-       border-bottom: 1px solid white;
+       border-bottom: 1px solid #5F4F7F;
 
 }
 

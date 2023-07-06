@@ -1,5 +1,4 @@
-
-.ModalWelcome{
+.ModalWelcome {
     width: 600px;
     height: 600px;
     position: relative;
@@ -11,7 +10,8 @@
     overflow: hidden;
     pointer-events: all;
 }
-.ModalWelcome::before{
+
+.ModalWelcome::before {
     content: "";
     clear: both;
     display: block;
@@ -24,7 +24,8 @@
     opacity: 0.2;
     border-radius: 50%;
 }
-.ModalWelcome::after{
+
+.ModalWelcome::after {
     content: "";
     clear: both;
     display: block;
@@ -39,28 +40,31 @@
     z-index: 0;
 }
 
-.ModalWelcome_Wrapper{
+.ModalWelcome_Wrapper {
     width: inherit;
     margin: 70.43px auto 60.43px;
     position: relative;
-    
+
 }
 
-.ModalWelcome_Wrapper img{
+.ModalWelcome_Wrapper img {
     display: block;
     width: 239.32px;
     height: 149.26px;
     margin: 0 auto;
     transform: matrix(1, 0, 0.01, 1, 0, 0);
 }
-.ModalWelcome_Wrapper h3{  
+
+.ModalWelcome_Wrapper h3 {
+    margin: 40px auto 40px;
     font-weight: 600;
     font-size: 30px;
     line-height: 16px;
     text-align: center;
     color: #EB53A2;
 }
-.ModalWelcome_Wrapper p{
+
+.ModalWelcome_Wrapper p {
     width: 477px;
     height: 210px;
     margin: 0 auto;
@@ -71,7 +75,8 @@
     color: #5F4F7F;
     position: relative;
 }
-.ModalWelcome_Wrapper p::before{
+
+.ModalWelcome_Wrapper p::before {
     content: "";
     clear: both;
     display: block;
@@ -84,7 +89,8 @@
     opacity: 0.1;
     border-radius: 50%;
 }
-.ModalWelcome_Wrapper p::after{
+
+.ModalWelcome_Wrapper p::after {
     content: "";
     clear: both;
     display: block;
@@ -97,27 +103,28 @@
     opacity: 0.1;
     border-radius: 50%;
 }
-.ModalWelcome_CloseModal{ 
+
+.ModalWelcome_CloseModal {
     position: absolute;
     right: 0;
     z-index: 1;
 }
 
- .CloseModal__Btn-close{
+.CloseModal__Btn-close {
     background: none;
-	color: inherit;
-	border: none;
-	padding: 0;
+    color: inherit;
+    border: none;
+    padding: 0;
     float: right;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
     width: inherit;
 
-  
+
 }
 
-.Btn-close_img{
+.Btn-close_img {
     width: 18.67px;
     height: 18.67px;
     margin-top: 22.67px;

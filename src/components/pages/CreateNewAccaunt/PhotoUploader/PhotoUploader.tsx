@@ -3,7 +3,7 @@ import AvatarEditor from 'react-avatar-editor';
 import css from './photoUploader.module.css';
 import { UploadButton } from '../UploadButton';
 import { ReactComponent as PhotoIcon } from '../../../../assets/CreateAccountForm/photoIcon.svg';
-import { ReactComponent as CloseIcon} from "../../../../assets/CreateAccountForm/closeIcon.svg"
+import { ReactComponent as CloseIcon } from "../../../../assets/CreateAccountForm/closeIcon.svg"
 
 interface PhotoUploaderProps {
        onUpload: (file: File) => void;
@@ -12,8 +12,8 @@ interface PhotoUploaderProps {
 export const PhotoUploader: React.FC<PhotoUploaderProps> = ({ onUpload }) => {
        const [selectedImage, setSelectedImage] = useState<string>('');
        const [editorPosition, setEditorPosition] = useState<{ x: number; y: number }>({ x: 0.5, y: 0.5 });
-       const [editorScale, setEditorScale] = useState<number>(1);
-       const [isPhotoSelected, setIsPhotoSelected] = useState<boolean>(false); // Добавлено новое состояние
+       const [editorScale, setEditorScale] = useState<number>(1.5);
+       const [isPhotoSelected, setIsPhotoSelected] = useState<boolean>(false);
        const editorRef = useRef<AvatarEditor | null>(null);
 
        const handleFileUploaded = (file: File) => {
@@ -21,9 +21,9 @@ export const PhotoUploader: React.FC<PhotoUploaderProps> = ({ onUpload }) => {
               reader.onload = (e) => {
                      if (e.target) {
                             setSelectedImage(e.target.result as string);
-                            setIsPhotoSelected(true); // Задаем значение true, чтобы отображалась иконка удаления
-                            setEditorPosition({ x: 0.5, y: 0.5 }); // Обнуляем позицию редактора
-                            setEditorScale(1); // Обнуляем масштаб редактора
+                            setIsPhotoSelected(true);
+                            setEditorPosition({ x: 0.5, y: 0.5 });
+                            setEditorScale(1.5);
                      }
               };
               reader.readAsDataURL(file);
@@ -34,14 +34,25 @@ export const PhotoUploader: React.FC<PhotoUploaderProps> = ({ onUpload }) => {
               setEditorPosition(position);
        };
 
-       const handleDeletePhoto = () => { // Добавлен обработчик клика на кнопку удаления
+       const handleDeletePhoto = () => {
               setSelectedImage('');
-              setIsPhotoSelected(false); // Обнуляем значение состояния
+              setIsPhotoSelected(false);
        };
+
+       const handleRangeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+              const value = parseFloat(e.target.value);
+
+              if (!isNaN(value)) {
+                     const thumbPositionPercentage = ((value - parseFloat(e.target.min)) / (parseFloat(e.target.max) - parseFloat(e.target.min))) * 100;
+                     e.target.style.setProperty('--thumb-percentage', `${thumbPositionPercentage}%`);
+              }
+       };
+
+
 
        return (
               <div className={css.blockForPhotoUploader}>
-                     {isPhotoSelected ? ( // Изменен блок с кнопками
+                     {isPhotoSelected ? (
                             <div>
                                    <CloseIcon className={css.closeIcon} onClick={handleDeletePhoto} />
                                    <AvatarEditor
@@ -56,14 +67,18 @@ export const PhotoUploader: React.FC<PhotoUploaderProps> = ({ onUpload }) => {
                                           onPositionChange={handlePositionChange}
                                    />
                                    <div>
-                                          <label>Масштаб:</label>
                                           <input
+                                                 className={css.editorScale}
                                                  type="range"
+                                                 id="myRange"
                                                  min="1"
                                                  max="2"
                                                  step="0.01"
                                                  value={editorScale}
-                                                 onChange={(e) => setEditorScale(parseFloat(e.target.value))}
+                                                 onChange={(e) => {
+                                                        setEditorScale(parseFloat(e.target.value));
+                                                        handleRangeChange(e);
+                                                 }}
                                           />
                                    </div>
                             </div>

@@ -3,6 +3,10 @@ import css from './videoUploader.module.css';
 import { UploadButton } from '../UploadButton';
 import { ReactComponent as PlayIcon } from '../../../../assets/CreateAccountForm/playIcon.svg';
 import { ReactComponent as CloseIcon } from '../../../../assets/CreateAccountForm/closeIcon.svg';
+import { ReactComponent as PlayIconControls } from "../../../../assets/CreateAccountForm/playIcon1.svg"
+import { ReactComponent as PauseIconControls } from "../../../../assets/CreateAccountForm/pauseIcon1.svg"
+import { ReactComponent as CropIcon } from "../../../../assets/CreateAccountForm/scissors.svg"
+
 
 interface VideoUploaderProps {
        onUpload: (file: File | null, isRemoved?: boolean) => void;
@@ -11,6 +15,8 @@ interface VideoUploaderProps {
 export const VideoUploader: React.FC<VideoUploaderProps> = ({ onUpload }) => {
        const [selectedVideo, setSelectedVideo] = useState<File | null>(null);
        const [isPlaying, setIsPlaying] = useState(false);
+       const [volume, setVolume] = useState(0.5);
+
        const videoRef = useRef<HTMLVideoElement>(null);
 
        const handleFileUpload = async (file: File) => {
@@ -50,6 +56,24 @@ export const VideoUploader: React.FC<VideoUploaderProps> = ({ onUpload }) => {
               onUpload(null, true);
        };
 
+       const handleVolumeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+              const newVolume = parseFloat(event.target.value);
+              setVolume(newVolume);
+
+              if (videoRef.current) {
+                     videoRef.current.volume = newVolume;
+              }
+       };
+
+       const handleRangeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+              const value = parseFloat(e.target.value);
+
+              if (!isNaN(value)) {
+                     const thumbPositionPercentage = ((value - parseFloat(e.target.min)) / (parseFloat(e.target.max) - parseFloat(e.target.min))) * 100;
+                     e.target.style.setProperty('--thumb-percentage', `${thumbPositionPercentage}%`);
+              }
+       };
+
        return (
               <div className={css.blockUploadVideo}>
                      {!selectedVideo && <UploadButton
@@ -59,13 +83,30 @@ export const VideoUploader: React.FC<VideoUploaderProps> = ({ onUpload }) => {
                      />}
                      {selectedVideo && (
                             <div className={css.videoWrapper}>
-                                   <video className={css.videoCreateAcc} ref={videoRef} onClick={handleVideoClick} controls controlsList="volume">
+                                   <video className={css.videoCreateAcc} ref={videoRef} >
                                           <source src={URL.createObjectURL(selectedVideo)} />
                                    </video>
                                    <CloseIcon className={css.closeIcon} onClick={handleRemoveVideo} />
                             </div>
                      )}
-                     {!isPlaying && !selectedVideo && <PlayIcon className={css.playIcon} onClick={() => document.getElementById('video-upload-button')?.click()} />}
+                     {selectedVideo && <div className={css.videoControls}>
+                            {!isPlaying && <PlayIconControls className={css.iconControls} onClick={handleVideoClick} />}
+                            {isPlaying && <PauseIconControls className={css.iconControls} onClick={handleVideoClick} />}
+                            <input
+                                   className={css.editorVolume}
+                                   type="range"
+                                   min="0"
+                                   max="1"
+                                   step="0.01"
+                                   value={volume}
+                                   onChange={(e) => {
+                                          handleVolumeChange(e);
+                                          handleRangeChange(e);
+                                   }}
+                            />
+                            <CropIcon className={css.cropIcon} />
+                     </div>}
+                     {!isPlaying && !selectedVideo && <PlayIcon className={css.playIcon} />}
               </div>
        );
 };

@@ -35,3 +35,44 @@
        right: 5px;
        cursor: pointer;
 }
+
+
+.iconControls {
+       position: absolute;
+       bottom: 5px;
+       left: 5px;
+       width: 25px;
+       height: 25px;
+}
+
+
+.editorVolume {
+       position: absolute;
+       bottom: 15px;
+       left: 40px;
+       width: 150px;
+       -webkit-appearance: none;
+       height: 4px;
+       background: linear-gradient(to right, #C896EF 0%, #C896EF var(--thumb-percentage, 50%), #5F4F7F var(--thumb-percentage, 50%), #5F4F7F 100%);
+       border-radius: 3px;
+       outline: none;
+}
+
+.editorVolume::-webkit-slider-thumb {
+       -webkit-appearance: none;
+       appearance: none;
+       width: 18px;
+       height: 18px;
+       background-color: #C896EF;
+       border-radius: 50%;
+       cursor: pointer;
+       z-index: 1;
+}
+
+.cropIcon {
+       position: absolute;
+       width: 18px;
+       height: 18px;
+       right: 10px;
+       bottom: 10px;
+}
