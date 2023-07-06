@@ -23,7 +23,6 @@ export const ModalForgotPassword: FC<ModalForgotPasswordProps> = ({ isOpen, onRe
                      <img className={css.cancel} src={cancel} alt="cancel" onClick={onRequestClose} />
                      <h2 className={css.modalForgotPasswordTitle}>Forgot your password?</h2>
                      <Button className={css.btnGetNewPassword} onClick={onGetNewPassword}>Get new password</Button>
-
               </Modal>
        )
 }

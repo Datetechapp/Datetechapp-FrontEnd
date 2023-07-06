@@ -157,7 +157,7 @@ button {
 }
 
 .linkToAuth {
-       margin: 66px 0 0 0;
+       margin: 66px 0 65px 0;
        font-family: 'Montserrat';
        font-weight: 500;
        font-size: 16px;
@@ -168,7 +168,7 @@ button {
        color: #E9E3F5;
 }
 .linkToAuthWithMoreMargin {
-       margin: 128px 0 0 0; 
+       margin: 128px 0 66px 0; 
        font-family: 'Montserrat';
        font-weight: 500;
        font-size: 16px;

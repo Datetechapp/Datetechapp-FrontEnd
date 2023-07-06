@@ -1,0 +1,104 @@
+.genderRadioWrapper {
+       width: 194px;
+       height: 64px;
+       background: #201B27;
+       border: 1.5px solid #5F4F7F;
+       border-radius: 30px;
+       position: relative;
+       
+}
+
+.genderRadioWrapperActive {
+       width: 194px;
+       height: 64px;
+       background: #201B27;
+       border: 1.5px solid #C896EF;
+       border-radius: 30px;
+       position: relative;
+       
+}
+
+
+
+.labelForRadio {
+       width: 154px;
+       font-family: 'Montserrat';
+       font-weight: 600;
+       font-size: 18px;
+       line-height: 25px;
+       letter-spacing: -0.5px;
+       color: #E9E3F5;
+       position: absolute;
+       top: 20px;
+       left: 20px;
+       display: flex;
+       align-items: baseline;
+       justify-content: space-between;
+}
+
+.labelForRadio, .labelForRadio * {
+       cursor: pointer;
+}
+
+.blockForRadio {
+       display: flex;
+}
+
+
+input[type="radio"] {
+       appearance: none;
+       -webkit-appearance: none;
+       -moz-appearance: none;
+       width: 24px;
+       height: 24px;
+       border: 2px solid #E9E3F5;
+       border-radius: 50%;
+       outline: none;
+       margin: 0 8px 0 0;
+       position: relative;
+       box-sizing: border-box;
+}
+
+input[type="radio"]:before {
+       content: "";
+       display: block;
+       position: absolute;
+       top: 2px;
+       transform: translateY(-50%);
+       left: 2px;
+       width: 16px;
+       height: 16px;
+       background-color: #E9E3F5;
+       border-radius: 50%;
+       transform: scale(0);
+       transition: transform 0.2s ease-in-out;
+}
+
+input[type="radio"]:checked:before {
+       transform: scale(1);
+}
+
+
+.maleIcon path {
+       fill: #5F4F7F;
+}
+
+.maleIcon circle {
+       stroke: #5F4F7F;
+}
+
+.maleIconChecked path {
+       fill: #C896EF;
+}
+
+.maleIconChecked circle {
+       stroke: #C896EF;
+}
+
+.femaleIconChecked path:first-child {
+       fill: #C896EF;
+}
+
+.femaleIconChecked path:last-child {
+       stroke: #C896EF;
+}

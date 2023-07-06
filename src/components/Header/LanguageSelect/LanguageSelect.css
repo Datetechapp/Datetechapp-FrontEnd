@@ -1,88 +1,81 @@
-
-.LanguageSelect{
-    display: flex;
-    gap: 8px;
-    justify-content: end;
-    cursor: pointer;
-    position: relative;
-    width: 152px;
-    height: 25px;
-    margin-left: 114px;
-}
-.LanguageSelect .LanguageSelect__Arrow{
-    width: 12.5px;
-    height: 25px;
-    position: relative;
-}
-.LanguageSelect .LanguageSelect__Arrow::before{
-    content: "";
-    clear: both;
-    display: block;
-    position: absolute;
-    height: 15px;
-    border-radius: 3px;
-    width: 3px;
-    left: 0;
-    top: 4.5px;
-    background-color: #EB53A2;
-   transform: rotate(-45deg);
-   transition: 0.3s ease-in;
-    /* border-width: 0 3px 3px 0;  */
-}
-.LanguageSelect .LanguageSelect__Arrow::after{
-    content: "";
-    clear: both;
-    display: block;
-    position: absolute;
-    height: 15px;
-    border-radius: 3px;
-    width: 3px;
-    right: 0;
-    top: 4.5px;
-    background-color: #EB53A2;
-   transform: rotate(45deg);
-   transition: 0.3s ease-in;
-}
-.LanguageSelect .active::before{
-    transform: rotate(-135deg);
-    transition: 0.3s ease-in;
-}
-.LanguageSelect .active::after{
-    transform: rotate(135deg);
-    transition: 0.3s ease-in;
+.LanguageSelect {
+  display: flex;
+  gap: 8px;
+  justify-content: end;
+  cursor: pointer;
+  position: relative;
+  width: 152px;
+  height: 25px;
+  margin-left: 114px;
 }
 
-.LanguageSelect .Visible{
-    display: block;
-    opacity: 1;
-    animation: languagevisible 0.5s ease-in-out;
+.LanguageSelect .LanguageSelect__Arrow {
+  width: 12.5px;
+  height: 25px;
+  position: relative;
+}
+
+.LanguageSelect .LanguageSelect__Arrow::before {
+  content: "";
+  clear: both;
+  display: block;
+  position: absolute;
+  height: 15px;
+  border-radius: 3px;
+  width: 3px;
+  left: 0;
+  top: 4.5px;
+  background-color: #EB53A2;
+  transform: rotate(-45deg);
+  transition: 0.3s ease-in;
+}
+
+.LanguageSelect .LanguageSelect__Arrow::after {
+  content: "";
+  clear: both;
+  display: block;
+  position: absolute;
+  height: 15px;
+  border-radius: 3px;
+  width: 3px;
+  right: 0;
+  top: 4.5px;
+  background-color: #EB53A2;
+  transform: rotate(45deg);
+  transition: 0.3s ease-in;
+}
+
+.LanguageSelect .active::before {
+  transform: rotate(-135deg);
+  transition: 0.3s ease-in;
+}
+
+.LanguageSelect .active::after {
+  transform: rotate(135deg);
+  transition: 0.3s ease-in;
+}
+
+.LanguageSelect .Visible {
+  position: absolute;
+  z-index: 1;
+  display: block;
+  opacity: 1;
+  animation: languagevisible 0.5s ease-in-out;
 }
 
 @keyframes languagevisible {
-    0% {
-      display: none;
-      opacity: 0;
-    }
-  
-    1% {
-      display: block;
-      opacity: 0;
-    }
-  
-    100% {
-      display: block;
-      opacity: 1;
-    }
+  0% {
+    display: none;
+    opacity: 0;
   }
-  /* .LanguageSelect .No-visible{
-    animation: fadeOutFromBlock 0.5s ease-in-out;
+
+  1% {
+    display: block;
+    opacity: 0;
   }
-  @keyframes fadeOutFromBlock {
-    0% {
-      opacity: 1;
-    }
-  
-    100% {
-      opacity: 0;
-    }
-  } */
+
+  100% {
+    display: block;
+    opacity: 1;
+  }
+}

@@ -9,12 +9,15 @@
     "antd": "^5.5.0",
     "formik": "^2.2.9",
     "libphonenumber-js": "^1.10.30",
+    "moment": "^2.29.4",
     "parse": "^4.1.0",
     "react": "^18.2.0",
+    "react-avatar-editor": "^13.0.0",
     "react-dom": "^18.2.0",
     "react-modal": "^3.16.1",
     "react-router-dom": "^6.11.2",
     "react-scripts": "5.0.1",
+    "react-select": "^5.7.3",
     "validator": "^13.9.0",
     "validators": "^0.3.1",
     "web-vitals": "^2.1.4",
@@ -45,8 +48,9 @@
     ]
   },
   "devDependencies": {
+    "@types/react-avatar-editor": "^13.0.0",
     "@types/react-modal": "^3.16.0",
     "@types/validator": "^13.7.17",
-    "typescript": "^5.0.4"
+    "typescript": "^5.1.6"
   }
 }
