@@ -3,10 +3,10 @@ import AvatarEditor from 'react-avatar-editor';
 import css from './photoUploader.module.css';
 import { UploadButton } from '../UploadButton';
 import { ReactComponent as PhotoIcon } from '../../../../assets/CreateAccountForm/photoIcon.svg';
-import { ReactComponent as CloseIcon } from "../../../../assets/CreateAccountForm/closeIcon.svg"
+import { ReactComponent as CloseIcon } from '../../../../assets/CreateAccountForm/closeIcon.svg';
 
 interface PhotoUploaderProps {
-       onUpload: (file: File) => void;
+       onUpload: (imageData: string) => void;
 }
 
 export const PhotoUploader: React.FC<PhotoUploaderProps> = ({ onUpload }) => {
@@ -18,16 +18,15 @@ export const PhotoUploader: React.FC<PhotoUploaderProps> = ({ onUpload }) => {
 
        const handleFileUploaded = (file: File) => {
               const reader = new FileReader();
-              reader.onload = (e) => {
-                     if (e.target) {
-                            setSelectedImage(e.target.result as string);
-                            setIsPhotoSelected(true);
-                            setEditorPosition({ x: 0.5, y: 0.5 });
-                            setEditorScale(1.5);
-                     }
+              reader.onloadend = () => {
+                     const imageData = reader.result?.toString() || '';
+                     setSelectedImage(imageData);
+                     setIsPhotoSelected(true);
+                     setEditorPosition({ x: 0.5, y: 0.5 });
+                     setEditorScale(1.5);
+                     onUpload(imageData);
               };
               reader.readAsDataURL(file);
-              onUpload(file);
        };
 
        const handlePositionChange = (position: { x: number; y: number }) => {
@@ -37,6 +36,7 @@ export const PhotoUploader: React.FC<PhotoUploaderProps> = ({ onUpload }) => {
        const handleDeletePhoto = () => {
               setSelectedImage('');
               setIsPhotoSelected(false);
+              onUpload('');
        };
 
        const handleRangeChange = (e: React.ChangeEvent<HTMLInputElement>) => {

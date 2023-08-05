@@ -1,19 +1,29 @@
 import './BtnSignUp.css'
 import { Button } from '../../common'
-import { useState } from "react"
-import { Link } from "react-router-dom"
+import { useState, useEffect } from "react"
+import { Link, useLocation } from "react-router-dom"
 
 export const BtnSignUp = () => {
 
     const [authOrReg, setAuthOrReg] = useState("Sign Up")
 
-    const handleAuthOrRegChange = () => {
-        if (authOrReg === "Sign Up") {
+    const location = useLocation();
+
+    useEffect(() => {
+        if (location.pathname === "/create-profile" || location.pathname === "/registration") {
             setAuthOrReg("Sign In")
         } else {
             setAuthOrReg("Sign Up")
         }
+    }, [authOrReg, location])
 
+
+    const handleAuthOrRegChange = () => {
+        if (authOrReg !== "Sign Up") {
+            setAuthOrReg("Sign Up")
+        } else {
+            setAuthOrReg("Sign Ip")
+        }
     }
 
     return (

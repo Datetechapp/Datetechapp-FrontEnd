@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, FC } from "react";
+import { useNavigate } from "react-router-dom";
 import css from "./registration.module.css";
 import { Button } from "../../../common";
 import validator from 'validator';
@@ -8,6 +9,10 @@ import { CheckboxBlock } from "../../../ModalAuth/CheckboxBlock";
 import { NewPassword } from "../../../ModalAuth/NewPassword";
 import { SocialAuth } from "components/ModalAuth/SocialAuth";
 import { Link } from "react-router-dom";
+import { registration, checkVerificationCode } from "../../../../api"
+import { gendersAndPurposeFromBack } from "../../../../store/gendersAndPurpose/slice"
+import { useAppDispatch } from "hooks/hooks"
+
 
 const loginText = "Sign up to your account with E-mail or Phone number"
 const buttonContinueText = "Continue"
@@ -16,12 +21,16 @@ const rememberTheLogin = "Remember the Login"
 const rememberThePassword = "Remember the Password"
 const verifyYourAccount = "Verify your Account"
 const confirmText = "Confirm"
-const createPassword = "Create a Password"
+const createPasswordText = "Create a Password"
 const passwordMustBe = "Password must be at least 8 characters"
 const enterVerificCode = "Enter your Verification code"
 
 export const Registration: FC = () => {
-       const [value, setValue] = useState('');
+
+       const [emailOrPhoneValue, setEmailOrPhoneValue] = useState('');
+       const [verificCodeValue, setVerificCodeValue] = useState("");
+       const [passwordValue, setPasswordValue] = useState("")
+       const [confirmPasswordValue, setConfirmPasswordValue] = useState('');
        const [type, setType] = useState<'email' | 'phone'>('email');
        const [rememberLogin, setRememberLogin] = useState(false);
        const [errorMessage, setErrorMessage] = useState('');
@@ -29,9 +38,11 @@ export const Registration: FC = () => {
        const [isFocused, setIsFocused] = useState(false);
        const [isCodeVerified, setIsCodeVerified] = useState(false)
        const [authorized, setAuthorized] = useState(false);
-       const [confirmPasswordValue, setConfirmPasswordValue] = useState('');
 
        const inputRef = useRef<HTMLInputElement>(null);
+       const navigate = useNavigate()
+       const dispatch = useAppDispatch();
+
 
        const handleFocusChange = () => {
               setIsFocused(prevIsFocused => !prevIsFocused);
@@ -43,7 +54,6 @@ export const Registration: FC = () => {
 
        const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
               const newValue = e.target.value;
-              setValue(newValue);
 
               if (!authorized) {
                      if (validator.isEmail(newValue)) {
@@ -51,6 +61,11 @@ export const Registration: FC = () => {
                      } else if (validator.isMobilePhone(newValue, 'any')) {
                             setType('phone');
                      }
+                     setEmailOrPhoneValue(newValue);
+              } else if (authorized && !isCodeVerified) {
+                     setVerificCodeValue(newValue)
+              } else {
+                     setPasswordValue(newValue)
               }
        };
 
@@ -59,38 +74,51 @@ export const Registration: FC = () => {
               e.preventDefault();
 
               if (authorized && !isCodeVerified) {
-                     if (value !== "1111") {
-                            setErrorMessage("Incorrect verification code. Please enter the correct code.");
-                     } else {
-                            // тут будет логика запроса на сервер с email и паролем пользователя
-                            setErrorMessage("");
-                            setValue("")
-                            setIsCodeVerified(prevIsCodeVerified => !prevIsCodeVerified)
-                     }
+                     checkVerificationCode({ "passcode": verificCodeValue }).then((response) => {
+                            if (response.ok) {
+                                   setIsCodeVerified(true)
+                                   setErrorMessage("");
+                            } else {
+                                   throw new Error('Ошибка при выполнении запроса: ' + response.status);
+                            }
+                     }).catch((error) => {
+                            console.error("Неверный верификационный код", error);
+                            setErrorMessage("Invalid verification code. Please try again.");
 
+                     });;;
               } else if (isCodeVerified) {
-                     if (value.length < 8) {
+                     if (passwordValue.length < 8) {
                             setErrorMessage("Incorrect password. Password must be at least 8 characters")
                             setErrorConfirmPasswordMessage("")
-                     } else if (value !== confirmPasswordValue) {
+                     } else if (passwordValue !== confirmPasswordValue) {
                             setErrorMessage("")
                             setErrorConfirmPasswordMessage("The Passwords doesn't match. Check the character set");
                      } else {
                             setErrorMessage("")
                             setErrorConfirmPasswordMessage("")
-                            // тут будет логика сохранения нового пароля
+
+                            dispatch(gendersAndPurposeFromBack({ "password": passwordValue, "confirm_password": confirmPasswordValue }))
+                            navigate("/create-profile")
                      }
               }
 
               else {
-                     if (!validator.isEmail(value) && !validator.isMobilePhone(value, 'any')) {
+                     if (!validator.isEmail(emailOrPhoneValue) && !validator.isMobilePhone(emailOrPhoneValue, 'any')) {
                             setErrorMessage('Incorrect E-mail or Phone number. Check the character set and try again');
                      } else {
-                            // тут будет логика отправки на сервер запроса с email/телефоном пользователя
-                            console.log(`Your ${type} is ${value}`);
-                            setValue("");
-                            setAuthorized(true);
-                            setErrorMessage("")
+                            registration({ "username": emailOrPhoneValue }).then((response) => {
+                                   if (response.ok) {
+                                          setAuthorized(true);
+                                          setErrorMessage("")
+                                   } else {
+                                          throw new Error('Ошибка при выполнении запроса: ' + response.status);
+                                   }
+
+
+                            }).catch((error) => {
+                                   console.error("Произошла ошибка при выполнении запроса:", error);
+                                   setErrorMessage("Such user is already registered.")
+                            });;
                      }
               }
        };
@@ -105,10 +133,12 @@ export const Registration: FC = () => {
                      inputRef.current.focus();
               }
        }, [authorized]);
+
+
        return (
               <div>
                      <h2 className={css.messageLogIn}>
-                            {!authorized ? loginText : (authorized && !isCodeVerified) ? verifyYourAccount : createPassword}
+                            {!authorized ? loginText : (authorized && !isCodeVerified) ? verifyYourAccount : createPasswordText}
                      </h2>
                      {authorized && <p className={!isCodeVerified ? css.signUpSubtitle : css.createPswdSub}>{authorized && !isCodeVerified ? enterVerificCode : passwordMustBe}</p>}
                      <form className={css.formForEmail} onSubmit={handleSubmit} noValidate>
@@ -116,7 +146,7 @@ export const Registration: FC = () => {
                                    {!authorized ? <div className={css.inputBlock}>
                                           <EmailOrPhoneInput
                                                  errorMessage={errorMessage}
-                                                 value={value}
+                                                 value={emailOrPhoneValue}
                                                  type={type}
                                                  onChange={handleInputChange}
                                                  onFocus={handleFocusChange}
@@ -125,7 +155,7 @@ export const Registration: FC = () => {
                                           : (authorized && !isCodeVerified)
                                                  ? <div className={css.blockInputVerificate}>
                                                         <PasswordInput
-                                                               value={value}
+                                                               value={verificCodeValue}
                                                                onChange={handleInputChange}
                                                                errorMessage={errorMessage}
                                                                isFocused={isFocused}
@@ -135,7 +165,7 @@ export const Registration: FC = () => {
                                                         />
                                                  </div> :
                                                  <NewPassword
-                                                        value={value}
+                                                        value={passwordValue}
                                                         confirmPasswordValue={confirmPasswordValue}
                                                         onChange={handleInputChange}
                                                         onConfirmChange={handleConfirmPasswordChange}
@@ -159,15 +189,19 @@ export const Registration: FC = () => {
                             {authorized && !isCodeVerified && <p className={css.resendVerificate}>Resend  Verification code</p>}
                             <Button
                                    className={
-                                          !isFocused && value.length === 0
+                                          !isFocused && emailOrPhoneValue.length === 0
                                                  ? css.btnContinue
-                                                 : (validator.isEmail(value) || validator.isMobilePhone(value))
+                                                 : (validator.isEmail(emailOrPhoneValue) || validator.isMobilePhone(emailOrPhoneValue))
                                                         ? css.btnFocusedValid
                                                         : css.btnFocused
                                    }
-                                   disabled={value.length === 0}
+                                   disabled={(emailOrPhoneValue.length === 0
+                                          && verificCodeValue.length === 0
+                                          && passwordValue.length === 0
+                                          && confirmPasswordValue.length === 0
+                                   )}
                             >
-                                   {!authorized ? buttonContinueText : authorized && isCodeVerified ? buttonPasswordText : confirmText }
+                                   {!authorized ? buttonContinueText : authorized && isCodeVerified ? buttonPasswordText : confirmText}
                             </Button>
                      </form>
                      {!isCodeVerified && <SocialAuth />}

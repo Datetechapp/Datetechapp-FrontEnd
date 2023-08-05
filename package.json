@@ -3,10 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.3",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "antd": "^5.5.0",
+    "axios-mock-adapter": "^1.21.5",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
     "formik": "^2.2.9",
     "libphonenumber-js": "^1.10.30",
     "moment": "^2.29.4",
@@ -15,9 +19,11 @@
     "react-avatar-editor": "^13.0.0",
     "react-dom": "^18.2.0",
     "react-modal": "^3.16.1",
-    "react-router-dom": "^6.11.2",
+    "react-redux": "^8.1.1",
+    "react-router-dom": "^6.14.2",
     "react-scripts": "5.0.1",
     "react-select": "^5.7.3",
+    "redux": "^4.2.1",
     "validator": "^13.9.0",
     "validators": "^0.3.1",
     "web-vitals": "^2.1.4",
@@ -48,8 +54,10 @@
     ]
   },
   "devDependencies": {
+    "@types/cors": "^2.8.13",
     "@types/react-avatar-editor": "^13.0.0",
     "@types/react-modal": "^3.16.0",
+    "@types/redux": "^3.6.0",
     "@types/validator": "^13.7.17",
     "typescript": "^5.1.6"
   }

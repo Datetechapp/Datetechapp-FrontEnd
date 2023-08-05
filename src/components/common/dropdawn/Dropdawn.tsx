@@ -5,15 +5,18 @@ import { ReactComponent as Circle } from "../../../assets/CreateAccountForm/radi
 interface Option {
        title: string;
        description: string;
+
 }
 
 interface DropdownProps {
        value: string;
-       options: Option[];
+       name: string;
+       genders: string[];
+       descriptionGender: string[];
        onChange: (value: string) => void;
 }
 
-export const Dropdawn = ({ value, options, onChange }: DropdownProps) => {
+export const Dropdawn = ({ value, genders, onChange, descriptionGender }: DropdownProps) => {
        const [isOpen, setOpen] = useState(false);
 
        const handleOptionClick = (optionValue: string) => {
@@ -21,7 +24,7 @@ export const Dropdawn = ({ value, options, onChange }: DropdownProps) => {
               onChange(optionValue);
        };
 
-       const selectedOption = options.find((option) => option.title === value);
+       const selectedOption = genders.find((gender:string) => gender === value);
 
        return (
               <div className={css.dropdawnWrapper}>
@@ -35,21 +38,21 @@ export const Dropdawn = ({ value, options, onChange }: DropdownProps) => {
                             }
                             onClick={() => setOpen(!isOpen)}
                      >
-                            <span>{selectedOption ? selectedOption.title : "Other"}</span>
+                            <span>{selectedOption ? selectedOption : "Other"}</span>
                      </div>
                      {isOpen && (
                             <div className={css.dropdawnOptions}>
-                                   {options.map((option) => (
+                                   {genders.map((gender) => (
                                           <div
-                                                 key={option.title}
-                                                 onClick={() => handleOptionClick(option.title)}
+                                                 key={gender}
+                                                 onClick={() => handleOptionClick(gender)}
                                                  className={css.blockForOption}
                                           >
                                                  <div className={css.blockTitleAndRadio}>
-                                                        <div className={css.dropdawnTitle}>{option.title}</div>
+                                                        <div className={css.dropdawnTitle}>{gender}</div>
                                                         <Circle />
                                                  </div>
-                                                 <div className={css.dropdawnDescription}>{option.description}</div>
+                                                 <div className={css.dropdawnDescription}>{descriptionGender[genders.indexOf(gender)]}</div>
                                           </div>
                                    ))}
                             </div>

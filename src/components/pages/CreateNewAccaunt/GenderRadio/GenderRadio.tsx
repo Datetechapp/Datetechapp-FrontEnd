@@ -6,6 +6,7 @@ import { ReactComponent as FemaleIcon } from "../../../../assets/CreateAccountFo
 
 interface GenderRadioProps {
        value: string;
+       name: string;
        label: string;
        checked: boolean;
        onChange: (event: ChangeEvent<HTMLInputElement>) => void;

@@ -8,19 +8,21 @@ import { VideoUploader } from "./VideoUploader"
 import { PhotoUploader } from "./PhotoUploader"
 import moment from 'moment';
 import 'moment/locale/en-gb';
+import { createProfile } from "api"
 
 interface IFormData {
        name: string;
        day: string;
        month: string;
        year: string;
+       date_of_birth: string;
        gender: string;
-       interests: string[];
-       geolocation: boolean;
-       video: File | null;
-       photo: File | null;
-       checkboxAgreeWithTerms: boolean;
-
+       sex: string;
+       purposes: string[];
+       is_agree_geo: boolean;
+       video: string;
+       photo: string;
+       app_agreement: boolean;
 }
 
 const initialFormData: IFormData = {
@@ -28,17 +30,21 @@ const initialFormData: IFormData = {
        day: "",
        month: "",
        year: "",
+       date_of_birth: "",
        gender: "",
-       interests: [],
-       geolocation: false,
-       video: null,
-       photo: null,
-       checkboxAgreeWithTerms: false,
+       sex: "",
+       purposes: [],
+       is_agree_geo: false,
+       video: "",
+       photo: "",
+       app_agreement: false,
 };
 
 
 export const CreateNewAccount = () => {
        const [formData, setFormData] = useState<IFormData>(initialFormData);
+
+
 
        const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
               setFormData({ ...formData, name: event.target.value });
@@ -63,7 +69,7 @@ export const CreateNewAccount = () => {
               const isValidMonth = Number(month) >= 1 && Number(month) <= 12;
               const isValidYear = Number(year) >= 1950 && Number(year) <= moment().year();
               const isValidBirthday = isValidDay && isValidMonth && isValidYear
-              
+
 
               if (day && !isValidDay) {
                      alert("Please enter a number from 1 to 31.")
@@ -79,6 +85,7 @@ export const CreateNewAccount = () => {
 
 
               if (day && month && year.length === 4 && isValidBirthday) {
+
                      const birthDate = moment(`${day}-${month}-${year}`, 'DDMMYYYY');
 
                      const age = moment().diff(birthDate, 'years');
@@ -102,45 +109,58 @@ export const CreateNewAccount = () => {
               }
        };
 
-       const handleGenderChange = (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => {
-              setFormData({ ...formData, gender: event.target.value });
+       const handleGenderChange = (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>, key: string) => {
+             
+              if(event.target.value === "Male" || event.target.value === "Female") {
+                     setFormData({ ...formData, sex: key, gender: "" });
+              } else {
+                     setFormData({ ...formData, sex: "", gender: key });
+              }
+              
        };
 
-       const handleInterestsChange = (interests: string[]): void => {
-              setFormData({ ...formData, interests });
+       const handleInterestsChange = (purposes: string[]): void => {
+              setFormData({ ...formData, purposes });
        };
 
        const handleToggleChange = (enabled: boolean) => {
-              setFormData({ ...formData, geolocation: enabled });
+              setFormData({ ...formData, is_agree_geo: enabled });
        }
 
-       const handleVideoUpload = (file: File | null, isRemoved?: boolean) => {
+       const handleVideoUpload = (file: string, isRemoved?: boolean) => {
               if (isRemoved) {
-                     setFormData({ ...formData, video: null });
+                     setFormData({ ...formData, video: "" });
               } else {
                      setFormData({ ...formData, video: file });
               }
        };
 
-       const handlePhotoUpload = (file: File) => {
+       const handlePhotoUpload = (file: string) => {
               setFormData({ ...formData, photo: file })
        };
 
        const handleCheckboxChange = () => {
-              setFormData({ ...formData, checkboxAgreeWithTerms: !formData.checkboxAgreeWithTerms })
+              setFormData({ ...formData, app_agreement: !formData.app_agreement })
        }
 
        const isFormValid = () => {
-              const { name, day, month, year, gender, interests, checkboxAgreeWithTerms } = formData;
-              return (name && day && month && year && gender && interests.length && checkboxAgreeWithTerms);
+              const { name, day, month, year, gender, purposes, is_agree_geo, app_agreement, sex } = formData;
+              return (name && day && month && year && (gender || sex) && purposes.length && is_agree_geo && app_agreement);
        }
 
 
        const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
               event.preventDefault();
-              // отправить данные формы на сервер
-              console.log(formData);
+
+              const { day, month, year, ...formDataWithoutDateOfBirth } = formData;
+              formDataWithoutDateOfBirth.date_of_birth = `${formData.year}-${formData.month}-${formData.day}`;
+              console.log(formDataWithoutDateOfBirth);
+              
+              createProfile(formDataWithoutDateOfBirth)
+              
        };
+       console.log(formData);
+       
 
 
        return (
@@ -229,7 +249,7 @@ export const CreateNewAccount = () => {
                                           <div className={css.blockLabelAndInput}>
                                                  <p className={css.labelForInput}>Choose the options you are looking for</p>
                                                  <div>
-                                                        <InterestedInBlock onChange={handleInterestsChange} checkedItems={formData.interests} />
+                                                        <InterestedInBlock onChange={handleInterestsChange} checkedItems={formData.purposes} />
                                                  </div>
                                           </div>
                                    </div>
@@ -266,7 +286,7 @@ export const CreateNewAccount = () => {
                                    <label className={css.labelForTermsAndConditions}>
                                           <Checkbox
                                                  className={css.checkboxForTermsAndConditions}
-                                                 checked={formData.checkboxAgreeWithTerms}
+                                                 checked={formData.app_agreement}
                                                  onChange={handleCheckboxChange}
                                           />
                                           <span className={css.iAgreeText}>I agree with <a href="#" className={css.termsAndConditionsText}>Terms & Conditions</a></span>

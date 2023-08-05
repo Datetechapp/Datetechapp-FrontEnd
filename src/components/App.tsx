@@ -7,12 +7,11 @@ import { BackSection } from "./BackSection/BackSection";
 
 export const App = () => {
   return <div>
-
     {/* <ModalWelcome /> */}
 
     <BackSection >
       <Routes>
-        <Route path="/" element={<CreateNewAccount />} />
+        <Route path="/create-profile" element={<CreateNewAccount />} />
         <Route path="/auth" element={<ModalAuth />} />
         <Route path="/registration" element={< ModalRegister />} />
       </Routes>

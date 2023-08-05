@@ -9,51 +9,59 @@ import { ReactComponent as CropIcon } from "../../../../assets/CreateAccountForm
 
 
 interface VideoUploaderProps {
-       onUpload: (file: File | null, isRemoved?: boolean) => void;
+       onUpload: (fileData: string, isRemoved?: boolean) => void;
 }
 
 export const VideoUploader: React.FC<VideoUploaderProps> = ({ onUpload }) => {
        const [selectedVideo, setSelectedVideo] = useState<File | null>(null);
        const [isPlaying, setIsPlaying] = useState(false);
-       const [volume, setVolume] = useState(0.5);
+       const [volume, setVolume] = useState(1);
 
        const videoRef = useRef<HTMLVideoElement>(null);
 
        const handleFileUpload = async (file: File) => {
-              // проверяем формат и размер файла
               const fileExtension = file.name.split('.').pop()!.toLowerCase();
               const allowedExtensions = ['mp4', 'mov', 'avi', 'wmv'];
               const allowedMaxSize = 1024 * 1024 * 1024;
+
               if (allowedExtensions.includes(fileExtension) && file.size <= allowedMaxSize) {
-                     onUpload(file);
-                     setSelectedVideo(file);
-                     setIsPlaying(false);
-                     if (videoRef.current) {
-                            videoRef.current.src = URL.createObjectURL(file); // устанавливаем URL-адрес видео
-                     }
+                     const reader = new FileReader();
+                     reader.onloadend = () => {
+                            const videoData = reader.result?.toString() || "";
+                            onUpload(videoData);
+                            setSelectedVideo(file);
+                            setIsPlaying(false);
+
+                            if (videoRef.current) {
+                                   videoRef.current.src = URL.createObjectURL(file);
+                            }
+                     };
+                     reader.readAsDataURL(file);
               } else {
                      alert('Неверный формат файла или превышен допустимый размер (1GB). Пожалуйста, загрузите файлы только в форматах MP4, MOV, AVI, WMV.');
-              }
-       };
-
-       const handleVideoClick = () => {
-              if (videoRef.current) {
-                     if (isPlaying) {
-                            videoRef.current.pause();
-                     } else {
-                            videoRef.current.play();
-                     }
-                     setIsPlaying(!isPlaying);
               }
        };
 
        const handleRemoveVideo = () => {
               setSelectedVideo(null);
               setIsPlaying(false);
+
               if (videoRef.current) {
                      videoRef.current.src = '';
               }
-              onUpload(null, true);
+              onUpload("", true);
+       };
+
+       const handleVideoClick = () => {
+              if (videoRef.current) {
+                     if (isPlaying) {
+                            videoRef.current.pause();
+                            setIsPlaying(false);
+                     } else {
+                            videoRef.current.play();
+                            setIsPlaying(true);
+                     }
+              }
        };
 
        const handleVolumeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
