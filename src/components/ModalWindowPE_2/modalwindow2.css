@@ -1,0 +1,132 @@
+.modalwindow2 {
+	position: fixed;
+width: 764px;
+height: 312px;
+background-color: #FCFCFC;
+font-style:normal ;
+align-items: center;
+justify-content: center;
+overflow: hidden;
+}
+
+
+.modalwindow2::before {
+	content: "";
+	clear: both;
+	display: block;
+	position: absolute;
+	width: 235px;
+	height: 235px;
+	left: -5px;
+	top: 189px;
+	background: #F6C4DE;
+	opacity: 0.2;
+	border-radius: 50%;
+}
+
+
+
+.modalwindow2__close::before {
+	content: "";
+	clear: both;
+	display: block;
+	width: 170px;
+	position: absolute;
+	height: 154px;
+	left: 691px;
+	top: -77px;
+	border-radius: 50%;
+	background: #C896EF;
+	opacity: 0.2;
+	z-index: 0;
+}
+
+.modal-title {
+	text-align: center;
+	color: #DE77C7;
+	font-family: 'Montserrat';
+	margin-top: 75px;
+	font-size: 24px;
+	line-height: 33px;
+	white-space: pre-line;
+	letter-spacing: -0.5px;
+}
+
+.modal-title::before{
+	content: "";
+	clear: both;
+	display: block;
+	position: absolute;
+	width: 82px;
+	height: 82px;
+	left: 205px;
+	top: 36px;
+	background: #F6C4DE;
+	opacity: 0.2;
+	border-radius: 50%;
+}
+
+.modal-title::after {
+	content: "";
+	clear: both;
+	display: block;
+	position: absolute;
+	width: 96px;
+	height: 96px;
+	left: 17px;
+	top: -21px;
+	background: #F6C4DE;
+	opacity: 0.2;
+	border-radius: 50%;
+}
+
+
+
+
+.btn-close {
+	margin: 60px auto 66px;
+	display: block;
+	width: 232px;
+	height: 64px;
+	padding: 16px 18px;
+	background: linear-gradient(180deg, #9747FF 0%, #DE77C7 100%);
+	border-radius: 5px;
+	border: none;
+	color: #E9E3F5;
+	font-family: 'Montserrat', Arial, sans-serif;
+	font-weight: 600;
+	font-size: 18px;
+	line-height: 17px;
+	letter-spacing: -0.5px;
+
+}
+
+.btn-close:active {
+	background: linear-gradient(0deg, rgba(0, 0, 0, 0.27), rgba(0, 0, 0, 0.27)), linear-gradient(180deg, #9747FF 0%, #E551E8 100%)
+}
+
+.btn-close::after {
+	content: "";
+	clear: both;
+	display: block;
+	position: absolute;
+	width: 196px;
+	height: 196px;
+	left: 462px;
+	top: 82px;
+	background: #F6C4DE;
+	opacity: 0.2;
+	border-radius: 50%;
+	z-index: -1;
+	
+}
+
+.btn__icon2 {
+	position: absolute;
+	width: 32px;
+	height: 32px;
+	float: right;
+	top: 16px;
+	left: 727px;
+}
+

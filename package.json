@@ -9,6 +9,7 @@
     "antd": "^5.5.0",
     "formik": "^2.2.9",
     "libphonenumber-js": "^1.10.30",
+    "modal": "^1.2.0",
     "moment": "^2.29.4",
     "parse": "^4.1.0",
     "react": "^18.2.0",
@@ -51,6 +52,6 @@
     "@types/react-avatar-editor": "^13.0.0",
     "@types/react-modal": "^3.16.0",
     "@types/validator": "^13.7.17",
-    "typescript": "^5.1.6"
+    "typescript": "^4.9.5"
   }
 }
