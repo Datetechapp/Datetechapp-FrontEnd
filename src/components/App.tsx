@@ -9,7 +9,6 @@ import { ModalWindow2 } from "./ModalWindowPE_2/modalwindow2";
 
 export const App = () => {
 	return <div>
-		{<ModalWindow2 />}
 		{/* <ModalWelcome /> */}
 		{/* 
     <BackSection >
