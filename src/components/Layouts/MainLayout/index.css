@@ -1,0 +1,23 @@
+* {
+    padding: 0;
+    margin: 0; 
+}
+
+#root{
+    --panel-background: #272533;
+    --text-color: #5F4F7F;
+    --active-text-color: #E9E3F5;
+    --dark-background: #1F1D2B;
+}
+.main_layout__wrapper{
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: calc(300vh - 96px);
+}
+.main_layout__info_panel{
+    background-color: var(--dark-background);
+    background-image: url("../../../assets/NavPanel/Dust.svg");
+}
+.main_layout__message_panel{
+    background-color: var(--panel-background);
+}
