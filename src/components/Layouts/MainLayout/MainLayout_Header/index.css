@@ -24,3 +24,24 @@
     gap: 60px;
     max-height: 52px;
 }
+.BtnUpload {
+    width: 184px;
+    height: 56px;
+    border: 1px solid #E9E3F5;
+    background: none;
+    color: #E9E3F5;
+    text-transform: capitalize;
+    cursor: pointer;
+    outline: inherit;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 5px;
+}
+.BtnUpload:hover {
+    backdrop-filter: blur(5px);
+}
+
+.BtnUpload:active {
+    background: #5F4F7F;
+}

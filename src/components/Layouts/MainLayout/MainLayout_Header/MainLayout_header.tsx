@@ -3,7 +3,6 @@ import { FC } from "react";
 import bell from "../../../../assets/Header/bell-alert.svg" 
 import logo from "../../../../assets/ModalAuth/logo.svg"
 import "./index.css"
-import "../../../Header/BtnSignUp/BtnSignUp.css"
 
 export const MainLayoutHeader : FC = () => {
     return (
@@ -13,7 +12,7 @@ export const MainLayoutHeader : FC = () => {
             </div>
             <div className="header__buttons">
                 <img src= {bell} alt="notifications" />
-                <Button className='BtnSignUp'>Upload</Button>
+                <Button className='BtnUpload'>Upload</Button>
             </div>
         </div>
     )
