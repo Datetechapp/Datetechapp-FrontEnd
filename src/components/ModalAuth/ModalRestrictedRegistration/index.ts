@@ -1,0 +1,1 @@
+export { ModalRestrictedRegistration } from "./modalRestrictedRegistration"

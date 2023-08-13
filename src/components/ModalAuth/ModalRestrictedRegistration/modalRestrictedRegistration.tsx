@@ -1,13 +1,14 @@
-import './ModalIvalidFormat.css';
-import { Button } from '../common/button';
+import './modalrestrictedregistration.css';
+import { Button } from '../../common/button';
 import { ReactComponent as CloseIkon } from '../../assets/ModalAuth/btn-close.svg';
 import { useState, useEffect } from 'react';
 
 
-const title = 'Invalid file format or exceeded the allowed size(1GB)'
-const text = 'Please upload files only in MP4, MOV, AVI, WMV formats.'
+const title = `Sorry but you can't use our app until \n you are 18 years old. `
 
-export const ModalInvalidFormat = () => {
+
+export const ModalRestrictedRegistration = () => {
+
 	const [stateModal, setModal] = useState(false);
 
 	useEffect(() => {
@@ -25,23 +26,21 @@ export const ModalInvalidFormat = () => {
 	return (
 		<>
 			{stateModal && (
-				<div className='modalwindow' >
-					<div className='modalwindow__close'>
-						<div className='btn__icon' onClick={handleNotShowModal}>
+				<div className='modalwindow2'>
+					<div className='modalwindow2__close'>
+						<div className='btn__icon2' onClick={handleNotShowModal}>
 							<CloseIkon />
 						</div>
 
 					</div>
 					<h2 className='modal-title'>{title}</h2>
-					<p className='modal-text'>{text}</p>
+
 					<Button className='btn-close' onClick={handleNotShowModal}>ОК</Button>
 				</div >
+
 			)}
 
 		</>
 
-
 	)
 }
-
-

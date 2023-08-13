@@ -4,12 +4,13 @@ import { CreateNewAccount } from "./pages/CreateNewAccaunt";
 import { Routes, Route } from "react-router-dom"
 import { ModalWelcome } from "./base/ModalWelcome/ModalWelcome";
 import { BackSection } from "./BackSection/BackSection";
-import { ModalWindow } from "./ModalWindowPE/ModalWindow";
-import { ModalWindow2 } from "./ModalWindowPE_2/modalwindow2";
+import { ModalInvalidFormat } from "./ModalAuth/ModalInvalidFormat/modalInvalidFormat"
+import { ModalRestrictedRegistration } from "./ModalAuth/ModalRestrictedRegistration/modalRestrictedRegistration";
 
 export const App = () => {
 	return <div>
 		{/* <ModalWelcome /> */}
+		{<ModalInvalidFormat />}
 		{/* 
     <BackSection >
       <Routes>
