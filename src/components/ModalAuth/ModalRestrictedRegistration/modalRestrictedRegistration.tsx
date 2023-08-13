@@ -1,15 +1,15 @@
 import './modalrestrictedregistration.css';
 import { Button } from '../../common/button';
-import { ReactComponent as CloseIkon } from '../../assets/ModalAuth/btn-close.svg';
+import { ReactComponent as CloseIkon } from '../../../assets/ModalAuth/btn-close.svg';
 import { useState, useEffect } from 'react';
+import { FC } from 'react';
+
+const title: string = `Sorry but you can't use our app until \n you are 18 years old. `
 
 
-const title = `Sorry but you can't use our app until \n you are 18 years old. `
+export const ModalRestrictedRegistration: FC = () => {
 
-
-export const ModalRestrictedRegistration = () => {
-
-	const [stateModal, setModal] = useState(false);
+	const [stateModal, setModal] = useState<boolean>(false);
 
 	useEffect(() => {
 		setModal(true);

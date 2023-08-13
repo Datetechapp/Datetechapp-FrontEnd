@@ -1,14 +1,15 @@
 import './modalinvalidformat.css';
 import { Button } from '../../common/button';
-import { ReactComponent as CloseIkon } from '../../assets/ModalAuth/btn-close.svg';
+import { ReactComponent as CloseIkon } from '../../../assets/ModalAuth/btn-close.svg';
 import { useState, useEffect } from 'react';
+import { FC } from 'react';
 
 
-const title = 'Invalid file format or exceeded the allowed size(1GB)'
-const text = 'Please upload files only in MP4, MOV, AVI, WMV formats.'
+const title: string = 'Invalid file format or exceeded the allowed size(1GB)'
+const text: string = 'Please upload files only in MP4, MOV, AVI, WMV formats.'
 
-export const ModalInvalidFormat = () => {
-	const [stateModal, setModal] = useState(false);
+export const ModalInvalidFormat: FC = () => {
+	const [stateModal, setModal] = useState<boolean>(false);
 
 	useEffect(() => {
 		setModal(true);
