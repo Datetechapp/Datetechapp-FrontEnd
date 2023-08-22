@@ -1,4 +1,14 @@
 import person from "../../../assets/user/personalInf/aboutMe.svg"
+import child from "../../../assets/user/personalInf/child.svg"
+import drink from "../../../assets/user/personalInf/drink.svg"
+import education from "../../../assets/user/personalInf/education.svg"
+import gender from "../../../assets/user/personalInf/gender.svg"
+import language from "../../../assets/user/personalInf/language.svg"
+import marStatus from "../../../assets/user/personalInf/marStatus.svg"
+import pets from "../../../assets/user/personalInf/pets.svg"
+import religion from "../../../assets/user/personalInf/religion.svg"
+import smoke from "../../../assets/user/personalInf/smoke.svg"
+import tall from "../../../assets/user/personalInf/tall.svg"
 
 interface InfoBlock {
     title: string,
@@ -17,52 +27,52 @@ let infoList: InfoBlock[] = [
     {
         title: 'education',
         percent: 20,
-        img: person,
+        img: education,
     },
     {
         title: 'Languages you speak',
         percent: 20,
-        img: person,
+        img: language,
     },
     {
         title: 'Your Sexual Orientation',
         percent: 20,
-        img: person,
+        img: gender,
     },
     {
         title: 'Your Religion',
         percent: 20,
-        img: person,
+        img: religion,
     },
     {
         title: 'Your Tall',
         percent: 20,
-        img: person,
+        img: tall,
     },
     {
         title: 'What about Smoking?',
         percent: 20,
-        img: person,
+        img: smoke,
     },
     {
         title: 'How about a Drink?',
         percent: 20,
-        img: person,
+        img: drink,
     },
     {
         title: 'Your Marital Status',
         percent: 20,
-        img: person,
+        img: marStatus,
     },
     {
         title: 'What about Children?',
         percent: 20,
-        img: person,
+        img: child,
     },
     {
         title: 'Your Pets',
         percent: 20,
-        img: person,
+        img: pets,
     }
 ]
 export default infoList

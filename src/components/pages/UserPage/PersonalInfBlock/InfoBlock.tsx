@@ -1,5 +1,6 @@
 import { PropsWithChildren, FC, useState, useEffect } from "react";
 import "./index.css"
+import ModalContainer from "./modalContainer";
 
 interface BlockProps{
     input: 'text' | undefined,
@@ -12,12 +13,16 @@ interface BlockProps{
 export const InfoBlock:FC <PropsWithChildren<BlockProps>> = ({input, title, percent, percentHandler, img}) =>{
     const [textValue, setTextValue] = useState<string>('');
     const [maxChar, setMaxChar] = useState<number>(500);
-    const [selectedValue, setSelectedValue] = useState<string>('Click to select')
+    const [selectedValue, setSelectedValue] = useState<string>('Click to select');
+    const [displayState, setDisplayState] = useState<boolean>(false);
     useEffect(() => {
         if(textValue.length > 0){
             percentHandler(percent)
         }
     }, [textValue])
+    let displayHandler = function(){
+        setDisplayState(!displayState)
+    };
     if(input==='text'){
         return(
             <div className="personal_info_block">
@@ -38,7 +43,7 @@ export const InfoBlock:FC <PropsWithChildren<BlockProps>> = ({input, title, perc
                 
             </div>
         )
-    } else{
+    } else if(title==='education'){
         return (
             <div className="personal_info_block">
                 <div className="info_block_header">
@@ -46,6 +51,20 @@ export const InfoBlock:FC <PropsWithChildren<BlockProps>> = ({input, title, perc
                     <div className="personal_info_selected">{selectedValue}</div>
                 </div>
                 <div className="personal_info_selected_subtitle">{selectedValue}</div>
+                <div className="separator"></div>
+            </div>
+        )
+    } else {
+        return (
+            <div className="personal_info_block">
+                <div className="info_block_header">
+                    <h4 className="info_block_title"><img src={img} alt="" /> {title}</h4>
+                    <div className="personal_info_selected" onClick={displayHandler}>{selectedValue}</div>
+                    <ModalContainer display={displayState} >
+                        <div className="close_modal_wrapper" onClick={displayHandler} />
+                        <div className="modal"></div>
+                    </ModalContainer>
+                </div>
                 <div className="separator"></div>
             </div>
         )

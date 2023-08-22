@@ -16,7 +16,6 @@
 .main_layout__wrapper{
     display: grid;
     grid-template-columns: 1fr 744px 1fr;
-    grid-template-rows: calc(300vh - 96px);
 }
 .main_layout__info_panel{
     background-color: var(--dark-background);

@@ -8,7 +8,6 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
-    height: 39px;
     align-items: center;
     height: 38px;
 }
@@ -52,4 +51,21 @@
 .separator{
     width: 100%;
     border-bottom: 1px solid #32303E;
+}
+.personal_info_selected{
+    cursor: pointer;
+}
+.close_modal_wrapper{
+    width: 99vw;
+    height: 100%;
+    position: absolute;
+    left: -78%;
+    z-index: 1;
+    background-color: transparent;
+}
+.modal{
+    width: 250px;
+    height: 250px;
+    z-index: 5;
+    background-color: pink;
 }
