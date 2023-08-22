@@ -1,0 +1,14 @@
+.follower_button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 288px;
+    height: 50px;
+    background-color: var(--panel-background);
+    border-radius: 5px;
+    color: var(--violet-active-color);
+    font-size: 20px;
+    font-weight: 600;
+    border: none;
+    text-transform: capitalize;
+}

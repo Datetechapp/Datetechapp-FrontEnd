@@ -11,10 +11,11 @@
     --text-color: #5F4F7F;
     --active-text-color: #E9E3F5;
     --dark-background: #1F1D2B;
+    --violet-active-color: #c896ef;
 }
 .main_layout__wrapper{
     display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-columns: 1fr 744px 1fr;
     grid-template-rows: calc(300vh - 96px);
 }
 .main_layout__info_panel{

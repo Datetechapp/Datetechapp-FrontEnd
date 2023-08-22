@@ -5,7 +5,7 @@ import { Routes, Route } from "react-router-dom"
 import { ModalWelcome } from "./base/ModalWelcome/ModalWelcome";
 import { BackSection } from "./BackSection/BackSection";
 import { MainLayout } from "./Layouts/MainLayout/MainLayout";
-import { UserSelfPage } from "./pages/UserSelfPage";
+import { UserSelfPage } from "./pages/UserPage";
 
 export const App = () => {
   return <div>
