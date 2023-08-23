@@ -1,0 +1,1 @@
+export { ModalForFixMessage } from "./ModalForFixMessage"

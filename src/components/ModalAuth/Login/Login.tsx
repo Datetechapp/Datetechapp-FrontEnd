@@ -30,8 +30,6 @@ export const Login: FC = () => {
        const [newPassword, setNewPassword] = useState(false)
        const [confirmPasswordValue, setConfirmPasswordValue] = useState('');
 
-       console.log("authorized", authorized, "showModal", showModal, "requestNewPassword", requestNewPassword, "newPassword", newPassword)
-
        const inputRef = useRef<HTMLInputElement>(null);
 
        const handleShowModal = () => {

@@ -8,7 +8,8 @@ import { VideoUploader } from "./VideoUploader"
 import { PhotoUploader } from "./PhotoUploader"
 import moment from 'moment';
 import 'moment/locale/en-gb';
-import { createProfile } from "api"
+import { createProfile, createProfileForPhoto, createProfileForVideo } from "api"
+import { useNavigate } from "react-router"
 
 interface IFormData {
        name: string;
@@ -20,8 +21,8 @@ interface IFormData {
        sex: string;
        purposes: string[];
        is_agree_geo: boolean;
-       video: string;
-       photo: string;
+       video: string | null;
+       photo: string | null;
        app_agreement: boolean;
 }
 
@@ -35,8 +36,8 @@ const initialFormData: IFormData = {
        sex: "",
        purposes: [],
        is_agree_geo: false,
-       video: "",
-       photo: "",
+       video: null,
+       photo: null,
        app_agreement: false,
 };
 
@@ -44,7 +45,7 @@ const initialFormData: IFormData = {
 export const CreateNewAccount = () => {
        const [formData, setFormData] = useState<IFormData>(initialFormData);
 
-
+       const navigate = useNavigate()
 
        const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
               setFormData({ ...formData, name: event.target.value });
@@ -110,13 +111,13 @@ export const CreateNewAccount = () => {
        };
 
        const handleGenderChange = (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>, key: string) => {
-             
-              if(event.target.value === "Male" || event.target.value === "Female") {
+
+              if (event.target.value === "Male" || event.target.value === "Female") {
                      setFormData({ ...formData, sex: key, gender: "" });
               } else {
                      setFormData({ ...formData, sex: "", gender: key });
               }
-              
+
        };
 
        const handleInterestsChange = (purposes: string[]): void => {
@@ -127,15 +128,15 @@ export const CreateNewAccount = () => {
               setFormData({ ...formData, is_agree_geo: enabled });
        }
 
-       const handleVideoUpload = (file: string, isRemoved?: boolean) => {
+       const handleVideoUpload = (file: string | null, isRemoved?: boolean) => {
               if (isRemoved) {
-                     setFormData({ ...formData, video: "" });
+                     setFormData({ ...formData, video: null });
               } else {
                      setFormData({ ...formData, video: file });
               }
        };
 
-       const handlePhotoUpload = (file: string) => {
+       const handlePhotoUpload = (file: string | null) => {
               setFormData({ ...formData, photo: file })
        };
 
@@ -149,18 +150,25 @@ export const CreateNewAccount = () => {
        }
 
 
-       const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
+       const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
               event.preventDefault();
 
-              const { day, month, year, ...formDataWithoutDateOfBirth } = formData;
+              const { day, month, year, photo, video,  ...formDataWithoutDateOfBirth } = formData;
               formDataWithoutDateOfBirth.date_of_birth = `${formData.year}-${formData.month}-${formData.day}`;
-              console.log(formDataWithoutDateOfBirth);
-              
-              createProfile(formDataWithoutDateOfBirth)
-              
+
+              const createProfilePromise = createProfile(formDataWithoutDateOfBirth);
+              const createProfileForPhotoPromise = createProfileForPhoto({ photo });
+              const createProfileForVideoPromise = createProfileForVideo({ video });
+
+              try {
+                     await Promise.all([createProfilePromise, createProfileForPhotoPromise, createProfileForVideoPromise]);
+                     navigate("/feed")
+              } catch (error) {
+                     console.log(error);
+              }
        };
-       console.log(formData);
-       
+
+
 
 
        return (

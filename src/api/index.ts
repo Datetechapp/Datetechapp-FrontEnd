@@ -59,9 +59,13 @@ export const registration = (body: { username: string }): Promise<Response> =>
 export const checkVerificationCode = (body: { passcode: string }): Promise<Response> =>
        post("/registration/email_confirmation/", body)
 
+export const createProfileForPhoto = (body: { photo: string | null }): Promise<Response> =>
+       post("/upload/image/", body)
 
+export const createProfileForVideo = (body: { video: string | null }): Promise<Response> =>
+       post("/upload/video/", body)
 
-export const createProfile = (body: { name: string, date_of_birth: string, gender: string, sex: string, purposes: string[], is_agree_geo: boolean, video: string, photo: string, app_agreement: boolean }): Promise<Response> =>
+export const createProfile = (body: { name: string, date_of_birth: string, gender: string, sex: string, purposes: string[], is_agree_geo: boolean, app_agreement: boolean}): Promise<Response> =>
        post("/registration/third_step/", body)
               .then(response => {
                      if (response.ok) {

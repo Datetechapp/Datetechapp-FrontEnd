@@ -1,0 +1,43 @@
+* {
+       margin: 0;
+       padding: 0;
+       box-sizing: border-box;
+}
+
+.headerWrapper {
+       border-bottom: 1.5px solid var(--panel-background, #272533);
+       background: var(--dark-background, #1F1D2B);
+       display: flex;
+       align-items: center;
+       gap: 14px;
+       padding: 20px 72px;
+       
+}
+
+.info {
+       width: 266px;
+}
+
+.name {
+       color: var(--white, #E9E3F5);
+       font-family: Montserrat, Arial, Helvetica, sans-serif;
+       font-size: 24px;
+       font-weight: 600;
+       line-height: 17px;
+       letter-spacing: -0.5px;
+}
+
+.isOnline {
+       margin-top: 16px;
+       color: var(--violet-active, #C896EF);
+       font-family: Montserrat, Arial, Helvetica, sans-serif;
+       font-size: 16px;
+       font-weight: 500;
+       line-height: 25px;
+       letter-spacing: -0.5px;
+}
+
+.messangerFeatures {
+       display: flex;
+       gap: 10px;
+}

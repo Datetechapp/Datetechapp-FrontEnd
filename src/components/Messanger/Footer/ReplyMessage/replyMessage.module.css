@@ -1,0 +1,43 @@
+.replyMessageWrapper {
+       width: 600px;
+       padding: 0 8px;
+       display: flex;
+       align-items: center;
+       gap: 12px;
+       margin: 0 auto;
+       justify-content: space-between;
+       margin-bottom: 16px;
+}
+
+.iconAntTextBlock {
+       display: flex;
+       align-items: center;
+       gap: 12px;
+}
+
+.replyMessageText {
+       border-left: 1px solid var(--violet-stroke, #5F4F7F);
+       padding-left: 12px;
+}
+
+.titleForReplyMessage {
+       color: var(--violet-active, #C896EF);
+       font-family: Montserrat;
+       font-size: 16px;
+       font-weight: 500;
+       line-height: 25px;
+       letter-spacing: -0.5px;
+}
+
+.textForReplyMessage {
+       color: var(--white, #E9E3F5);
+       font-family: Montserrat;
+       font-size: 16px;
+       font-weight: 500;
+       line-height: 25px;
+       letter-spacing: -0.5px;
+}
+
+.closeIcon {
+       cursor: pointer;
+}

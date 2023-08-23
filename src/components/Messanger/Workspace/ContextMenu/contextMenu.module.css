@@ -1,0 +1,94 @@
+.contextMenu {
+       padding: 16px;
+       display: flex;
+       width: 196px;
+       height: 242px;
+       flex-direction: column;
+       border-radius: 5px;
+       background: var(--white, #E9E3F5);
+       position: relative;
+       margin-top: 10px;
+}
+
+.contextMenuWithoutPhoto {
+       padding: 16px;
+       display: flex;
+       width: 196px;
+       height: 242px;
+       flex-direction: column;
+       margin-left: 46px;
+       border-radius: 5px;
+       background: var(--white, #E9E3F5);
+       position: relative;
+       margin-top: 10px;
+}
+
+.contextMenuBlock {
+       display: flex;
+       align-items: center;
+       gap: 8px;
+}
+
+.contextMenuBlock:hover {
+       background: var(--back-white, #E1DBED);
+}
+
+.contextMenuBlock:hover button {
+       background: var(--back-white, #E1DBED);
+}
+
+.contextMenuFeature {
+       width: 164px;
+       height: 42px;
+       border-radius: 5px;
+       color: var(--violet-stroke, #5F4F7F);
+       background: var(--white, #E9E3F5);
+       font-family: Montserrat;
+       font-size: 16px;
+       font-weight: 500;
+       line-height: 25px;
+       letter-spacing: -0.5px;
+       border: none;
+       text-align: inherit;
+}
+
+.contextMenuDelete {
+       width: 164px;
+       height: 42px;
+       border-radius: 5px;
+       color: var(--violet-stroke, #D75048);
+       background: var(--white, #E9E3F5);
+       font-family: Montserrat;
+       font-size: 16px;
+       font-weight: 500;
+       line-height: 25px;
+       letter-spacing: -0.5px;
+       border: none;
+       text-align: inherit;
+}
+
+.iconForContextMenuFeature {
+       margin-left: 10px;
+}
+
+.contextMenuWithoutPhoto::after {
+       content: "";
+       position: absolute;
+       width: 0;
+       height: 0;
+       border: 15px solid transparent;
+       border-bottom: 10px solid #E9E3F5;
+       bottom: 240px;
+       left: 86px;
+}
+
+.contextMenu::after {
+       content: "";
+       position: absolute;
+       width: 0;
+       height: 0;
+       border: 15px solid transparent;
+       border-bottom: 10px solid #E9E3F5;
+       bottom: 240px;
+       left: 86px;
+}

@@ -7,7 +7,7 @@ import { getGenders, getSex, getDescriptionGender } from 'store/gendersAndPurpos
 
 
 interface GenderDropdownProps {
-       value: string;
+       value: string | null;
        onChange: (event: any, key: string) => void;
 }
 
@@ -20,7 +20,6 @@ export const GenderDropdawn: FC<GenderDropdownProps> = ({ onChange }) => {
        const descriptionGender = useAppSelector(getDescriptionGender)
        const descriptionArr = Object.values(descriptionGender)
        const sex = useAppSelector(getSex)
-       const sexArr = Object.values(sex)
 
 
        const getSelectedKeyForSex = (selectedValues: string[], data: Record<string, string>) => {

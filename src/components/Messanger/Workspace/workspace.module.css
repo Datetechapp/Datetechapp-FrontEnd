@@ -1,0 +1,15 @@
+.workspaceWrapper {
+       height: 631px;
+       background: url("../../../assets/Messanger/BackgroundForMessanger.png"), #1F1D2B repeat;
+       display: flex;
+       flex-direction: column;
+       padding: 0 72px 50px 72px;
+       justify-content: flex-end;
+
+}
+
+/* .messageInfo {
+       display: flex;
+       gap: 10px;
+} */
+

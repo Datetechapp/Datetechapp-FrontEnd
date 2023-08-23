@@ -10,8 +10,9 @@ import { NewPassword } from "../../../ModalAuth/NewPassword";
 import { SocialAuth } from "components/ModalAuth/SocialAuth";
 import { Link } from "react-router-dom";
 import { registration, checkVerificationCode } from "../../../../api"
-import { gendersAndPurposeFromBack } from "../../../../store/gendersAndPurpose/slice"
-import { useAppDispatch } from "hooks/hooks"
+import { gendersAndPurposeFromBack, LOAD_STATUSES_TYPES } from "../../../../store/gendersAndPurpose/slice"
+import { useAppDispatch, useAppSelector } from "hooks/hooks"
+import { getLoadStatus } from "store/gendersAndPurpose/selectors";
 
 
 const loginText = "Sign up to your account with E-mail or Phone number"
@@ -42,6 +43,7 @@ export const Registration: FC = () => {
        const inputRef = useRef<HTMLInputElement>(null);
        const navigate = useNavigate()
        const dispatch = useAppDispatch();
+       const loadStatus = useAppSelector(getLoadStatus)
 
 
        const handleFocusChange = () => {
@@ -97,8 +99,9 @@ export const Registration: FC = () => {
                             setErrorMessage("")
                             setErrorConfirmPasswordMessage("")
 
-                            dispatch(gendersAndPurposeFromBack({ "password": passwordValue, "confirm_password": confirmPasswordValue }))
-                            navigate("/create-profile")
+                            dispatch(gendersAndPurposeFromBack({ "password": passwordValue, "confirm_password": confirmPasswordValue }))   
+                                   navigate("/create-profile")
+                            
                      }
               }
 
@@ -186,7 +189,7 @@ export const Registration: FC = () => {
                                           rememberThePassword={rememberThePassword}
                                    />
                             }
-                            {authorized && !isCodeVerified && <p className={css.resendVerificate}>Resend  Verification code</p>}
+                            {authorized && !isCodeVerified && <p className={css.resendVerificate} onClick={() => registration({username: emailOrPhoneValue})}>Resend  Verification code</p>}
                             <Button
                                    className={
                                           !isFocused && emailOrPhoneValue.length === 0

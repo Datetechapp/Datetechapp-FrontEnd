@@ -20,7 +20,7 @@ export const MainLayoutNav : FC = () => {
                     {
                         links.map((elem) => {
                             return(
-                                <li className="links_list"><NavLink to={elem.path} className={({isActive}) => isActive ? "active_link" : "deactive_link"}> <img src={elem.img} alt={elem.key} /> {elem.key}</NavLink></li>
+                                <li key={elem.key} className="links_list"><NavLink to={elem.path} className={({isActive}) => isActive ? "active_link" : "deactive_link"}> <img src={elem.img} alt={elem.key} /> {elem.key}</NavLink></li>
                             )
                         }
                         )

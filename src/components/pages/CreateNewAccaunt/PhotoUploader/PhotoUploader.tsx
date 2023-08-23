@@ -6,11 +6,11 @@ import { ReactComponent as PhotoIcon } from '../../../../assets/CreateAccountFor
 import { ReactComponent as CloseIcon } from '../../../../assets/CreateAccountForm/closeIcon.svg';
 
 interface PhotoUploaderProps {
-       onUpload: (imageData: string) => void;
+       onUpload: (imageData: string | null) => void;
 }
 
 export const PhotoUploader: React.FC<PhotoUploaderProps> = ({ onUpload }) => {
-       const [selectedImage, setSelectedImage] = useState<string>('');
+       const [selectedImage, setSelectedImage] = useState<string | null>(null);
        const [editorPosition, setEditorPosition] = useState<{ x: number; y: number }>({ x: 0.5, y: 0.5 });
        const [editorScale, setEditorScale] = useState<number>(1.5);
        const [isPhotoSelected, setIsPhotoSelected] = useState<boolean>(false);
@@ -19,7 +19,7 @@ export const PhotoUploader: React.FC<PhotoUploaderProps> = ({ onUpload }) => {
        const handleFileUploaded = (file: File) => {
               const reader = new FileReader();
               reader.onloadend = () => {
-                     const imageData = reader.result?.toString() || '';
+                     const imageData = reader.result?.toString() || null;
                      setSelectedImage(imageData);
                      setIsPhotoSelected(true);
                      setEditorPosition({ x: 0.5, y: 0.5 });
@@ -34,9 +34,9 @@ export const PhotoUploader: React.FC<PhotoUploaderProps> = ({ onUpload }) => {
        };
 
        const handleDeletePhoto = () => {
-              setSelectedImage('');
+              setSelectedImage(null);
               setIsPhotoSelected(false);
-              onUpload('');
+              onUpload(null);
        };
 
        const handleRangeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -57,7 +57,7 @@ export const PhotoUploader: React.FC<PhotoUploaderProps> = ({ onUpload }) => {
                                    <CloseIcon className={css.closeIcon} onClick={handleDeletePhoto} />
                                    <AvatarEditor
                                           ref={editorRef}
-                                          image={selectedImage}
+                                          image={selectedImage ? selectedImage : ''}
                                           width={186}
                                           height={186}
                                           border={0}

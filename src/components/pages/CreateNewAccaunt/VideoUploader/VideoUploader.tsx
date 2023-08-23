@@ -9,13 +9,13 @@ import { ReactComponent as CropIcon } from "../../../../assets/CreateAccountForm
 
 
 interface VideoUploaderProps {
-       onUpload: (fileData: string, isRemoved?: boolean) => void;
+       onUpload: (fileData: string | null, isRemoved?: boolean) => void;
 }
 
 export const VideoUploader: React.FC<VideoUploaderProps> = ({ onUpload }) => {
        const [selectedVideo, setSelectedVideo] = useState<File | null>(null);
        const [isPlaying, setIsPlaying] = useState(false);
-       const [volume, setVolume] = useState(1);
+       const [volume, setVolume] = useState(0.5);
 
        const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -27,7 +27,7 @@ export const VideoUploader: React.FC<VideoUploaderProps> = ({ onUpload }) => {
               if (allowedExtensions.includes(fileExtension) && file.size <= allowedMaxSize) {
                      const reader = new FileReader();
                      reader.onloadend = () => {
-                            const videoData = reader.result?.toString() || "";
+                            const videoData = reader.result?.toString() || null;
                             onUpload(videoData);
                             setSelectedVideo(file);
                             setIsPlaying(false);
@@ -47,9 +47,9 @@ export const VideoUploader: React.FC<VideoUploaderProps> = ({ onUpload }) => {
               setIsPlaying(false);
 
               if (videoRef.current) {
-                     videoRef.current.src = '';
+                     videoRef.current.src = "";
               }
-              onUpload("", true);
+              onUpload(null, true);
        };
 
        const handleVideoClick = () => {
