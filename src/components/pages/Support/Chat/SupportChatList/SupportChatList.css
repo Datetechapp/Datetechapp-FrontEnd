@@ -1,0 +1,9 @@
+.SupportChatList_Wrapper{
+    height: 705px;
+    width: 744px;  
+    text-align: center;
+    padding: 0 70px 40px;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: end;
+}

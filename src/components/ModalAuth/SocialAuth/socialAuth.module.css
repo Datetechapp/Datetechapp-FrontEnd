@@ -1,0 +1,46 @@
+.continueWith {
+       margin: 70px 0 0;
+       text-align: center;
+       font-family: 'Montserrat', Arial, sans-serif;
+       font-size: 24px;
+       font-weight: 600;
+       line-height: 17px;
+       color: #E9E3F5;
+       letter-spacing: -0.5px;
+}
+
+.logoList {
+       list-style: none;
+       margin: 28px auto 0;
+       width: 396px;
+       padding: 0;
+       display: flex;
+       justify-content: center;
+       gap: 46px;
+}
+
+.googleIcon:hover rect {
+       fill:#EB53A2;
+       transition: 0.3s ease;
+}
+
+.facebookIcon:hover path:first-child {
+       fill:#EB53A2;
+       transition: 0.3s ease;
+}
+
+.appleIcon:hover circle {
+       fill:#EB53A2;
+       transition: 0.3s ease;
+}
+.googleIcon:active rect {
+       fill:#B71A78;
+}
+
+.facebookIcon:active path:first-child {
+       fill:#B71A78;
+}
+
+.appleIcon:active circle {
+       fill:#B71A78;
+}

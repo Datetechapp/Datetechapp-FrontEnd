@@ -1,0 +1,24 @@
+.ChatHeader__Wrapper{
+    padding: 0 70px;
+    height: 110px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1.5px solid var(--panel-background, #272533);
+    background: var(--dark-background, #1F1D2B);
+    gap: 40px;
+    color: var(--white, #E9E3F5);
+    /* 24_SemiBold */
+    font-family: Montserrat;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 17px; /* 70.833% */
+    letter-spacing: -0.5px;
+}
+.ChatHeader__Wrapper_SupportServ{
+    width: 470px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 100%;
+}

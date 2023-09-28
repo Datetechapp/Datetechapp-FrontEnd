@@ -1,20 +1,27 @@
-import type { FC, ChangeEvent, FocusEvent } from "react"
+import type { FC, ChangeEvent, FocusEvent, KeyboardEvent, MutableRefObject } from "react"
 
 interface InputProps {
-       value: string;
-       className?: string;
-       type?: string;
+       id?: string;
+       value?: string;
+       className: string;
+       type: string;
        autoComplete?: string;
        name?: string;
        placeholder?: string;
-       onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+       accept?: string;
+       min?: string;
+       max?: string;
+       inputRef?: MutableRefObject<HTMLInputElement | null>;
+       onChange: (e: ChangeEvent<HTMLInputElement>) => void;
        onFocus?: (e: FocusEvent<HTMLInputElement>) => void;
        onBlur?: (e: ChangeEvent<HTMLInputElement>) => void;
 
+
 }
 
-export const Input: FC<InputProps> = ({ value, onChange, className, type, autoComplete, name, placeholder, onFocus, onBlur }) =>
+export const Input: FC<InputProps> = ({ id, value, onChange, className, type, autoComplete, name, placeholder, onFocus, onBlur, inputRef, accept, min, max }) =>
        <input
+              id={id}
               className={className}
               value={value}
               onChange={onChange}
@@ -24,4 +31,8 @@ export const Input: FC<InputProps> = ({ value, onChange, className, type, autoCo
               placeholder={placeholder}
               onFocus={onFocus}
               onBlur={onBlur}
+              ref={inputRef}
+              accept={accept}
+              min={min}
+              max={max}
        />

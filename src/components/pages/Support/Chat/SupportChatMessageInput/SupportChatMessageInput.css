@@ -1,0 +1,39 @@
+.SupportChatMessageInput__Wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 30px 0;
+    border-top: 1.5px solid var(--panel-background, #272533);
+    background: var(--dark-background, #1F1D2B);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    
+}
+.SupportChatMessageInput__PanelInput{
+    display: flex;
+    width: 600px;
+    gap: 10px;
+    border-radius: 100px;
+    padding: 10px 10px;
+    border: 1px solid var(--violet-stroke, #5F4F7F);
+    background: var(--panel-background, #272533);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.SupportChatMessageInput__PanelInput input{
+    background-color: none;
+    outline: none;
+    all: unset;
+    width: 500px;
+}
+.SupportChatMessageInput__PanelInput ::-webkit-input-placeholder{
+    color: var(--Violet_Stroke, #5F4F7F);
+    /* 20_Medium */
+    font-family: Montserrat;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 30px; /* 150% */
+    letter-spacing: -0.5px;
+}
+.SupportChatMessageInput__PanelInput img{
+    cursor: pointer;
+}

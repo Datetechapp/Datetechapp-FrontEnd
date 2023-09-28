@@ -8,7 +8,7 @@ interface PropsModalBase {
     height?: string,
     width?: string,
     title?: string,
-    image?: any,
+    image?: string,
     text?: string, 
     highlight?: string
 }

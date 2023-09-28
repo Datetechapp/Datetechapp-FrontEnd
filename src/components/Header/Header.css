@@ -1,8 +1,7 @@
-
-.Header{
+.Header {
+    position: relative;
     display: flex;
     font-family: 'Montserrat';
-    font-style: normal;
     font-weight: 500;
     font-size: 18px;
     line-height: 25px;
@@ -11,19 +10,18 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 0px;
-    /* gap: 114px; */
-    width: 1224px;
+    padding: 0 160px;
+    width: 100%;
     height: 56px;
-    /* margin: 0 auto; */
-    margin-bottom: 93px;
-    margin-top: 35px;
+    margin-top: 23px;
 }
-Header img{
+
+Header img {
     width: 80px;
     height: 52px;
 }
-.Header nav ul{
+
+.Header nav ul {
     margin-left: 114px;
     display: flex;
     align-items: center;
@@ -31,7 +29,8 @@ Header img{
     gap: 16px;
     list-style-type: none;
 }
-.Header nav ul li{
+
+.Header nav ul li {
     width: 116px;
     height: 42px;
     padding: 10px;
@@ -41,7 +40,8 @@ Header img{
     cursor: pointer;
     transition: 0.4s ease-in;
 }
-.Header nav ul li:hover{
+
+.Header nav ul li:hover {
     color: #C896EF;
     transition: 0.4s ease-in;
 }

@@ -1,0 +1,100 @@
+.Message-panel_wrapper{
+    padding: 30px ;
+
+}
+.Message-panel_wrapper .Search{
+    margin-bottom: 30px;
+}
+.Message-panel_switch{
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    display: flex;
+    margin-bottom: 30px;
+    cursor: pointer;
+}
+.Message-panel__switch_mess{
+    width: 260px;
+    height: 30px;
+    border-radius: 100px;
+    padding: 8px 15px;
+    background: var(--Dark_Background, #1F1D2B);
+    position: relative;
+    color: var(--White, #E9E3F5);
+}
+.Message-panel__switch_matc{
+    border-radius: 100px;
+    color: var(--Violet_Stroke, #5F4F7F);
+    width: 45%;
+    height: 26px;
+    padding: 8px 15px;
+    background: var(--Panel_Background, #272533);
+    position: absolute;
+    right: 2px;
+    top: 2px;
+     display: flex;
+     justify-content: center;
+}
+.Message-panel-item_wrapper{
+    display: flex;
+    height: auto;
+    padding: 15px 0;
+    gap: 10px;
+    border-bottom: 2px solid var(--Dark_Background, #1F1D2B);
+}
+.Message-panel_search{
+    border: 1px solid var(--Violet_Stroke, #5F4F7F);
+}
+.Message-panel-item_wrapper img{
+    width: 64px;
+    height: 64px;
+    border-radius: 64px;
+    border: 2px solid var(--unnamed, #FFE0AA);
+}
+.Message-panel-item_countainer_name{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.Message-panel-item_countainer_name h5{
+    color: var(--White, #E9E3F5);
+    font-family: Montserrat;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 30px; /* 150% */
+    letter-spacing: -0.5px;
+}
+.Message-panel-item_countainer_name p{
+    color: var(--Back_White, #E1DBED);
+    text-align: right;
+    /* 14_Regular */
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 17px; /* 121.429% */
+    letter-spacing: -0.5px;
+}
+.Message-panel-item_countainer_text p{
+    overflow: hidden;
+    color: var(--Violet_Active, #C896EF);
+    text-overflow: ellipsis;
+    font-family: Montserrat;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 25px; /* 138.889% */
+    letter-spacing: -0.5px;
+    white-space: nowrap;
+
+}
+.Message-panel_wrapper .hightlight{
+    color: var(--pink-press, #B71A78);
+    font-family: Montserrat;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 30px;
+    letter-spacing: -0.5px;
+}
