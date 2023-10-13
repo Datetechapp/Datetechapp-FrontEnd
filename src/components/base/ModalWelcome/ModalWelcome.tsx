@@ -10,17 +10,17 @@ export const ModalWelcome = () => {
     useEffect(() => {
         setTimeout(() => {
             setModal(true);
-            document.body.style.overflow = 'hidden'; // Запретить прокрутку фона
+            document.body.style.overflow = 'hidden'; 
         }, 2000);
 
         return () => {
-            document.body.style.overflow = ''; // Восстановить прокрутку фона при закрытии модального окна
+            document.body.style.overflow = ''; 
         };
     }, []);
 
     const closeModal = () => {
         setModal(false);
-        document.body.style.overflow = ''; // Восстановить прокрутку фона при закрытии модального окна
+        document.body.style.overflow = ''; 
     };
 
     return (

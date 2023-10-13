@@ -7,19 +7,32 @@ interface EyeProps {
        showPassword: boolean;
        onVisiblePassword: (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => void;
        isFocused: boolean;
-       errorMessage: string;
+       isValid?: boolean;
+       value: string;
+       isLogin?: boolean;
 };
 
-export const Eye: FC<EyeProps> = ({ showPassword, onVisiblePassword, isFocused, errorMessage }) => {
+export const Eye: FC<EyeProps> = ({ showPassword, onVisiblePassword, isFocused, isValid, value, isLogin }) => {
        return (
               <span className={css.passwordToggle} onMouseDown={onVisiblePassword}>
                      {!showPassword ? (
                             <OpenEye
-                                   className={!isFocused && !errorMessage ? css.openEye : errorMessage ? css.openEyeError : css.openEyeFocused}
+                                   className={isLogin ? (isFocused ? css.openEyeFocused : css.openEye) 
+                                          : (!isFocused && value.length === 0 ? css.openEye
+                                          : isFocused ? css.openEyeFocused
+                                                 : (isValid && !isFocused)
+                                                        ? css.openEyeValid
+                                                        : css.openEyeError)}
                             />
+    
                      ) : (
                             <CloseEye
-                                   className={!isFocused && !errorMessage ? css.closeEye : errorMessage ? css.closeEyeError : css.closeEyeFocused}
+                            className={isLogin ? (isFocused ? css.openEyeFocused : css.openEye) 
+                                   : (!isFocused && value.length === 0 ? css.openEye
+                                   : isFocused ? css.openEyeFocused
+                                          : (isValid && !isFocused)
+                                                 ? css.openEyeValid
+                                                 : css.openEyeError)}
                             />
                      )}
               </span>

@@ -1,15 +1,40 @@
 .workspaceWrapper {
+
        height: 631px;
        background: url("../../../assets/Messanger/BackgroundForMessanger.png"), #1F1D2B repeat;
        display: flex;
        flex-direction: column;
        padding: 0 72px 50px 72px;
        justify-content: flex-end;
-
+       position: relative;
 }
 
-/* .messageInfo {
+.pinnedMessagesContainer {
        display: flex;
-       gap: 10px;
-} */
+       gap: 12px;
+       height: 70px;
+       padding: 8px 72px;
+       cursor: pointer;
+       border-bottom: 1.5px solid var(--panel-background, #272533);
+       background: var(--dark-background, #1F1D2B);
+}
 
+.indicatorContainer {
+       display: flex;
+       flex-direction: column;
+       justify-content: space-between;
+       width: 1px;
+       height: 100%;
+       border-radius: 1px;
+}
+
+.indicator {
+       flex-grow: 1;
+       background-color: #5F4F7F;
+       margin-bottom: 2px;
+       border-radius: 4px;
+}
+
+.active {
+       background-color: #C896EF;
+}

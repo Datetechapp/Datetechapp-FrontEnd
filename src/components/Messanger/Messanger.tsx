@@ -2,8 +2,6 @@ import css from "./messanger.module.css"
 import { Header, Workspace, Footer } from "."
 import { useState } from "react"
 
-
-
 export const Messanger = () => {
 
        const [selectedMessageText, setSelectedMessageText] = useState('');

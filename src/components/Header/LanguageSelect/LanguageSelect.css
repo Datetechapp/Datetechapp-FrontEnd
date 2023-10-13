@@ -7,52 +7,7 @@
   width: 152px;
   height: 25px;
   margin-left: 114px;
-}
-
-.LanguageSelect .LanguageSelect__Arrow {
-  width: 12.5px;
-  height: 25px;
-  position: relative;
-}
-
-.LanguageSelect .LanguageSelect__Arrow::before {
-  content: "";
-  clear: both;
-  display: block;
-  position: absolute;
-  height: 15px;
-  border-radius: 3px;
-  width: 3px;
-  left: 0;
-  top: 4.5px;
-  background-color: #EB53A2;
-  transform: rotate(-45deg);
-  transition: 0.3s ease-in;
-}
-
-.LanguageSelect .LanguageSelect__Arrow::after {
-  content: "";
-  clear: both;
-  display: block;
-  position: absolute;
-  height: 15px;
-  border-radius: 3px;
-  width: 3px;
-  right: 0;
-  top: 4.5px;
-  background-color: #EB53A2;
-  transform: rotate(45deg);
-  transition: 0.3s ease-in;
-}
-
-.LanguageSelect .active::before {
-  transform: rotate(-135deg);
-  transition: 0.3s ease-in;
-}
-
-.LanguageSelect .active::after {
-  transform: rotate(135deg);
-  transition: 0.3s ease-in;
+  align-self: center;
 }
 
 .LanguageSelect .Visible {

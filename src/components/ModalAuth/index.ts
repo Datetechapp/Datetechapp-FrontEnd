@@ -1,5 +1,4 @@
 export { ModalAuth } from "./ModalAuth"
-export { ModalForgotPassword } from "./ModalForgotPassword"
 export { EmailOrPhoneInput } from "./EmailOrPhoneInput"
 export { PasswordInput } from "./PasswordInput"
 export { CheckboxBlock } from "./CheckboxBlock"

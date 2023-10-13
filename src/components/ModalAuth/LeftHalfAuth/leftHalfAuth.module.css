@@ -1,32 +1,37 @@
 .logo {
-       margin-top: 65px;
+       width: 268px;
+       height: 186px;
+       margin-top: 90px;
        display: inline-block;
 }
 
 .tagline {
-       width: 338px;
+       width: 350px;
        margin: 0;
        display: inline-block;
        font-family: 'Montserrat', Arial, sans-serif;
-       font-size: 28px;
+       font-size: 24px;
        font-weight: 600;
        color: #E9E3F5;
-       letter-spacing: -0.5px;
-       line-height: 31px;
+       line-height: 26px;
 }
 
-.lastWords {
-       color: #EB53A2;
+.lastWord {
+       font-family: 'Montserrat', Arial, sans-serif;
+       font-size: 24px;
+       font-weight: 600;
+       line-height: 26px;
+       color: #DE77C7;
 }
 
 .downloadText {
-       margin-top: 44px;
+       margin-top: 40px;
        padding: 10px;
        font-family: 'Montserrat', Arial, sans-serif;
-       font-size: 20px;
-       font-weight: 600;
+       font-size: 16px;
+       font-weight: 500;
        color: #E9E3F5;
-       line-height: 17px;
+       line-height: 20px;
 }
 
 .downloadLinks {
@@ -34,7 +39,7 @@
        flex-direction: row;
        gap: 20px;
        justify-content: center;
-       margin-top: 16px;
+       margin-top: 6px;
 }
 
 .messagePrivacy {

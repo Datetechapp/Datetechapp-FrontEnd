@@ -1,0 +1,32 @@
+.header {
+       height: 8.5vh;
+       padding: 6px 165px 6px 143px;
+       display: flex;
+       justify-content: space-between;
+       border-bottom: 1px solid var(--Grey, #96A3B4);
+       background: var(--Dark_Background, #1F1D2B);
+       color: var(--White, #FFF);
+}
+
+.languageButtonBlock {
+       display: flex;
+       gap: 32px;
+}
+
+.logOutBtn {
+       width: 144px;
+       align-self: center;
+       height: 40px;
+       background-color: inherit;
+       padding: 10px 32px;
+       border-radius: 4px;
+       border: 1px solid var(--Grey, #96A3B4);
+       color: var(--White, #FFF);
+       font-family: Montserrat;
+       font-size: 16px;
+       font-weight: 500;
+       line-height: 20px;
+}
+
+.logOutBtn:active {    
+}

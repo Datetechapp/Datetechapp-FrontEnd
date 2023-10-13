@@ -5,15 +5,15 @@ button {
 
 .modalRegistration {
        display: flex;
-       width: 1227px;
+       height: 76vh;
        border: 1px solid #E9E3F5;
        overflow: hidden;
        border-radius: 5px;
-       margin: 59px 0 130px;
+       margin: 40px 0 56px;
 }
 
 .leftHalfAuth {
-       width: 707px;
+       width: 42vw;
        backdrop-filter: blur(5px);
        background: var(--new-gradient, linear-gradient(223deg, rgba(95, 79, 127, 0.75) 0%, rgba(131, 131, 131, 0.27) 100%));
        text-align: center;
@@ -22,7 +22,7 @@ button {
 
 
 .rightHalfAuth {
-       width: 520px;
+       width: 36vw;
        background: var(--glass-background, rgba(31, 29, 43, 0.80));
        backdrop-filter: blur(5px);
 }

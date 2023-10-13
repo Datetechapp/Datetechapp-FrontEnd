@@ -2,7 +2,7 @@
        position: absolute;
        top: 50%;
        transform: translateY(-50%);
-       right: 21px;
+       right: 18px;
        cursor: pointer;
        display: flex;
        flex-direction: column;
@@ -30,5 +30,13 @@
 }
 
 .passwordToggle .closeEye path {
-       flex-shrink: 0;     
+       flex-shrink: 0;
+}
+
+.openEyeValid path {
+       fill: #438955;
+}
+
+.closeEyeValid path {
+       fill: #438955;
 }

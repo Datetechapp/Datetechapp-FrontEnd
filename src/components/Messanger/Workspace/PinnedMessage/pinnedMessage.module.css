@@ -1,0 +1,27 @@
+.pinnedMessageWrapper {
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
+       width: 583px;
+}
+
+.pinnedMessage {
+       margin-top: 8px;
+       color: var(--white, #E9E3F5);
+       font-family: Montserrat;
+       font-size: 16px;
+       font-weight: 500;
+       line-height: 20px;
+       letter-spacing: -0.5px;
+}
+
+
+.description {
+       
+       color: var(--violet-active, #C896EF);
+       font-family: Montserrat;
+       font-size: 18px;
+       font-weight: 600;
+       line-height: 25px;
+       letter-spacing: -0.5px;
+}

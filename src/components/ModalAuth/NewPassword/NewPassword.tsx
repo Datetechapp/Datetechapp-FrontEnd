@@ -1,17 +1,18 @@
 import { FC, useState } from "react";
 import css from "./newPassword.module.css";
 import { PasswordInput } from "../PasswordInput";
+import { IsValidPasswordBlock } from "../../pages/ModalRegister/Registration/IsValidPasswordBlock/IsValidPasswordBlock";
+import { ReactComponent as IconIsNotValid } from "../../../assets/ModalAuth/iconIsNotValidPassword.svg"
+import { ReactComponent as IconIsValid } from "../../../assets/ModalAuth/iconIsValidPassword.svg"
+import { hasUppercaseLetter, hasSpecialCharacters } from "../Login/Login";
+
+
 
 type NewPasswordInputProps = {
        value: string;
        confirmPasswordValue: string;
-       errorMessage: string;
-       errorConfirmPasswordMessage: string;
        onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
        onConfirmChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-       isFocused: boolean;
-       onFocus: () => void;
-       onBlur: () => void;
 };
 
 export const NewPassword: FC<NewPasswordInputProps> = ({
@@ -19,45 +20,79 @@ export const NewPassword: FC<NewPasswordInputProps> = ({
        confirmPasswordValue,
        onChange,
        onConfirmChange,
-       errorMessage,
-       errorConfirmPasswordMessage,
-       isFocused,
-       onFocus,
-       onBlur,
+
 }) => {
+       const [isPasswordFocused, setIsPasswordFocused] = useState(false)
        const [isConfirmPasswordFocused, setIsConfirmPasswordFocused] = useState(false)
 
-       const handleFocusConfirmPasswordChange = () => {
-              setIsConfirmPasswordFocused(prevIsConfirmPasswordFocused => !prevIsConfirmPasswordFocused);
+
+
+       const handleFocusPasswordChange = () => {
+              setIsPasswordFocused(!isPasswordFocused);
        };
+
+       const handleFocusConfirmPasswordChange = () => {
+              setIsConfirmPasswordFocused(!isConfirmPasswordFocused);
+       };
+
+
+       const passwordIsValid = value.length >= 8 && hasUppercaseLetter(value) && hasSpecialCharacters(value)
+       const confirmPasswordIsValid = (value === confirmPasswordValue)
 
 
        return (
               <div className={css.blockInputNewPassword}>
                      <div className={css.passwordInput}>
                             <PasswordInput
+                                   className={ !isPasswordFocused && value.length === 0 ? css.inputForPassword
+                                          : isPasswordFocused ? css.inputForFocusedPassword
+                                                 : (passwordIsValid && !isPasswordFocused)
+                                                        ? css.inputForPasswordValid
+                                                        : css.inputForPasswordError}
                                    value={value}
                                    onChange={onChange}
-                                   errorMessage={errorMessage}
-                                   isFocused={isFocused}
-                                   onFocus={onFocus}
-                                   onBlur={onBlur}
-                                   placeholder="Password"
+                                   isFocused={isPasswordFocused}
+                                   onFocus={handleFocusPasswordChange}
+                                   onBlur={handleFocusPasswordChange}
+                                   placeholder="Create Password"
+                                   passwordIsValid={passwordIsValid}
                             />
+
+                            {isPasswordFocused && <IsValidPasswordBlock
+                                   title="Password must contain:"
+                                   firstIcon={value.length < 8 ? <IconIsNotValid /> : <IconIsValid />}
+                                   firstCondition="a minimum 8 characters"
+                                   secondIcon={hasUppercaseLetter(value) ? <IconIsValid /> : <IconIsNotValid />}
+                                   secondCondition="an upper case character"
+                                   thirdIcon={hasSpecialCharacters(value) ? <IconIsValid /> : <IconIsNotValid />}
+                                   thirdCondition="a special character"
+                                   isPasswordFocused={isPasswordFocused}
+
+                            />}
                      </div>
-                     {errorMessage && <div className={css.errorMsg}>{errorMessage}</div>}
                      <div className={css.confirmPasswordInput}>
                             <PasswordInput
+                                   className={!isConfirmPasswordFocused && confirmPasswordValue.length === 0 ? css.inputForPassword
+                                          : isConfirmPasswordFocused ? css.inputForFocusedPassword
+                                                 : (confirmPasswordIsValid && !isConfirmPasswordFocused)
+                                                        ? css.inputForPasswordValid
+                                                        : css.inputForPasswordError }
                                    value={confirmPasswordValue}
                                    onChange={onConfirmChange}
-                                   errorMessage={errorConfirmPasswordMessage}
                                    isFocused={isConfirmPasswordFocused}
                                    onFocus={handleFocusConfirmPasswordChange}
                                    onBlur={handleFocusConfirmPasswordChange}
                                    placeholder="Confirm Password"
+                                   passwordIsValid={confirmPasswordIsValid}
                             />
+
+                            {isConfirmPasswordFocused && <IsValidPasswordBlock
+                                   title="Confirm password:"
+                                   firstIcon={value !== confirmPasswordValue ? <IconIsNotValid /> : <IconIsValid />}
+                                   firstCondition="passwords must be the same"
+                                   isPasswordFocused={isPasswordFocused}
+                            />}
                      </div>
-                     {errorConfirmPasswordMessage && <div className={css.errorMsg}>{errorConfirmPasswordMessage}</div>}
               </div>
        );
 };

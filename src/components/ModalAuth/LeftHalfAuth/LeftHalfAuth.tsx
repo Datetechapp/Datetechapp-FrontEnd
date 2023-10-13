@@ -8,17 +8,12 @@ export const LeftHalfAuth = () => {
               <div>
                      <img className={css.logo} src={logo} alt="logo" />
                      <div>
-                            <p className={css.tagline}>Find someone who will give you new <span className={css.lastWords}>emotions</span>!</p>
+                            <p className={css.tagline}>Find someone who will give <br /> you new <span className={css.lastWord}>emotions</span>!</p>
                             <p className={css.downloadText}>Download the app</p>
                             <div className={css.downloadLinks}>
                                    <a><img src={appstore} alt="appstore" /></a>
                                    <a><img src={googlePlay} alt="googlePlay" /></a>
                             </div>
-                            <p className={css.messagePrivacy}>
-                                   By signing up, you agree to our Terms and Conditions. Learn how we use your data in our <a href="#" className={css.privacyPolicy}>
-                                          Privacy Policy.
-                                   </a>
-                            </p>
                      </div>
               </div>
        )

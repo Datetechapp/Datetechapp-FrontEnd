@@ -2,35 +2,29 @@ import './LanguageSelect.css'
 import '../LanguagesSwich.css'
 import { LanguagesSwich } from '../LanguagesSwich'
 import { languages } from '../language'
-import { useState } from 'react'
+import { useState, FC } from 'react'
+import { ReactComponent as ActiveArrow } from "../../../assets/Header/activeArrow.svg"
+import { ReactComponent as PassiveArrow } from "../../../assets/Header/passiveArrow.svg"
+
 
 export const LanguageSelect = () => {
 
     const [activeVisible, setactiveVisible] = useState<string>('')
-    const [activeNoVisible, setActiveNoVisible] = useState<string>('No-visible')
-    const [activeArrow, setActiveArrow] = useState<string>('')
-    const startLang = languages.filter(item => item.key === 1).map(item => item.lang).join()
-    const [selectLang, setselectLang] = useState<string>(startLang)
+    const [selectLang, setselectLang] = useState<string>("English")
+
+    const handleChangeVisibility = () => {
+        if (!activeVisible) {
+            setactiveVisible('Visible')
+        } else {
+            setactiveVisible('')
+        }
+    }
 
     return (
-        <div onClick={() => {
-            if (!activeVisible) {
-                setactiveVisible('Visible')
-                setActiveNoVisible('')
-                setActiveArrow('active')
-
-            } else {
-                setactiveVisible('')
-                setActiveArrow('')
-                setTimeout(() => {
-                    setActiveNoVisible('No-visible')
-                }, 1000);
-            }
-
-        }} className="LanguageSelect">
-            <p>{selectLang}</p>
-            <div className={`LanguageSelect__Arrow ${activeArrow}`}></div>
-            <LanguagesSwich ChangeLang={setselectLang} nameClass={activeVisible || activeNoVisible} language={languages} />
+        <div onClick={() => handleChangeVisibility()} className="LanguageSelect">
+            <p className="selectLanguage">{selectLang}</p>
+            {activeVisible ? <PassiveArrow /> : <ActiveArrow />}
+            <LanguagesSwich ChangeLang={setselectLang} nameClass={activeVisible} language={languages} />
         </div>
 
     )

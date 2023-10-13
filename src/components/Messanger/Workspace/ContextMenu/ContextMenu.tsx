@@ -10,21 +10,19 @@ import { v4 as uuid } from "uuid";
 
 interface ContextMenuProps {
        show: boolean;
-       showPhoto: any;
+       isMe: boolean;
+       showPhoto: boolean;
+       isPinned: boolean;
        onContextMenuAction: (text: string) => void;
 }
 
-export const ContextMenu: FC<ContextMenuProps> = ({ show, showPhoto, onContextMenuAction }) => {
+export const ContextMenu: FC<ContextMenuProps> = ({ show, showPhoto, onContextMenuAction, isPinned, isMe }) => {
        const contextMenuInfo = [
               { text: "Answer", photo: <Answer className={css.iconForContextMenuFeature} /> },
               { text: "Copy", photo: <Copy className={css.iconForContextMenuFeature} /> },
-              { text: "To fix", photo: <Fix className={css.iconForContextMenuFeature} /> },
+              { text: isPinned ? "Unfix" : "To fix", photo: <Fix className={css.iconForContextMenuFeature} /> },
               { text: "Forward", photo: <Forward className={css.iconForContextMenuFeature} /> },
        ];
-
-       const copyToClipboard = (text: string) => {
-              navigator.clipboard.writeText(text);
-       };
 
        if (!show) {
               return null;
@@ -32,7 +30,7 @@ export const ContextMenu: FC<ContextMenuProps> = ({ show, showPhoto, onContextMe
 
        return (
               <div className={css.contextMenuWrapper}>
-                     <div className={showPhoto ? css.contextMenu : css.contextMenuWithoutPhoto}>
+                     <div className={`${showPhoto ? css.contextMenu : css.contextMenuWithoutPhoto} ${isMe ? css.contextMenuForMe : ''}`}>
                             {contextMenuInfo.map((button) => (
                                    
                                    <div key={uuid()} className={css.contextMenuBlock}>

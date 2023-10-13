@@ -1,6 +1,7 @@
 import React from "react";
 import css from "./message.module.css"
 import { ReactComponent as Photo } from "../../../../assets/Messanger/PhotoFromMessanger.svg";
+import { ReactComponent as PinnedIcon } from "../../../../assets/Messanger/PinnedIconForMessage.svg"
 import { ContextMenu } from "../ContextMenu";
 
 export interface MessageProps {
@@ -10,6 +11,7 @@ export interface MessageProps {
        timestamp: string;
        showPhoto: boolean;
        isSelected: boolean;
+       isPinned: boolean;
        onContextMenu: (event: React.MouseEvent<HTMLDivElement, MouseEvent>, messageId: string) => void;
        onContextMenuAction: (text: string) => void;
 }
@@ -23,10 +25,10 @@ export const Message: React.FC<MessageProps> = ({
        isSelected,
        onContextMenu,
        onContextMenuAction,
+       isPinned,
 }) => {
        return (
-              <div className={`${isMe ? css.me : css.other} ${isSelected ? css.selectedBlockMessage : ''
-                     } `}>
+              <div className={`${isMe ? css.me : css.other} ${isSelected ? css.selectedBlockMessage : ''} `}>
                      {showPhoto && <Photo className={css.photoOther} />}
                      <div>
                             <div
@@ -35,11 +37,23 @@ export const Message: React.FC<MessageProps> = ({
                                    onContextMenu={(event) => onContextMenu(event, id)}
                             >
                                    <p className={css.messageText}>{text}</p>
-                                   <span className={css.messageTimestampt}>{timestamp}</span>
+                                   <div className={css.messageInfo}>
+                                          {isPinned &&
+                                                 <div className={css.pinnedIconBlock}>
+                                                        <span className={css.pinnedCheck}>Pinned</span>
+                                                        <PinnedIcon />
+                                                 </div>
+                                          }
+                                          <span className={css.messageTimestampt}>{timestamp}</span>
+                                   </div>
+
+
                             </div>
                             <ContextMenu
                                    show={isSelected}
+                                   isMe={isMe}
                                    showPhoto={showPhoto}
+                                   isPinned={isPinned}
                                    onContextMenuAction={onContextMenuAction}
                             />
                      </div>

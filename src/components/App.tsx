@@ -1,6 +1,5 @@
 import { ModalAuth } from "./ModalAuth";
-import { ModalRegister } from "./pages/ModalRegister";
-import { CreateNewAccount } from "./pages/CreateNewAccaunt";
+import { ModalRegister, ResetPassword } from "./pages/ModalRegister";
 import { Routes, Route } from "react-router-dom"
 import { ModalWelcome } from "./base/ModalWelcome/ModalWelcome";
 import { BackSection } from "./BackSection/BackSection";
@@ -8,6 +7,11 @@ import { MainLayout } from "./Layouts/MainLayout/MainLayout";
 import { UserSelfPage } from "./pages/UserSelfPage";
 import { Messanger } from "../components/Messanger"
 import { useLocation } from "react-router-dom"
+import { ModalCheckEmail } from "./pages/ModalRegister/ResetPassword/ModalCheckEmail/ModalCheckEmail";
+import { HeaderSecondary } from "./HeaderSecondary";
+import { ChangePassword } from "./pages/ChangePassword";
+import { VerificationPage } from "./pages/VerificationPage";
+import { Questionnaire } from "./pages/Questionnaire";
 
 
 
@@ -15,22 +19,30 @@ export const App = () => {
 
   const { pathname } = useLocation();
 
-  const locationForBackSection = (pathname == '/create-profile' || pathname == '/auth' || pathname == '/registration')
+  const locationForBackSection = (pathname == '/create-profile' || pathname == '/login' || pathname == '/registration' || pathname == '/reset_password')
   return (
+
     <div>
       {/* <ModalWelcome /> */}
       <Messanger />
+      {/* <ModalCheckEmail /> */}
+      
+      {/* <VerificationPage /> */}
+      {/* <ChangePassword /> */}
+
       {locationForBackSection ? <BackSection >
         <Routes>
-          <Route path="/create-profile" element={<CreateNewAccount />} />
-          <Route path="/auth" element={<ModalAuth />} />
+          <Route path="/create-profile" element={<Questionnaire />} />
+          <Route path="/login" element={<ModalAuth />} />
           <Route path="/registration" element={< ModalRegister />} />
+          <Route path="/reset_password" element={<ResetPassword />} />
+          {/* <Route path="/messanger" element={<Messanger />} /> */}
         </Routes>
       </BackSection> :
         <Routes>
           <Route path="/feed" element={<MainLayout />}>
             <Route path="self" element={<UserSelfPage />} />
-            <Route path="message" element={<Messanger />} />
+            {/* <Route path="messanger" element={<Messanger />} /> */}
             <Route path="forYou" element={null} />
             <Route path="search" element={null} />
             <Route path="settings" element={null} />

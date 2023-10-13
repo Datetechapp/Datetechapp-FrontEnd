@@ -1,1 +1,0 @@
-export { ModalForgotPassword } from "./ModalForgotPassword"

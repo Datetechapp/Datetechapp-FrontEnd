@@ -27,7 +27,7 @@ export const BtnSignUp = () => {
     }
 
     return (
-        <Link to={authOrReg === "Sign Up" ? "registration" : "auth"}>
+        <Link to={authOrReg === "Sign Up" ? "registration" : "login"}>
             <Button className='BtnSignUp' onClick={handleAuthOrRegChange}>{authOrReg}</Button>
         </Link>
     )

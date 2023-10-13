@@ -1,10 +1,6 @@
 import css from "./workspace.module.css";
 import { useCallback, useState, useEffect, FC } from "react";
-import { v4 as uuid } from "uuid";
-import { ModalForFixMessage } from "./ModalForFixMessage";
-import { Message } from "./Message/Message";
-import { EmojiComponent } from "./EmojiComponent";
-import { PinnedMessage } from "./PinnedMessage";
+import { ModalForFixMessage, ModalForDeleteMessage, ModalForForwardMessage, Message, EmojiComponent, PinnedMessage } from ".";
 
 interface Message {
        id: string;
@@ -19,6 +15,7 @@ interface WorkspaceProps {
        setSelectedMessageText: any;
        setShowReplyMessage: any;
        selectedMessageText: string;
+
 }
 
 
@@ -36,30 +33,66 @@ export const Workspace: FC<WorkspaceProps> = ({ setSelectedMessageText, setShowR
        const [showSmileyMenu, setShowSmileyMenu] = useState(false);
        const [selectedMessageId, setSelectedMessageId] = useState('');
        const [showModalFix, setShowModalFix] = useState(false);
-       const [scrollPosition, setScrollPosition] = useState(0);
+       const [showModalForward, setShowModalForward] = useState(false);
+       const [showModalDelete, setShowModalDelete] = useState(false);
        const [pinnedMessages, setPinnedMessages] = useState<Message[]>([]);
+       const [currentPinnedMessageIndex, setCurrentPinnedMessageIndex] = useState(0);
 
        const handleShowModal = useCallback(() => {
-              setScrollPosition(window.scrollY);
               document.body.style.overflow = "hidden";
               setShowModalFix(true);
        }, []);
 
+       const handleShowModalForward = useCallback(() => {
+              document.body.style.overflow = "hidden";
+              setShowModalForward(true);
+       }, [])
+
+       const handleShowModalDelete = useCallback(() => {
+              document.body.style.overflow = "hidden";
+              setShowModalDelete(true);
+       }, [])
+
+       const togglePinnedMessage = () => {
+              if (pinnedMessages.length > 0) {
+                     setCurrentPinnedMessageIndex((prevIndex) => (prevIndex + 1) % pinnedMessages.length);
+              }
+       };
+
        const handlePinnedMessage = useCallback((messageId: string) => {
               const messageToPin = messagesArr.find(message => message.id === messageId);
-              console.log(messageToPin, messageId,);
 
               if (messageToPin) {
-                     setPinnedMessages([...pinnedMessages, messageToPin]);
+                     setPinnedMessages([...pinnedMessages, { ...messageToPin, isPinned: true }]);
               }
        }, [messages, pinnedMessages]);
 
+       const handleUnpinnedMessage = useCallback(
+              (messageId: string) => {
+                     const newPinnedMessages = pinnedMessages.filter(
+                            (message) => message.id !== messageId
+                     );
+                     setPinnedMessages(newPinnedMessages);
+
+                     const removedMessageIndex = pinnedMessages.findIndex(
+                            (message) => message.id === messageId
+                     );
+
+                     if (currentPinnedMessageIndex >= removedMessageIndex) {
+                            setCurrentPinnedMessageIndex(
+                                   (prevIndex) => Math.max(prevIndex - 1, 0)
+                            );
+                     }
+              },
+              [pinnedMessages]
+       );
 
        const handleNotShowModal = useCallback(() => {
-              window.scrollTo(0, scrollPosition)
               document.body.style.overflow = "unset";
               setShowModalFix(false);
-       }, [scrollPosition]);
+              setShowModalDelete(false);
+              setShowModalForward(false);
+       }, []);
 
 
        const handleContextMenu = useCallback((event: React.MouseEvent<HTMLDivElement, MouseEvent>, messageId: string) => {
@@ -67,22 +100,29 @@ export const Workspace: FC<WorkspaceProps> = ({ setSelectedMessageText, setShowR
               setSelectedMessageId(messageId);
               setShowContextMenu(true);
               setShowSmileyMenu(true);
-              setShowReplyMessage(false)
+              setShowReplyMessage(false);
        }, []);
 
        const handleContextMenuAction = (text: string) => {
               setShowContextMenu(false);
               setShowSmileyMenu(false);
+              const messageToUnpin = messagesArr.find(message => message.id === selectedMessageId);
               if (text === "To fix") {
                      handleShowModal();
-              } else if (text === "Answer") {
+              } else if (text === "Unfix" && messageToUnpin) {
+                     handleUnpinnedMessage(selectedMessageId);
+              } else if (text === "Forward") {
+                     handleShowModalForward();
+              }
+              else if (text === "Answer") {
                      setShowReplyMessage(true);
                      setSelectedMessageId("");
               } else if (text === "Copy") {
                      navigator.clipboard.writeText(selectedMessageText);
                      setSelectedMessageId("");
+              } else if (text === "Delete") {
+                     handleShowModalDelete()
               }
-
        };
 
 
@@ -100,44 +140,69 @@ export const Workspace: FC<WorkspaceProps> = ({ setSelectedMessageText, setShowR
 
        return (
               <>
+                     {pinnedMessages.length > 0 && (
+                            <div onClick={togglePinnedMessage} className={css.pinnedMessagesContainer}>
+                                   <div className={css.indicatorContainer}>
+                                          {pinnedMessages.map((pinnedMessage, index) => (
+                                                 <div
+                                                        className={`${css.indicator} ${index === currentPinnedMessageIndex ? css.active : ''
+                                                               }`}
+                                                        key={pinnedMessage.id}
+                                                        onClick={() => setCurrentPinnedMessageIndex(index)}
+                                                 ></div>
+                                          ))}
+                                   </div>
+                                   <PinnedMessage text={pinnedMessages[currentPinnedMessageIndex]?.text} />
+                            </div>
+                     )}
+
                      <div className={css.workspaceWrapper}>
-                            <div className={css.pinnedMessagesContainer}>
-                                   {pinnedMessages.map((message) => (
-                                          <PinnedMessage key={message.id} text={message.text} />
+                            <div className={css.messagesContainer}>
+                                   {messages.map((message) => (
+                                          <div key={message.id}>
+                                                 {showSmileyMenu && selectedMessageId === message.id && (
+                                                        <EmojiComponent isMe={message.isMe} />
+                                                 )}
+
+                                                 <Message
+                                                        id={message.id}
+                                                        text={message.text}
+                                                        isMe={message.isMe}
+                                                        timestamp={message.timestamp}
+                                                        showPhoto={message.showPhoto}
+                                                        isSelected={showContextMenu && selectedMessageId === message.id}
+                                                        isPinned={pinnedMessages.some(
+                                                               (pinnedMessage) => pinnedMessage.id === message.id
+                                                        )}
+                                                        onContextMenu={(event) => {
+                                                               if (event) {
+                                                                      setSelectedMessageText(message.text);
+                                                                      handleContextMenu(event, message.id);
+                                                               }
+                                                        }}
+                                                        onContextMenuAction={handleContextMenuAction}
+                                                 />
+                                          </div>
                                    ))}
                             </div>
-                            {messages.map((message) => (
 
-
-                                   <div key={message.id}>
-                                          {showSmileyMenu && selectedMessageId === message.id && (
-                                                 <EmojiComponent />
-                                          )}
-
-                                          <Message
-                                                 id={message.id}
-                                                 text={message.text}
-                                                 isMe={message.isMe}
-                                                 timestamp={message.timestamp}
-                                                 showPhoto={message.showPhoto}
-                                                 isSelected={showContextMenu && selectedMessageId === message.id}
-                                                 onContextMenu={(event) => {
-                                                        if (event) {
-                                                               setSelectedMessageText(message.text);
-                                                               handleContextMenu(event, message.id);
-                                                        }
-                                                 }}
-                                                 onContextMenuAction={handleContextMenuAction}
-
-                                          />
-                                   </div>
-
-                            ))}
                      </div >
                      <ModalForFixMessage
                             isOpen={showModalFix}
                             onRequestClose={handleNotShowModal}
                             onRequestPinned={handlePinnedMessage}
+                            selectedMessageId={selectedMessageId}
+                     />
+                     <ModalForForwardMessage
+                            isOpen={showModalForward}
+                            onRequestClose={handleNotShowModal}
+                            selectedMessageId={selectedMessageId}
+
+                     />
+                     <ModalForDeleteMessage
+                            isOpen={showModalDelete}
+                            onRequestClose={handleNotShowModal}
+                            onRequestDelete={handleNotShowModal}
                             selectedMessageId={selectedMessageId}
                      />
               </>

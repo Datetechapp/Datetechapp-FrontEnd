@@ -13,7 +13,7 @@ const arrLogo = [
 export const SocialAuth = () => {
        return (
               <div>
-                     <p className={css.continueWith}>Continue with</p>
+                     
                      <ul className={css.logoList}>
                             {arrLogo.map((logo, index) =>
                                    <li key={index}>
@@ -21,6 +21,7 @@ export const SocialAuth = () => {
                                    </li>
                             )}
                      </ul>
+                     <p className={css.suggestToUseNtwk}>Or use one of this options</p>
               </div>
        )
 }

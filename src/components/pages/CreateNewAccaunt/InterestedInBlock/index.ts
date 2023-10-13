@@ -1,1 +1,0 @@
-export { InterestedInBlock } from "./InterestedInBlock"

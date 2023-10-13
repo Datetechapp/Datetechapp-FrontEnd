@@ -7,7 +7,7 @@ interface ButtonProps {
        disabled?: boolean;
        className?: string;
        form?:string;
-       onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void;     
+       onSubmit?: (e: React.FormEvent<HTMLFormElement> ) => void;
 }
 
 export const Button: FC<PropsWithChildren<ButtonProps>> = ({ children, onClick, disabled, className, form }) =>

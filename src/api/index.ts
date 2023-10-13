@@ -65,7 +65,7 @@ export const createProfileForPhoto = (body: { photo: string | null }): Promise<R
 export const createProfileForVideo = (body: { video: string | null }): Promise<Response> =>
        post("/upload/video/", body)
 
-export const createProfile = (body: { name: string, date_of_birth: string, gender: string, sex: string, purposes: string[], is_agree_geo: boolean, app_agreement: boolean}): Promise<Response> =>
+export const createProfile = (body: { name: string, date_of_birth: string, gender: string, sex: string, purposes: string[], is_agree_geo: boolean, app_agreement: boolean }): Promise<Response> =>
        post("/registration/third_step/", body)
               .then(response => {
                      if (response.ok) {
@@ -88,5 +88,8 @@ export const createProfile = (body: { name: string, date_of_birth: string, gende
                      }
                      return response;
               });
+
+export const login = (body: { username: string, password: string, rememberLogin: boolean }): Promise<Response> =>
+       post("/login", body).then(response => response.json());
 
 

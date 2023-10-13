@@ -3,28 +3,30 @@ import css from "./passwordInput.module.css";
 import { Input } from "../../common";
 import { Eye } from "..";
 
- type PasswordInputProps = {
+type PasswordInputProps = {
        value: string;
        onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-       errorMessage: string;
        isFocused: boolean;
-       onFocus: () => void;
-       onBlur: () => void;
+       onFocus: (e: React.ChangeEvent<HTMLInputElement>) => void;
+       onBlur: (e: React.ChangeEvent<HTMLInputElement>) => void;
        placeholder: string;
+       passwordIsValid?: boolean;
+       className: string;
+       isLogin?: boolean;
 };
 
-export const PasswordInput: FC<PasswordInputProps> = ({value, onChange, errorMessage, isFocused, onFocus, onBlur, placeholder}) => {
+export const PasswordInput: FC<PasswordInputProps> = ({ value, onChange, onFocus, onBlur, placeholder, className, isFocused, passwordIsValid, isLogin }) => {
        const [showPassword, setShowPassword] = useState(false);
 
        const isVisiblePassword = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
               e.preventDefault();
-              setShowPassword((prevShowPassword) => !prevShowPassword);
+              setShowPassword(!showPassword);
        };
 
        return (
               <div className={css.blockInputPassword}>
                      <Input
-                            className={!errorMessage ? css.inputForPassword : css.inputForPasswordError}
+                            className={className}
                             type={showPassword ? "text" : "password"}
                             autoComplete="off"
                             name="password"
@@ -38,7 +40,9 @@ export const PasswordInput: FC<PasswordInputProps> = ({value, onChange, errorMes
                             showPassword={showPassword}
                             onVisiblePassword={isVisiblePassword}
                             isFocused={isFocused}
-                            errorMessage={errorMessage}
+                            isValid={passwordIsValid}
+                            value={value}
+                            isLogin={isLogin}
                      />
               </div>
        );

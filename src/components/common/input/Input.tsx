@@ -1,4 +1,4 @@
-import type { FC, ChangeEvent, FocusEvent, KeyboardEvent, MutableRefObject } from "react"
+import type { FC, ChangeEvent, FocusEvent, MutableRefObject } from "react"
 
 interface InputProps {
        id?: string;
@@ -11,7 +11,7 @@ interface InputProps {
        accept?: string;
        min?: string;
        max?: string;
-       inputRef?: MutableRefObject<HTMLInputElement | null>;
+       inputRef?: MutableRefObject<HTMLInputElement | null >;
        onChange: (e: ChangeEvent<HTMLInputElement>) => void;
        onFocus?: (e: FocusEvent<HTMLInputElement>) => void;
        onBlur?: (e: ChangeEvent<HTMLInputElement>) => void;
