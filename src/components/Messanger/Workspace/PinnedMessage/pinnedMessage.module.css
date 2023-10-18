@@ -1,8 +1,7 @@
 .pinnedMessageWrapper {
        display: flex;
-       justify-content: space-between;
-       align-items: center;
-       width: 583px;
+       align-items: flex-start;
+       flex-direction: column;
 }
 
 .pinnedMessage {
@@ -17,11 +16,45 @@
 
 
 .description {
-       
        color: var(--violet-active, #C896EF);
        font-family: Montserrat;
        font-size: 18px;
        font-weight: 600;
        line-height: 25px;
        letter-spacing: -0.5px;
+}
+
+.pinnedMessagesContainer {
+       display: flex;
+       gap: 12px;
+       height: 70px;
+       padding: 8px 16px;
+       cursor: pointer;
+       border-bottom: 1.5px solid var(--panel-background, #272533);
+       background: var(--dark-background, #1F1D2B);
+}
+
+.pinnedMessagesContainer> :last-child {
+       margin-left: auto;
+       align-self: center;
+}
+
+.indicatorContainer {
+       display: flex;
+       flex-direction: column;
+       justify-content: space-between;
+       width: 1px;
+       height: 100%;
+       border-radius: 1px;
+}
+
+.indicator {
+       flex-grow: 1;
+       background-color: #5F4F7F;
+       margin-bottom: 2px;
+       border-radius: 4px;
+}
+
+.active {
+       background-color: #C896EF;
 }

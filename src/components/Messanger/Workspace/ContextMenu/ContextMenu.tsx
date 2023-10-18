@@ -11,12 +11,11 @@ import { v4 as uuid } from "uuid";
 interface ContextMenuProps {
        show: boolean;
        isMe: boolean;
-       showPhoto: boolean;
        isPinned: boolean;
        onContextMenuAction: (text: string) => void;
 }
 
-export const ContextMenu: FC<ContextMenuProps> = ({ show, showPhoto, onContextMenuAction, isPinned, isMe }) => {
+export const ContextMenu: FC<ContextMenuProps> = ({ show, onContextMenuAction, isPinned, isMe }) => {
        const contextMenuInfo = [
               { text: "Answer", photo: <Answer className={css.iconForContextMenuFeature} /> },
               { text: "Copy", photo: <Copy className={css.iconForContextMenuFeature} /> },
@@ -30,7 +29,7 @@ export const ContextMenu: FC<ContextMenuProps> = ({ show, showPhoto, onContextMe
 
        return (
               <div className={css.contextMenuWrapper}>
-                     <div className={`${showPhoto ? css.contextMenu : css.contextMenuWithoutPhoto} ${isMe ? css.contextMenuForMe : ''}`}>
+                     <div className={`${css.contextMenu} ${isMe ? css.contextMenuForMe : ''}`}>
                             {contextMenuInfo.map((button) => (
                                    
                                    <div key={uuid()} className={css.contextMenuBlock}>

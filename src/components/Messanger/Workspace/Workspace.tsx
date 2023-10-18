@@ -2,12 +2,11 @@ import css from "./workspace.module.css";
 import { useCallback, useState, useEffect, FC } from "react";
 import { ModalForFixMessage, ModalForDeleteMessage, ModalForForwardMessage, Message, EmojiComponent, PinnedMessage } from ".";
 
-interface Message {
+export interface Message {
        id: string;
        text: string;
        isMe: boolean;
        timestamp: string;
-       showPhoto: boolean;
        isPinned: boolean;
 }
 
@@ -15,20 +14,18 @@ interface WorkspaceProps {
        setSelectedMessageText: any;
        setShowReplyMessage: any;
        selectedMessageText: string;
-
 }
 
 
 const messagesArr: Message[] = [
-       { id: "1", text: 'Hi! You have a cool video.', isMe: false, timestamp: '12:30 PM', showPhoto: false, isPinned: false },
-       { id: "2", text: "Hi!Thanks. I'm very pleased.", isMe: true, timestamp: '12:31 PM', showPhoto: false, isPinned: false },
-       { id: "3", text: 'I would like to meet you.', isMe: false, timestamp: '12:35 PM', showPhoto: false, isPinned: false },
-       { id: "4", text: "but I'm very tired today", isMe: false, timestamp: '12:36 PM', showPhoto: false, isPinned: false },
-       { id: "5", text: "i will write to you tomorrow..", isMe: false, timestamp: '12:40 PM', showPhoto: false, isPinned: false },
+       { id: "1", text: 'Hi! You have a cool video.Djfsdghvj fsjafhvdj shzj,chznm dzM<Fcnvm cn,zfmvn ja,mfdncm ,samfhznkjm k,jamshdzvn dsgkjvlx nxsvmn j,m n a,sxzmvn ,m anvjcz,mxn', isMe: false, timestamp: '12:30', isPinned: false },
+       { id: "2", text: "Hi!Thanks. I'm very pleased.", isMe: true, timestamp: '12:31', isPinned: false },
+       { id: "3", text: 'I would like to meet you.', isMe: false, timestamp: '12:35', isPinned: false },
+       { id: "4", text: "but I'm very tired today", isMe: false, timestamp: '12:36', isPinned: false },
+       { id: "5", text: "i will write to you tomorrow..", isMe: false, timestamp: '12:40', isPinned: false },
 ]
 
 export const Workspace: FC<WorkspaceProps> = ({ setSelectedMessageText, setShowReplyMessage, selectedMessageText }: WorkspaceProps) => {
-       const [messages, setMessages] = useState<Message[]>(messagesArr);
        const [showContextMenu, setShowContextMenu] = useState(false);
        const [showSmileyMenu, setShowSmileyMenu] = useState(false);
        const [selectedMessageId, setSelectedMessageId] = useState('');
@@ -65,7 +62,7 @@ export const Workspace: FC<WorkspaceProps> = ({ setSelectedMessageText, setShowR
               if (messageToPin) {
                      setPinnedMessages([...pinnedMessages, { ...messageToPin, isPinned: true }]);
               }
-       }, [messages, pinnedMessages]);
+       }, [messagesArr, pinnedMessages]);
 
        const handleUnpinnedMessage = useCallback(
               (messageId: string) => {
@@ -125,40 +122,22 @@ export const Workspace: FC<WorkspaceProps> = ({ setSelectedMessageText, setShowR
               }
        };
 
-
-
-       useEffect(() => {
-              const updatedMessages = messages.map((message, index) => {
-                     if (!message.isMe && (index === 0 || messages[index - 1].isMe)) {
-                            return { ...message, showPhoto: true };
-                     } else {
-                            return { ...message, showPhoto: false };
-                     }
-              });
-              setMessages(updatedMessages);
-       }, []);
-
        return (
               <>
                      {pinnedMessages.length > 0 && (
-                            <div onClick={togglePinnedMessage} className={css.pinnedMessagesContainer}>
-                                   <div className={css.indicatorContainer}>
-                                          {pinnedMessages.map((pinnedMessage, index) => (
-                                                 <div
-                                                        className={`${css.indicator} ${index === currentPinnedMessageIndex ? css.active : ''
-                                                               }`}
-                                                        key={pinnedMessage.id}
-                                                        onClick={() => setCurrentPinnedMessageIndex(index)}
-                                                 ></div>
-                                          ))}
-                                   </div>
-                                   <PinnedMessage text={pinnedMessages[currentPinnedMessageIndex]?.text} />
-                            </div>
+                            <PinnedMessage
+                                   togglePinnedMessage={togglePinnedMessage}
+                                   currentPinnedMessageIndex={currentPinnedMessageIndex}
+                                   setCurrentPinnedMessageIndex={setCurrentPinnedMessageIndex}
+                                   pinnedMessages={pinnedMessages}
+                                   setPinnedMessages={setPinnedMessages}
+                                   text={pinnedMessages[currentPinnedMessageIndex]?.text}
+                            />
                      )}
-
                      <div className={css.workspaceWrapper}>
                             <div className={css.messagesContainer}>
-                                   {messages.map((message) => (
+                                   <p className={css.dateOfMessages}>25 May 2023</p>
+                                   {messagesArr.map((message) => (
                                           <div key={message.id}>
                                                  {showSmileyMenu && selectedMessageId === message.id && (
                                                         <EmojiComponent isMe={message.isMe} />
@@ -169,7 +148,6 @@ export const Workspace: FC<WorkspaceProps> = ({ setSelectedMessageText, setShowR
                                                         text={message.text}
                                                         isMe={message.isMe}
                                                         timestamp={message.timestamp}
-                                                        showPhoto={message.showPhoto}
                                                         isSelected={showContextMenu && selectedMessageId === message.id}
                                                         isPinned={pinnedMessages.some(
                                                                (pinnedMessage) => pinnedMessage.id === message.id

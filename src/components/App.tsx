@@ -24,7 +24,7 @@ export const App = () => {
 
     <div>
       {/* <ModalWelcome /> */}
-      <Messanger />
+      {/* <Messanger /> */}
       {/* <ModalCheckEmail /> */}
       
       {/* <VerificationPage /> */}

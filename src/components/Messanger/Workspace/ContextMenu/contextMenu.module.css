@@ -1,23 +1,9 @@
 .contextMenu {
-       
        padding: 16px;
        display: flex;
        width: 196px;
        height: 242px;
        flex-direction: column;
-       border-radius: 5px;
-       background: var(--white, #E9E3F5);
-       position: relative;
-       margin-top: 10px;
-}
-
-.contextMenuWithoutPhoto {
-       padding: 16px;
-       display: flex;
-       width: 196px;
-       height: 242px;
-       flex-direction: column;
-       margin-left: 46px;
        border-radius: 5px;
        background: var(--white, #E9E3F5);
        position: relative;

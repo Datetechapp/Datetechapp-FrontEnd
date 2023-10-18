@@ -1,7 +1,6 @@
 import React from "react";
 import css from "./message.module.css"
-import { ReactComponent as Photo } from "../../../../assets/Messanger/PhotoFromMessanger.svg";
-import { ReactComponent as PinnedIcon } from "../../../../assets/Messanger/PinnedIconForMessage.svg"
+import { ReactComponent as PinnedIcon } from "../../../../assets/Messanger/iconForPinnedMessage.svg"
 import { ContextMenu } from "../ContextMenu";
 
 export interface MessageProps {
@@ -9,7 +8,6 @@ export interface MessageProps {
        text: string;
        isMe: boolean;
        timestamp: string;
-       showPhoto: boolean;
        isSelected: boolean;
        isPinned: boolean;
        onContextMenu: (event: React.MouseEvent<HTMLDivElement, MouseEvent>, messageId: string) => void;
@@ -21,7 +19,6 @@ export const Message: React.FC<MessageProps> = ({
        text,
        isMe,
        timestamp,
-       showPhoto,
        isSelected,
        onContextMenu,
        onContextMenuAction,
@@ -29,21 +26,15 @@ export const Message: React.FC<MessageProps> = ({
 }) => {
        return (
               <div className={`${isMe ? css.me : css.other} ${isSelected ? css.selectedBlockMessage : ''} `}>
-                     {showPhoto && <Photo className={css.photoOther} />}
                      <div>
                             <div
-                                   className={`${isMe ? css.messageInfoMe : showPhoto ? css.messageInfoOther : css.messageWithoutPhoto} ${isSelected ? css.selectedMessage : ''
+                                   className={`${isMe ? css.messageInfoMe : css.messageInfoOther} ${isSelected ? css.selectedMessage : ''
                                           }`}
                                    onContextMenu={(event) => onContextMenu(event, id)}
                             >
                                    <p className={css.messageText}>{text}</p>
                                    <div className={css.messageInfo}>
-                                          {isPinned &&
-                                                 <div className={css.pinnedIconBlock}>
-                                                        <span className={css.pinnedCheck}>Pinned</span>
-                                                        <PinnedIcon />
-                                                 </div>
-                                          }
+                                          {isPinned && <PinnedIcon className={css.pinnedIcon} />}
                                           <span className={css.messageTimestampt}>{timestamp}</span>
                                    </div>
 
@@ -52,7 +43,6 @@ export const Message: React.FC<MessageProps> = ({
                             <ContextMenu
                                    show={isSelected}
                                    isMe={isMe}
-                                   showPhoto={showPhoto}
                                    isPinned={isPinned}
                                    onContextMenuAction={onContextMenuAction}
                             />

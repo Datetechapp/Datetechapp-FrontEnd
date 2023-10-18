@@ -26,7 +26,7 @@
 }
 
 .fieldForMessageWrapper {
-       padding: 30px 72px 34px;
+       padding: 16px;
        border-top: 1.5px solid var(--panel-background, #272533);
        background: var(--dark-background, #1F1D2B);
 }
@@ -35,16 +35,16 @@
 .fieldForMessage {
        width: 600px;
        height: 50px;
-       border-radius: 100px;
        color: var(--white, #E9E3F5);
        font-family: Montserrat;
        font-size: 20px;
        font-weight: 500;
        line-height: 30px;
        letter-spacing: -0.5px;
-       border: 1px solid var(--violet-stroke, #5F4F7F);
-       background: var(--panel-background, #272533);
-       padding: 10px 80px 10px 50px;
+       border-radius: 30px;
+       border: 1px solid var(--Violet_Stroke, #5F4F7F);
+       background: var(--Dark_Elements_Background, #201B27);
+       padding: 0 12px 0 44px;
        outline: none;
 }
 
