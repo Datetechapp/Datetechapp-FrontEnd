@@ -1,1 +1,1 @@
-export { SocialAuth } from "./SocialAuth"
+export { SocialAuth } from './SocialAuth';

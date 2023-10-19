@@ -1,1 +1,1 @@
-export {MainLayoutHeader} from "./MainLayout_header"
+export { MainLayoutHeader } from './MainLayout_header';

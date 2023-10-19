@@ -1,1 +1,1 @@
-export { ModalCheckEmail } from "./ModalCheckEmail"
+export { ModalCheckEmail } from './ModalCheckEmail';

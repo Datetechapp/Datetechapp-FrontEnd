@@ -1,1 +1,1 @@
-export { HeaderSecondary } from "./HeaderSecondary"
+export { HeaderSecondary } from './HeaderSecondary';

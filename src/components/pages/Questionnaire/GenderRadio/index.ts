@@ -1,1 +1,1 @@
-export { GenderRadio } from "./GenderRadio"
+export { GenderRadio } from './GenderRadio';
