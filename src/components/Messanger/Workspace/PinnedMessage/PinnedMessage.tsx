@@ -6,13 +6,13 @@ import { Message } from "../Workspace"
 
 
 interface PinnedMessageProps {
-       text: string;
-       onClick?: () => void;
-       togglePinnedMessage: () => void;
-       pinnedMessages: Message[];
-       setPinnedMessages: Dispatch<SetStateAction<Message[]>>;
-       currentPinnedMessageIndex: number;
-       setCurrentPinnedMessageIndex: Dispatch<SetStateAction<number>>;
+  text: string;
+  onClick?: () => void;
+  togglePinnedMessage: () => void;
+  pinnedMessages: Message[];
+  setPinnedMessages: Dispatch<SetStateAction<Message[]>>;
+  currentPinnedMessageIndex: number;
+  setCurrentPinnedMessageIndex: Dispatch<SetStateAction<number>>;
 }
 
 export const PinnedMessage: FC<PinnedMessageProps> = ({ text, onClick, pinnedMessages, setPinnedMessages, setCurrentPinnedMessageIndex, currentPinnedMessageIndex, togglePinnedMessage }) => {
@@ -42,7 +42,3 @@ export const PinnedMessage: FC<PinnedMessageProps> = ({ text, onClick, pinnedMes
                             {pinnedMessages.length === 1 ? <CloseIcon onClick={() => setPinnedMessages([])} /> : <IconPin />}
 
                      </div>
-
-              </>
-       )
-}

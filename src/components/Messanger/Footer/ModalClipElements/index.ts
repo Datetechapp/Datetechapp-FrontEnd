@@ -1,1 +1,1 @@
-export { ModalClipElements } from "./ModalClipElements"
+export { ModalClipElements } from './ModalClipElements';

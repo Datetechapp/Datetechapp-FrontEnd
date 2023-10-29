@@ -1,1 +1,1 @@
-export { PinnedMessage } from "./PinnedMessage"
+export { PinnedMessage } from './PinnedMessage';

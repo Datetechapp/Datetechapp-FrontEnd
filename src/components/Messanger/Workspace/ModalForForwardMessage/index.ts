@@ -1,1 +1,1 @@
-export { ModalForForwardMessage } from "./ModalForForwardMessage"
+export { ModalForForwardMessage } from './ModalForForwardMessage';

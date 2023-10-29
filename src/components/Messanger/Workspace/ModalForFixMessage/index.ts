@@ -1,1 +1,1 @@
-export { ModalForFixMessage } from "./ModalForFixMessage"
+export { ModalForFixMessage } from './ModalForFixMessage';

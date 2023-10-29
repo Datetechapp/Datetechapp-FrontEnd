@@ -1,1 +1,1 @@
-export { GenderDropdawn } from "./GenderDropdawn"
+export { GenderDropdawn } from './GenderDropdawn';

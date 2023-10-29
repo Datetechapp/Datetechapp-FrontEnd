@@ -1,1 +1,1 @@
-export { EmojiComponent } from "./EmojiComponent"
+export { EmojiComponent } from './EmojiComponent';

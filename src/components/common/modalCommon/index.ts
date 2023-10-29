@@ -1,1 +1,1 @@
-export { ModalCommon } from "./ModalCommon"
+export { ModalCommon } from './ModalCommon';

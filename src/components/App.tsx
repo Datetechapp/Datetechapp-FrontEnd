@@ -22,7 +22,6 @@ export const App = () => {
 
   const locationForBackSection = (pathname == '/login' || pathname == '/registration' || pathname == '/reset_password')
   return (
-
     <div>
       {/* <ModalWelcome /> */}
       {/* <Messanger /> */}

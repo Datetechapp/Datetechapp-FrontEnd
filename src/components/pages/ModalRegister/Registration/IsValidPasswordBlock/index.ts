@@ -1,1 +1,1 @@
-export { IsValidPasswordBlock } from "./IsValidPasswordBlock"
+export { IsValidPasswordBlock } from './IsValidPasswordBlock';

@@ -3,11 +3,11 @@ import { useCallback, useState, FC } from "react";
 import { ModalForFixMessage, ModalForDeleteMessage, ModalForForwardMessage, Message, EmojiComponent, PinnedMessage, SearchMessages } from ".";
 
 export interface Message {
-       id: string;
-       text: string;
-       isMe: boolean;
-       timestamp: string;
-       isPinned: boolean;
+  id: string;
+  text: string;
+  isMe: boolean;
+  timestamp: string;
+  isPinned: boolean;
 }
 
 interface WorkspaceProps {
@@ -17,7 +17,6 @@ interface WorkspaceProps {
        showSearchMessages: boolean;
        setShowSearchMessages: React.Dispatch<React.SetStateAction<boolean>>
 }
-
 
 const messagesArr: Message[] = [
        { id: "0", text: 'Hi! You have a cool video.Djfsdghvj fsjafhvdj shzj,chznm dzM<Fcnvm cn,zfmvn ja,mfdncm ,samfhznkjm k,jamshdzvn dsgkjvlx nxsvmn j,m n a,sxzmvn ,m anvjcz,mxn', isMe: false, timestamp: '12:30', isPinned: false },
@@ -39,20 +38,20 @@ export const Workspace: FC<WorkspaceProps> = ({ setSelectedMessageText, setShowR
 
        const [highlighted, setHighlighted] = useState(false);
 
-       const handleShowModal = useCallback(() => {
-              document.body.style.overflow = "hidden";
-              setShowModalFix(true);
-       }, []);
+  const handleShowModal = useCallback(() => {
+    document.body.style.overflow = 'hidden';
+    setShowModalFix(true);
+  }, []);
 
-       const handleShowModalForward = useCallback(() => {
-              document.body.style.overflow = "hidden";
-              setShowModalForward(true);
-       }, [])
+  const handleShowModalForward = useCallback(() => {
+    document.body.style.overflow = 'hidden';
+    setShowModalForward(true);
+  }, []);
 
-       const handleShowModalDelete = useCallback(() => {
-              document.body.style.overflow = "hidden";
-              setShowModalDelete(true);
-       }, [])
+  const handleShowModalDelete = useCallback(() => {
+    document.body.style.overflow = 'hidden';
+    setShowModalDelete(true);
+  }, []);
 
        const togglePinnedMessage = () => {
               if (pinnedMessages.length > 0) {
@@ -63,49 +62,61 @@ export const Workspace: FC<WorkspaceProps> = ({ setSelectedMessageText, setShowR
               }
        };
 
-       const handlePinnedMessage = useCallback((messageId: string) => {
-              const messageToPin = messagesArr.find(message => message.id === messageId);
+  const handlePinnedMessage = useCallback(
+    (messageId: string) => {
+      const messageToPin = messagesArr.find(
+        (message) => message.id === messageId,
+      );
 
-              if (messageToPin) {
-                     setPinnedMessages([...pinnedMessages, { ...messageToPin, isPinned: true }]);
-              }
-       }, [messagesArr, pinnedMessages]);
+      if (messageToPin) {
+        setPinnedMessages([
+          ...pinnedMessages,
+          { ...messageToPin, isPinned: true },
+        ]);
+      }
+    },
+    [messagesArr, pinnedMessages],
+  );
 
-       const handleUnpinnedMessage = useCallback(
-              (messageId: string) => {
-                     const newPinnedMessages = pinnedMessages.filter(
-                            (message) => message.id !== messageId
-                     );
-                     setPinnedMessages(newPinnedMessages);
+  const handleUnpinnedMessage = useCallback(
+    (messageId: string) => {
+      const newPinnedMessages = pinnedMessages.filter(
+        (message) => message.id !== messageId,
+      );
 
-                     const removedMessageIndex = pinnedMessages.findIndex(
-                            (message) => message.id === messageId
-                     );
+      setPinnedMessages(newPinnedMessages);
 
-                     if (currentPinnedMessageIndex >= removedMessageIndex) {
-                            setCurrentPinnedMessageIndex(
-                                   (prevIndex) => Math.max(prevIndex - 1, 0)
-                            );
-                     }
-              },
-              [pinnedMessages]
-       );
+      const removedMessageIndex = pinnedMessages.findIndex(
+        (message) => message.id === messageId,
+      );
 
-       const handleNotShowModal = useCallback(() => {
-              document.body.style.overflow = "unset";
-              setShowModalFix(false);
-              setShowModalDelete(false);
-              setShowModalForward(false);
-       }, []);
+      if (currentPinnedMessageIndex >= removedMessageIndex) {
+        setCurrentPinnedMessageIndex((prevIndex) => Math.max(prevIndex - 1, 0));
+      }
+    },
+    [pinnedMessages],
+  );
 
+  const handleNotShowModal = useCallback(() => {
+    document.body.style.overflow = 'unset';
+    setShowModalFix(false);
+    setShowModalDelete(false);
+    setShowModalForward(false);
+  }, []);
 
-       const handleContextMenu = useCallback((event: React.MouseEvent<HTMLDivElement, MouseEvent>, messageId: string) => {
-              event.preventDefault();
-              setSelectedMessageId(messageId);
-              setShowContextMenu(true);
-              setShowSmileyMenu(true);
-              setShowReplyMessage(false);
-       }, []);
+  const handleContextMenu = useCallback(
+    (
+      event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+      messageId: string,
+    ) => {
+      event.preventDefault();
+      setSelectedMessageId(messageId);
+      setShowContextMenu(true);
+      setShowSmileyMenu(true);
+      setShowReplyMessage(false);
+    },
+    [],
+  );
 
        const handleContextMenuAction = (text: string) => {
               setShowContextMenu(false);
@@ -199,31 +210,3 @@ export const Workspace: FC<WorkspaceProps> = ({ setSelectedMessageText, setShowR
               </div>
        );
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

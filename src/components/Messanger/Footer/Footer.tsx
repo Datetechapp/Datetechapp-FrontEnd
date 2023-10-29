@@ -10,34 +10,38 @@ import { UploadButton } from "components/pages/Questionnaire/UploadButton";
 import { ModalClipElements } from "./ModalClipElements";
 
 interface FooterProps {
-       selectedMessageText: string;
-       showReplyMessage: boolean;
-       onShowReplyMessage: () => void;
+  selectedMessageText: string;
+  showReplyMessage: boolean;
+  onShowReplyMessage: () => void;
 }
 
+export const Footer: FC<FooterProps> = ({
+  selectedMessageText,
+  showReplyMessage,
+  onShowReplyMessage,
+}) => {
+  const [messageValue, setMessageValue] = useState('');
+  const [showPicker, setShowPicker] = useState(false);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
-export const Footer: FC<FooterProps> = ({ selectedMessageText, showReplyMessage, onShowReplyMessage }) => {
-       const [messageValue, setMessageValue] = useState("");
-       const [showPicker, setShowPicker] = useState(false);
-       const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const handleTogglePicker = () => {
+    setShowPicker(!showPicker);
+  };
 
-       const handleTogglePicker = () => {
-              setShowPicker(!showPicker);
-       };
+  const handleEmojiClick = (event: any, emojiObject: any) => {
+    setMessageValue(messageValue + event.emoji);
+  };
 
-       const handleEmojiClick = (event: any, emojiObject: any) => {
-              setMessageValue(messageValue + event.emoji);
-       };
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newMessage = e.target.value;
 
-       const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-              const newMessage = e.target.value;
-              setMessageValue(newMessage);
-       };
+    setMessageValue(newMessage);
+  };
 
-       const handleUploadFile = (file: File) => {
-              setSelectedFile(file);
-              console.log('Загруженный файл:', file);
-       };
+  const handleUploadFile = (file: File) => {
+    setSelectedFile(file);
+    console.log('Загруженный файл:', file);
+  };
 
        const handleCloseSelectedImage = () => {
               setSelectedFile(null);

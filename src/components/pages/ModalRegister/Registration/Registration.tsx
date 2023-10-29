@@ -1,7 +1,5 @@
-import React, { useState, useEffect, useRef, FC } from "react";
-import { useNavigate, Link } from "react-router-dom";
-import css from "./registration.module.css";
-import { Button } from "../../../common";
+import React, { useState, useEffect, useRef, FC } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import validator from 'validator';
 
 import { EmailOrPhoneInput } from "../../../ModalAuth/EmailOrPhoneInput";
@@ -11,8 +9,8 @@ import { gendersAndPurposeFromBack } from "../../../../store/gendersAndPurpose/s
 import { useAppDispatch } from "hooks/hooks"
 import { hasUppercaseLetter, hasSpecialCharacters } from "components/ModalAuth/Login/Login";
 
-const passwordMustBe = "Password must be at least 8 characters"
-const enterVerificCode = "Enter your Verification code"
+const passwordMustBe = 'Password must be at least 8 characters';
+const enterVerificCode = 'Enter your Verification code';
 
 export const Registration: FC = () => {
 
@@ -23,26 +21,28 @@ export const Registration: FC = () => {
        const [errorMessage, setErrorMessage] = useState('');
        const [isCodeVerified, setIsCodeVerified] = useState(false)
 
-       const [isValidEmail, setIsValidEmail] = useState(false)
+  const [isValidEmail, setIsValidEmail] = useState(false);
 
-       const [passwordValid, setPasswordValid] = useState(false);
-       const [confirmPasswordValid, setConfirmPasswordValid] = useState(false);
-       const [isFocusedEmail, setIsFocusedEmail] = useState(false);
+  const [passwordValid, setPasswordValid] = useState(false);
+  const [confirmPasswordValid, setConfirmPasswordValid] = useState(false);
+  const [isFocusedEmail, setIsFocusedEmail] = useState(false);
 
-       const handleFocusChange = () => {
-              setIsFocusedEmail(!isFocusedEmail);
-       };
+  const handleFocusChange = () => {
+    setIsFocusedEmail(!isFocusedEmail);
+  };
 
+  const inputRef = useRef<HTMLInputElement>(null);
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
-
-       const inputRef = useRef<HTMLInputElement>(null);
-       const navigate = useNavigate()
-       const dispatch = useAppDispatch();
-
-       const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-              setPasswordValue(e.target.value);
-              setPasswordValid(e.target.value.length >= 8 && hasUppercaseLetter(e.target.value) && hasSpecialCharacters(e.target.value));
-       };
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPasswordValue(e.target.value);
+    setPasswordValid(
+      e.target.value.length >= 8 &&
+        hasUppercaseLetter(e.target.value) &&
+        hasSpecialCharacters(e.target.value),
+    );
+  };
 
        const handleConfirmPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
               setConfirmPasswordValue(e.target.value);
@@ -55,9 +55,10 @@ export const Registration: FC = () => {
        }
 
 
-       const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-              const newValue = e.target.value;
-              setErrorMessage("")
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = e.target.value;
+
+    setErrorMessage('');
 
               if (validator.isEmail(newValue)) {
                      setType('email');
@@ -71,16 +72,20 @@ export const Registration: FC = () => {
               setEmailOrPhoneValue(newValue);
        };
 
-       const handleSubmit = (e: React.FormEvent<HTMLFormElement> | React.KeyboardEvent<HTMLInputElement>) => {
-              e.preventDefault();
+  const handleSubmit = (
+    e: React.FormEvent<HTMLFormElement> | React.KeyboardEvent<HTMLInputElement>,
+  ) => {
+    e.preventDefault();
 
-              if (isCodeVerified) {
-                     if (passwordValue.length < 8) {
-                            setErrorMessage("Incorrect password. Password must be at least 8 characters")
-                     } else if (passwordValue !== confirmPasswordValue) {
-                            setErrorMessage("")
-                     } else {
-                            setErrorMessage("")
+    if (isCodeVerified) {
+      if (passwordValue.length < 8) {
+        setErrorMessage(
+          'Incorrect password. Password must be at least 8 characters',
+        );
+      } else if (passwordValue !== confirmPasswordValue) {
+        setErrorMessage('');
+      } else {
+        setErrorMessage('');
 
                             dispatch(gendersAndPurposeFromBack({ "password": passwordValue, "confirm_password": confirmPasswordValue }))
                             navigate("/create-profile")
@@ -153,4 +158,3 @@ export const Registration: FC = () => {
               </div>
        );
 };
-

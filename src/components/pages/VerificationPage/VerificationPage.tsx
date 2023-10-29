@@ -37,11 +37,12 @@ export const VerificationPage = () => {
               }
             };
 
-       const handleChange = (index: number, value: string) => {
-              const newValues = [...values];
-              newValues[index] = value;
-              setValues(newValues);
-       };
+  const handleChange = (index: number, value: string) => {
+    const newValues = [...values];
+
+    newValues[index] = value;
+    setValues(newValues);
+  };
 
        const isDisabled = values.some((value) => value === "");
        console.log(timer)
