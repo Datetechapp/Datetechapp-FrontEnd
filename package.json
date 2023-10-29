@@ -19,17 +19,21 @@
     "moment": "^2.29.4",
     "parse": "^4.1.0",
     "react": "^18.2.0",
+    "react-audio-analyser": "^1.0.0",
+    "react-audio-visualize": "^1.1.3",
     "react-avatar-editor": "^13.0.0",
     "react-dom": "^18.2.0",
-    "react-mic": "^12.4.6",
     "react-modal": "^3.16.1",
     "react-redux": "^8.1.1",
     "react-router-dom": "^6.14.2",
     "react-scripts": "5.0.1",
     "react-select": "^5.7.7",
+    "react-tone": "^1.1.1",
     "redux": "^4.2.1",
+    "tone": "^14.7.77",
     "uuid": "^9.0.0",
     "validator": "^13.9.0",
+    "validatorjs": "^3.22.1",
     "validators": "^0.3.1",
     "web-vitals": "^2.1.4",
     "yup": "^1.1.1"
@@ -61,11 +65,11 @@
   "devDependencies": {
     "@types/cors": "^2.8.13",
     "@types/react-avatar-editor": "^13.0.0",
-    "@types/react-mic": "^12.4.3",
     "@types/react-modal": "^3.16.0",
     "@types/redux": "^3.6.0",
     "@types/uuid": "^9.0.2",
-    "@types/validator": "^13.7.17",
+    "@types/validator": "^13.11.4",
+    "@types/validatorjs": "^3.15.2",
     "typescript": "^5.1.6"
   }
 }

@@ -6,8 +6,12 @@ import { ReactComponent as SearchIcon } from "../../../assets/Messanger/SearchIc
 import { ReactComponent as Options } from "../../../assets/Messanger/Options.svg"
 import { ReactComponent as PhoneIcon } from "../../../assets/Messanger/PhoneIcon.svg"
 
+interface HeaderProps {
+       setShowSearchMessages: React.Dispatch<React.SetStateAction<boolean>>
+}
 
-export const Header = () => {
+
+export const Header: React.FC<HeaderProps> = ({ setShowSearchMessages }) => {
        return (
               <div className={css.headerWrapper}>
                      <div className={css.blockWithPreviousStep}>
@@ -23,8 +27,8 @@ export const Header = () => {
                      </div>
                      <div className={css.messangerFeatures}>
                             <PhoneIcon />
-                            <SearchIcon />
-                            <CalendarIcon />           
+                            <SearchIcon onClick={() => setShowSearchMessages(true)} />
+                            <CalendarIcon />
                             <Options />
                      </div>
               </div>

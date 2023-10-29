@@ -53,7 +53,7 @@ const post = async (url: string, body: Record<string, any>, isAuthorization: boo
 export const createPassword = (body: { password: string, confirm_password: string }): Promise<{ genders: Record<string, string>, purposes: Record<string, string>, sex: Record<string, string>, discription_gender: Record<string, string> }> =>
        post("/registration/second_step/", body).then(response => response.json());
 
-export const registration = (body: { username: string }): Promise<Response> =>
+export const registration = (body: { username: string, password: string, confirm_password: string }): Promise<Response> =>
        post("/registration/first_step/", body)
 
 export const checkVerificationCode = (body: { passcode: string }): Promise<Response> =>

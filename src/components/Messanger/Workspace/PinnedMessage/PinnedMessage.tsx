@@ -1,4 +1,4 @@
-import { FC, Dispatch, SetStateAction } from "react"
+import { FC, Dispatch, SetStateAction, useState, useEffect } from "react"
 import css from "./pinnedMessage.module.css"
 import { ReactComponent as IconPin } from "../../../../assets/Messanger/IconPin.svg"
 import { ReactComponent as CloseIcon } from "../../../../assets/Messanger/iconForOnePinnedMessage.svg"
@@ -16,6 +16,11 @@ interface PinnedMessageProps {
 }
 
 export const PinnedMessage: FC<PinnedMessageProps> = ({ text, onClick, pinnedMessages, setPinnedMessages, setCurrentPinnedMessageIndex, currentPinnedMessageIndex, togglePinnedMessage }) => {
+
+       const maxLength = 80;
+       const truncatedText = text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
+
+
        return (
               <>
                      <div onClick={() => togglePinnedMessage()} className={css.pinnedMessagesContainer}>
@@ -31,11 +36,11 @@ export const PinnedMessage: FC<PinnedMessageProps> = ({ text, onClick, pinnedMes
                             </div>
                             <div className={css.pinnedMessageWrapper} onClick={onClick}>
                                    <p className={css.description}>Pinned Message</p>
-                                   <p className={css.pinnedMessage}>{text}</p>
+                                   <p className={css.pinnedMessage}>{truncatedText}</p>
                             </div>
-                     
-                                   {pinnedMessages.length === 1 ? <CloseIcon onClick={() => setPinnedMessages([])}/> : <IconPin />}
-                           
+
+                            {pinnedMessages.length === 1 ? <CloseIcon onClick={() => setPinnedMessages([])} /> : <IconPin />}
+
                      </div>
 
               </>

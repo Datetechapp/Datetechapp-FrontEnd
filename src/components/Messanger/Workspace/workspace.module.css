@@ -1,11 +1,23 @@
 .workspaceWrapper {
-       height: 631px;
+       height: 78.4vh;
+       width: 100%;
+    position: relative;
+}
+
+.workspaceContainer {
+       height: 100%;
        background: #1F1D2B;
        display: flex;
        flex-direction: column;
        padding: 0 16px 16px;
        justify-content: flex-end;
        position: relative;
+}
+
+.messagesContainer {
+       display: flex;
+       flex-direction: column;
+       gap: 4px;
 }
 
 .dateOfMessages {

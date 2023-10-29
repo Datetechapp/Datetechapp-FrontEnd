@@ -1,6 +1,6 @@
 import css from "./footer.module.css";
 import { Input } from "../../common/input";
-import { useState, FC, useRef } from "react";
+import { useState, FC } from "react";
 import { ReactComponent as EmojiIcon } from "../../../assets/Messanger/emojiIcon.svg";
 import { ReactComponent as Microphone } from "../../../assets/Messanger/Microphone.svg";
 import { ReactComponent as Clip } from "../../../assets/Messanger/Clip.svg"
@@ -54,10 +54,9 @@ export const Footer: FC<FooterProps> = ({ selectedMessageText, showReplyMessage,
                                           onClose={handleCloseSelectedImage}
                                           value={messageValue}
                                           onChange={handleInputChange}
-
                                    />
                             </div>}
-                     <div className={css.fieldForMessageWrapper}>
+                     <div className={ !showReplyMessage ? css.fieldForMessageWrapper : css.fieldForMessageWrapperWithReply}>
                             {showReplyMessage && <ReplyMessage text={selectedMessageText} setShowReplyMessage={() => onShowReplyMessage()} />}
                             <div className={css.iconsWrapper}>
                                    <EmojiIcon className={css.emojiIcon} onClick={handleTogglePicker} />

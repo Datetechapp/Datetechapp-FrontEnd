@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import css from "./registration.module.css";
 import { Button } from "../../../common";
 import validator from 'validator';
+
 import { EmailOrPhoneInput } from "../../../ModalAuth/EmailOrPhoneInput";
 import { NewPassword } from "../../../ModalAuth/NewPassword";
 import { registration } from "../../../../api"
@@ -21,7 +22,6 @@ export const Registration: FC = () => {
        const [type, setType] = useState<'email' | 'phone'>('email');
        const [errorMessage, setErrorMessage] = useState('');
        const [isCodeVerified, setIsCodeVerified] = useState(false)
-       const [authorized, setAuthorized] = useState(false);
 
        const [isValidEmail, setIsValidEmail] = useState(false)
 
@@ -49,6 +49,11 @@ export const Registration: FC = () => {
               setConfirmPasswordValid(e.target.value === passwordValue && e.target.value.length > 0);
        };
 
+       function isMobilePhone(value: string): boolean {
+              const phoneNumber = value.replace(/[^\d]/g, '');
+              return /^\+\d{11,}$/.test(phoneNumber);
+       }
+
 
        const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
               const newValue = e.target.value;
@@ -57,7 +62,7 @@ export const Registration: FC = () => {
               if (validator.isEmail(newValue)) {
                      setType('email');
                      setIsValidEmail(true);
-              } else if (validator.isMobilePhone(newValue, 'any')) {
+              } else if (isMobilePhone(newValue)) {
                      setType('phone');
                      setIsValidEmail(true);
               } else {
@@ -87,15 +92,12 @@ export const Registration: FC = () => {
                      if (!validator.isEmail(emailOrPhoneValue) && !validator.isMobilePhone(emailOrPhoneValue, 'any')) {
                             setErrorMessage('Incorrect E-mail or Phone number. Check the character set and try again');
                      } else {
-                            registration({ "username": emailOrPhoneValue }).then((response) => {
+                            registration({ "username": emailOrPhoneValue, "password": passwordValue, "confirm_password": confirmPasswordValue }).then((response) => {
                                    if (response.ok) {
-                                          setAuthorized(true);
                                           setErrorMessage("")
                                    } else {
                                           throw new Error('Ошибка при выполнении запроса: ' + response.status);
                                    }
-
-
                             }).catch((error) => {
                                    console.error("Произошла ошибка при выполнении запроса:", error);
                                    setErrorMessage("Data has already been used in the system.")
@@ -106,10 +108,10 @@ export const Registration: FC = () => {
 
 
        useEffect(() => {
-              if (authorized && inputRef.current) {
+              if (inputRef.current) {
                      inputRef.current.focus();
               }
-       }, [authorized]);
+       }, []);
 
 
        return (
@@ -124,7 +126,7 @@ export const Registration: FC = () => {
                                           <EmailOrPhoneInput
                                                  className={!isFocusedEmail && emailOrPhoneValue.length === 0 ? css.inputForEmail
                                                         : isFocusedEmail ? css.inputForFocusedEmail
-                                                               : (isValidEmail && !isFocusedEmail)
+                                                               : (isValidEmail && !isFocusedEmail && !errorMessage)
                                                                       ? css.inputForEmailValid
                                                                       : css.inputForEmailError}
                                                  value={emailOrPhoneValue}

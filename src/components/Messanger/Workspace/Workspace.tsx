@@ -1,6 +1,6 @@
 import css from "./workspace.module.css";
-import { useCallback, useState, useEffect, FC } from "react";
-import { ModalForFixMessage, ModalForDeleteMessage, ModalForForwardMessage, Message, EmojiComponent, PinnedMessage } from ".";
+import { useCallback, useState, FC } from "react";
+import { ModalForFixMessage, ModalForDeleteMessage, ModalForForwardMessage, Message, EmojiComponent, PinnedMessage, SearchMessages } from ".";
 
 export interface Message {
        id: string;
@@ -14,18 +14,20 @@ interface WorkspaceProps {
        setSelectedMessageText: any;
        setShowReplyMessage: any;
        selectedMessageText: string;
+       showSearchMessages: boolean;
+       setShowSearchMessages: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 
 const messagesArr: Message[] = [
-       { id: "1", text: 'Hi! You have a cool video.Djfsdghvj fsjafhvdj shzj,chznm dzM<Fcnvm cn,zfmvn ja,mfdncm ,samfhznkjm k,jamshdzvn dsgkjvlx nxsvmn j,m n a,sxzmvn ,m anvjcz,mxn', isMe: false, timestamp: '12:30', isPinned: false },
-       { id: "2", text: "Hi!Thanks. I'm very pleased.", isMe: true, timestamp: '12:31', isPinned: false },
-       { id: "3", text: 'I would like to meet you.', isMe: false, timestamp: '12:35', isPinned: false },
-       { id: "4", text: "but I'm very tired today", isMe: false, timestamp: '12:36', isPinned: false },
-       { id: "5", text: "i will write to you tomorrow..", isMe: false, timestamp: '12:40', isPinned: false },
+       { id: "0", text: 'Hi! You have a cool video.Djfsdghvj fsjafhvdj shzj,chznm dzM<Fcnvm cn,zfmvn ja,mfdncm ,samfhznkjm k,jamshdzvn dsgkjvlx nxsvmn j,m n a,sxzmvn ,m anvjcz,mxn', isMe: false, timestamp: '12:30', isPinned: false },
+       { id: "1", text: "Hi!Thanks. I'm very pleased.", isMe: true, timestamp: '12:31', isPinned: false },
+       { id: "2", text: 'I would like to meet you.', isMe: false, timestamp: '12:35', isPinned: false },
+       { id: "3", text: "but I'm very tired today", isMe: false, timestamp: '12:36', isPinned: false },
+       { id: "4", text: "i will write to you tomorrow..", isMe: false, timestamp: '12:40', isPinned: false },
 ]
 
-export const Workspace: FC<WorkspaceProps> = ({ setSelectedMessageText, setShowReplyMessage, selectedMessageText }: WorkspaceProps) => {
+export const Workspace: FC<WorkspaceProps> = ({ setSelectedMessageText, setShowReplyMessage, selectedMessageText, showSearchMessages, setShowSearchMessages }: WorkspaceProps) => {
        const [showContextMenu, setShowContextMenu] = useState(false);
        const [showSmileyMenu, setShowSmileyMenu] = useState(false);
        const [selectedMessageId, setSelectedMessageId] = useState('');
@@ -34,6 +36,8 @@ export const Workspace: FC<WorkspaceProps> = ({ setSelectedMessageText, setShowR
        const [showModalDelete, setShowModalDelete] = useState(false);
        const [pinnedMessages, setPinnedMessages] = useState<Message[]>([]);
        const [currentPinnedMessageIndex, setCurrentPinnedMessageIndex] = useState(0);
+
+       const [highlighted, setHighlighted] = useState(false);
 
        const handleShowModal = useCallback(() => {
               document.body.style.overflow = "hidden";
@@ -53,6 +57,9 @@ export const Workspace: FC<WorkspaceProps> = ({ setSelectedMessageText, setShowR
        const togglePinnedMessage = () => {
               if (pinnedMessages.length > 0) {
                      setCurrentPinnedMessageIndex((prevIndex) => (prevIndex + 1) % pinnedMessages.length);
+
+                     const selectedMessage = messagesArr.find((message) => message.id === selectedMessageId);
+                     setHighlighted(selectedMessage?.id === selectedMessageId);
               }
        };
 
@@ -122,8 +129,11 @@ export const Workspace: FC<WorkspaceProps> = ({ setSelectedMessageText, setShowR
               }
        };
 
+
+
        return (
-              <>
+              <div className={css.workspaceWrapper}>
+                     {showSearchMessages && <SearchMessages setShowSearchMessages={setShowSearchMessages}/>}
                      {pinnedMessages.length > 0 && (
                             <PinnedMessage
                                    togglePinnedMessage={togglePinnedMessage}
@@ -134,7 +144,7 @@ export const Workspace: FC<WorkspaceProps> = ({ setSelectedMessageText, setShowR
                                    text={pinnedMessages[currentPinnedMessageIndex]?.text}
                             />
                      )}
-                     <div className={css.workspaceWrapper}>
+                     <div className={css.workspaceContainer}>
                             <div className={css.messagesContainer}>
                                    <p className={css.dateOfMessages}>25 May 2023</p>
                                    {messagesArr.map((message) => (
@@ -144,6 +154,9 @@ export const Workspace: FC<WorkspaceProps> = ({ setSelectedMessageText, setShowR
                                                  )}
 
                                                  <Message
+                                                        currentPinnedMessageIndex={currentPinnedMessageIndex}
+                                                        highlighted={highlighted}
+                                                        setHighlighted={setHighlighted}
                                                         id={message.id}
                                                         text={message.text}
                                                         isMe={message.isMe}
@@ -183,7 +196,7 @@ export const Workspace: FC<WorkspaceProps> = ({ setSelectedMessageText, setShowR
                             onRequestDelete={handleNotShowModal}
                             selectedMessageId={selectedMessageId}
                      />
-              </>
+              </div>
        );
 };
 
