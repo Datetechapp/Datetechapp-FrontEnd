@@ -18,6 +18,7 @@
 
 .header__logo {
   height: 48px;
+  cursor: pointer;
 }
 
 .navList {

@@ -1,4 +1,4 @@
-import styles from "./LanguagesSwich.module.css";
+import "./LanguagesSwich.css";
 
 type Language = {
   key: number;
