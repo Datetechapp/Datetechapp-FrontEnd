@@ -44,7 +44,7 @@ export const App = () => {
             <Route path="self" element={<UserSelfPage />} />
             {/* <Route path="messanger" element={<Messanger />} /> */}
             <Route path="forYou" element={null} />
-            <Route path="search" element={null} />
+            <Route path="search" element={null}/>
             <Route path="settings" element={null} />
             <Route path="calendar" element={null} />
             <Route path="favorites" element={null} />
