@@ -1,12 +1,21 @@
 .LanguageSelect {
   display: flex;
-  gap: 8px;
+  gap: 12px;
   justify-content: end;
   cursor: pointer;
   position: relative;
   width: 152px;
   height: 25px;
   align-self: center;
+  align-items: center;
+}
+
+.selectLanguage {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: 0.1px;
 }
 
 .LanguageSelect .Visible {

@@ -1,15 +1,15 @@
-import './BackSection.css';
-import { Header } from 'components/Header/Header';
-import { PropsWithChildren } from 'react';
-import video from '../../assets/Background/myvideo.mp4';
+import styles from "./BackSection.module.css";
+import { Header } from "components/Header/Header";
+import { PropsWithChildren } from "react";
+import video from "../../assets/Background/myvideo.mp4";
 
-export function BackSection({
+export const BackSection = ({
   children,
-}: PropsWithChildren<{ children: React.ReactNode }>) {
+}: PropsWithChildren<{ children: React.ReactNode }>) => {
   return (
-    <div className="BackSection">
+    <div className={styles.BackSection}>
       <video
-        className="BackSection_video"
+        className={styles.BackSection_video}
         autoPlay
         muted
         loop
@@ -22,4 +22,4 @@ export function BackSection({
       {children}
     </div>
   );
-}
+};

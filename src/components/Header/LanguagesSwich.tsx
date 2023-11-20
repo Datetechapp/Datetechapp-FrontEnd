@@ -1,4 +1,4 @@
-import './LanguagesSwich.css';
+import "./LanguagesSwich.css";
 
 type Language = {
   key: number;
@@ -10,17 +10,16 @@ interface LanguagesSwichType {
   ChangeLang: (x: string) => void;
 }
 
-export function LanguagesSwich({
+export const LanguagesSwich = ({
   language,
   nameClass,
   ChangeLang,
-}: LanguagesSwichType) {
+}: LanguagesSwichType) => {
   const lang = language.map((item) => (
     <li onClick={() => ChangeLang(item.lang)} key={item.key}>
       {item.lang}
     </li>
   ));
-
   return (
     <div className={`Languages ${nameClass}`}>
       <div>
@@ -28,4 +27,4 @@ export function LanguagesSwich({
       </div>
     </div>
   );
-}
+};

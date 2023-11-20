@@ -1,44 +1,59 @@
 .header {
-    position: relative;
-    display: flex;
-    font-family: 'Montserrat', sans-serif;;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 25px;
-    color: #E9E3F5;
-    letter-spacing: -0.5px;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0;
-    width: 80vw;
-    height: 56px;
-    margin: 20px auto 35px;
+  position: relative;
+  display: flex;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 25px;
+  color: #e9e3f5;
+  letter-spacing: -0.5px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  width: 80vw;
+  height: 48px;
+  margin: 24px auto 0px;
 }
 
-.header__logo{
-    height: 52px;
+.header__logo {
+  height: 48px;
+  cursor: pointer;
 }
 
 .navList {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    text-align: center;
-    list-style-type: none;
+  display: flex;
+  text-align: center;
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: stretch;
 }
 
 .navListItem {
-    padding: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: 0.4s ease-in;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: 0.4s ease-in;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: 0.1px;
 }
 
 .navListItem:hover {
-    color: #C896EF;
-    transition: 0.4s ease-in;
+  color: #c896ef;
+  transition: 0.4s ease-in;
+}
+
+.header__buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 30px;
 }
