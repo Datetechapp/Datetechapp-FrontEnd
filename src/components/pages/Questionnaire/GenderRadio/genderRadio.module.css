@@ -1,0 +1,45 @@
+.genderRadioWrapper {
+       width: 392px;
+       height: 48px;
+       background: #1F1D2B;
+       border: 1.5px solid var(--super-white, #E1DBED);
+       border-radius: 5px;
+       font-family: 'Montserrat';
+       font-weight: 600;
+       font-size: 18px;
+       line-height: 25px;
+       letter-spacing: -0.5px;
+       color: #E9E3F5;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+}
+
+.genderRadioWrapper,
+.genderRadioWrapper * {
+       cursor: pointer;
+}
+
+.genderRadioWrapperActive {
+       width: 392px;
+       height: 48px;
+       background: var(--Violet_Active, #C896EF);
+       border: 1.5px solid var(--super-white, #E1DBED);
+       border-radius: 5px;
+       font-family: 'Montserrat';
+       font-weight: 600;
+       font-size: 18px;
+       line-height: 25px;
+       letter-spacing: -0.5px;
+       color: #E9E3F5;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+}
+
+
+input[type="radio"] {
+       appearance: none;
+       -webkit-appearance: none;
+       -moz-appearance: none;
+}

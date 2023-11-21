@@ -1,0 +1,138 @@
+.outerWrapper {
+       z-index: 1;
+}
+
+.dropdawnWrapperOpen {
+       position: absolute;
+       width: 472px;
+       top: 50%;
+       left: 50%;
+       margin-top: -335px;
+       margin-left: -236px;
+       z-index: 2;
+}
+
+.dropdawnHeader {
+       height: 40px;
+       padding: 10px 8px 10px 16px;
+       margin-top: 10px;
+       background: #1F1D2B;
+       border: 1.5px solid var(--super-white, #E1DBED);
+       border-radius: 30px;
+       outline: none;
+       appearance: none;
+       box-sizing: border-box;
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
+       cursor: pointer;
+}
+
+.dropdawnHeaderOpen {
+       height: 48px;
+       padding: 24px 24px 0 24px;
+       background: #1F1D2B;
+       border: 1.5px solid #C896EF;
+       border-bottom: none;
+       border-radius: 30px 30px 0 0;
+       outline: none;
+       appearance: none;
+       box-sizing: border-box;
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
+       cursor: pointer;
+}
+
+.titleForClosed {
+       font-family: 'Montserrat';
+       font-weight: 500;
+       font-size: 16px;
+       line-height: 20px;
+       color: #E1DBED;
+}
+
+.titleForOpen {
+       font-family: 'Montserrat';
+       font-weight: 600;
+       font-size: 22px;
+       line-height: 24px;
+       letter-spacing: 0.5px;
+       color: #E1DBED;
+}
+
+.optionSelected {
+       height: 40px;
+       padding: 10px 8px 10px 16px;
+       margin-top: 10px;
+       background: #C896EF;
+       border: 1.5px solid #C896EF;
+       border-radius: 30px;
+       outline: none;
+       appearance: none;
+       box-sizing: border-box;
+       display: flex;
+       align-items: center;
+       justify-content: space-between;
+       cursor: pointer;
+}
+
+.dropdawnOptions {
+       background: #1F1D2B;
+       padding: 0 24px 24px 24px;
+       border: 1.5px solid #C896EF;
+       border-top: none;
+       border-radius: 0 0 30px 30px;
+       overflow-y: scroll;
+       height: 622px;
+       position: relative;
+}
+
+.dropdawnOptions {
+       overflow-y: scroll;
+       scrollbar-width: none;
+       -ms-overflow-style: none;
+}
+
+.dropdawnOptions::-webkit-scrollbar {
+       display: none;
+}
+
+.blockForOption {
+       padding: 8px 0 12px 0;
+       border-bottom: 1px solid #5F4F7F;
+       cursor: pointer;
+}
+
+.blockForOption:nth-child(1) {
+       margin-top: 32px;
+}
+
+.dropdawnTitle {
+       font-family: 'Montserrat';
+       font-weight: 600;
+       font-size: 16px;
+       line-height: 34px;
+       letter-spacing: -0.5px;
+       color: #C896EF;
+}
+
+.dropdawnDescription {
+       width: 296px;
+       font-family: 'Montserrat';
+       font-weight: 600;
+       font-size: 12px;
+       line-height: 18px;
+       letter-spacing: -0.5px;
+       color: #E9E3F5;
+}
+
+.backdrop {
+       position: fixed;
+       top: 0;
+       left: 0;
+       width: 100%;
+       height: 100%;
+       background-color: rgba(0, 0, 0, 0.5);
+       z-index: 1;
+}

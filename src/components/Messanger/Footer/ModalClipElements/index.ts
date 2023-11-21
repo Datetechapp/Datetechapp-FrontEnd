@@ -1,0 +1,1 @@
+export { ModalClipElements } from './ModalClipElements';

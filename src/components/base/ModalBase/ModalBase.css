@@ -1,0 +1,127 @@
+.ModalBase{
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    font-family: 'Montserrat';
+    font-style: normal;
+
+}
+.ModalBase_block{
+    position: relative;
+    border-radius: 7px;
+}
+.ModalBase_block::before{
+    content: "";
+    clear: both;
+    display: block;
+    position: absolute;
+    width: 96px;
+    height: 96px;
+    left: 17px;
+    top: -21px;
+    background: #C896EF;
+    opacity: 0.1;
+    border-radius: 50%;
+}
+.block_CloseModal{
+    position: absolute;
+    right: 0;
+    z-index: 1;   
+}
+.block_elem::before{
+    content: "";
+    clear: both;
+    display: block;
+    position: absolute;
+    width: 170px;
+    height: 155px; 
+    background: #C896EF;
+    opacity: 0.1;
+    border-radius: 50%;
+    left: 307px;
+    top: -70px;
+}
+.CloseModal__Btn-close{
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+    float: right;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+    width: inherit;
+
+}
+.Btn-close_img{
+    width: 18.67px;
+    height: 18.67px;
+    margin-top: 22.67px;
+    margin-right: 22.67px;
+}
+.block_elem{
+    position: relative; 
+}
+.block_elem::after{
+    content: "";
+    clear: both;
+    display: block;
+    position: absolute;
+    border-radius: 50%;
+    width: 82px;
+    height: 82px;
+    background: #DE77C7;
+    opacity: 0.1;
+    left: 205px;
+    top: 36px;
+}
+.ModalBase_block::after{
+    content: "";
+    clear: both;
+    display: block;
+    position: absolute;
+    width: 235px;
+    height: 235px;
+    left: 5px;
+    top: 189px;
+    background: #F6C4DE;
+    opacity: 0.2;
+    border-radius: 50%;
+}
+.ModalWindAuth_title{
+    font-family: 'Montserrat';
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 30px;
+    text-align: center;
+    letter-spacing: -0.5px;
+    color: #EB53A2;
+    margin-top: 32px; 
+}
+.ModalWindAuth_img{
+    display: block;
+    z-index: 10;
+    position: relative;
+}
+.ModalWindAuth_text{
+    width: 281px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    letter-spacing: -0.5px;
+    margin: 0 auto 36px;
+    color: #5F4F7F;
+}
+.ModalWindAuth_text span{
+    color: #EB53A2;
+    font-weight: 600;
+    line-height: 25px;
+}

@@ -1,0 +1,94 @@
+.inputForEmail:-webkit-autofill,
+.inputForEmail:-webkit-autofill:hover,
+.inputForEmail:-webkit-autofill:focus,
+.inputForEmail:-webkit-autofill:active {
+       transition: background-color 5000s;
+       -webkit-text-fill-color: #fff !important;
+}
+
+/* .inputForEmail {
+       width: 392px;
+       height: 48px;
+       padding: 22px 50px 22px 20px;
+       border-radius: 5px;
+       border: 1.5px solid #5F4F7F;
+       background-color: #201B27;
+       color: #E9E3F5;
+       font-family: 'Montserrat', Arial, sans-serif;
+       font-size: 18px;
+       font-weight: 400;
+       line-height: 25px;
+       letter-spacing: -0.5px;
+       background-image: url("../../../assets/ModalAuth/Union.svg");
+       background-repeat: no-repeat;
+       background-position: right 18px center;
+}
+
+.inputForFocusedEmail {
+       width: 392px;
+       height: 48px;
+       padding: 22px 50px 22px 20px;
+       border-radius: 5px;
+       border: 1.5px solid #C896EF;
+       background-color: #201B27;
+       color: #E9E3F5;
+       font-family: 'Montserrat', Arial, sans-serif;
+       font-size: 18px;
+       font-weight: 400;
+       line-height: 25px;
+       letter-spacing: -0.5px;
+       background-image: url("../../../assets/ModalAuth/UnionFocus.svg");
+       background-repeat: no-repeat;
+       background-position: right 18px center;
+}
+
+.inputForEmailError {
+       width: 392px;
+       height: 48px;
+       padding: 22px 50px 22px 20px;
+       border-radius: 5px;
+       border: 1.5px solid #D75048;
+       background-color: #201B27;
+       color: #E9E3F5;
+       font-family: 'Montserrat', Arial, sans-serif;
+       font-size: 18px;
+       font-weight: 400;
+       line-height: 25px;
+       letter-spacing: -0.5px;
+       background-image: url("../../../assets/ModalAuth/ErrorIcon.svg");
+       background-repeat: no-repeat;
+       background-position: right 18px center;
+}
+
+.inputForEmailValid{
+       width: 392px;
+       height: 48px;
+       padding: 22px 50px 22px 20px;
+       border-radius: 5px;
+       border: 1.5px solid green;
+       background-color: #201B27;
+       color: #E9E3F5;
+       font-family: 'Montserrat', Arial, sans-serif;
+       font-size: 18px;
+       font-weight: 400;
+       line-height: 25px;
+       letter-spacing: -0.5px;
+       background-image: url("../../../assets/ModalAuth/iconForValidEmail.svg");
+       background-repeat: no-repeat;
+       background-position: right 18px center;
+}
+
+
+.inputForEmail:focus, .inputForFocusedEmail:focus, .inputForEmailError:focus, .inputForEmailValid:focus  {
+       outline: none;
+}
+
+
+.inputForEmail::placeholder, .inputForFocusedEmail::placeholder {
+       font-family: 'Montserrat', Arial, sans-serif;
+       font-size: 18px;
+       font-weight: 600;
+       line-height: 25px;
+       letter-spacing: -0.5px;
+       color: #5F4F7F;
+} */

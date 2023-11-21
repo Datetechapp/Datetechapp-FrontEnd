@@ -1,0 +1,259 @@
+a,
+button {
+       cursor: pointer;
+}
+
+.blockToRegistration {
+       display: flex;
+       margin: 52px auto 0;
+       justify-content: center;
+       gap: 100px;
+}
+
+.messageSignIn {
+       width: 95px;
+       text-align: center;
+       font-family: 'Montserrat', Arial, sans-serif;
+       font-size: 24px;
+       font-weight: 600;
+       line-height: 26px;
+       letter-spacing: -0.5px;
+       color: #E9E3F5;
+}
+
+.messageHaveAnAccount {
+       text-align: center;
+       font-family: Montserrat;
+       font-size: 12px;
+       font-weight: 400;
+       line-height: 18px;
+       letter-spacing: 0.1px;
+       color: var(--White, #E9E3F5);
+       align-self: flex-end;
+}
+
+.formForEmail {
+       display: flex;
+       flex-direction: column;
+       width: 392px;
+       justify-content: center;
+       margin: 0 auto;
+}
+
+.inputBlock {
+       margin-top: 40px;
+}
+
+.inputForEmail {
+       width: 392px;
+       height: 48px;
+       padding: 22px 50px 22px 20px;
+       border-radius: 5px;
+       border: 1.5px solid #5F4F7F;
+       background-color: #201B27;
+       color: #E9E3F5;
+       font-family: 'Montserrat', Arial, sans-serif;
+       font-size: 18px;
+       font-weight: 400;
+       line-height: 25px;
+       letter-spacing: -0.5px;
+       background-image: url("../../../assets/ModalAuth/Union.svg");
+       background-repeat: no-repeat;
+       background-position: right 18px center;
+}
+
+.inputForFocusedEmail {
+       width: 392px;
+       height: 48px;
+       padding: 22px 50px 22px 20px;
+       border-radius: 5px;
+       border: 1.5px solid #C896EF;
+       background-color: #201B27;
+       color: #E9E3F5;
+       font-family: 'Montserrat', Arial, sans-serif;
+       font-size: 18px;
+       font-weight: 400;
+       line-height: 25px;
+       letter-spacing: -0.5px;
+       background-image: url("../../../assets/ModalAuth/UnionFocus.svg");
+       background-repeat: no-repeat;
+       background-position: right 18px center;
+}
+
+.inputForFocusedEmail:focus, 
+.inputForEmail:focus, 
+.inputForFocusedPassword:focus, 
+.inputForPassword:focus  {
+       outline: none;
+}
+
+.inputForEmail::placeholder, 
+.inputForFocusedEmail::placeholder, 
+.inputForPassword::placeholder, 
+.inputForFocusedPassword::placeholder {
+       font-family: 'Montserrat', Arial, sans-serif;
+       font-size: 18px;
+       font-weight: 600;
+       line-height: 25px;
+       letter-spacing: -0.5px;
+       color: #5F4F7F;
+}
+
+.inputForPassword {
+       width: 392px;
+       height: 48px;
+       padding: 22px 50px 22px 20px;
+       border-radius: 5px;
+       border: 1.5px solid #5F4F7F;
+       background-color: #201B27;
+       color: #E9E3F5;
+       font-family: 'Montserrat', Arial, sans-serif;
+       font-size: 18px;
+       font-weight: 400;
+       line-height: 25px;
+       letter-spacing: -0.5px;
+}
+
+.inputForFocusedPassword {
+       width: 392px;
+       height: 48px;
+       padding: 22px 50px 22px 20px;
+       border-radius: 5px;
+       border: 1.5px solid #C896EF;
+       background-color: #201B27;
+       color: #E9E3F5;
+       font-family: 'Montserrat', Arial, sans-serif;
+       font-size: 18px;
+       font-weight: 400;
+       line-height: 25px;
+       letter-spacing: -0.5px;
+}
+
+.blockInputPassword {
+       margin-top: 24px;
+       position: relative;
+}
+
+.btnContinue {
+       height: 48px;
+       margin-top: 32px;
+       padding: 16px 18px;
+       border-radius: 5px;
+       background-color: #302E3D;
+       font-family: 'Montserrat', Arial, sans-serif;
+       font-size: 16px;
+       font-weight: 600;
+       line-height: 17px;
+       letter-spacing: -0.5px;
+       color: #635874;
+}
+
+.btnContinuePink {
+       height: 48px;
+       margin-top: 32px;
+       padding: 16px 18px;
+       border-radius: 5px;
+       background: linear-gradient(180deg, #9747FF 0%, #E551E8 100%);
+       font-family: 'Montserrat', Arial, sans-serif;
+       font-size: 16px;
+       font-weight: 600;
+       line-height: 17px;
+       letter-spacing: -0.5px;
+       color: #E9E3F5;
+}
+
+.btnContinuePink:active {
+       background: #B71A78;
+}
+
+
+
+.errorMsg {
+       margin-top: 6px;
+       font-family: 'Montserrat', Arial, sans-serif;
+       font-weight: 400;
+       font-size: 16px;
+       line-height: 17px;
+       letter-spacing: -0.5px;
+       color: #D75048;
+       text-align: initial;
+
+}
+
+.forgotPassword {
+       font-family: 'Montserrat', Arial, sans-serif;
+       font-weight: 600;
+       font-size: 12px;
+       line-height: 14px;
+       color: var(--White, #FFF);
+       cursor: pointer;
+}
+
+
+.enterVerificCode {
+       font-family: 'Montserrat';
+       font-weight: 500;
+       font-size: 18px;
+       line-height: 25px;
+       letter-spacing: -0.5px;
+       color: #E9E3F5;
+       text-align: center;
+       margin: 48px 0 0 0;
+}
+
+.enterNewPassword {
+       font-family: 'Montserrat';
+       font-weight: 500;
+       font-size: 18px;
+       line-height: 25px;
+       letter-spacing: -0.5px;
+       color: #E9E3F5;
+       text-align: center;
+       margin: 70px 0 0 0;
+}
+
+
+
+.checkboxForgotBlock {
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
+       margin-top: 12px;
+}
+
+.resendVerificate {
+       margin: 20px 0 0 0;
+       font-family: 'Montserrat';
+       font-weight: 500;
+       font-size: 16px;
+       line-height: 25px;
+       letter-spacing: -0.5px;
+       text-decoration-line: underline;
+       color: #FCFCFC;
+       text-align: center;
+       cursor: pointer;
+}
+
+.linkToSignUp {
+       margin: 66px 0 65px 0;
+       font-family: 'Montserrat';
+       font-weight: 500;
+       font-size: 16px;
+       line-height: 17px;
+       text-align: center;
+       letter-spacing: -0.5px;
+       text-decoration-line: underline;
+       color: #E9E3F5;
+}
+
+.linkToSignUpWithMargin {
+       margin: 128px 0 66px 0;
+       font-family: 'Montserrat';
+       font-weight: 500;
+       font-size: 16px;
+       line-height: 17px;
+       text-align: center;
+       letter-spacing: -0.5px;
+       text-decoration-line: underline;
+       color: #E9E3F5;
+}

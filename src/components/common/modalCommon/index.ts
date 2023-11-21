@@ -1,0 +1,1 @@
+export { ModalCommon } from './ModalCommon';

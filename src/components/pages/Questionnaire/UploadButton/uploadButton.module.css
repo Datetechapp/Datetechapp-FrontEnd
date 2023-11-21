@@ -1,0 +1,15 @@
+.inputForVideo {
+       display: none;
+}
+
+.blockForUploadPhotoButton {
+       position: absolute;
+       top: 73px;
+       left: 73px;
+}
+
+.blockForUploadVideoButton {
+       position: absolute;
+       top: 73px;
+       left: 73px;
+}

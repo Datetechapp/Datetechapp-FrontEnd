@@ -1,0 +1,44 @@
+.LanguageSelect {
+  display: flex;
+  gap: 12px;
+  justify-content: end;
+  cursor: pointer;
+  position: relative;
+  width: 152px;
+  height: 25px;
+  align-self: center;
+  align-items: center;
+}
+
+.selectLanguage {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: 0.1px;
+}
+
+.LanguageSelect.Visible {
+  position: absolute;
+  z-index: 1;
+  display: block;
+  opacity: 1;
+  animation: languagevisible 0.5s ease-in-out;
+}
+
+@keyframes languagevisible {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+
+  1% {
+    display: block;
+    opacity: 0;
+  }
+
+  100% {
+    display: block;
+    opacity: 1;
+  }
+}

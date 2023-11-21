@@ -1,0 +1,1 @@
+export { ModalForDeleteMessage } from './ModalForDeleteMessage';

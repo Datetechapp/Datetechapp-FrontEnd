@@ -3,19 +3,45 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.3",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "ajv": "^4.11.8",
+    "antd": "^5.5.0",
+    "axios-mock-adapter": "^1.21.5",
+    "cors": "^2.8.5",
+    "emoji-datasource-apple": "^15.0.1",
+    "emoji-picker-react": "^4.4.12",
+    "express": "^4.18.2",
+    "formik": "^2.2.9",
+    "libphonenumber-js": "^1.10.30",
+    "moment": "^2.29.4",
+    "parse": "^4.1.0",
     "react": "^18.2.0",
+    "react-avatar-editor": "^13.0.0",
     "react-dom": "^18.2.0",
+    "react-modal": "^3.16.1",
+    "react-redux": "^8.1.1",
+    "react-router-dom": "^6.14.2",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "react-select": "^5.7.7",
+    "react-voice-visualizer": "^1.7.4",
+    "redux": "^4.2.1",
+    "uuid": "^9.0.0",
+    "validator": "^13.9.0",
+    "validatorjs": "^3.22.1",
+    "validators": "^0.3.1",
+    "web-vitals": "^2.1.4",
+    "yup": "^1.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix"
   },
   "eslintConfig": {
     "extends": [
@@ -36,6 +62,23 @@
     ]
   },
   "devDependencies": {
-    "typescript": "^4.9.5"
+    "@types/cors": "^2.8.13",
+    "@types/react-avatar-editor": "^13.0.0",
+    "@types/react-modal": "^3.16.0",
+    "@types/redux": "^3.6.0",
+    "@types/uuid": "^9.0.2",
+    "@types/validator": "^13.7.17",
+    "@typescript-eslint/eslint-plugin": "^6.8.0",
+    "@typescript-eslint/parser": "^6.8.0",
+    "eslint": "^8.51.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^3.0.3",
+    "typescript": "^5.1.6"
   }
 }
