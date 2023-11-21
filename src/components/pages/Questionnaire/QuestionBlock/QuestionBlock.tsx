@@ -1,4 +1,4 @@
-import { FC, useState, ChangeEvent } from 'react';
+import React, { FC, useState, ChangeEvent } from 'react';
 import { Button, Input } from 'components/common';
 import css from './questionBlock.module.css';
 

@@ -106,11 +106,7 @@ export function Questionnaire() {
     }
   };
 
-  const handleGenderChange = (
-    event:
-      | React.ChangeEvent<HTMLInputElement>
-      | React.ChangeEvent<HTMLSelectElement>,
-  ) => {
+  const handleGenderChange = (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => {
     if (event.target.value === 'Male' || event.target.value === 'Female') {
       setSex(event.target.value);
       setGender('');
@@ -120,11 +116,7 @@ export function Questionnaire() {
     }
   };
 
-  const handleGenderFilter = (
-    event:
-      | React.ChangeEvent<HTMLInputElement>
-      | React.ChangeEvent<HTMLSelectElement>,
-  ) => {
+  const handleGenderFilter = (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => {
     if (event.target.value === 'Male') {
       setGenderFilter('Male');
     } else {
@@ -156,21 +148,20 @@ export function Questionnaire() {
     <div className={css.questionnaireWrapper}>
       <HeaderSecondary text="Log out" />
       <div
-        className={`${css.main} ${
-          step === 0
-            ? css.nameQuestion
-            : step === 1
+        className={`${css.main} ${step === 0
+          ? css.nameQuestion
+          : step === 1
             ? css.birthdayQuestion
             : step === 2
-            ? css.genderQuestion
-            : step === 3
-            ? css.genderFilterQuestion
-            : step === 4
-            ? css.photoQuestion
-            : step === 5
-            ? css.videoQuestion
-            : css.lastQuestion
-        }`}
+              ? css.genderQuestion
+              : step === 3
+                ? css.genderFilterQuestion
+                : step === 4
+                  ? css.photoQuestion
+                  : step === 5
+                    ? css.videoQuestion
+                    : css.lastQuestion
+          }`}
       >
         {step === 0 && (
           <QuestionBlock
@@ -289,8 +280,8 @@ export function Questionnaire() {
                   />
                 </div>
                 <p className={css.checkboxInfo}>
-                  by clicking you agree that your gender identity will
-                  be visible to other users in your profile
+                  by clicking you agree that your gender identity will
+                  be visible to other users in your profile
                 </p>
               </div>
 

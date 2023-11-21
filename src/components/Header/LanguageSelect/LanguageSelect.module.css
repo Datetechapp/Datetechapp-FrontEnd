@@ -18,7 +18,7 @@
   letter-spacing: 0.1px;
 }
 
-.LanguageSelect .Visible {
+.LanguageSelect.Visible {
   position: absolute;
   z-index: 1;
   display: block;

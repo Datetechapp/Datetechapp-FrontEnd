@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import React, { FC, useState } from 'react';
 import css from './passwordInput.module.css';
 import { Input } from '../../common';
 import { Eye } from '..';

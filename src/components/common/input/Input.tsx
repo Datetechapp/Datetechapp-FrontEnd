@@ -11,6 +11,7 @@ interface InputProps {
   accept?: string;
   min?: string;
   max?: string;
+  readOnly?: boolean;
   inputRef?: MutableRefObject<HTMLInputElement | null>;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   onFocus?: (e: FocusEvent<HTMLInputElement>) => void;
@@ -32,6 +33,7 @@ export const Input: FC<InputProps> = ({
   accept,
   min,
   max,
+  readOnly,
 }) => (
   <input
     id={id}
@@ -48,5 +50,6 @@ export const Input: FC<InputProps> = ({
     accept={accept}
     min={min}
     max={max}
+    readOnly={readOnly}
   />
 );

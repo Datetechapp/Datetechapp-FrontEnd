@@ -16,21 +16,23 @@
 }
 
 
-.Languages::before{
+.Languages::before {
     content: "";
     clear: both;
     display: block;
     position: absolute;
     right: 232px;
-    top: -9px;   
+    top: -9px;
     border-style: solid;
     border-width: 0 13px 10px 13px;
     border-color: transparent transparent #FCFCFC transparent;
 }
-.Languages div{
+
+.Languages div {
     position: relative;
 }
-.Languages div::before{
+
+.Languages div::before {
     content: "";
     clear: both;
     display: block;
@@ -40,7 +42,8 @@
     top: 23px;
     border: 1px solid #5F4F7F;
 }
-.Languages div::after{
+
+.Languages div::after {
     content: "";
     clear: both;
     display: block;
@@ -50,13 +53,15 @@
     top: 23px;
     border: 1px solid #5F4F7F;
 }
-.Languages div ul{
+
+.Languages div ul {
     padding: 55px 40px 35px 38px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    column-gap: 80px; 
+    column-gap: 80px;
 }
-.Languages div ul li{
+
+.Languages div ul li {
     display: flex;
     align-items: center;
     padding-left: 10px;
@@ -67,7 +72,8 @@
     cursor: pointer;
     transition: 0.3s ease-in;
 }
-.Languages div ul li:hover{
+
+.Languages div ul li:hover {
     transition: 0.3s ease-in;
     color: #302E3D;
     background: #E9E3F5;

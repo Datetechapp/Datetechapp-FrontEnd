@@ -6,11 +6,11 @@ export const Messanger = () => {
 
        const [selectedMessageText, setSelectedMessageText] = useState('');
        const [showReplyMessage, setShowReplyMessage] = useState(false);
-       const [showSearchMessages, setShowSearchMessages] = useState(false)
+       const [showSearchMessages, setShowSearchMessages] = useState(false);
 
-  const handleShowReplyMessage = () => {
-    setShowReplyMessage(false);
-  };
+       const handleShowReplyMessage = () => {
+              setShowReplyMessage(false);
+       };
 
        return (
               <div className={css.messangerWrapper}>
@@ -18,6 +18,7 @@ export const Messanger = () => {
                             setShowSearchMessages={setShowSearchMessages} />
                      <Workspace
                             showSearchMessages={showSearchMessages}
+                            showReplyMessage={showReplyMessage}
                             setShowSearchMessages={setShowSearchMessages}
                             selectedMessageText={selectedMessageText}
                             setSelectedMessageText={setSelectedMessageText}
@@ -29,7 +30,5 @@ export const Messanger = () => {
                             onShowReplyMessage={handleShowReplyMessage}
                      />
               </div>
-       )
-
-
-}
+       );
+};

@@ -1,20 +1,18 @@
 import { LeftHalfAuth } from 'components/ModalAuth/LeftHalfAuth';
 import { EmailOrPhoneInput } from 'components/ModalAuth';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import validator from 'validator';
 import css from './resetPassword.module.css';
 import { Button } from '../../../common/button';
-import { ModalCheckEmail } from './ModalCheckEmail';
+import { ModalCommon } from 'components/common';
 
-export function ResetPassword() {
+export const ResetPassword = () => {
   const [emailOrPhoneValue, setEmailOrPhoneValue] = useState('');
   const [type, setType] = useState<'email' | 'phone'>('email');
   const [isFocusedEmail, setIsFocusedEmail] = useState(false);
   const [isOpenModalCheckEmail, setIsOpenModalCheckEmail] = useState(false);
   const [isValidEmail, setIsValidEmail] = useState(false);
   const [isValidPhone, setIsValidPhone] = useState(false);
-
-  console.log(isValidEmail, isValidPhone, !isValidEmail && !isValidPhone);
 
   const handleFocusChange = () => {
     setIsFocusedEmail(!isFocusedEmail);
@@ -81,11 +79,16 @@ export function ResetPassword() {
         </div>
       </div>
       {isOpenModalCheckEmail && (
-        <ModalCheckEmail
-          isOpenModalCheckEmail={isOpenModalCheckEmail}
+        <ModalCommon
+          isOpen={isOpenModalCheckEmail}
           onChange={setIsOpenModalCheckEmail}
+          textTitle="Check your email"
+          textSubtitle="Password recovery instructions have been sent to your email address"
+          textEmail="name.surname@gmail.com"
+          buttonText="Ok, got it!"
+          isThereACancel={true}
         />
       )}
     </div>
   );
-}
+};

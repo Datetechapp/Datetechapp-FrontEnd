@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 import { ReactComponent as OpenEye } from '../../../assets/ModalAuth/openEye.svg';
 import { ReactComponent as CloseEye } from '../../../assets/ModalAuth/closeEye.svg';
 import css from './eye.module.css';

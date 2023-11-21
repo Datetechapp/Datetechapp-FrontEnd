@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
-import css from "./message.module.css"
-import { ReactComponent as PinnedIcon } from "../../../../assets/Messanger/iconForPinnedMessage.svg"
-import { ContextMenu } from "../ContextMenu";
+import React, { useEffect } from 'react';
+import css from './message.module.css';
+import { ReactComponent as PinnedIcon } from '../../../../assets/Messanger/iconForPinnedMessage.svg';
+import { ContextMenu } from '../ContextMenu';
 
 export interface MessageProps {
        id: string;

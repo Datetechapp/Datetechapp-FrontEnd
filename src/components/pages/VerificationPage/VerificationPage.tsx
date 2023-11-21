@@ -1,14 +1,14 @@
-import css from "./verificationPage.module.css";
-import { HeaderSecondary } from "components/HeaderSecondary";
-import { Input } from "components/common";
-import { useState, useEffect } from "react";
-import { Button } from "components/common";
+import css from './verificationPage.module.css';
+import { HeaderSecondary } from 'components/HeaderSecondary';
+import { Input } from 'components/common';
+import { useState, useEffect } from 'react';
+import { Button } from 'components/common';
 
 export const VerificationPage = () => {
-       const [values, setValues] = useState(["", "", "", "", "", ""]);
+       const [values, setValues] = useState(['', '', '', '', '', '']);
        const [timer, setTimer] = useState(30);
        const [resendText, setResendText] = useState(
-              `Resend code after 0:${String(timer).padStart(2, "0")}`
+              `Resend code after 0:${String(timer).padStart(2, '0')}`
        );
 
        useEffect(() => {
@@ -24,16 +24,16 @@ export const VerificationPage = () => {
 
        useEffect(() => {
               if (timer > 0) {
-                     setResendText(`Resend code after 0:${String(timer).padStart(2, "0")}`);
+                     setResendText(`Resend code after 0:${String(timer).padStart(2, '0')}`);
               } else {
-                     setResendText("Resend code");
+                     setResendText('Resend code');
               }
        }, [timer]);
 
        const handleResendClick = () => {
               if (timer <= 0) {
                 setTimer(30);
-                setResendText(`Resend code after 0:${String(30).padStart(2, "0")}`);
+                setResendText(`Resend code after 0:${String(30).padStart(2, '0')}`);
               }
             };
 
@@ -44,8 +44,8 @@ export const VerificationPage = () => {
     setValues(newValues);
   };
 
-       const isDisabled = values.some((value) => value === "");
-       console.log(timer)
+       const isDisabled = values.some((value) => value === '');
+       console.log(timer);
        return (
               <div className={css.verificationPageWrapper}>
                      <HeaderSecondary text="Log out" />

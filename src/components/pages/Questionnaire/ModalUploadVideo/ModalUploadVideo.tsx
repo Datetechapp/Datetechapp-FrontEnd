@@ -1,5 +1,5 @@
 import Modal from 'react-modal';
-import { FC, useCallback } from 'react';
+import React, { FC, useCallback } from 'react';
 import css from './modalUpload.module.css';
 import { Button } from '../../../common';
 import cancel from '../../../../assets/ModalAuth/Cancel.svg';

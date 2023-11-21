@@ -8,6 +8,8 @@ interface ModalForFixProps {
   onRequestClose: () => void;
   onRequestPinned: (messageId: string) => void;
   selectedMessageId: string;
+  isPinned: boolean;
+  handleUnpinnedMessage: (messageId: string) => void;
 }
 
 export const ModalForFixMessage: FC<ModalForFixProps> = ({
@@ -15,37 +17,46 @@ export const ModalForFixMessage: FC<ModalForFixProps> = ({
   onRequestClose,
   onRequestPinned,
   selectedMessageId,
+  isPinned,
+  handleUnpinnedMessage
 }) => {
   return (
-    <Modal
-      isOpen={isOpen}
-      onRequestClose={onRequestClose}
-      className={css.modalFixMessage}
-      overlayClassName={css.overlayModal}
-    >
-      <div className={css.modalFixBlock}>
-        <h2 className={css.modalFixMessageTitle}>
-          Would you like to pin this message?
-        </h2>
-        <div className={css.buttonBlock}>
-          <Button className={css.btnCancel} onClick={onRequestClose}>
-            Cancel
-          </Button>
-          <Button
-            className={css.btnYes}
-            onClick={() => {
+    <div className={css.modalContainer}>
+      <Modal
+        isOpen={isOpen}
+        onRequestClose={onRequestClose}
+        className={css.modalFixMessage}
+        overlayClassName={css.overlayModal}
+      >
+        <div className={css.modalFixBlock}>
+          <h2 className={css.modalFixMessageTitle}>
+            {!isPinned ? 'Pin selected message' : 'Unpin message'}
+          </h2>
+          {!isPinned ? <div className={css.checkboxBlock}>
+            <Checkbox className={css.checkboxForPinMessage} />
+            <p className={css.checkboxText}>Pin for me and Michael</p>
+          </div> : <p className={css.textForUnpin}>Do you want to unpin this message?</p>}
+          <div className={css.buttonBlock}>
+            <Button className={css.firstButton} onClick={onRequestClose}>
+              Cancel
+            </Button>
+            {!isPinned && <Button className={css.secondButton} onClick={() => {
               onRequestClose();
               onRequestPinned(selectedMessageId);
             }}
-          >
-            Yes
-          </Button>
+            >
+              Pin
+            </Button>}
+            {isPinned && <Button className={css.secondButton} onClick={() => {
+              onRequestClose();
+              handleUnpinnedMessage(selectedMessageId);
+            }}
+            >
+              Unpin
+            </Button>}
+          </div>
         </div>
-        <div className={css.checkboxBlock}>
-          <Checkbox className={css.checkboxForPinMessage} />
-          <p className={css.checkboxText}>Pin for me and Michael</p>
-        </div>
-      </div>
-    </Modal>
+      </Modal>
+    </div>
   );
 };

@@ -1,34 +1,32 @@
-import { ModalAuth } from "./ModalAuth";
-import { ModalRegister, ResetPassword } from "./pages/ModalRegister";
-import { Routes, Route } from "react-router-dom"
-import { ModalWelcome } from "./base/ModalWelcome/ModalWelcome";
-import { BackSection } from "./BackSection/BackSection";
-import { MainLayout } from "./Layouts/MainLayout/MainLayout";
-import { UserSelfPage } from "./pages/UserSelfPage";
-import { Messanger } from "../components/Messanger"
-import { useLocation } from "react-router-dom"
-import { ModalCheckEmail } from "./pages/ModalRegister/ResetPassword/ModalCheckEmail";
-import { HeaderSecondary } from "./HeaderSecondary";
-import { ChangePassword } from "./pages/ChangePassword";
-import { VerificationPage } from "./pages/VerificationPage";
-import { Questionnaire } from "./pages/Questionnaire";
-import { RecordingAudio } from "./Messanger/Footer/RecordingAudio/RecordingAudio"
-
+import { ModalAuth } from './ModalAuth';
+import { ModalRegister, ResetPassword } from './pages/ModalRegister';
+import { Routes, Route } from 'react-router-dom';
+import { ModalWelcome } from './base/ModalWelcome/ModalWelcome';
+import { BackSection } from './BackSection/BackSection';
+import { MainLayout } from './Layouts/MainLayout/MainLayout';
+import { UserSelfPage } from './pages/UserSelfPage';
+import { Messanger } from '../components/Messanger';
+import { useLocation } from 'react-router-dom';
+import { HeaderSecondary } from './HeaderSecondary';
+import { ChangePassword } from './pages/ChangePassword';
+import { VerificationPage } from './pages/VerificationPage';
+import { Questionnaire } from './pages/Questionnaire';
+import { RecordingAudio } from './Messanger/Footer/RecordingAudio/RecordingAudio';
 
 
 export const App = () => {
 
   const { pathname } = useLocation();
 
-  const locationForBackSection = (pathname == '/login' || pathname == '/registration' || pathname == '/reset_password')
+  const locationForBackSection = (pathname == '/login' || pathname == '/registration' || pathname == '/reset_password');
+  
   return (
     <div>
       {/* <ModalWelcome /> */}
-      {/* <Messanger /> */}
-      <RecordingAudio />
+      <Messanger />
 
-      {/* <VerificationPage /> */}
-      {/* <ChangePassword /> */}
+      {/* <VerificationPage />
+      <ChangePassword /> */}
 
       {locationForBackSection ? <BackSection >
         <Routes>

@@ -1,33 +1,23 @@
 import { HeaderSecondary } from 'components/HeaderSecondary';
 import { NewPassword } from 'components/ModalAuth';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Button } from 'components/common';
-import {
-  hasUppercaseLetter,
-  hasSpecialCharacters,
-} from 'components/ModalAuth/Login/Login';
+import { hasUppercaseLetter, hasSpecialCharacters } from 'components/ModalAuth/Login/Login';
 import css from './changePassword.module.css';
-import { ModalPasswordChanged } from './ModalPasswordChanged';
+import { ModalCommon } from 'components/common';
 
-export function ChangePassword() {
+export const ChangePassword = () => {
   const [passwordValue, setPasswordValue] = useState('');
   const [confirmPasswordValue, setConfirmPasswordValue] = useState('');
   const [passwordValid, setPasswordValid] = useState(false);
-  const [isOpenModalChangedPassword, setIsOpenModalChangedPassword] =
-    useState(false);
+  const [isOpenModalChangedPassword, setIsOpenModalChangedPassword] = useState(false);
 
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPasswordValue(e.target.value);
-    setPasswordValid(
-      e.target.value.length >= 8 &&
-        hasUppercaseLetter(e.target.value) &&
-        hasSpecialCharacters(e.target.value),
-    );
+    setPasswordValid(e.target.value.length >= 8 && hasUppercaseLetter(e.target.value) && hasSpecialCharacters(e.target.value));
   };
 
-  const handleConfirmPasswordChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-  ) => {
+  const handleConfirmPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setConfirmPasswordValue(e.target.value);
   };
 
@@ -35,8 +25,6 @@ export function ChangePassword() {
     document.body.style.overflow = 'hidden';
     setIsOpenModalChangedPassword(true);
   };
-
-  console.log(!isOpenModalChangedPassword);
 
   return (
     <>
@@ -70,9 +58,13 @@ export function ChangePassword() {
         </div>
       ) : (
         <div className={css.blockForModal}>
-          <ModalPasswordChanged
-            isOpenModalChangedPassword={isOpenModalChangedPassword}
+          <ModalCommon
+            isOpen={isOpenModalChangedPassword}
             onChange={setIsOpenModalChangedPassword}
+            textTitle="Password changed"
+            textSubtitle="Your password has been successfully changed"
+            buttonText="OK"
+            isThereACancel={true}
           />
         </div>
       )}

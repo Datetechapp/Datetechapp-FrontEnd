@@ -1,4 +1,4 @@
-import type { FC, PropsWithChildren } from 'react';
+import React, { FC, PropsWithChildren } from 'react';
 import css from './styles.module.css';
 
 interface ButtonProps {

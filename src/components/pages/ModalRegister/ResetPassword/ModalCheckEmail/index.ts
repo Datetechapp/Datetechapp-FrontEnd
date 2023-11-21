@@ -1,1 +1,0 @@
-export { ModalCheckEmail } from './ModalCheckEmail';

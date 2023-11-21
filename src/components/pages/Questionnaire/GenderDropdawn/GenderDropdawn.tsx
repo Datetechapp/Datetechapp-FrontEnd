@@ -1,16 +1,12 @@
-import { FC, useState, useEffect } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import { useAppSelector } from 'hooks/hooks';
-import {
-  getGenders,
-  getSex,
-  getDescriptionGender,
-} from 'store/gendersAndPurpose/selectors';
+import { getGenders, getSex, getDescriptionGender } from 'store/gendersAndPurpose/selectors';
 import { GenderRadio } from '../GenderRadio';
 import css from './genderDropdawn.module.css';
 import { Dropdawn } from '../../../common/dropdawn';
 
 interface GenderDropdownProps {
-  onChange: (event: any) => void;
+  onChange: (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) => void;
   showGenders?: boolean;
   gender?: string;
   sex?: string;
@@ -47,7 +43,7 @@ export const GenderDropdawn: FC<GenderDropdownProps> = ({
     setSelectedValue(value);
     // const newKey = getSelectedKeyForSex([value], genders);
     // setSelectedKeyForSex(newKey);
-    onChange({ target: { name: 'gender', value } });
+    onChange({ target: { name: 'gender', value } } as React.ChangeEvent<HTMLInputElement>);
   };
 
   const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {

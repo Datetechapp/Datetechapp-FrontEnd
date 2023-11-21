@@ -1,1 +1,1 @@
-export { SearchMessages } from "./SearchMessages"
+export { SearchMessages } from './SearchMessages';

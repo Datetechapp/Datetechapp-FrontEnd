@@ -1,10 +1,10 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 import css from './isValidPasswordBlock.module.css';
 
 interface IsValidPasswordBlockProps {
-  title: any;
+  title: string;
   firstIcon: React.ReactElement;
-  firstCondition: any;
+  firstCondition: string;
   secondIcon?: React.ReactElement;
   secondCondition?: string;
   thirdIcon?: React.ReactElement;
