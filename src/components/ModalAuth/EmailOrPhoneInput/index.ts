@@ -1,1 +1,1 @@
-export { EmailOrPhoneInput } from "./EmailOrPhoneInput"
+export { EmailOrPhoneInput } from './EmailOrPhoneInput';

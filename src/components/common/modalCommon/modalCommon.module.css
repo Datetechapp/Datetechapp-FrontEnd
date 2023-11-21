@@ -9,7 +9,7 @@
 }
 
 
-.modalCheckEmail {
+.modal {
        position: relative;
        width: 432px;
        top: 50%;
@@ -21,6 +21,13 @@
        border-radius: 7px;
        animation: fadeIn 0.7s ease-in-out forwards;
 }
+
+.darkModal {
+       border-radius: 8px;
+       border: 1px solid var(--Violet_Active, #C896EF);
+       background: var(--Dark_Elements_Background, #201B27);
+}
+
 
 .iconCancel {
        align-self: flex-start;
@@ -41,7 +48,11 @@
        justify-content: space-between;
 }
 
-.modalCheckEmailTitle {
+.darkTitleBlock {
+       text-align: center;
+}
+
+.modalTitle {
        color: var(--Violet_Stroke, #5F4F7F);
        font-family: Montserrat;
        font-size: 22px;
@@ -50,13 +61,27 @@
        letter-spacing: -0.5px;
 }
 
-.checkEmailInfo {
+.darkModalTitle {
+       color: var(--Violet_Active, #C896EF);
+       font-family: Montserrat;
+       font-size: 22px;
+       font-weight: 600;
+       line-height: 24px;
+       letter-spacing: -0.5px;
+}
+
+.subtitle {
        color: var(--Panel_Stroke, #32303E);
        font-family: Montserrat;
        font-size: 16px;
        font-weight: 400;
        line-height: 20px;
        margin-top: 12px;
+}
+
+.darkModalSubtitle {
+       color: var(--White, #FFF);
+       text-align: center;
 }
 
 .email {
@@ -68,7 +93,13 @@
        letter-spacing: 0.2px;
 }
 
-.btnOk {
+.btnBlock {
+       display: flex;
+       justify-content: space-between;
+       margin-top: 24px;
+}
+
+.firstBtn {
        margin-top: 40px;
        display: block;
        width: 392px;
@@ -85,11 +116,26 @@
        letter-spacing: -0.5px;
 }
 
-.btnOk:active {
+.darkModalFirstBtn {
+       margin-top: 0;
+       padding: 10px;
+       font-weight: 600;
+       width: 182px;
+       height: 40px;
+       border-width: 1px;
+       background:
+              linear-gradient(#201B27 0 0) padding-box,
+              linear-gradient(to bottom, #9747FF, #DE77C7) border-box;
+       border: 1px solid transparent;
+       border-radius: 5px;
+       display: inline-block;
+}
+
+.firstBtn:active {
        background: linear-gradient(0deg, rgba(0, 0, 0, 0.27), rgba(0, 0, 0, 0.27)), linear-gradient(180deg, #9747FF 0%, #E551E8 100%)
 }
 
-.btnSecond {
+.secondBtn {
        margin-top: 12px;
        display: block;
        width: 392px;
@@ -107,4 +153,15 @@
        display: flex;
        justify-content: center;
        align-items: center;
+}
+
+.darkModalSecondBtn {
+       margin-top: 0;
+       width: 182px;
+       height: 40px;
+       padding: 10px;
+       font-weight: 600;
+       background: var(--Gradient, linear-gradient(180deg, #9747FF 0%, #DE77C7 100%));
+       border: none;
+       color: #E9E3F5;
 }

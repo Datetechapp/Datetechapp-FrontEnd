@@ -1,7 +1,8 @@
-import styles from "./BackSection.module.css";
-import { Header } from "components/Header/Header";
-import { PropsWithChildren } from "react";
-import video from "../../assets/Background/myvideo.mp4";
+import React from 'react';
+import styles from './BackSection.module.css';
+import { Header } from 'components/Header/Header';
+import { PropsWithChildren } from 'react';
+import video from '../../assets/Background/myvideo.mp4';
 
 export const BackSection = ({
   children,

@@ -1,1 +1,0 @@
-export { ModalPasswordChanged } from "./ModalPasswordChanged"

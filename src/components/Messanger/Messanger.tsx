@@ -1,11 +1,12 @@
-import css from "./messanger.module.css"
-import { Header, Workspace, Footer } from "."
-import { useState } from "react"
+import { useState } from 'react';
+import css from './messanger.module.css';
+import { Header, Workspace, Footer } from '.';
 
 export const Messanger = () => {
 
        const [selectedMessageText, setSelectedMessageText] = useState('');
        const [showReplyMessage, setShowReplyMessage] = useState(false);
+       const [showSearchMessages, setShowSearchMessages] = useState(false);
 
        const handleShowReplyMessage = () => {
               setShowReplyMessage(false);
@@ -13,8 +14,12 @@ export const Messanger = () => {
 
        return (
               <div className={css.messangerWrapper}>
-                     <Header />
+                     <Header
+                            setShowSearchMessages={setShowSearchMessages} />
                      <Workspace
+                            showSearchMessages={showSearchMessages}
+                            showReplyMessage={showReplyMessage}
+                            setShowSearchMessages={setShowSearchMessages}
                             selectedMessageText={selectedMessageText}
                             setSelectedMessageText={setSelectedMessageText}
                             setShowReplyMessage={setShowReplyMessage}
@@ -25,7 +30,5 @@ export const Messanger = () => {
                             onShowReplyMessage={handleShowReplyMessage}
                      />
               </div>
-       )
-
-
-}
+       );
+};
