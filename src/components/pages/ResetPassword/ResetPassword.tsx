@@ -3,7 +3,7 @@ import { EmailOrPhoneInput } from 'components/ModalAuth';
 import React, { useState } from 'react';
 import validator from 'validator';
 import css from './resetPassword.module.css';
-import { Button } from '../../../common/button';
+import { Button } from '../../common/button';
 import { ModalCommon } from 'components/common';
 
 export const ResetPassword = () => {

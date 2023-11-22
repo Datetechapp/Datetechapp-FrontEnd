@@ -107,6 +107,7 @@ export const Registration: FC = () => {
                                    .then((response) => {
                                           if (response.ok) {
                                                  setErrorMessage('');
+                                                 navigate('/verification');
                                           } else {
                                                  throw new Error('Ошибка при выполнении запроса: ' + response.status);
                                           }

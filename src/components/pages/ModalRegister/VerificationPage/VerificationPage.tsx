@@ -68,12 +68,9 @@ export const VerificationPage = () => {
                                    <Button className={isDisabled ? css.continueBtn : css.continueBtnValid} disabled={isDisabled}>
                                           Continue
                                    </Button>
-                                   <p className={css.resendCode}>Resend code</p>
-                                   <span>{resendText}</span>
-                                   <br />
-                                   <button onClick={handleResendClick} disabled={timer !== 0}>
+                                   <p className={css.resendCode} onClick={handleResendClick}>
                                           {resendText}
-                                   </button>
+                                   </p>
                             </div>
                      </div>
               </div>
