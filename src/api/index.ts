@@ -72,7 +72,7 @@ export const createPassword = (body: {
      post('/registration/second_step/', body).then((response) => response.json());
 
 export const registration = (body: { username: string, password: string, confirm_password: string }): Promise<Response> =>
-     post('/registration/first_step/', body);
+     post('/registration/signup/', body);
 
 export const checkVerificationCode = (body: {
      passcode: string;

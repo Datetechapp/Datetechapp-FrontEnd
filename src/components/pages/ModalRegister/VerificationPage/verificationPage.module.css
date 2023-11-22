@@ -4,7 +4,7 @@
 
 .main {
        position: relative;
-       background: url("../../../assets/Messanger/BackgroundForMessanger.png") #1F1D2B repeat;
+       background: url("../../../../assets/Messanger/BackgroundForMessanger.png") #1F1D2B repeat;
        height: 91.5vh;
 }
 
@@ -121,7 +121,7 @@
 }
 
 .resendCode {
-       color: var(--super-white, var(--Back_White, #E1DBED));
+       color: var(--Grey, #96A3B4);
        font-family: Montserrat;
        font-size: 14px;
        font-weight: 600;
