@@ -90,7 +90,7 @@
     background: transparent;
   }
 
-  label {
+  .location_label {
     display: flex;
     height: 25px;
     justify-content: flex-end;
@@ -166,4 +166,41 @@
     background: #c896ef;
     cursor: ew-resize;
   }
+}
+
+.interests_container {
+  display: flex;
+  height: 40px;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  border-radius: 100px;
+  border: 0.5px solid var(--Violet_Active, #c896ef);
+  background: var(--Dark_Elements_Background, #201b27);
+}
+
+.interests_container label {
+  display: flex;
+  padding: 8px 16px;
+  color: var(--Violet_Stroke, #5f4f7f);
+  text-align: center;
+  font-variant-numeric: lining-nums proportional-nums;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: 0.1px;
+}
+
+.active_interests {
+  display: flex;
+  height: 40px;
+  padding: 8px 16px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  border: 1px solid var(--Violet_Active, #c896ef);
+  color: var(--White, #fff) !important;
 }

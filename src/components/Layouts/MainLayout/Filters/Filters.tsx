@@ -16,7 +16,7 @@ const Filters = () => {
   };
 
   const updateLocationRange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const normalizedValue = (Number(event.target.value) / 20) * 100; // Нормализация значения в процентах
+    const normalizedValue = (Number(event.target.value) / 20) * 100; 
     setLocationRange(Number(event.target.value));
     setBackgroundColor(normalizedValue);
   };
@@ -36,6 +36,13 @@ const Filters = () => {
   const sliderStyle = {
     background: `var(--sliderLinGra)`,
   };
+
+  const [selectedOption, setSelectedOption] = useState('Women');
+
+  const handleOptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectedOption(event.target.value);
+  };
+
 
   return (
     <>
@@ -68,7 +75,7 @@ const Filters = () => {
               step="5"
               style={sliderStyle}
             />
-            <label htmlFor="location-range">&gt;{locationRange} km</label>
+            <label className={styles.location_label} htmlFor="location-range">&gt;{locationRange} km</label>
           </div>
         </div>
 
@@ -81,7 +88,37 @@ const Filters = () => {
           </div>
         </div>
 
-        <div>{/* код для работы с интересами пользователя */}</div>
+        <div className={styles.interests_container}>
+        <label className={selectedOption === 'Women' ? styles.active_interests : ''}>
+          <input
+            type="radio"
+            value="Women"
+            checked={selectedOption === 'Women'}
+            onChange={handleOptionChange}
+          />
+          Women
+        </label>
+
+        <label className={selectedOption === 'Men' ? styles.active_interests : ''}>
+          <input
+            type="radio"
+            value="Men"
+            checked={selectedOption === 'Men'}
+            onChange={handleOptionChange}
+          />
+          Men
+        </label>
+
+        <label className={selectedOption === 'Everyone' ? styles.active_interests : ''}>
+          <input
+            type="radio"
+            value="Everyone"
+            checked={selectedOption === 'Everyone'}
+            onChange={handleOptionChange}
+          />
+          Everyone
+        </label>
+      </div>
 
         <div className={`${styles.filters_section}  ${styles.filters_age}`}>
           <div className={styles.containerIcon}>
