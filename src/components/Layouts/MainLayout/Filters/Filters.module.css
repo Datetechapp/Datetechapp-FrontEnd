@@ -32,7 +32,11 @@
 .filters_container {
   display: flex;
   flex-direction: column;
-  margin: 8px 16px;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 8px 16px;
+  width: 100%;
+  margin: auto;
 }
 
 .filters_section {
@@ -40,9 +44,16 @@
   color: var(--White, #fff);
   border-bottom: 0.5px solid var(--Violet_Stroke, #5f4f7f);
   cursor: pointer;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+  gap: 16px;
+}
+
+.bar {
+  width: 100%;
 }
 
 .filters_section span {
@@ -70,4 +81,89 @@
 
 .arrowIcon {
   height: 24px;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  input[type="range"] {
+    width: 100%;
+    appearance: none;
+    background: transparent;
+  }
+
+  label {
+    display: flex;
+    height: 25px;
+    justify-content: flex-end;
+    align-items: center;
+    flex-shrink: 0;
+    color: var(--Back_White, #e1dbed);
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 18px;
+    letter-spacing: 0.1px;
+  }
+
+  input[type="range"]::-webkit-slider-runnable-track {
+    height: 4px;
+    -webkit-appearance: none;
+    height: 7px;
+    margin-top: -1px;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    box-shadow: 0px 0px 0px #000000;
+    border: 1px solid var(--Violet_Active, #c896ef);
+    width: 24px;
+    height: 24px;
+    padding: 10px 0px;
+    border-radius: 20px;
+    background: var(--Violet_Active, #c896ef);
+    cursor: ew-resize;
+    -webkit-appearance: none;
+    margin-top: -9px;
+  }
+
+  /** FF*/
+  input[type="range"]::-moz-range-progress {
+    background-color: #c896ef;
+    height: 4px;
+    border-radius: 20px;
+    border: 1px solid var(--Violet_Active, #c896ef);
+  }
+  input[type="range"]::-moz-range-thumb {
+    border: 1px solid var(--Violet_Active, #c896ef);
+    height: 24px;
+    width: 24px;
+    border-radius: 20px;
+    background: #c896ef;
+    cursor: ew-resize;
+  }
+
+  /* IE*/
+  input[type="range"]::-ms-fill-lower {
+    background-color: #c896ef;
+  }
+  input[type="range"]::-ms-fill-upper {
+    background-color: #5f4f7f;
+  }
+
+  input[type="range"]::-ms-track {
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+  }
+
+  input[type="range"]::-ms-thumb {
+    border: 1px solid var(--Violet_Active, #c896ef);
+    height: 24px;
+    width: 24px;
+    border-radius: 20px;
+    background: #c896ef;
+    cursor: ew-resize;
+  }
 }
