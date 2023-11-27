@@ -3,24 +3,26 @@ import styles from "./Modal.module.css";
 
 interface ModalProps {
   onClose: () => void;
+  selectedCheckboxes: string[];
+  onCheckboxChange: (value: string) => void;
+  onResetSelectedOptions: () => void;
+  category: string; 
 }
 
-const Modal: React.FC<ModalProps> = ({ onClose }) => {
-  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+const Modal: React.FC<ModalProps> = ({ onClose, selectedCheckboxes,onCheckboxChange, onResetSelectedOptions, category }) => {
 
-  const handleCheckboxChange = (value: string) => {
-    setSelectedOptions((prevOptions) =>
-      prevOptions.includes(value)
-        ? prevOptions.filter((option) => option !== value)
-        : [...prevOptions, value],
-    );
-  };
+
   const saveLookingFor = () => {
     console.log("Save functionality");
     onClose();
   };
 
-  const checkboxOptions = [
+  const cancelAndReset = () => {
+    onResetSelectedOptions();
+    onClose();
+  };
+
+  const checkboxOptionsLookingFor = [
     "Friendship & Communication",
     "Romantic Dates",
     "Marriage, Family creation",
@@ -30,19 +32,41 @@ const Modal: React.FC<ModalProps> = ({ onClose }) => {
     "Joint trips & Attending events",
   ];
 
+  const checkboxOptionsInterests = [
+    'Singing', 'Listening to music', 'Cars', 'Blogging', 'Reading books', 'Dancing', 'Learning new languages', 'Surfing', 'Basketball', 'Travelling', 'Shopping',
+    'Hiking', 'Cycling', 'Exercising', 'Embroidering', 'Collecting things', ' Cooking', 'Baking', 'Skating', 'Gardening', 'Handmade', 'Skiing', 'Sky-jumping', 'Walking', 'Writing stories', 'Fishing', 'Longboarding', 'Drawing', 'Postcards', 'Fridge magnets', 'Butterflies and bugs', 'Darts', 'Scrapbooking', 'Dressmaking', 'Photography', 'Roller-skating', 'Running', 'Yoga', 'Coaching', 'Basketball', 'Diving', 'Bodybuilding', 'Gymnastics', 'Swimming', 'Tennis', 'Football', 'Archery', 'Rock climbing', 'Beer', 'Snowboarding', 'Parkour', 'Graffiti', 'Numismatics', 'Stones and minerals'
+    
+   //не знаю что такое Clothes decoration заменила на Dressmaking
+
+  ]
+
+
+  const getCheckboxOptions = () => {
+    if (category === "lookingFor") {
+      return checkboxOptionsLookingFor;
+    } else if (category === "interests") {
+      return checkboxOptionsInterests;
+    } else {
+      return [];
+    }
+  };
+
+  
+
+
   return (
     <div className={styles.modal_overlay}>
       <div className={styles.modal_content}>
-        <h1>Looking for</h1>
+        <h1>{category === "lookingFor" ? "Looking for" : "Interests"}</h1>
         <div className={styles.modal_checkboxes}>
-          {checkboxOptions.map((option) => (
+          {getCheckboxOptions().map((option) => (
             <div>
               <input
                 type="checkbox"
                 value={option}
                 id={option}
-                defaultChecked={selectedOptions.includes(option)}
-                onChange={() => handleCheckboxChange(option)}
+                defaultChecked={selectedCheckboxes.includes(option)}
+                onChange={() => onCheckboxChange(option)}
               />
               <label
                 className={styles.modal_options}
@@ -58,7 +82,7 @@ const Modal: React.FC<ModalProps> = ({ onClose }) => {
           <button className={styles.modal_button_save} onClick={saveLookingFor}>
             Save
           </button>
-          <button className={styles.modal_button_cancel} onClick={onClose}>
+          <button className={styles.modal_button_cancel} onClick={cancelAndReset}>
             Cancel
           </button>
         </div>

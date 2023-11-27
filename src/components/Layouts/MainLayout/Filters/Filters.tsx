@@ -9,12 +9,34 @@ import arrowIcon from "../../../../assets/feed/arrow.svg";
 import Modal from "./Modal";
 
 const Filters = () => {
-  const [expandedSection, setExpandedSection] = useState(false);
+  const [expandedSection, setExpandedSection] = useState("");
   const [locationRange, setLocationRange] = useState(10);
   const [ageRange, setAgeRange] = useState([18, 100]);
+  const [selectedCheckboxes, setSelectedCheckboxes] = useState<string[]>([]);
+  const [selectedOption, setSelectedOption] = useState("Women");
+  const [selectedLookingForCount, setSelectedLookingForCount] = useState<number>(0);
+  const [selectedInterestsCount, setSelectedInterestsCount] = useState<number>(0);
 
-  const toggleExpand = () => {
-    setExpandedSection((prevExpanded) => !prevExpanded);
+  const handleCheckboxChange = (category: string, value: string) => {
+  setSelectedCheckboxes((prevOptions) => {
+    const updatedOptions = prevOptions.includes(value)
+      ? prevOptions.filter((option) => option !== value)
+      : [...prevOptions, value];
+
+    const count = updatedOptions.length;
+console.log(count)
+    if (category === "lookingFor") {
+      setSelectedLookingForCount(count);
+    } else if (category === "interests") {
+      setSelectedInterestsCount(count);
+    }
+
+    return updatedOptions;
+  });
+};
+
+  const toggleExpand = (category: string) => {
+    setExpandedSection(category);
   };
 
   const updateAgeRange = (value1: number, value2: number) => {
@@ -39,6 +61,8 @@ const Filters = () => {
     input2?.style.setProperty("--ageSlidLinGra", gradient2);
   };
 
+
+
   const updateLocationRange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const normalizedValue = (Number(event.target.value) / 20) * 100;
     setLocationRange(Number(event.target.value));
@@ -49,7 +73,7 @@ const Filters = () => {
     const inputLocation = document.getElementById("location-range");
     inputLocation?.style.setProperty(
       "--sliderLinGra",
-      `linear-gradient(to right, #C896EF ${normalizedValue}%, #5F4F7F ${normalizedValue}%)`,
+      `linear-gradient(to right, #C896EF ${normalizedValue}%, #5F4F7F ${normalizedValue}%)`
     );
   };
 
@@ -65,8 +89,6 @@ const Filters = () => {
   const ageSliderStyle = {
     background: `var(--ageSlidLinGra)`,
   };
-
-  const [selectedOption, setSelectedOption] = useState("Women");
 
   const handleOptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedOption(event.target.value);
@@ -226,18 +248,31 @@ const Filters = () => {
             </div>
             <button
               className={styles.buttonArrowIcon}
-              onClick={() => toggleExpand()}
+              onClick={() => toggleExpand("lookingFor")}
             >
-              {" "}
-              <img
-                className={styles.arrowIcon}
-                src={arrowIcon}
-                alt="arrow icon"
-              />
+              { selectedLookingForCount > 0  ? (
+                <span className={styles.selectedCount}>
+                  {selectedLookingForCount}
+                </span>
+              ) : (
+                <img
+                  className={styles.arrowIcon}
+                  src={arrowIcon}
+                  alt="arrow icon"
+                />
+              )}
             </button>
           </div>
         </div>
-        {expandedSection && <Modal onClose={() => setExpandedSection(false)} />}
+        {expandedSection === "lookingFor" && (
+          <Modal
+          category="lookingFor"
+            onClose={() => setExpandedSection("")}
+            selectedCheckboxes={selectedCheckboxes}
+            onResetSelectedOptions={() => setSelectedCheckboxes([])} 
+            onCheckboxChange={(value) => handleCheckboxChange("lookingFor", value)}
+          />
+        )}
 
         <div
           className={`${styles.filters_section}  ${styles.filters_interests}`}
@@ -253,18 +288,30 @@ const Filters = () => {
             </div>
             <button
               className={styles.buttonArrowIcon}
-              onClick={() => toggleExpand()}
+              onClick={() => toggleExpand("interests")}
             >
-              <img
-                className={styles.arrowIcon}
-                src={arrowIcon}
-                alt="arrow icon"
-              />
+              { selectedInterestsCount > 0  ? (
+                <span className={styles.selectedCount}>
+                  {selectedInterestsCount}
+                </span>
+              ) : (
+                <img
+                  className={styles.arrowIcon}
+                  src={arrowIcon}
+                  alt="arrow icon"
+                />
+              )}
             </button>
           </div>
         </div>
-        {expandedSection && (
-          <div>{/* код для отображения интересов пользователя */}</div>
+        {expandedSection === "interests" && (
+          <Modal
+          category="interests"
+          onClose={() => setExpandedSection("")}
+          selectedCheckboxes={selectedCheckboxes}
+          onResetSelectedOptions={() => setSelectedCheckboxes([])} 
+          onCheckboxChange={(value) => handleCheckboxChange("interests", value)}
+        />
         )}
       </div>
     </>
