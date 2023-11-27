@@ -243,3 +243,17 @@
   left: 0;
   z-index: 1;
 }
+
+.buttonArrowIcon {
+  border: none;
+  margin: 0;
+  padding: 0;
+  display: inline;
+  background: none;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  font-size: inherit;
+  color: inherit;
+}

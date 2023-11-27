@@ -6,24 +6,24 @@ import interestsIcon from "../../../../assets/feed/interests.svg";
 import lookingForIcon from "../../../../assets/feed/looking-for.svg";
 import usersIcon from "../../../../assets/feed/users.svg";
 import arrowIcon from "../../../../assets/feed/arrow.svg";
+import Modal from "./Modal";
 
 const Filters = () => {
-  const [expandedSection, setExpandedSection] = useState("");
+  const [expandedSection, setExpandedSection] = useState(false);
   const [locationRange, setLocationRange] = useState(10);
   const [ageRange, setAgeRange] = useState([18, 100]);
 
-  const toggleExpand = (section: string) => {
-    setExpandedSection(expandedSection === section ? "" : section);
+  const toggleExpand = () => {
+    setExpandedSection((prevExpanded) => !prevExpanded);
   };
 
   const updateAgeRange = (value1: number, value2: number) => {
-    setAgeRange([value1, value2])
+    setAgeRange([value1, value2]);
     setBackgroundColorAge(value1, value2);
-    
   };
 
   useEffect(() => {
-    setBackgroundColorAge(ageRange[0], ageRange[1] );
+    setBackgroundColorAge(ageRange[0], ageRange[1]);
   }, []);
 
   const setBackgroundColorAge = (value1: number, value2: number) => {
@@ -37,7 +37,7 @@ const Filters = () => {
     const input2 = document.getElementById("age-range-1");
 
     input2?.style.setProperty("--ageSlidLinGra", gradient2);
-  }
+  };
 
   const updateLocationRange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const normalizedValue = (Number(event.target.value) / 20) * 100;
@@ -46,10 +46,10 @@ const Filters = () => {
   };
 
   const setBackgroundColor = (normalizedValue: number) => {
-    const inputLocation= document.getElementById("location-range");
+    const inputLocation = document.getElementById("location-range");
     inputLocation?.style.setProperty(
       "--sliderLinGra",
-      `linear-gradient(to right, #C896EF ${normalizedValue}%, #5F4F7F ${normalizedValue}%)`
+      `linear-gradient(to right, #C896EF ${normalizedValue}%, #5F4F7F ${normalizedValue}%)`,
     );
   };
 
@@ -95,6 +95,7 @@ const Filters = () => {
             <input
               type="range"
               id="location-range"
+              name="location-range"
               min="0"
               max="20"
               className={styles.location_range}
@@ -118,49 +119,58 @@ const Filters = () => {
           </div>
 
           <div className={styles.interests_container}>
-          <label
-            className={
-              selectedOption === "Women" ? styles.active_interests : ""
-            }
-          >
-            <input
-              type="radio"
-              value="Women"
-              checked={selectedOption === "Women"}
-              onChange={handleOptionChange}
-            />
-            Women
-          </label>
+            <label
+              className={
+                selectedOption === "Women" ? styles.active_interests : ""
+              }
+              htmlFor="women-option"
+            >
+              <input
+                type="radio"
+                value="Women"
+                id="women-option"
+                name="interested-in"
+                checked={selectedOption === "Women"}
+                onChange={handleOptionChange}
+              />
+              Women
+            </label>
 
-          <label
-            className={selectedOption === "Men" ? styles.active_interests : ""}
-          >
-            <input
-              type="radio"
-              value="Men"
-              checked={selectedOption === "Men"}
-              onChange={handleOptionChange}
-            />
-            Men
-          </label>
+            <label
+              className={
+                selectedOption === "Men" ? styles.active_interests : ""
+              }
+              htmlFor="men-option"
+            >
+              <input
+                type="radio"
+                value="Men"
+                id="men-option"
+                name="interested-in"
+                checked={selectedOption === "Men"}
+                onChange={handleOptionChange}
+              />
+              Men
+            </label>
 
-          <label
-            className={
-              selectedOption === "Everyone" ? styles.active_interests : ""
-            }
-          >
-            <input
-              type="radio"
-              value="Everyone"
-              checked={selectedOption === "Everyone"}
-              onChange={handleOptionChange}
-            />
-            Everyone
-          </label>
+            <label
+              className={
+                selectedOption === "Everyone" ? styles.active_interests : ""
+              }
+              htmlFor="everyone-option"
+            >
+              <input
+                type="radio"
+                value="Everyone"
+                id="everyone-option"
+                name="interested-in"
+                checked={selectedOption === "Everyone"}
+                onChange={handleOptionChange}
+              />
+              Everyone
+            </label>
+          </div>
         </div>
-        </div>
-
-        
 
         <div className={`${styles.filters_section}  ${styles.filters_age}`}>
           <div className={styles.containerIcon}>
@@ -172,26 +182,31 @@ const Filters = () => {
             <input
               type="range"
               id="age-range-0"
+              name="age-range"
               min="18"
               max="100"
               className={styles.location_range}
-              onChange={(e) => updateAgeRange(Number(e.target.value), ageRange[1])}
+              onChange={(e) =>
+                updateAgeRange(Number(e.target.value), ageRange[1])
+              }
               value={ageRange[0]}
               step="1"
-              
             />
             <input
               type="range"
               id="age-range-1"
+              name="age-range"
               min="18"
               max="100"
               className={`${styles.location_range} ${styles.overlay}`}
-              onChange={(e) => updateAgeRange(ageRange[0], Number(e.target.value))}
+              onChange={(e) =>
+                updateAgeRange(ageRange[0], Number(e.target.value))
+              }
               value={ageRange[1]}
               step="1"
               style={ageSliderStyle}
             />
-            <label className={styles.age_label} htmlFor="age-range">
+            <label className={styles.age_label} htmlFor="age-range-0">
               <div>{ageRange[0]} </div> <div>{ageRange[1]}</div>
             </label>
           </div>
@@ -199,7 +214,6 @@ const Filters = () => {
 
         <div
           className={`${styles.filters_section}  ${styles.filters_looking_for}`}
-          onClick={() => toggleExpand("lookingFor")}
         >
           <div className={styles.container_line}>
             <div className={styles.containerIcon}>
@@ -210,21 +224,23 @@ const Filters = () => {
               />
               <span>Looking for</span>
             </div>
-
-            <img
-              className={styles.arrowIcon}
-              src={arrowIcon}
-              alt="arrow icon"
-            />
+            <button
+              className={styles.buttonArrowIcon}
+              onClick={() => toggleExpand()}
+            >
+              {" "}
+              <img
+                className={styles.arrowIcon}
+                src={arrowIcon}
+                alt="arrow icon"
+              />
+            </button>
           </div>
         </div>
-        {expandedSection === "lookingFor" && (
-          <div>{/* код для отображения предпочтений по поиску */}</div>
-        )}
+        {expandedSection && <Modal onClose={() => setExpandedSection(false)} />}
 
         <div
           className={`${styles.filters_section}  ${styles.filters_interests}`}
-          onClick={() => toggleExpand("interests")}
         >
           <div className={styles.container_line}>
             <div className={styles.containerIcon}>
@@ -235,14 +251,19 @@ const Filters = () => {
               />
               <span>Interests</span>
             </div>
-            <img
-              className={styles.arrowIcon}
-              src={arrowIcon}
-              alt="arrow icon"
-            />
+            <button
+              className={styles.buttonArrowIcon}
+              onClick={() => toggleExpand()}
+            >
+              <img
+                className={styles.arrowIcon}
+                src={arrowIcon}
+                alt="arrow icon"
+              />
+            </button>
           </div>
         </div>
-        {expandedSection === "interests" && (
+        {expandedSection && (
           <div>{/* код для отображения интересов пользователя */}</div>
         )}
       </div>
