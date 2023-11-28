@@ -8,32 +8,59 @@ import usersIcon from "../../../../assets/feed/users.svg";
 import arrowIcon from "../../../../assets/feed/arrow.svg";
 import Modal from "./Modal";
 
+interface SelectedCheckboxesState {
+  lookingFor: string[];
+  interests: string[];
+}
+
 const Filters = () => {
   const [expandedSection, setExpandedSection] = useState("");
   const [locationRange, setLocationRange] = useState(10);
   const [ageRange, setAgeRange] = useState([18, 100]);
-  const [selectedCheckboxes, setSelectedCheckboxes] = useState<string[]>([]);
+  const [selectedCheckboxes, setSelectedCheckboxes] =
+    useState<SelectedCheckboxesState>({
+      lookingFor: [],
+      interests: [],
+    });
   const [selectedOption, setSelectedOption] = useState("Women");
-  const [selectedLookingForCount, setSelectedLookingForCount] = useState<number>(0);
-  const [selectedInterestsCount, setSelectedInterestsCount] = useState<number>(0);
+  const [selectedLookingForCount, setSelectedLookingForCount] =
+    useState<number>(0);
+  const [selectedInterestsCount, setSelectedInterestsCount] =
+    useState<number>(0);
 
-  const handleCheckboxChange = (category: string, value: string) => {
-  setSelectedCheckboxes((prevOptions) => {
+  const updateCheckboxes = (
+    prevOptions: string[],
+    value: string,
+    setCount: (count: number) => void
+  ): string[] => {
     const updatedOptions = prevOptions.includes(value)
       ? prevOptions.filter((option) => option !== value)
       : [...prevOptions, value];
 
     const count = updatedOptions.length;
-console.log(count)
-    if (category === "lookingFor") {
-      setSelectedLookingForCount(count);
-    } else if (category === "interests") {
-      setSelectedInterestsCount(count);
-    }
+
+    setCount(count);
 
     return updatedOptions;
-  });
-};
+  };
+
+  const handleCheckboxChange = (category: string, value: string) => {
+    const setCount =
+      category === "lookingFor"
+        ? setSelectedLookingForCount
+        : setSelectedInterestsCount;
+    setSelectedCheckboxes((prev) => {
+      if (category === "lookingFor" || category === "interests") {
+        return {
+          ...prev,
+          [category]: updateCheckboxes(prev[category], value, setCount),
+        };
+      } else {
+        console.warn(`Unknown category: ${category}`);
+        return prev;
+      }
+    });
+  };
 
   const toggleExpand = (category: string) => {
     setExpandedSection(category);
@@ -60,8 +87,6 @@ console.log(count)
 
     input2?.style.setProperty("--ageSlidLinGra", gradient2);
   };
-
-
 
   const updateLocationRange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const normalizedValue = (Number(event.target.value) / 20) * 100;
@@ -250,7 +275,7 @@ console.log(count)
               className={styles.buttonArrowIcon}
               onClick={() => toggleExpand("lookingFor")}
             >
-              { selectedLookingForCount > 0  ? (
+              {selectedLookingForCount > 0 ? (
                 <span className={styles.selectedCount}>
                   {selectedLookingForCount}
                 </span>
@@ -266,11 +291,15 @@ console.log(count)
         </div>
         {expandedSection === "lookingFor" && (
           <Modal
-          category="lookingFor"
+            category="lookingFor"
             onClose={() => setExpandedSection("")}
-            selectedCheckboxes={selectedCheckboxes}
-            onResetSelectedOptions={() => setSelectedCheckboxes([])} 
-            onCheckboxChange={(value) => handleCheckboxChange("lookingFor", value)}
+            selectedCheckboxes={selectedCheckboxes.lookingFor}
+            onResetSelectedOptions={() =>
+              setSelectedCheckboxes((prev) => ({ ...prev, lookingFor: [] }))
+            }
+            onCheckboxChange={(value) =>
+              handleCheckboxChange("lookingFor", value)
+            }
           />
         )}
 
@@ -290,7 +319,7 @@ console.log(count)
               className={styles.buttonArrowIcon}
               onClick={() => toggleExpand("interests")}
             >
-              { selectedInterestsCount > 0  ? (
+              {selectedInterestsCount > 0 ? (
                 <span className={styles.selectedCount}>
                   {selectedInterestsCount}
                 </span>
@@ -306,12 +335,16 @@ console.log(count)
         </div>
         {expandedSection === "interests" && (
           <Modal
-          category="interests"
-          onClose={() => setExpandedSection("")}
-          selectedCheckboxes={selectedCheckboxes}
-          onResetSelectedOptions={() => setSelectedCheckboxes([])} 
-          onCheckboxChange={(value) => handleCheckboxChange("interests", value)}
-        />
+            category="interests"
+            onClose={() => setExpandedSection("")}
+            selectedCheckboxes={selectedCheckboxes.interests}
+            onResetSelectedOptions={() =>
+              setSelectedCheckboxes((prev) => ({ ...prev, interests: [] }))
+            }
+            onCheckboxChange={(value) =>
+              handleCheckboxChange("interests", value)
+            }
+          />
         )}
       </div>
     </>
