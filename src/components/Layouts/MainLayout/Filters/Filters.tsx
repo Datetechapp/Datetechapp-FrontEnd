@@ -98,7 +98,7 @@ console.log(count)
     <>
       <div className={styles.filters_header}>
         <span className={styles.filters_title}>Filters</span>
-        <span className={styles.filters_clear_button}>Clear</span>
+        <button className={styles.filters_clear_button}>Clear</button>
       </div>
       <div className={styles.filters_container}>
         <div
@@ -207,7 +207,7 @@ console.log(count)
               name="age-range"
               min="18"
               max="100"
-              className={styles.location_range}
+              className={styles.age_range}
               onChange={(e) =>
                 updateAgeRange(Number(e.target.value), ageRange[1])
               }
@@ -220,7 +220,7 @@ console.log(count)
               name="age-range"
               min="18"
               max="100"
-              className={`${styles.location_range} ${styles.overlay}`}
+              className={`${styles.age_range} ${styles.overlay}`}
               onChange={(e) =>
                 updateAgeRange(ageRange[0], Number(e.target.value))
               }

@@ -16,6 +16,7 @@
     display: grid;
     grid-template-columns: 1fr 3fr 1fr;
     grid-template-rows: calc(300vh - 96px);
+    width: 1440px; /*delete after*/
 }
 .main_layout__info_panel{
     background-color: var(--dark-background);

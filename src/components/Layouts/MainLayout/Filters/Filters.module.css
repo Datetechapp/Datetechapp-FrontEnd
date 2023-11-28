@@ -1,6 +1,7 @@
 .filters_header {
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
   margin: 24px 16px 8px;
 }
 
@@ -24,9 +25,17 @@
   line-height: 18px;
   letter-spacing: 0.1px;
   display: inline-flex;
-  justify-content: flex-end;
-  align-items: center;
+  justify-content: center;
+  align-items: flex-end;
   gap: 8px;
+  border: none;
+  margin: 0;
+  padding: 0;
+  background: none;
+  text-align: end;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
 }
 
 .filters_container {
@@ -54,6 +63,7 @@
 
 .bar {
   width: 100%;
+  position: relative;
 }
 
 .filters_section span {
@@ -115,16 +125,24 @@
   input[type="range"]::-webkit-slider-thumb {
     box-shadow: 0px 0px 0px #000000;
     border: 0.5px solid var(--Violet_Active, #5f4f7f);
-    width: 24px;
-    height: 24px;
     padding: 10px 0px;
     border-radius: 20px;
     background: var(--Violet_Active, #c896ef);
     cursor: ew-resize;
     -webkit-appearance: none;
-    margin-top: -9px;
+    margin-top: -7px;
     z-index: 999;
     position: relative;
+  }
+
+  .location_range::-webkit-slider-thumb {
+    width: 24px;
+    height: 24px;
+  }
+
+  .age_range::-webkit-slider-thumb {
+    width: 20px;
+    height: 20px;
   }
 
   /** FF*/
@@ -136,11 +154,19 @@
   }
   input[type="range"]::-moz-range-thumb {
     border: 1px solid var(--Violet_Active, #c896ef);
-    height: 24px;
-    width: 24px;
     border-radius: 20px;
     background: #c896ef;
     cursor: ew-resize;
+  }
+
+  .location_range::-moz-range-thumb {
+    height: 24px;
+    width: 24px;
+  }
+
+  .age_range::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
   }
 
   /* IE*/
@@ -162,11 +188,19 @@
 
   input[type="range"]::-ms-thumb {
     border: 1px solid var(--Violet_Active, #c896ef);
-    height: 24px;
-    width: 24px;
     border-radius: 20px;
     background: #c896ef;
     cursor: ew-resize;
+  }
+
+  .location_range::-ms-thumb {
+    height: 24px;
+    width: 24px;
+  }
+
+  .age_range::-ms-thumb {
+    height: 20px;
+    width: 20px;
   }
 }
 
@@ -220,7 +254,7 @@
   justify-content: space-between;
   position: relative;
   align-items: center;
-  padding: 0 5px;
+  padding: 3px 0px;
 }
 
 .age_label div {
@@ -233,13 +267,13 @@
   align-items: center;
 }
 
-.location_range {
+.location_range, .age_range {
   text-align: center;
 }
 
-.location_range.overlay {
-  position: relative;
-  top: -25px;
+.age_range.overlay {
+  position: absolute;
+  top: 13px;
   left: 0;
   z-index: 1;
 }
