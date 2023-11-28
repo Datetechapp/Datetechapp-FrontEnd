@@ -267,7 +267,8 @@
   align-items: center;
 }
 
-.location_range, .age_range {
+.location_range,
+.age_range {
   text-align: center;
 }
 
@@ -293,21 +294,21 @@
 }
 
 .selectedCount {
-  color: var(--Dark_Grey_Menu, #302E3D);
-font-family: 'Montserrat', sans-serif;
-font-size: 12px;
-font-style: normal;
-font-weight: 600;
-line-height: 14px; 
-letter-spacing: 0.012px;
-display: flex;
-width: 24px;
-height: 24px;
-padding: 10px 0px;
-justify-content: center;
-align-items: center;
-gap: 10px;
-flex-shrink: 0;
-border-radius: 30px;
-background: var(--Violet_Active, #C896EF);
+  color: var(--Dark_Grey_Menu, #302e3d);
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 14px;
+  letter-spacing: 0.012px;
+  display: flex;
+  width: 24px;
+  height: 24px;
+  padding: 10px 0px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 30px;
+  background: var(--Violet_Active, #c896ef);
 }

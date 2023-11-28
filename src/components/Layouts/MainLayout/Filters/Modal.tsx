@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./Modal.module.css";
 
 interface ModalProps {
@@ -6,12 +6,16 @@ interface ModalProps {
   selectedCheckboxes: string[];
   onCheckboxChange: (value: string) => void;
   onResetSelectedOptions: () => void;
-  category: string; 
+  category: string;
 }
 
-const Modal: React.FC<ModalProps> = ({ onClose, selectedCheckboxes,onCheckboxChange, onResetSelectedOptions, category }) => {
-
-
+const Modal: React.FC<ModalProps> = ({
+  onClose,
+  selectedCheckboxes,
+  onCheckboxChange,
+  onResetSelectedOptions,
+  category,
+}) => {
   const saveLookingFor = () => {
     console.log("Save functionality");
     onClose();
@@ -33,13 +37,63 @@ const Modal: React.FC<ModalProps> = ({ onClose, selectedCheckboxes,onCheckboxCha
   ];
 
   const checkboxOptionsInterests = [
-    'Singing', 'Listening to music', 'Cars', 'Blogging', 'Reading books', 'Dancing', 'Learning new languages', 'Surfing', 'Basketball', 'Travelling', 'Shopping',
-    'Hiking', 'Cycling', 'Exercising', 'Embroidering', 'Collecting things', ' Cooking', 'Baking', 'Skating', 'Gardening', 'Handmade', 'Skiing', 'Sky-jumping', 'Walking', 'Writing stories', 'Fishing', 'Longboarding', 'Drawing', 'Postcards', 'Fridge magnets', 'Butterflies and bugs', 'Darts', 'Scrapbooking', 'Dressmaking', 'Photography', 'Roller-skating', 'Running', 'Yoga', 'Coaching', 'Basketball', 'Diving', 'Bodybuilding', 'Gymnastics', 'Swimming', 'Tennis', 'Football', 'Archery', 'Rock climbing', 'Beer', 'Snowboarding', 'Parkour', 'Graffiti', 'Numismatics', 'Stones and minerals'
-    
-   //не знаю что такое Clothes decoration заменила на Dressmaking
+    "Singing",
+    "Listening to music",
+    "Cars",
+    "Blogging",
+    "Reading books",
+    "Dancing",
+    "Learning new languages",
+    "Surfing",
+    "Basketball",
+    "Travelling",
+    "Shopping",
+    "Hiking",
+    "Cycling",
+    "Exercising",
+    "Embroidering",
+    "Collecting things",
+    " Cooking",
+    "Baking",
+    "Skating",
+    "Gardening",
+    "Handmade",
+    "Skiing",
+    "Sky-jumping",
+    "Walking",
+    "Writing stories",
+    "Fishing",
+    "Longboarding",
+    "Drawing",
+    "Postcards",
+    "Fridge magnets",
+    "Butterflies and bugs",
+    "Darts",
+    "Scrapbooking",
+    "Dressmaking",
+    "Photography",
+    "Roller-skating",
+    "Running",
+    "Yoga",
+    "Coaching",
+    "Basketball",
+    "Diving",
+    "Bodybuilding",
+    "Gymnastics",
+    "Swimming",
+    "Tennis",
+    "Football",
+    "Archery",
+    "Rock climbing",
+    "Beer",
+    "Snowboarding",
+    "Parkour",
+    "Graffiti",
+    "Numismatics",
+    "Stones and minerals",
 
-  ]
-
+    //не знаю что такое Clothes decoration заменила на Dressmaking
+  ];
 
   const getCheckboxOptions = () => {
     if (category === "lookingFor") {
@@ -50,9 +104,6 @@ const Modal: React.FC<ModalProps> = ({ onClose, selectedCheckboxes,onCheckboxCha
       return [];
     }
   };
-
-  
-
 
   return (
     <div className={styles.modal_overlay}>
@@ -78,11 +129,30 @@ const Modal: React.FC<ModalProps> = ({ onClose, selectedCheckboxes,onCheckboxCha
             </div>
           ))}
         </div>
+        {category === "lookingFor" ? (
+          ""
+        ) : (
+          <div className={styles.modal_bottom}>
+            <div className={styles.modal_bottom_1line}>
+              <span>Show other users if there are no more profiles</span>
+              <div className={styles.checkbox_container}>
+                <input type="checkbox" id="bottomCheckbox" />
+                <label htmlFor="bottomCheckbox"></label>
+              </div>
+            </div>
+            <div className={styles.modal_bottom_2line}>
+              Turn on to see more people
+            </div>
+          </div>
+        )}
         <div className={styles.modal_buttons}>
           <button className={styles.modal_button_save} onClick={saveLookingFor}>
             Save
           </button>
-          <button className={styles.modal_button_cancel} onClick={cancelAndReset}>
+          <button
+            className={styles.modal_button_cancel}
+            onClick={cancelAndReset}
+          >
             Cancel
           </button>
         </div>
