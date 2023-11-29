@@ -14,11 +14,15 @@ const Filters = () => {
     setExpandedSection(category);
   };
 
+  const handleClear = () => {
+    //прописать логику очистки фильтров, через Redux?
+    }
+
   return (
     <>
       <div className={styles.filters_header}>
         <span className={styles.filters_title}>Filters</span>
-        <button className={styles.filters_clear_button}>Clear</button>
+        <button className={styles.filters_clear_button} onClick={handleClear}>Clear</button>
       </div>
       <div className={styles.filters_container}>
         <Geolocation />
