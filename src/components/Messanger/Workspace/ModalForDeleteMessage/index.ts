@@ -1,1 +1,1 @@
-export { ModalForDeleteMessage } from "./ModalForDeleteMessage"
+export { ModalForDeleteMessage } from './ModalForDeleteMessage';

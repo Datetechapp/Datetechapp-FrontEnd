@@ -1,0 +1,70 @@
+@keyframes searchMessagesWrapper {
+       0% {
+         transform: translateY(-100%);
+         
+       }
+       100% {
+         transform: translateY(0);
+         top:54px;
+        
+       }
+     }
+
+
+.searchMessagesWrapper {
+       height: 64px;
+       width: inherit;
+       position: absolute;
+       z-index: 4;
+       top: 64px;
+       display: flex;
+       padding: 16px;
+       align-items: center;
+       gap: 8px;
+       border-bottom: 1.5px solid var(--Panel_Background, #272533);
+       background: var(--Dark_Background, #1F1D2B);
+       animation: searchMessagesWrapper 0.8s ease forwards;
+}
+
+.fieldSearchingBlock {
+       position: relative;
+       width: 86vw;
+
+}
+
+.searchingIcon {
+       position: absolute;
+       top: 6px;
+       left: 12px;
+}
+
+.clearTextIcon {
+       position: absolute;
+       top: 7px;
+       right: 12px;
+       cursor: pointer;
+}
+
+.fieldForSearching {
+       width: 100%;
+       height: 32px;
+       padding: 0px 12px 0 40px;
+       border-radius: 100px;
+       background: var(--Panel_Background, #272533);
+       border: none;
+       color: var(--White, #FFF);
+       font-family: Montserrat;
+       font-size: 16px;
+       font-weight: 400;
+       line-height: 20px;
+       outline: none;
+
+}
+
+.fieldForSearching::placeholder {
+       color: var(--Violet_Stroke, #5F4F7F);
+       font-family: Montserrat;
+       font-size: 16px;
+       font-weight: 400;
+       line-height: 20px;
+}

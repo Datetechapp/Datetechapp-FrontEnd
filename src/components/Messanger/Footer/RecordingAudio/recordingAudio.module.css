@@ -1,0 +1,68 @@
+.microphone,
+.stopIcon,
+.playIcon,
+.sendIcon,
+.deleteIcon {
+       position: absolute;
+       cursor: pointer;
+}
+
+.microphone {
+       top: 10px;
+       right: 13px;
+}
+
+.stopIcon {
+       top: 8px;
+       right: 12px;
+       transform: scale(0.9);
+}
+
+.recordingPoint {
+       position: absolute;
+       top: 13px;
+       left: 16px;
+}
+
+.playIcon {
+       top: 8px;
+       left: 16px;
+       transform: scale(0.9);
+}
+
+.sendIcon {
+       top: 8px;
+       right: 16px;
+       transform: scale(0.9);
+}
+
+.deleteIcon {
+       top: 8px;
+       right: 46px;
+}
+
+.timeIsRecording {
+       position: absolute;
+       top: 9px;
+       left: 37px;
+       color: var(--White, #FFF);
+       font-family: Montserrat;
+       font-size: 16px;
+       font-weight: 400;
+       line-height: 20px;
+}
+
+.timeIsRecorded {
+       position: absolute;
+       top: 11px;
+       left: 47px;
+       color: var(--White, #FFF);
+       font-family: Montserrat;
+       font-size: 16px;
+       font-weight: 400;
+       line-height: 20px;
+}
+
+.visualizerContainerHidden {
+       display: none !important;
+}

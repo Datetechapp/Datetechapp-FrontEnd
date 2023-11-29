@@ -9,15 +9,20 @@ interface UploadButtonProps {
   icon?: React.ReactNode;
 }
 
-export const UploadButton: React.FC<UploadButtonProps> = ({ onUpload, inputId, accept, icon }) => {
-
+export const UploadButton: React.FC<UploadButtonProps> = ({
+  onUpload,
+  inputId,
+  accept,
+  icon,
+}) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files.length > 0) {
       const file = event.target.files[0];
+
       onUpload(file);
-     
+
       if (inputRef.current) {
         inputRef.current.value = '';
       }
@@ -25,12 +30,12 @@ export const UploadButton: React.FC<UploadButtonProps> = ({ onUpload, inputId, a
   };
 
   return (
-    <div className={inputId === "video-upload-button" ? css.blockForUploadVideoButton : css.blockForUploadPhotoButton}>
+    <div className={inputId === 'video-upload-button' ? css.blockForUploadVideoButton : inputId === 'photo-upload-button' ? css.blockForUploadPhotoButton : css.blockForClipPhoto}>
       <label htmlFor={inputId}>
         {icon}
       </label>
       <Input
-        inputRef={inputRef} 
+        inputRef={inputRef}
         id={inputId}
         type="file"
         className={css.inputForVideo}

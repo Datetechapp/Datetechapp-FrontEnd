@@ -1,72 +1,73 @@
 import Modal from 'react-modal';
-import css from "./modalCommon.module.css"
-import { FC, useCallback } from "react"
-import { Button } from "../button"
-import cancel from "../../../assets/ModalAuth/Cancel.svg"
-import { useLocation, useNavigate } from "react-router-dom"
-
+import React, { FC, useCallback } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import css from './modalCommon.module.css';
+import { Button } from '../button';
+import cancel from '../../../assets/ModalAuth/Cancel.svg';
 
 interface ModalCommonProps {
-       onRequestClose?: () => void;
-       textTitle: string;
-       textSubtitle: string;
-       textEmail?: string;
-       buttonText?: string;
-       secondButtonText?: string;
-       isOpenModalCheckEmail?: boolean;
-       onChangeModalCheckEmail?: React.Dispatch<React.SetStateAction<boolean>>;
-       isOpenModalChangedPassword?: boolean;
-       onChangeModalPasswordChanged?: React.Dispatch<React.SetStateAction<boolean>>;
-
+  onRequestClose?: () => void;
+  textTitle: string;
+  textSubtitle: string;
+  textEmail?: string;
+  buttonText?: string;
+  darkModal?: boolean;
+  secondButtonText?: string;
+  isOpen: boolean;
+  isThereACancel: boolean;
+  onChange: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const ModalCommon: FC<ModalCommonProps> = (
-       {
-              textTitle,
-              textSubtitle,
-              textEmail,
-              buttonText,
-              secondButtonText,
-              onChangeModalCheckEmail,
-              isOpenModalCheckEmail,
-              isOpenModalChangedPassword,
-              onChangeModalPasswordChanged
-       }) => {
+export const ModalCommon: FC<ModalCommonProps> = ({
+  textTitle,
+  textSubtitle,
+  textEmail,
+  buttonText,
+  secondButtonText,
+  onChange,
+  isOpen,
+  darkModal,
+  isThereACancel
+}) => {
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
 
-       const { pathname } = useLocation();
-       const navigate = useNavigate();
+  const handleNotShowModal = useCallback(() => {
+    document.body.style.overflow = 'unset';
+    onChange(false);
+    if (pathname === '/reset_password') {
+      navigate('/login');
+    }
+  }, []);
 
-       const handleNotShowModal = useCallback(() => {
-              document.body.style.overflow = "unset";
-
-              if (pathname === "/reset_password" && onChangeModalCheckEmail) {
-                     onChangeModalCheckEmail(false);
-                     navigate("/login")
-              }
-              else if (onChangeModalPasswordChanged) {
-                     onChangeModalPasswordChanged(false);
-                     navigate("/login")
-              }
-       }, []);
-
-
-       return (
-              <Modal
-                     isOpen={isOpenModalCheckEmail || isOpenModalChangedPassword || false}
-                     onRequestClose={handleNotShowModal}
-                     className={css.modalCheckEmail}
-                     overlayClassName={css.overlayModal}
-              >
-                     <div className={css.titleAndCancelBlock}>
-                            <h2 className={css.modalCheckEmailTitle}>
-                                   {textTitle}
-                            </h2>
-                            <img className={css.iconCancel} src={cancel} alt="cancel" onClick={handleNotShowModal} />
-                     </div>
-                     {textSubtitle && <p className={css.checkEmailInfo}>{textSubtitle}</p>}
-                     {textEmail && <p className={css.email}>{textEmail}</p>}
-                     <Button className={css.btnOk} onClick={handleNotShowModal}>{buttonText}</Button>
-                     {secondButtonText && <Button className={css.btnSecond} onClick={handleNotShowModal}>{secondButtonText}</Button>}
-              </Modal>
-       )
-}
+  return (
+    <Modal
+      isOpen={isOpen}
+      onRequestClose={handleNotShowModal}
+      className={`${css.modal} ${darkModal ? css.darkModal : ''}`}
+      overlayClassName={css.overlayModal}
+    >
+      <div className={!darkModal ? css.titleAndCancelBlock : css.darkTitleBlock}>
+        <h2 className={!darkModal ? css.modalTitle : css.darkModalTitle}>{textTitle}</h2>
+        {isThereACancel && <img
+          className={css.iconCancel}
+          src={cancel}
+          alt="cancel"
+          onClick={handleNotShowModal}
+        />}
+      </div>
+      {textSubtitle && <p className={`${css.subtitle} ${darkModal ? css.darkModalSubtitle : ''}`}>{textSubtitle}</p>}
+      {textEmail && <p className={css.email}>{textEmail}</p>}
+      <div className={darkModal ? css.btnBlock : ''}>
+        <Button className={`${css.firstBtn} ${darkModal ? css.darkModalFirstBtn : ''}`} onClick={handleNotShowModal}>
+          {buttonText}
+        </Button>
+        {secondButtonText && (
+          <Button className={`${css.secondBtn} ${darkModal ? css.darkModalSecondBtn : ''}`} onClick={handleNotShowModal}>
+            {secondButtonText}
+          </Button>
+        )}
+      </div>
+    </Modal>
+  );
+};

@@ -1,1 +1,1 @@
-export {MainLayoutNav} from "./nav_panel"
+export { MainLayoutNav } from './nav_panel';

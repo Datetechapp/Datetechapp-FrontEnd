@@ -1,1 +1,1 @@
-export { QuestionBlock } from "./QuestionBlock"
+export { QuestionBlock } from './QuestionBlock';

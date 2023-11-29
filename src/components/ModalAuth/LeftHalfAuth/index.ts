@@ -1,1 +1,1 @@
-export { LeftHalfAuth } from "./LeftHalfAuth"
+export { LeftHalfAuth } from './LeftHalfAuth';

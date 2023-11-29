@@ -32,11 +32,6 @@
        gap: 8px;
 }
 
-.messageInfoMe,
-.messageInfoOther {
-       margin-top: 8px;
-}
-
 .messageText {
        color: var(--white, #E9E3F5);
        font-family: Montserrat, Arial, Helvetica, sans-serif;
@@ -68,4 +63,19 @@
        display: flex;
        gap: 4px;
        align-self: flex-end;
+}
+
+.highlighted {
+       transition: background-color 1s linear;
+       background-color: var(--Panel_Stroke, #32303E);
+     }
+
+@keyframes fadeOut {
+       0% {
+              opacity: 1;
+       }
+
+       100% {
+              opacity: 0;
+       }
 }

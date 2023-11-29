@@ -1,1 +1,1 @@
-export { ModalUploadVideo } from "./ModalUploadVideo"
+export { ModalUploadVideo } from './ModalUploadVideo';
