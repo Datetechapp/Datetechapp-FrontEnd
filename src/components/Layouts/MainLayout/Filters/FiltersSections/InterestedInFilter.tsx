@@ -1,12 +1,13 @@
-import React, { useState } from "react";
-import styles from "../Filters.module.css";
-import genderIcon from "../../../../../assets/user/gender.svg";
+import React, { useState } from 'react';
+import styles from '../Filters.module.css';
+import genderIcon from '../../../../../assets/user/gender.svg';
 
 const InterestedInFilter = () => {
-  const [selectedOption, setSelectedOption] = useState("Women");
+  const [selectedOption, setSelectedOption] = useState('Women');
   const handleOptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedOption(event.target.value);
   };
+
   return (
     <div
       className={`${styles.filters_section}  ${styles.filters_interested_in}`}
@@ -18,7 +19,7 @@ const InterestedInFilter = () => {
 
       <div className={styles.interests_container}>
         <label
-          className={selectedOption === "Women" ? styles.active_interests : ""}
+          className={selectedOption === 'Women' ? styles.active_interests : ''}
           htmlFor="women-option"
         >
           <input
@@ -26,14 +27,14 @@ const InterestedInFilter = () => {
             value="Women"
             id="women-option"
             name="interested-in"
-            checked={selectedOption === "Women"}
+            checked={selectedOption === 'Women'}
             onChange={handleOptionChange}
           />
           Women
         </label>
 
         <label
-          className={selectedOption === "Men" ? styles.active_interests : ""}
+          className={selectedOption === 'Men' ? styles.active_interests : ''}
           htmlFor="men-option"
         >
           <input
@@ -41,7 +42,7 @@ const InterestedInFilter = () => {
             value="Men"
             id="men-option"
             name="interested-in"
-            checked={selectedOption === "Men"}
+            checked={selectedOption === 'Men'}
             onChange={handleOptionChange}
           />
           Men
@@ -49,7 +50,7 @@ const InterestedInFilter = () => {
 
         <label
           className={
-            selectedOption === "Everyone" ? styles.active_interests : ""
+            selectedOption === 'Everyone' ? styles.active_interests : ''
           }
           htmlFor="everyone-option"
         >
@@ -58,7 +59,7 @@ const InterestedInFilter = () => {
             value="Everyone"
             id="everyone-option"
             name="interested-in"
-            checked={selectedOption === "Everyone"}
+            checked={selectedOption === 'Everyone'}
             onChange={handleOptionChange}
           />
           Everyone

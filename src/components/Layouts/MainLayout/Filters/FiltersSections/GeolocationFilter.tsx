@@ -1,25 +1,28 @@
-import React, { useState, useEffect } from "react";
-import styles from "../Filters.module.css";
-import locationIcon from "../../../../../assets/user/location.svg";
+import React, { useState, useEffect } from 'react';
+import styles from '../Filters.module.css';
+import locationIcon from '../../../../../assets/user/location.svg';
 
 const Geolocation = () => {
   const [locationRange, setLocationRange] = useState(10);
   const updateLocationRange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const normalizedValue = (Number(event.target.value) / 20) * 100;
+
     setLocationRange(Number(event.target.value));
     setBackgroundColor(normalizedValue);
   };
 
   const setBackgroundColor = (normalizedValue: number) => {
-    const inputLocation = document.getElementById("location-range");
+    const inputLocation = document.getElementById('location-range');
+
     inputLocation?.style.setProperty(
-      "--sliderLinGra",
+      '--sliderLinGra',
       `linear-gradient(to right, #C896EF ${normalizedValue}%, #5F4F7F ${normalizedValue}%)`,
     );
   };
 
   useEffect(() => {
     const normalizedValue = (Number(locationRange) / 20) * 100;
+
     setBackgroundColor(normalizedValue);
   }, []);
 
