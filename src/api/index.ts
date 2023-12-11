@@ -1,5 +1,20 @@
 const BASE_URL = 'https://datetechapp-back.herokuapp.com';
 
+export const fetchData = (params: string) => {
+     const url = `https://wft-geo-db.p.rapidapi.com/v1/geo/cities?namePrefix=${params}`;
+     const options = {
+          method: 'GET',
+          headers: {
+               'X-RapidAPI-Key': '07c8b56d83msh8f6a7059d4584a7p1f4428jsn9d5ba337adf1',
+               'X-RapidAPI-Host': 'wft-geo-db.p.rapidapi.com'
+          }
+     };
+
+     return fetch(url, options)
+          .then(response => response.json());
+};
+
+
 interface Tokens {
      access: string;
      refresh?: string | null;
@@ -39,7 +54,7 @@ const refreshAccessToken = async () => {
 
 const post = async (
      url: string,
-     body: Record<string, unknown>,
+     body?: Record<string, unknown>,
      isAuthorization = false,
 ) => {
      const fullUrl = new URL(url, BASE_URL);
@@ -57,6 +72,11 @@ const post = async (
           mode: 'cors',
           body: JSON.stringify(body),
           headers,
+     }).then(response => {
+          if (!response.ok) {
+               throw new Error(`HTTP error, status code ${response.status}`);
+          }
+          return response;
      });
 };
 
@@ -68,15 +88,16 @@ export const createPassword = (body: {
      purposes: Record<string, string>;
      sex: Record<string, string>;
      discription_gender: Record<string, string>;
-}> =>
-     post('/registration/second_step/', body).then((response) => response.json());
+}> => post('/registration/second_step/', body).then((response) => response.json());
 
 export const registration = (body: { username: string, password: string, confirm_password: string }): Promise<Response> =>
      post('/registration/signup/', body);
 
+export const resendCode = (): Promise<Response> => post('/registration/resend-code/');
+
 export const checkVerificationCode = (body: {
      passcode: string;
-}): Promise<Response> => post('/registration/email_confirmation/', body);
+}): Promise<Response> => post('/registration/confirm-email/', body);
 
 export const createProfileForPhoto = (body: {
      photo: string | null;
@@ -102,13 +123,10 @@ export const createProfile = (body: {
                          access: data.access,
                          refresh: data.refresh,
                     };
-
                     saveTokensToLocalStorage(tokens);
-
                     return response;
                });
           }
-
           if (response.status === 401) {
                return refreshAccessToken().then((refreshResponse) => {
                     if (refreshResponse.ok) {
@@ -118,13 +136,13 @@ export const createProfile = (body: {
                     return response;
                });
           }
-
           return response;
      });
 
 export const login = (body: {
      username: string;
      password: string;
-     rememberLogin: boolean;
+     remember_me: boolean;
 }): Promise<Response> =>
      post('/login', body).then((response) => response.json());
+

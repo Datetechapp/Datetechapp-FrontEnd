@@ -48,7 +48,7 @@ export const Workspace: FC<WorkspaceProps> = ({ setSelectedMessageText, showRepl
   }, []);
 
   const togglePinnedMessage = () => {
-    if (pinnedMessages.length > 0) {
+    if (pinnedMessages?.length) {
       setCurrentPinnedMessageIndex((prevIndex) => (prevIndex + 1) % pinnedMessages.length);
 
       const selectedMessage = messagesArr.find((message) => message.id === selectedMessageId);
@@ -136,7 +136,7 @@ export const Workspace: FC<WorkspaceProps> = ({ setSelectedMessageText, showRepl
       <div className={css.headerWorkspace}>
       <AudioPlayer />
       {showSearchMessages && <SearchMessages setShowSearchMessages={setShowSearchMessages} />}
-      {pinnedMessages.length > 0 && (
+      {pinnedMessages?.length && (
         <PinnedMessage
           togglePinnedMessage={togglePinnedMessage}
           currentPinnedMessageIndex={currentPinnedMessageIndex}

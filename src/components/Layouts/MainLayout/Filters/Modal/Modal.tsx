@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Modal.module.css';
+import { Input } from '../../../../common';
 
 interface ModalProps {
   onClose: () => void;
@@ -111,7 +112,8 @@ const Modal: React.FC<ModalProps> = ({
         <div className={styles.modal_checkboxes}>
           {getCheckboxOptions().map((option) => (
             <div key={option}>
-              <input
+              <Input
+                className={styles.checkbox}
                 type="checkbox"
                 value={option}
                 id={option}
