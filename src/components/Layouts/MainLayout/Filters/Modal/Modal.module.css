@@ -53,7 +53,7 @@
   gap: 8px;
 }
 
-input[type="checkbox"] {
+.checkbox {
   position: absolute;
   opacity: 0;
 }

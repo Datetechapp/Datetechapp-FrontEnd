@@ -1,6 +1,16 @@
-.locations {
+.searchBlockWrapper {
        margin-top: 32px;
        width: 392px;
-       height: 48px;
-       
+       position: relative;
+}
+
+.locations {
+       width: inherit;
+}
+
+.searchIcon {
+       position: absolute;
+       z-index: 1;
+       top: 5px;
+       left: 5px;
 }

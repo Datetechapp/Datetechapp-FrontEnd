@@ -17,7 +17,7 @@ const textForName = 'Tell us more! What do you like to be called?';
 const textForButton = 'Continue';
 
 export function Questionnaire() {
-       const [step, setStep] = useState(6);
+       const [step, setStep] = useState(0);
        const [name, setName] = useState('');
        const [day, setDay] = useState('');
        const [isValidDay, setIsValidDay] = useState(false);

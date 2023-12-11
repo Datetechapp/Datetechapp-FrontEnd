@@ -1,8 +1,10 @@
 import css from './verificationPage.module.css';
 import { HeaderSecondary } from 'components/HeaderSecondary';
 import { Input } from 'components/common';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Button } from 'components/common';
+import { resendCode, checkVerificationCode } from 'api';
+import { useNavigate } from 'react-router-dom';
 
 export const VerificationPage = () => {
        const [values, setValues] = useState(['', '', '', '', '', '']);
@@ -10,11 +12,14 @@ export const VerificationPage = () => {
        const [resendText, setResendText] = useState(
               `Resend code after 0:${String(timer).padStart(2, '0')}`
        );
+       const [errorMessage, setErrorMessage] = useState('');
+       const navigate = useNavigate();
+       const inputRefs = values.map(() => useRef<HTMLInputElement | null>(null));
 
        useEffect(() => {
               const countdownInterval = setInterval(() => {
-                    
-                            setTimer((prevTimer) => prevTimer - 1);
+
+                     setTimer((prevTimer) => prevTimer - 1);
               }, 1000);
 
               return () => {
@@ -32,20 +37,56 @@ export const VerificationPage = () => {
 
        const handleResendClick = () => {
               if (timer <= 0) {
-                setTimer(30);
-                setResendText(`Resend code after 0:${String(30).padStart(2, '0')}`);
+                     setTimer(30);
+                     setResendText(`Resend code after 0:${String(30).padStart(2, '0')}`);
+                     resendCode();
+                     setErrorMessage('');
+                     setValues(['', '', '', '', '', '']);
               }
-            };
+       };
 
-  const handleChange = (index: number, value: string) => {
-    const newValues = [...values];
+       const handleChange = (index: number, value: string) => {
+              const newValues = [...values];
+              const currentInputRef = inputRefs[index]?.current;
+              newValues[index] = value;
 
-    newValues[index] = value;
-    setValues(newValues);
-  };
+              if (value.length > 1) {
+                     newValues[index] = value.slice(0, 1);
+              }
+
+              setValues(newValues);
+
+              if (value === '') {
+                     if (index > 0 && inputRefs[index - 1]?.current) {
+                            const prevInputRef = inputRefs[index - 1]?.current;
+                            prevInputRef?.focus();
+
+                            if (prevInputRef && prevInputRef.setSelectionRange) {
+                                   prevInputRef.setSelectionRange(prevInputRef.value.length, prevInputRef.value.length);
+                            }
+                     }
+              } else if (currentInputRef) {
+                     if (index < values.length - 1 && value.length >= currentInputRef.maxLength) {
+                            if (inputRefs[index + 1]?.current) {
+                                   const nextInputRef = inputRefs[index + 1]?.current;
+                                   nextInputRef?.focus();
+                            }
+                     }
+              }
+       };
 
        const isDisabled = values.some((value) => value === '');
-       console.log(timer);
+
+       const handleVerification = () => {
+              checkVerificationCode({ passcode: values.join('') })
+                     .then(() => {
+                            navigate('/create-profile');
+                     })
+                     .catch((error) => {
+                            setErrorMessage('Incorrect code. Check and try again');
+                     });
+       };
+
        return (
               <div className={css.verificationPageWrapper}>
                      <HeaderSecondary text="Log out" />
@@ -55,20 +96,28 @@ export const VerificationPage = () => {
                                    <p className={css.subtitle}>Enter the 6-digit code we sent you to </p>
                                    <p className={css.email}>sgulyako@mail.ru</p>
                                    <div className={css.inputsBlock}>
+
                                           {values.map((value, index) => (
                                                  <Input
                                                         key={index}
-                                                        className={css.inputForVerify}
+                                                        className={!errorMessage ? css.inputForVerify : css.inputWithError}
                                                         value={value}
                                                         type="text"
                                                         onChange={(e) => handleChange(index, e.target.value)}
+                                                        inputRef={inputRefs[index]}
                                                  />
                                           ))}
+
                                    </div>
-                                   <Button className={isDisabled ? css.continueBtn : css.continueBtnValid} disabled={isDisabled}>
+                                   {errorMessage && <p className={css.errorMessage}>{errorMessage}</p>}
+                                   <Button
+                                          className={isDisabled ? css.continueBtn : css.continueBtnValid}
+                                          disabled={isDisabled}
+                                          onClick={handleVerification}
+                                   >
                                           Continue
                                    </Button>
-                                   <p className={css.resendCode} onClick={handleResendClick}>
+                                   <p className={resendText === 'Resend code' ? css.activeLink : css.passiveLink} onClick={handleResendClick}>
                                           {resendText}
                                    </p>
                             </div>
