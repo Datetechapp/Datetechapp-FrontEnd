@@ -44,7 +44,7 @@ const Geolocation = () => {
           name="location-range"
           min="0"
           max="20"
-          className={styles.location_range}
+          className={`${styles.location_range} ${styles.range}`}
           onChange={updateLocationRange}
           value={locationRange}
           step="5"

@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styles from './Modal.module.css';
 import { Input } from '../../../../common';
+import { Dispatch, SetStateAction } from 'react';
 
 interface ModalProps {
   onClose: () => void;
@@ -8,6 +9,8 @@ interface ModalProps {
   onCheckboxChange: (value: string) => void;
   onResetSelectedOptions: () => void;
   category: string;
+  isModalOpen: boolean;
+  setIsModalOpen: Dispatch<SetStateAction<boolean>>;
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -16,7 +19,11 @@ const Modal: React.FC<ModalProps> = ({
   onCheckboxChange,
   onResetSelectedOptions,
   category,
+  isModalOpen,
+  setIsModalOpen,
 }) => {
+  const modalRef = useRef<HTMLDivElement | null>(null);
+
   const saveLookingFor = () => {
     onClose();
   };
@@ -25,6 +32,26 @@ const Modal: React.FC<ModalProps> = ({
     onResetSelectedOptions();
     onClose();
   };
+
+  const handleOutsideClick = (e: MouseEvent) => {
+    if (
+      isModalOpen &&
+      modalRef.current &&
+      !modalRef.current.contains(e.target as Node)
+    ) {
+      onClose();
+    }
+  };
+
+  useEffect(() => {
+    setIsModalOpen(true);
+    document.addEventListener('click', handleOutsideClick);
+
+    return () => {
+      document.removeEventListener('click', handleOutsideClick);
+      setIsModalOpen(false);
+    };
+  }, [isModalOpen, handleOutsideClick]);
 
   const checkboxOptionsLookingFor = [
     'Friendship & Communication',
@@ -76,7 +103,6 @@ const Modal: React.FC<ModalProps> = ({
     'Running',
     'Yoga',
     'Coaching',
-    'Basketball',
     'Diving',
     'Bodybuilding',
     'Gymnastics',
@@ -107,7 +133,7 @@ const Modal: React.FC<ModalProps> = ({
 
   return (
     <div className={styles.modal_overlay}>
-      <div className={styles.modal_content}>
+      <div ref={modalRef} className={styles.modal_content}>
         <h1>{category === 'lookingFor' ? 'Looking for' : 'Interests'}</h1>
         <div className={styles.modal_checkboxes}>
           {getCheckboxOptions().map((option) => (
@@ -120,10 +146,7 @@ const Modal: React.FC<ModalProps> = ({
                 defaultChecked={selectedCheckboxes.includes(option)}
                 onChange={() => onCheckboxChange(option)}
               />
-              <label
-                className={styles.modal_options}
-                htmlFor={option}
-              >
+              <label className={styles.modal_options} htmlFor={option}>
                 {option}
               </label>
             </div>
