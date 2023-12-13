@@ -41,15 +41,21 @@ const ModalFilters: React.FC<ModalFiltersProps> = ({
     value: string,
     setCount: (count: number) => void,
   ): string[] => {
-    const updatedOptions = prevOptions.includes(value)
-      ? prevOptions.filter((option) => option !== value)
-      : [...prevOptions, value];
+    if (prevOptions.includes(value)) {
+      const updatedCheckboxes = prevOptions.filter(
+        (checkbox) => checkbox !== value,
+      );
 
-    const count = updatedOptions.length;
+      return updatedCheckboxes;
+    } else {
+      const updatedOptions = [...prevOptions, value];
 
-    setCount(count);
+      const count = updatedOptions.length;
 
-    return updatedOptions;
+      setCount(count);
+
+      return updatedOptions;
+    }
   };
 
   const handleCheckboxChange = (category: string, value: string) => {

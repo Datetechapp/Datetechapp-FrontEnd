@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './Modal.module.css';
 import { Input } from '../../../../common';
 import { Dispatch, SetStateAction } from 'react';
@@ -23,6 +23,11 @@ const Modal: React.FC<ModalProps> = ({
   setIsModalOpen,
 }) => {
   const modalRef = useRef<HTMLDivElement | null>(null);
+  const maxSelectedCheckboxes = 5;
+
+  const [areAllCheckboxesDisabled, setAreAllCheckboxesDisabled] =
+    useState(false);
+  const [disabledCheckboxes, setDisabledCheckboxes] = useState<string[]>([]);
 
   const saveLookingFor = () => {
     onClose();
@@ -52,6 +57,34 @@ const Modal: React.FC<ModalProps> = ({
       setIsModalOpen(false);
     };
   }, [isModalOpen, handleOutsideClick]);
+
+  useEffect(() => {
+    if (selectedCheckboxes.length === maxSelectedCheckboxes) {
+      const newDisabledCheckboxes = getCheckboxOptions().filter(
+        (option) => !selectedCheckboxes.includes(option),
+      );
+
+      setDisabledCheckboxes(newDisabledCheckboxes);
+    } else {
+      setDisabledCheckboxes([]);
+    }
+  }, [selectedCheckboxes]);
+
+  const handleCheckboxChange = (value: string) => {
+    if (selectedCheckboxes.includes(value)) {
+      onCheckboxChange(value);
+      setAreAllCheckboxesDisabled(false);
+    } else if (
+      !selectedCheckboxes.includes(value) &&
+      selectedCheckboxes.length < maxSelectedCheckboxes
+    ) {
+      onCheckboxChange(value);
+    }
+
+    if (selectedCheckboxes.length === maxSelectedCheckboxes) {
+      setAreAllCheckboxesDisabled(true);
+    }
+  };
 
   const checkboxOptionsLookingFor = [
     'Friendship & Communication',
@@ -134,17 +167,27 @@ const Modal: React.FC<ModalProps> = ({
   return (
     <div className={styles.modal_overlay}>
       <div ref={modalRef} className={styles.modal_content}>
-        <h1>{category === 'lookingFor' ? 'Looking for' : 'Interests'}</h1>
+        <div className={styles.modal_upperline}>
+          <h1>{category === 'lookingFor' ? 'Looking for' : 'Interests'}</h1>
+          <div className={styles.upperline_number}>
+            {selectedCheckboxes.length}/{maxSelectedCheckboxes}
+          </div>
+        </div>
+
         <div className={styles.modal_checkboxes}>
           {getCheckboxOptions().map((option) => (
             <div key={option}>
               <Input
-                className={styles.checkbox}
+                className={`${styles.checkbox} ${
+                  disabledCheckboxes.includes(option)
+                    ? styles.disabledCheckbox
+                    : ''
+                }`}
                 type="checkbox"
                 value={option}
                 id={option}
                 defaultChecked={selectedCheckboxes.includes(option)}
-                onChange={() => onCheckboxChange(option)}
+                onChange={() => handleCheckboxChange(option)}
               />
               <label className={styles.modal_options} htmlFor={option}>
                 {option}

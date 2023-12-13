@@ -143,6 +143,9 @@
   .age_range::-webkit-slider-thumb {
     width: 20px;
     height: 20px;
+  }
+
+  .age_range_border::-webkit-slider-thumb {
     border: 0.5px solid var(--Violet_Active, #5f4f7f);
   }
 
