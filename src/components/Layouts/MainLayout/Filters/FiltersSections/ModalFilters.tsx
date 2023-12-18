@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import styles from '../Filters.module.css';
-import Modal from '../Modal/Modal';
-import arrowIcon from '../../../../../assets/feed/arrow.svg';
+import React, { useState } from "react";
+import styles from "../Filters.module.css";
+import Modal from "../Modal/Modal";
+import arrowIcon from "../../../../../assets/feed/arrow.svg";
 
 interface SelectedCheckboxesState {
   lookingFor: string[];
@@ -31,10 +31,8 @@ const ModalFilters: React.FC<ModalFiltersProps> = ({
       interests: [],
     });
 
-  const [selectedLookingForCount, setSelectedLookingForCount] =
-    useState(0);
-  const [selectedInterestsCount, setSelectedInterestsCount] =
-    useState(0);
+  const [selectedLookingForCount, setSelectedLookingForCount] = useState(0);
+  const [selectedInterestsCount, setSelectedInterestsCount] = useState(0);
 
   const updateCheckboxes = (
     prevOptions: string[],
@@ -54,12 +52,12 @@ const ModalFilters: React.FC<ModalFiltersProps> = ({
 
   const handleCheckboxChange = (category: string, value: string) => {
     const setCount =
-      category === 'lookingFor'
+      category === "lookingFor"
         ? setSelectedLookingForCount
         : setSelectedInterestsCount;
 
     setSelectedCheckboxes((prev) => {
-      if (category === 'lookingFor' || category === 'interests') {
+      if (category === "lookingFor" || category === "interests") {
         return {
           ...prev,
           [category]: updateCheckboxes(prev[category], value, setCount),
@@ -87,7 +85,7 @@ const ModalFilters: React.FC<ModalFiltersProps> = ({
           className={styles.buttonArrowIcon}
           onClick={() => toggleExpand(category)}
         >
-          {category === 'lookingFor' || category === 'interests' ? (
+          {category === "lookingFor" || category === "interests" ? (
             selectedCheckboxes[category]?.length ? (
               <span className={styles.selectedCount}>
                 {selectedCheckboxes[category].length}
@@ -105,7 +103,7 @@ const ModalFilters: React.FC<ModalFiltersProps> = ({
       {expandedSection === category && (
         <Modal
           category={category}
-          onClose={() => setExpandedSection('')}
+          onClose={() => setExpandedSection("")}
           selectedCheckboxes={
             selectedCheckboxes[category as keyof SelectedCheckboxesState]
           }
