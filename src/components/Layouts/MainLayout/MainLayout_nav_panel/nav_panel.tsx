@@ -1,7 +1,7 @@
-import { FC } from "react";
-import { NavLink } from "react-router-dom";
-import links from "./Links";
-import "./index.css";
+import { FC } from 'react';
+import { NavLink } from 'react-router-dom';
+import links from './Links';
+import './index.css';
 
 export const MainLayoutNav: FC = () => {
   return (
@@ -14,10 +14,10 @@ export const MainLayoutNav: FC = () => {
                 <NavLink
                   to={elem.path}
                   className={({ isActive }) =>
-                    isActive ? "active_link" : "deactive_link"
+                    isActive ? 'active_link' : 'deactive_link'
                   }
                 >
-                  {" "}
+                  {' '}
                   <img src={elem.img} alt={elem.key} /> {elem.key}
                 </NavLink>
               </li>

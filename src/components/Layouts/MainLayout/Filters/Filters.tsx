@@ -1,14 +1,14 @@
-import { useState } from "react";
-import styles from "./Filters.module.css";
-import interestsIcon from "../../../../assets/feed/interests.svg";
-import lookingForIcon from "../../../../assets/feed/looking-for.svg";
-import Geolocation from "./FiltersSections/GeolocationFilter";
-import InterestedInFilter from "./FiltersSections/InterestedInFilter";
-import AgeFilter from "./FiltersSections/AgeFilter";
-import ModalFilters from "./FiltersSections/ModalFilters";
+import { useState } from 'react';
+import styles from './Filters.module.css';
+import interestsIcon from '../../../../assets/feed/interests.svg';
+import lookingForIcon from '../../../../assets/feed/looking-for.svg';
+import Geolocation from './FiltersSections/GeolocationFilter';
+import InterestedInFilter from './FiltersSections/InterestedInFilter';
+import AgeFilter from './FiltersSections/AgeFilter';
+import ModalFilters from './FiltersSections/ModalFilters';
 
 const Filters = () => {
-  const [expandedSection, setExpandedSection] = useState("");
+  const [expandedSection, setExpandedSection] = useState('');
 
   const toggleExpand = (category: string) => {
     setExpandedSection(category);

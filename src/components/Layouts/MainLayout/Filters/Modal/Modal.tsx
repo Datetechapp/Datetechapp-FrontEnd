@@ -1,6 +1,6 @@
-import React from "react";
-import styles from "./Modal.module.css";
-import { Input } from "../../../../common";
+import React from 'react';
+import styles from './Modal.module.css';
+import { Input } from '../../../../common';
 
 interface ModalProps {
   onClose: () => void;
@@ -27,78 +27,78 @@ const Modal: React.FC<ModalProps> = ({
   };
 
   const checkboxOptionsLookingFor = [
-    "Friendship & Communication",
-    "Romantic Dates",
-    "Marriage, Family creation",
-    "Common interests & Hobbies",
-    "Professional connections & Contacts",
-    "Language Exchange",
-    "Joint trips & Attending events",
+    'Friendship & Communication',
+    'Romantic Dates',
+    'Marriage, Family creation',
+    'Common interests & Hobbies',
+    'Professional connections & Contacts',
+    'Language Exchange',
+    'Joint trips & Attending events',
   ];
 
   const checkboxOptionsInterests = [
-    "Singing",
-    "Listening to music",
-    "Cars",
-    "Blogging",
-    "Reading books",
-    "Dancing",
-    "Learning new languages",
-    "Surfing",
-    "Basketball",
-    "Travelling",
-    "Shopping",
-    "Hiking",
-    "Cycling",
-    "Exercising",
-    "Embroidering",
-    "Collecting things",
-    " Cooking",
-    "Baking",
-    "Skating",
-    "Gardening",
-    "Handmade",
-    "Skiing",
-    "Sky-jumping",
-    "Walking",
-    "Writing stories",
-    "Fishing",
-    "Longboarding",
-    "Drawing",
-    "Postcards",
-    "Fridge magnets",
-    "Butterflies and bugs",
-    "Darts",
-    "Scrapbooking",
-    "Dressmaking",
-    "Photography",
-    "Roller-skating",
-    "Running",
-    "Yoga",
-    "Coaching",
-    "Basketball",
-    "Diving",
-    "Bodybuilding",
-    "Gymnastics",
-    "Swimming",
-    "Tennis",
-    "Football",
-    "Archery",
-    "Rock climbing",
-    "Beer",
-    "Snowboarding",
-    "Parkour",
-    "Graffiti",
-    "Numismatics",
-    "Stones and minerals",
+    'Singing',
+    'Listening to music',
+    'Cars',
+    'Blogging',
+    'Reading books',
+    'Dancing',
+    'Learning new languages',
+    'Surfing',
+    'Basketball',
+    'Travelling',
+    'Shopping',
+    'Hiking',
+    'Cycling',
+    'Exercising',
+    'Embroidering',
+    'Collecting things',
+    ' Cooking',
+    'Baking',
+    'Skating',
+    'Gardening',
+    'Handmade',
+    'Skiing',
+    'Sky-jumping',
+    'Walking',
+    'Writing stories',
+    'Fishing',
+    'Longboarding',
+    'Drawing',
+    'Postcards',
+    'Fridge magnets',
+    'Butterflies and bugs',
+    'Darts',
+    'Scrapbooking',
+    'Dressmaking',
+    'Photography',
+    'Roller-skating',
+    'Running',
+    'Yoga',
+    'Coaching',
+    'Basketball',
+    'Diving',
+    'Bodybuilding',
+    'Gymnastics',
+    'Swimming',
+    'Tennis',
+    'Football',
+    'Archery',
+    'Rock climbing',
+    'Beer',
+    'Snowboarding',
+    'Parkour',
+    'Graffiti',
+    'Numismatics',
+    'Stones and minerals',
 
     //не знаю что такое Clothes decoration заменила на Dressmaking
   ];
 
   const getCheckboxOptions = () => {
-    if (category === "lookingFor") {
+    if (category === 'lookingFor') {
       return checkboxOptionsLookingFor;
-    } else if (category === "interests") {
+    } else if (category === 'interests') {
       return checkboxOptionsInterests;
     } else {
       return [];
@@ -108,7 +108,7 @@ const Modal: React.FC<ModalProps> = ({
   return (
     <div className={styles.modal_overlay}>
       <div className={styles.modal_content}>
-        <h1>{category === "lookingFor" ? "Looking for" : "Interests"}</h1>
+        <h1>{category === 'lookingFor' ? 'Looking for' : 'Interests'}</h1>
         <div className={styles.modal_checkboxes}>
           {getCheckboxOptions().map((option) => (
             <div key={option}>
@@ -126,8 +126,8 @@ const Modal: React.FC<ModalProps> = ({
             </div>
           ))}
         </div>
-        {category === "lookingFor" ? (
-          ""
+        {category === 'lookingFor' ? (
+          ''
         ) : (
           <div className={styles.modal_bottom}>
             <div className={styles.modal_bottom_1line}>

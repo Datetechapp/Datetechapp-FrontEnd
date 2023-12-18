@@ -1,9 +1,9 @@
-import { FC } from "react";
-import "./index.css";
-import { MainLayoutHeader } from "./MainLayout_Header";
-import { MainLayoutNav } from "./MainLayout_nav_panel";
-import { Outlet } from "react-router-dom";
-import Filters from "./Filters/Filters";
+import { FC } from 'react';
+import './index.css';
+import { MainLayoutHeader } from './MainLayout_Header';
+import { MainLayoutNav } from './MainLayout_nav_panel';
+import { Outlet } from 'react-router-dom';
+import Filters from './Filters/Filters';
 
 export const MainLayout: FC = () => {
   return (

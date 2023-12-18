@@ -1,10 +1,10 @@
-import calendar from "../../../../assets/NavPanel/calendar.svg";
-import favorites from "../../../../assets/NavPanel/Favorites.svg";
-import forYou from "../../../../assets/NavPanel/For you.svg";
-import personal from "../../../../assets/NavPanel/personal.svg";
-import safety from "../../../../assets/NavPanel/safety.svg";
-import search from "../../../../assets/NavPanel/Search.svg";
-import support from "../../../../assets/NavPanel/support.svg";
+import calendar from '../../../../assets/NavPanel/calendar.svg';
+import favorites from '../../../../assets/NavPanel/Favorites.svg';
+import forYou from '../../../../assets/NavPanel/For you.svg';
+import personal from '../../../../assets/NavPanel/personal.svg';
+import safety from '../../../../assets/NavPanel/safety.svg';
+import search from '../../../../assets/NavPanel/Search.svg';
+import support from '../../../../assets/NavPanel/support.svg';
 
 interface Link {
   key: string;
@@ -14,39 +14,39 @@ interface Link {
 
 const links: Link[] = [
   {
-    key: "For you",
+    key: 'For you',
     img: forYou,
-    path: "forYou",
+    path: 'forYou',
   },
   {
-    key: "search filtres",
+    key: 'search filtres',
     img: search,
-    path: "search",
+    path: 'search',
   },
   {
-    key: "personal settings",
+    key: 'personal settings',
     img: personal,
-    path: "settings",
+    path: 'settings',
   },
   {
-    key: "calendar",
+    key: 'calendar',
     img: calendar,
-    path: "calendar",
+    path: 'calendar',
   },
   {
-    key: "favorites",
+    key: 'favorites',
     img: favorites,
-    path: "favorites",
+    path: 'favorites',
   },
   {
-    key: "support",
+    key: 'support',
     img: support,
-    path: "support",
+    path: 'support',
   },
   {
-    key: "safety",
+    key: 'safety',
     img: safety,
-    path: "safety",
+    path: 'safety',
   },
 ];
 export default links;
