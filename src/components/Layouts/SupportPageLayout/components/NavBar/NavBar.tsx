@@ -5,7 +5,7 @@ export function NavBar() {
   const Links = [
     {
       title: 'FAQ',
-      href: 'faq',
+      href: 'faq/account',
     },
     {
       title: 'My Requests',
