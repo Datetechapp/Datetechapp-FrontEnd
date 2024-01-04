@@ -1,5 +1,13 @@
-import React from 'react';
+import { ThemeList } from 'components/Layouts/SupportPageLayout/components';
+import { Outlet } from 'react-router-dom';
 
 export function Faq() {
-  return <div>Faq</div>;
+  return (
+    <section>
+      <ThemeList />
+      <div>
+        <Outlet />
+      </div>
+    </section>
+  );
 }

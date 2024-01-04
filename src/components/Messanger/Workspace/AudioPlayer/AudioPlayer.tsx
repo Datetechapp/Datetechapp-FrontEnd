@@ -15,7 +15,6 @@ import { ReactComponent as CloseIcon } from '../../../../assets/AudioPlayer/clos
 //        audioRef: HTMLAudioElement;
 // }
 
-
 export const AudioPlayer = () => {
 
        const [speed, setSpeed] = useState<number>(1);

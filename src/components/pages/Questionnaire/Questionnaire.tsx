@@ -97,6 +97,7 @@ export function Questionnaire() {
                                    setIsValidDay(false);
                                    setIsValidMonth(false);
                                    setIsValidYear(false);
+
                                    return;
                             }
                      }

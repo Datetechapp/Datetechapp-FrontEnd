@@ -1,34 +1,16 @@
-import { NavLink, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import { NavBar } from './components';
 import styles from './supportPageLayout.module.css';
 
 export function SupportPageLayout() {
-  const Links = [
-    {
-      title: 'FAQ',
-      href: 'faq',
-    },
-    {
-      title: 'My Requests',
-      href: 'request',
-    },
-  ];
-
   return (
     <section className={styles.container}>
       <div className={styles.leftPart}>
-        <nav className={styles.navBar}>
-          {Links.map((link, i) => (
-            <NavLink
-              to={link.href}
-              key={i}
-              className={(navData) => (navData.isActive ? styles.active : '')}
-            >
-              {link.title}
-            </NavLink>
-          ))}
-        </nav>
-        <div>
-          <Outlet />
+        <div className={styles.wrapper}>
+          <NavBar />
+          <div>
+            <Outlet />
+          </div>
         </div>
       </div>
       <div className={styles.rightPart}>

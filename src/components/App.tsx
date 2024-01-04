@@ -13,7 +13,13 @@ import { VerificationPage } from './pages/ModalRegister/VerificationPage';
 import { Questionnaire } from './pages/Questionnaire';
 import { RecordingAudio } from './Messanger/Footer/RecordingAudio/RecordingAudio';
 import { SupportPageLayout } from './Layouts/SupportPageLayout';
-import { Faq } from './pages/Faq';
+import {
+  AccountSection,
+  Faq,
+  PaymentSection,
+  VideoSection,
+  SafetySection,
+} from './pages/Faq';
 import { RequestPage } from './pages/RequestPage';
 
 export const App = () => {
@@ -45,7 +51,12 @@ export const App = () => {
           <Route path='/create-profile' element={<Questionnaire />} />
           <Route element={<MainLayout />}>
             <Route path='/support' element={<SupportPageLayout />}>
-              <Route path='faq' element={<Faq />} />
+              <Route path='faq' element={<Faq />}>
+                <Route path='account' element={<AccountSection />} />
+                <Route path='payment' element={<PaymentSection />} />
+                <Route path='safety' element={<SafetySection />} />
+                <Route path='video' element={<VideoSection />} />
+              </Route>
               <Route path='request' element={<RequestPage />} />
             </Route>
             <Route path='/self' element={<UserSelfPage />} />
@@ -55,7 +66,7 @@ export const App = () => {
             <Route path='/settings' element={null} />
             <Route path='/calendar' element={null} />
             <Route path='/favorites' element={null} />
-            <Route path='/support' element={null} />
+            {/* <Route path='/support' element={null} /> */}
             <Route path='/safety' element={null} />
           </Route>
         </Routes>

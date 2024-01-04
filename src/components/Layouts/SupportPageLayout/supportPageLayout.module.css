@@ -8,52 +8,10 @@
     flex: 3;
 }
 
-.navBar{
-    display: flex;
-    height: 50px;
-    margin: 0 auto;
-    margin-top: 25px;
+.wrapper{
     width: 95%;
-    border-bottom: 1px solid #5F4F7F;
+    margin: 0 auto;
 }
-
-.navBar a{
-    text-decoration: none;
-    color: #5F4F7F;
-    width: 192px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
-
-.navBar a::after{
-    content: '';
-	position: absolute;
-	bottom: -1px;
-	right: 0;
-	height: 2px;
-	width: 100%;
-	transform: scale(0, 1);
-	transition: transform 0.4s;
-	background: #C896EF;
-	transform-origin: right top;
-}
-
-/* .navBar a:hover:after {
-    transform: scale(1, 1);
-    transform-origin: left top;
-} */
-
-.navBar a.active{
-    color: azure;
-}
-
-.navBar a.active:after {
-    transform: scale(1, 1);
-    transform-origin: left top;
-}
-
 
 .rightPart{
    flex: 1;

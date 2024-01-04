@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import AvatarEditor from 'react-avatar-editor';
 
 interface AvatarProps {
@@ -7,7 +8,7 @@ interface AvatarProps {
   onPositionChange: (position: { x: number; y: number }) => void;
 }
 
-export const Avatar: React.FC<AvatarProps> = ({
+export const Avatar: FC<AvatarProps> = ({
   image,
   scale,
   position,
