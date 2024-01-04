@@ -33,7 +33,10 @@ export const Footer: FC<FooterProps> = ({
     setShowPicker(!showPicker);
   };
 
-  const handleEmojiClick = (emojiObject: EmojiClickData, event: MouseEvent) => {
+  const handleEmojiClick = (
+    emojiObject: { emoji: string },
+    event: MouseEvent
+  ) => {
     setMessageValue(messageValue + emojiObject.emoji);
   };
 

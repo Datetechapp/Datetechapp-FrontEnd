@@ -25,7 +25,10 @@ export const ModalClipElements: FC<ModalClipElementsProps> = ({
     setShowEmojiBlock(!showEmojiBlock);
   };
 
-  const handleEmojiClick = (emojiObject: EmojiClickData, event: MouseEvent) => {
+  const handleEmojiClick = (
+    emojiObject: { emoji: string },
+    event: MouseEvent
+  ) => {
     const emojiChangeEvent = {
       target: {
         value: value + emojiObject.emoji,
