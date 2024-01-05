@@ -14,7 +14,7 @@
 }
 .main_layout__wrapper{
     display: grid;
-    grid-template-rows: calc(300vh - 96px);
+    grid-template-rows: calc(100vh - 96px);
     background-color: var(--dark-background);
     background-image: url("../../../assets/NavPanel/Dust.svg");
 }

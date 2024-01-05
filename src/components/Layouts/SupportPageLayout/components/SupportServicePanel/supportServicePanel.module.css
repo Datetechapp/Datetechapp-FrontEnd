@@ -1,0 +1,26 @@
+.wrapper{
+    background: #272533;
+    height: 100%;
+}
+
+.header{
+    height: 80px;
+    background: rgba(50, 48, 62, 1);
+}
+
+.headerContainer{
+    padding: 16px 16px;
+    display: flex;
+    gap: 14px;
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
+}
+
+.mainContent{
+    margin: 0 auto;
+    align-items: center;
+    text-align: center;
+}

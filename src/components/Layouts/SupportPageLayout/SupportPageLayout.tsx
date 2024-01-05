@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import { NavBar } from './components';
 import styles from './supportPageLayout.module.css';
+import { SupportServicePanel } from './components/SupportServicePanel';
 
 export function SupportPageLayout() {
   return (
@@ -14,9 +15,7 @@ export function SupportPageLayout() {
         </div>
       </div>
       <div className={styles.rightPart}>
-        <div>SupportServiceHeader</div>
-        <div>SupportServiceMain</div>
-        <div>SupportServiceInput</div>
+        <SupportServicePanel />
       </div>
     </section>
   );
