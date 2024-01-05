@@ -18,11 +18,10 @@ export function InputPanel() {
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <div className={styles.inputField}>
-          <img
-            src={EmodjiIcon}
-            alt="EmodjiIcon"
-            className={styles.emodjiImage}
-          />
+          <input type="file" style={{ display: 'none' }} id="file" />
+          <label htmlFor="file" className={styles.fileIcon}>
+            <img src={FileIcon} alt="File Icon" />
+          </label>
           <input
             type="text"
             placeholder="Message..."
@@ -31,10 +30,6 @@ export function InputPanel() {
             onChange={(e) => setText(e.target.value)}
             className={styles.textInput}
           />
-          <input type="file" style={{ display: 'none' }} id="file" />
-          <label htmlFor="file">
-            <img src={FileIcon} alt="File Icon" className={styles.fileIcon} />
-          </label>
         </div>
       </div>
     </div>
