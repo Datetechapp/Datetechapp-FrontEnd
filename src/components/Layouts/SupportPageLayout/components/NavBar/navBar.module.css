@@ -15,6 +15,11 @@
     justify-content: center;
     align-items: center;
     position: relative;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px; /* 125% */
+    letter-spacing: 0.2px;
 }
 
 .navBar a::after{
