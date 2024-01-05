@@ -1,5 +1,10 @@
 import React from 'react';
+import { CustomizedAccordions } from '../Accordion';
 
 export function VideoSection() {
-  return <section>VideoSection</section>;
+  return (
+    <section>
+      <CustomizedAccordions />
+    </section>
+  );
 }
