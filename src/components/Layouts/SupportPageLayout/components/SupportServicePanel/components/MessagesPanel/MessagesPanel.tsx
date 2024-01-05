@@ -26,7 +26,6 @@ export function MessagesPanel() {
           and, if necessary, attach screenshots or attachments.
         </div>
       )}
-      <input type='text' />
     </div>
   );
 }
