@@ -18,7 +18,7 @@
     background: #201B27;
 }
 
-.inputField input[type="text"] {
+.textInput {
     flex: 1;
     background: transparent;
     color: #5F4F7F;
@@ -29,10 +29,10 @@
     border: none;
 }
 
-.fileIcon {
-    cursor: pointer;
+.textInput::placeholder {
+    color: #5F4F7F;
 }
 
-.fileIcon path {
-    stroke: red;
+.fileIcon {
+    cursor: pointer;
 }

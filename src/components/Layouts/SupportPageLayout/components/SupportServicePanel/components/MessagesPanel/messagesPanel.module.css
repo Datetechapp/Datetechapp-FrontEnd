@@ -1,6 +1,19 @@
-.messagesPanel{
+.messagesPanel {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     height: 100%;
+}
+
+.emptyPanel {
+    color: #5F4F7F;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0.2px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

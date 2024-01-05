@@ -29,6 +29,7 @@ export function InputPanel() {
             value={text}
             onKeyDown={onKeyDown}
             onChange={(e) => setText(e.target.value)}
+            className={styles.textInput}
           />
           <input type="file" style={{ display: 'none' }} id="file" />
           <label htmlFor="file">

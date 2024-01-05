@@ -13,7 +13,7 @@ export function MessagesPanel() {
   return (
     <div className={styles.messagesPanel}>
       {messages.length !== 0 ? (
-        <div>
+        <div className={styles.fullPanel}>
           <ul>
             {messages.map((message, i) => (
               <li key={i}>{message.name}</li>
@@ -21,7 +21,7 @@ export function MessagesPanel() {
           </ul>
         </div>
       ) : (
-        <div>
+        <div className={styles.emptyPanel}>
           Here you can submit a support request. Describe your problem in detail
           and, if necessary, attach screenshots or attachments.
         </div>
