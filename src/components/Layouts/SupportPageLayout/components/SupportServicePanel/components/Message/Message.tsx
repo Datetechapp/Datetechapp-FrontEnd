@@ -28,7 +28,7 @@ export function Message({ message }: { message: IMessage }) {
           }
         >
           <p className={styles.name}>{message.name}</p>
-          {message.description.length <= 25 ? (
+          {message.description.length <= 24 ? (
             <p className={styles.message}>{message.description}</p>
           ) : (
             <TextareaAutosize
