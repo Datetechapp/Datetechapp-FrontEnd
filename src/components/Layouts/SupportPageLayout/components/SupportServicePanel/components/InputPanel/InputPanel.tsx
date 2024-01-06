@@ -1,13 +1,34 @@
-import { useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import styles from './inputPanel.module.css';
-import EmodjiIcon from '../../../../../../../assets/SupportServicePanel/EmodjiIcon.svg';
 import FileIcon from '../../../../../../../assets/SupportServicePanel/FileIcon.svg';
+import { IMessage } from '../../type';
 
-export function InputPanel() {
-  const [text, setText] = useState('');
+export function InputPanel({
+  messages,
+  setMessages,
+}: {
+  messages: IMessage[];
+  setMessages: Dispatch<SetStateAction<IMessage[]>>;
+}) {
+  const [text, setText] = useState({
+    description: ``,
+    timeStamp: '',
+    owner: 'Administrator',
+  });
 
-  const handleSend = async () => {
-    setText('');
+  const handleSend = () => {
+    setMessages([...messages].concat(text));
+    setText({ description: ``, timeStamp: '', owner: 'Administrator' });
+  };
+
+  const handleWriteMessage = (e: { target: { value: string } }) => {
+    setText({
+      description: e.target.value,
+      timeStamp: `${new Date().getHours()}:${
+        new Date().getMinutes() < 10 ? '0' : ''
+      }${new Date().getMinutes()}`,
+      owner: 'Administrator',
+    });
   };
 
   const onKeyDown = (e: { code: string }) => {
@@ -25,9 +46,9 @@ export function InputPanel() {
           <input
             type="text"
             placeholder="Message..."
-            value={text}
+            value={text.description}
             onKeyDown={onKeyDown}
-            onChange={(e) => setText(e.target.value)}
+            onChange={(e) => handleWriteMessage(e)}
             className={styles.textInput}
           />
         </div>

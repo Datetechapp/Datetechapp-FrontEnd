@@ -1,7 +1,10 @@
 .messagesPanel {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    flex: 1;
+    padding-left: 16px;
+    padding-right: 16px;
+    overflow-y: auto;
 }
 
 .emptyPanel {
@@ -12,8 +15,16 @@
     font-weight: 500;
     line-height: 20px;
     letter-spacing: 0.2px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.fullPanel {
     height: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 14px;
+    overflow-y: hidden;
 }
