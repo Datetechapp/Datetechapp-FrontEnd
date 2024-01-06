@@ -2,9 +2,12 @@
     display: flex;
     flex-direction: column;
     flex: 1;
-    padding-left: 16px;
-    padding-right: 16px;
-    overflow-y: auto;
+    padding: 16px;
+    overflow: auto;
+}
+
+.messagesPanel::-webkit-scrollbar {
+    width: 0;
 }
 
 .emptyPanel {
@@ -21,10 +24,21 @@
 }
 
 .fullPanel {
-    height: 100%;
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     gap: 14px;
-    overflow-y: hidden;
+    overflow-x: visible;
+}
+
+.date {
+    color: #96A3B4;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: 0.1px;
+    text-align: center;
+    margin-bottom: 16px;
 }

@@ -2,6 +2,7 @@ import { Dispatch, SetStateAction, useState } from 'react';
 import styles from './inputPanel.module.css';
 import FileIcon from '../../../../../../../assets/SupportServicePanel/FileIcon.svg';
 import { IMessage } from '../../type';
+import { format } from 'date-fns';
 
 export function InputPanel({
   messages,
@@ -24,9 +25,7 @@ export function InputPanel({
   const handleWriteMessage = (e: { target: { value: string } }) => {
     setText({
       description: e.target.value,
-      timeStamp: `${new Date().getHours()}:${
-        new Date().getMinutes() < 10 ? '0' : ''
-      }${new Date().getMinutes()}`,
+      timeStamp: `${format(new Date(), 'kk:mm')}`,
       owner: 'Administrator',
     });
   };

@@ -1,6 +1,7 @@
 import styles from './message.module.css';
 import StatusIcon from '../../../../../../../assets/SupportServicePanel/StatusIcon.svg';
 import { IMessage } from '../../type';
+import { TextareaAutosize } from '@mui/material';
 
 export function Message({ message }: { message: IMessage }) {
   return (
@@ -27,7 +28,16 @@ export function Message({ message }: { message: IMessage }) {
           }
         >
           <p className={styles.name}>{message.name}</p>
-          <p className={styles.message}>{message.description}</p>
+          {message.description.length <= 25 ? (
+            <p className={styles.message}>{message.description}</p>
+          ) : (
+            <TextareaAutosize
+              className={styles.message}
+              value={message.description}
+              disabled
+            />
+          )}
+
           <p className={styles.time}>{message.timeStamp}</p>
         </div>
       </div>

@@ -38,25 +38,25 @@
 }
 
 .contentHost {
-    max-width: 273px;
+    max-width: 280px;
     display: inline-flex;
     padding: 6px 8px;
     flex-direction: column;
     gap: 4px;
     border-radius: 8px 8px 8px 0px;
     background: #4B4A54;
+    overflow: visible;
 }
 
 .contentOwner {
-    max-width: 273px;
+    max-width: 280px;
     display: inline-flex;
-    flex-direction: column;
     padding: 6px 8px;
     justify-content: flex-end;
     align-items: flex-end;
     gap: 8px;
     border-radius: 8px 8px 0px 8px;
-    background: var(--Violet_Stroke, #5F4F7F);
+    background: #5F4F7F;
 }
 
 .name {
@@ -74,6 +74,9 @@
     font-size: 16px;
     font-weight: 400;
     line-height: 20px;
+    background-color: transparent;
+    resize: none;
+    border: none;
 }
 
 .time {
