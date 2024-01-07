@@ -2,8 +2,17 @@ import styles from './message.module.css';
 import StatusIcon from '../../../../../../../assets/SupportServicePanel/StatusIcon.svg';
 import { IMessage } from '../../type';
 import { TextareaAutosize } from '@mui/material';
+import { useEffect, useRef, useState } from 'react';
 
 export function Message({ message }: { message: IMessage }) {
+  const divBlock = useRef<HTMLParagraphElement>(null);
+
+  const [divBlockWidth, setDivBlockWidth] = useState(0);
+
+  useEffect(() => {
+    setDivBlockWidth(divBlock.current?.getBoundingClientRect().width as number);
+  }, [message]);
+
   return (
     <div
       className={
@@ -28,10 +37,15 @@ export function Message({ message }: { message: IMessage }) {
           }
         >
           <p className={styles.name}>{message.name}</p>
-          {message.description.length <= 24 ? (
-            <p className={styles.message}>{message.description}</p>
+          {divBlockWidth <= 235 ? (
+            <p className={styles.message} ref={divBlock}>
+              {message.description}
+            </p>
           ) : (
             <TextareaAutosize
+              style={{
+                width: '273px',
+              }}
               className={styles.message}
               value={message.description}
               disabled

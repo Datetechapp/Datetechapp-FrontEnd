@@ -2,3 +2,7 @@
     font-family: Montserrat;
     src: url('./Montserrat/Montserrat-VariableFont_wght.ttf');
 }
+
+iframe#webpack-dev-server-client-overlay {
+    display: none !important
+}

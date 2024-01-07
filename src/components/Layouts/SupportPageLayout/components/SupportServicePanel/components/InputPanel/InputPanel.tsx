@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction, useState } from 'react';
 import styles from './inputPanel.module.css';
 import FileIcon from '../../../../../../../assets/SupportServicePanel/FileIcon.svg';
+import SendButton from '../../../../../../../assets/SupportServicePanel/SendButton.svg';
 import { IMessage } from '../../type';
 import { format } from 'date-fns';
 
@@ -18,6 +19,7 @@ export function InputPanel({
   });
 
   const handleSend = () => {
+    if (text.description === '') return;
     setMessages([...messages].concat(text));
     setText({ description: ``, timeStamp: '', owner: 'Administrator' });
   };
@@ -49,6 +51,15 @@ export function InputPanel({
             onKeyDown={onKeyDown}
             onChange={(e) => handleWriteMessage(e)}
             className={styles.textInput}
+          />
+          <img
+            src={SendButton}
+            alt="SendButton"
+            style={{
+              visibility: text.description !== '' ? 'visible' : 'hidden',
+              cursor: 'pointer',
+            }}
+            onClick={handleSend}
           />
         </div>
       </div>
