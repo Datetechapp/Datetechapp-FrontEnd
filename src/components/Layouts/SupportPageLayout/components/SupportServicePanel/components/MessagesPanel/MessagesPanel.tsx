@@ -1,7 +1,7 @@
 import styles from './messagesPanel.module.css';
 import { Message } from '../Message/Message';
 import { IMessage } from '../../type';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { format } from 'date-fns';
 
 export function MessagesPanel({ messages }: { messages: IMessage[] }) {
