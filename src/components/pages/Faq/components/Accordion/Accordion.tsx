@@ -99,7 +99,11 @@ export function CustomizedAccordions() {
             borderBottom: '1px solid #272533',
           }}
         >
-          <AccordionSummary aria-controls='panel1d-content' id='panel1d-header'>
+          <AccordionSummary
+            aria-controls="panel1d-content"
+            id="panel1d-header"
+            className={styles.wrapper}
+          >
             <Typography className={styles.title}>{item.title}</Typography>
           </AccordionSummary>
           <AccordionDetails>
