@@ -9,6 +9,9 @@ import { RatePanel } from './components/RatePanel';
 
 export function SupportServicePanel() {
   const [messages, setMessages] = useState<IMessage[]>(data);
+
+  // *You can make a choice whether you want to see the message input (estimation = false) or smile panel (estimation = true)
+
   const [estimation, setEsimation] = useState<boolean>(true);
 
   return (
