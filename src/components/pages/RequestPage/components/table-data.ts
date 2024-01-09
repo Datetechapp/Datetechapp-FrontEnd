@@ -1,4 +1,4 @@
-type Table = {
+export type Table = {
   subject: string;
   id: number;
   created: string;
