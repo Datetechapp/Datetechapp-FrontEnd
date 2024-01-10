@@ -89,7 +89,7 @@
     line-height: 14px;
 }
 
-.modalContainer{
+.modalContainer {
     position: absolute;
     width: 50%;
     top: 50%;
@@ -103,9 +103,11 @@
     border: 1px solid #C896EF;
     background: #201B27;
     color: #FFF;
+    outline: none;
+
 }
 
-.modalHeader{
+.modalHeader {
     display: flex;
     width: 100%;
     justify-content: space-between;
@@ -113,7 +115,7 @@
     margin-bottom: 18px;
 }
 
-.modalHeaderLeft{
+.modalHeaderLeft {
     display: flex;
     gap: 24px;
 }
@@ -128,34 +130,109 @@
     letter-spacing: 0.2px;
 }
 
-.idSection{
+.idSection {
     display: flex;
     flex-direction: column;
+    width: 100%;
     gap: 8px;
+    padding-bottom: 12px;
+    border-bottom: #32303E solid 1px;
+    margin-bottom: 12px;
 }
 
-.idSection div{
+.idSection div {
     display: flex;
     gap: 4px;
 }
 
-.idSection div p:nth-child(1){
-    color:  #FFF;
+.idSection div p:nth-child(1) {
+    color: #FFF;
     text-align: center;
     font-family: Montserrat;
     font-size: 14px;
     font-style: normal;
     font-weight: 500;
-    line-height: 18px; /* 128.571% */
+    line-height: 18px;
+    /* 128.571% */
     letter-spacing: 0.1px;
 }
 
-.idSection div p:nth-child(2){
-    color:  #E1DBED;
+.idSection div p:nth-child(2) {
+    color: #E1DBED;
     font-family: Montserrat;
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
-    line-height: 18px; /* 128.571% */
+    line-height: 18px;
+    /* 128.571% */
+    letter-spacing: 0.1px;
+}
+
+
+.description {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.description p {
+    color: #FFF;
+    font-variant-numeric: lining-nums proportional-nums;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: 0.1px;
+    text-wrap: wrap;
+}
+
+.description textarea {
+    color: #E1DBED;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0.1px;
+    resize: none;
+    border: none;
+    background-color: transparent !important;
+    height: fit-content;
+}
+
+.files {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+}
+
+.files p {
+    color: #FFF;
+    font-variant-numeric: lining-nums proportional-nums;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: 0.1px;
+}
+
+.files div {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.files div span {
+    color: #E1DBED;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+    /* 128.571% */
     letter-spacing: 0.1px;
 }

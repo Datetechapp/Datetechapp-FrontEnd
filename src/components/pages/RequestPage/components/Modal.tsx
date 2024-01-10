@@ -5,6 +5,8 @@ import Fade from '@mui/material/Fade';
 import styles from '../request.module.css';
 import { Table, tableData } from './table-data';
 import SimpleCloseIcon from '../../../../assets/SupportServicePanel/SimpleCloseIcon.svg';
+import FileIcon from '../../../../assets/SupportServicePanel/FileIcon.svg';
+import { TextareaAutosize } from '@mui/material';
 
 export function RequestModal({
   open,
@@ -47,7 +49,7 @@ export function RequestModal({
               </div>
               <img
                 src={SimpleCloseIcon}
-                alt='SimpleCloseIcon'
+                alt="SimpleCloseIcon"
                 style={{
                   cursor: 'pointer',
                 }}
@@ -64,9 +66,24 @@ export function RequestModal({
                 <p>Software</p>
               </div>
             </div>
-
-            <div></div>
-            <div></div>
+            <div className={styles.description}>
+              <p>Description:</p>
+              <TextareaAutosize
+                value="Software flgkd;lgkh;lkg fmkdlls;;as.d,fmfngmd,s; dlgmmfdfmgfmmdfsfkjgkrjgjfgksfjgf;jkjgiri frjrigjfndmkkeigi dkfgfkdmfkfefnwklrn;wkrjnmSoftwarelgkd;lgkh;lkgfmkdlls;;as.d,fmfngmd,s;dlgmmfdfmgfmmdfsfkjgkrjgjfgksfjgf;jkjgiri frjrigjfndmkkeigi dkfgfk dmfkf efnwklrn;wkrjn mSoftware flgkd;lgkh;lkg fmkdlls;;as.d,fmfngmd,s; ghfjfjkfkfkfkfkfkfkdlgmmfdfmgfmmdfsfkjgkrjgjfgksfjgf;jkjgiri  frjrigjfndmkkeigi dkfgfk dmfkf efnwklrn;wkrjn m"
+                disabled
+              />
+            </div>
+            <div className={styles.files}>
+              <p>Files included:</p>
+              <div>
+                <img src={FileIcon} alt="" />
+                <span>Issue.jpg</span>
+              </div>
+              <div>
+                <img src={FileIcon} alt="" />
+                <span>Issue.pdf</span>
+              </div>
+            </div>
           </Box>
         </Fade>
       </Modal>

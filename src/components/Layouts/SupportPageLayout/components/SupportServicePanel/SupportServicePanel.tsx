@@ -12,7 +12,7 @@ export function SupportServicePanel() {
 
   // *You can make a choice whether you want to see the message input (estimation = false) or smile panel (estimation = true)
 
-  const [estimation, setEsimation] = useState<boolean>(true);
+  const [estimation, setEsimation] = useState<boolean>(false);
 
   return (
     <div className={styles.wrapper}>

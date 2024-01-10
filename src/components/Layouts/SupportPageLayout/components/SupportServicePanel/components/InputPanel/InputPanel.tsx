@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useState } from 'react';
 import styles from './inputPanel.module.css';
-import FileIcon from '../../../../../../../assets/SupportServicePanel/FileIcon.svg';
+import FileIcon from '../../../../../../../assets/SupportServicePanel/FileDownloadIcon.svg';
 import SendButton from '../../../../../../../assets/SupportServicePanel/SendButton.svg';
 import { IMessage } from '../../type';
 import { format } from 'date-fns';
