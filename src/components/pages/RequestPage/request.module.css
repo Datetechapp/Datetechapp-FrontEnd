@@ -54,6 +54,27 @@
     cursor: pointer;
 }
 
+.rows td span {
+    padding: 16px 0px;
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: 0.1px;
+}
+
+.highlight {
+    color: #DE77C7;
+    font-variant-numeric: lining-nums proportional-nums;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: 0.1px;
+}
+
 .rows td:nth-child(1) {
     width: 45%;
 }

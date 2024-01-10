@@ -6,19 +6,26 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { tableData } from './table-data';
 import styles from '../request.module.css';
-import { Dispatch, SetStateAction, useCallback } from 'react';
+import { Dispatch, SetStateAction } from 'react';
+import Highlighter from 'react-highlight-words';
 
 export default function RequestTable({
   handleOpen,
   setId,
+  text,
 }: {
   handleOpen: () => void;
   setId: Dispatch<SetStateAction<number>>;
+  text: string;
 }) {
   const handleModalOpen = (id: number) => {
     handleOpen();
     setId(id);
   };
+
+  const filteredData = tableData.filter((item) =>
+    item.id.toString().includes(text)
+  );
 
   return (
     <TableContainer>
@@ -33,14 +40,25 @@ export default function RequestTable({
           </TableRow>
         </TableHead>
         <TableBody>
-          {tableData.map((row) => (
+          {filteredData.map((row) => (
             <TableRow
               key={row.subject}
               onClick={() => handleModalOpen(row.id)}
               className={styles.rows}
             >
               <TableCell align="left">{row.subject}</TableCell>
-              <TableCell align="left">{row.id}</TableCell>
+              <TableCell align="left">
+                <Highlighter
+                  searchWords={[text]}
+                  textToHighlight={row.id.toString()}
+                  highlightStyle={{
+                    color: '#DE77C7',
+                    fontFamily: 'Montserrat',
+                    fontSize: '14px',
+                    background: 'none',
+                  }}
+                />
+              </TableCell>
               <TableCell align="left">{row.created}</TableCell>
               <TableCell align="left">{row.lastActivity}</TableCell>
               <TableCell align="left">
