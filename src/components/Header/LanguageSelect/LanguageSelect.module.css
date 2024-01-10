@@ -18,14 +18,27 @@
   letter-spacing: 0.1px;
 }
 
-.LanguageSelect.Visible {
+.LanguagesBox {
+  text-align: center;
+  padding: 0 20px ;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.2); 
   position: absolute;
+  top: 30px;
+  right: 0;
   z-index: 1;
   display: block;
   opacity: 1;
   animation: languagevisible 0.5s ease-in-out;
 }
-
+.LanguagesItem{
+  cursor: pointer;
+  padding: 2px 0;
+}
+.LanguagesItem:hover{
+  color: #c896ef;
+  transition: 0.4s ease-in;
+}
 @keyframes languagevisible {
   0% {
     display: none;
