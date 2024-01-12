@@ -94,10 +94,11 @@
 }
 
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
-  input[type="range"] {
+  .range {
     width: 100%;
     appearance: none;
     background: transparent;
+    border-radius: 2px;
   }
 
   .location_label {
@@ -107,7 +108,6 @@
     align-items: center;
     flex-shrink: 0;
     color: var(--Back_White, #e1dbed);
-    font-family: Montserrat;
     font-size: 14px;
     font-style: normal;
     font-weight: 600;
@@ -115,16 +115,15 @@
     letter-spacing: 0.1px;
   }
 
-  input[type="range"]::-webkit-slider-runnable-track {
+  .range::-webkit-slider-runnable-track {
     height: 4px;
     -webkit-appearance: none;
     height: 7px;
     margin-top: -1px;
   }
 
-  input[type="range"]::-webkit-slider-thumb {
+  .range::-webkit-slider-thumb {
     box-shadow: 0px 0px 0px #000000;
-    border: 0.5px solid var(--Violet_Active, #5f4f7f);
     padding: 10px 0px;
     border-radius: 20px;
     background: var(--Violet_Active, #c896ef);
@@ -145,14 +144,18 @@
     height: 20px;
   }
 
+  .age_range_border::-webkit-slider-thumb {
+    border: 0.5px solid var(--Violet_Active, #5f4f7f);
+  }
+
   /** FF*/
-  input[type="range"]::-moz-range-progress {
+  .range::-moz-range-progress {
     background-color: #c896ef;
     height: 4px;
     border-radius: 20px;
     border: 1px solid var(--Violet_Active, #c896ef);
   }
-  input[type="range"]::-moz-range-thumb {
+  .range::-moz-range-thumb {
     border: 1px solid var(--Violet_Active, #c896ef);
     border-radius: 20px;
     background: #c896ef;
@@ -170,14 +173,14 @@
   }
 
   /* IE*/
-  input[type="range"]::-ms-fill-lower {
+  .range::-ms-fill-lower {
     background-color: #c896ef;
   }
-  input[type="range"]::-ms-fill-upper {
+  .range::-ms-fill-upper {
     background-color: #5f4f7f;
   }
 
-  input[type="range"]::-ms-track {
+  .range::-ms-track {
     width: 100%;
     height: 4px;
     cursor: pointer;
@@ -186,7 +189,7 @@
     color: transparent;
   }
 
-  input[type="range"]::-ms-thumb {
+  .range::-ms-thumb {
     border: 1px solid var(--Violet_Active, #c896ef);
     border-radius: 20px;
     background: #c896ef;
@@ -274,7 +277,7 @@
 
 .age_range.overlay {
   position: absolute;
-  top: 13px;
+  top: 13.5px;
   left: 0;
   z-index: 1;
 }

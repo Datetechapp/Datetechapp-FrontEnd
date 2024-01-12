@@ -29,6 +29,7 @@ const InterestedInFilter = () => {
             name="interested-in"
             checked={selectedOption === 'Women'}
             onChange={handleOptionChange}
+            className={styles.interested_in_options}
           />
           Women
         </label>
@@ -44,6 +45,7 @@ const InterestedInFilter = () => {
             name="interested-in"
             checked={selectedOption === 'Men'}
             onChange={handleOptionChange}
+            className={styles.interested_in_options}
           />
           Men
         </label>
@@ -61,6 +63,7 @@ const InterestedInFilter = () => {
             name="interested-in"
             checked={selectedOption === 'Everyone'}
             onChange={handleOptionChange}
+            className={styles.interested_in_options}
           />
           Everyone
         </label>

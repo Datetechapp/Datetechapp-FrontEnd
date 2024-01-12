@@ -17,6 +17,7 @@ interface InputProps {
   onFocus?: (e: FocusEvent<HTMLInputElement>) => void;
   onBlur?: (e: ChangeEvent<HTMLInputElement>) => void;
   defaultChecked?: boolean;
+  isDisabled?: boolean,
 }
 
 export const Input: FC<InputProps> = ({
@@ -36,6 +37,7 @@ export const Input: FC<InputProps> = ({
   max,
   readOnly,
   defaultChecked,
+  isDisabled,
 }) => (
   <input
     id={id}
@@ -54,5 +56,6 @@ export const Input: FC<InputProps> = ({
     max={max}
     readOnly={readOnly}
     defaultChecked={defaultChecked}
+    disabled={isDisabled} 
   />
 );

@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../Filters.module.css';
 import locationIcon from '../../../../../assets/user/location.svg';
+import { min } from 'lodash';
 
 const Geolocation = () => {
+  const maxRange = 20;
+  const minRange = 0;
   const [locationRange, setLocationRange] = useState(10);
   const updateLocationRange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const normalizedValue = (Number(event.target.value) / 20) * 100;
@@ -30,6 +33,10 @@ const Geolocation = () => {
     background: `var(--sliderLinGra)`,
   };
 
+  const renderSymbol = () => {
+    return locationRange === maxRange ? '> ' : '< ';
+  };
+
   return (
     <div className={`${styles.filters_section}  ${styles.filters_geolocation}`}>
       <div className={styles.containerIcon}>
@@ -42,16 +49,16 @@ const Geolocation = () => {
           type="range"
           id="location-range"
           name="location-range"
-          min="0"
-          max="20"
-          className={styles.location_range}
+          min={minRange}
+          max={maxRange}
+          className={`${styles.location_range} ${styles.range}`}
           onChange={updateLocationRange}
           value={locationRange}
-          step="5"
+          step="2.5"
           style={sliderStyle}
         />
         <label className={styles.location_label} htmlFor="location-range">
-          &gt;{locationRange} km
+        {locationRange === minRange ? null : renderSymbol()}{locationRange} km
         </label>
       </div>
     </div>

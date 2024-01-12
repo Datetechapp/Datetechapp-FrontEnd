@@ -44,7 +44,7 @@ const AgeFilter = () => {
           name="age-range"
           min="18"
           max="100"
-          className={styles.age_range}
+          className={`${styles.age_range} ${styles.range}`}
           onChange={(e) => updateAgeRange(Number(e.target.value), ageRange[1])}
           value={ageRange[0]}
           step="1"
@@ -55,7 +55,7 @@ const AgeFilter = () => {
           name="age-range"
           min="18"
           max="100"
-          className={`${styles.age_range} ${styles.overlay}`}
+          className={`${styles.age_range} ${styles.overlay} ${styles.range}`}
           onChange={(e) => updateAgeRange(ageRange[0], Number(e.target.value))}
           value={ageRange[1]}
           step="1"

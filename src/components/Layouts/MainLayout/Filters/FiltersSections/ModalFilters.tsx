@@ -31,25 +31,31 @@ const ModalFilters: React.FC<ModalFiltersProps> = ({
       interests: [],
     });
 
-  const [selectedLookingForCount, setSelectedLookingForCount] =
-    useState(0);
-  const [selectedInterestsCount, setSelectedInterestsCount] =
-    useState(0);
+  const [selectedLookingForCount, setSelectedLookingForCount] = useState(0);
+  const [selectedInterestsCount, setSelectedInterestsCount] = useState(0);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const updateCheckboxes = (
     prevOptions: string[],
     value: string,
     setCount: (count: number) => void,
   ): string[] => {
-    const updatedOptions = prevOptions.includes(value)
-      ? prevOptions.filter((option) => option !== value)
-      : [...prevOptions, value];
+    if (prevOptions.includes(value)) {
+      const updatedCheckboxes = prevOptions.filter(
+        (checkbox) => checkbox !== value,
+      );
 
-    const count = updatedOptions.length;
+      return updatedCheckboxes;
+    } else {
+      const updatedOptions = [...prevOptions, value];
 
-    setCount(count);
+      const count = updatedOptions.length;
 
-    return updatedOptions;
+      setCount(count);
+
+      return updatedOptions;
+    }
   };
 
   const handleCheckboxChange = (category: string, value: string) => {
@@ -78,15 +84,15 @@ const ModalFilters: React.FC<ModalFiltersProps> = ({
         styles[`filters_${category.toLowerCase()}`]
       }`}
     >
-      <div className={styles.container_line}>
+      <div
+        className={styles.container_line}
+        onClick={() => toggleExpand(category)}
+      >
         <div className={styles.containerIcon}>
           <img className={styles.icon} src={icon} alt={`${category} icon`} />
           <span>{label}</span>
         </div>
-        <button
-          className={styles.buttonArrowIcon}
-          onClick={() => toggleExpand(category)}
-        >
+        <button className={styles.buttonArrowIcon}>
           {category === 'lookingFor' || category === 'interests' ? (
             selectedCheckboxes[category]?.length ? (
               <span className={styles.selectedCount}>
@@ -113,6 +119,8 @@ const ModalFilters: React.FC<ModalFiltersProps> = ({
             setSelectedCheckboxes((prev) => ({ ...prev, [category]: [] }))
           }
           onCheckboxChange={(value) => handleCheckboxChange(category, value)}
+          isModalOpen={isModalOpen}
+          setIsModalOpen={setIsModalOpen}
         />
       )}
     </div>
