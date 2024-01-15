@@ -4,3 +4,4 @@ declare module '*.mp4' {
 }
 
 declare module 'lodash/debounce';
+declare module 'emoji-picker-react';

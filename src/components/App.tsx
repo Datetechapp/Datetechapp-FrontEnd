@@ -12,14 +12,24 @@ import { ChangePassword } from './pages/ChangePassword';
 import { VerificationPage } from './pages/ModalRegister/VerificationPage';
 import { Questionnaire } from './pages/Questionnaire';
 import { RecordingAudio } from './Messanger/Footer/RecordingAudio/RecordingAudio';
-
+import { SupportPageLayout } from './Layouts/SupportPageLayout';
+import {
+  AccountSection,
+  Faq,
+  PaymentSection,
+  VideoSection,
+  SafetySection,
+} from './pages/Faq';
+import { RequestPage } from './pages/RequestPage';
 
 export const App = () => {
-
   const { pathname } = useLocation();
 
-  const locationForBackSection = (pathname == '/login' || pathname == '/registration' || pathname == '/reset_password');
-  
+  const locationForBackSection =
+    pathname == '/login' ||
+    pathname == '/registration' ||
+    pathname == '/reset_password';
+
   return (
     <div>
       {/* <ModalWelcome /> */}
@@ -27,28 +37,40 @@ export const App = () => {
 
       {/* <ChangePassword /> */}
 
-      {locationForBackSection ? <BackSection >
+      {locationForBackSection ? (
+        <BackSection>
+          <Routes>
+            <Route path='/login' element={<ModalAuth />} />
+            <Route path='/registration' element={<ModalRegister />} />
+            <Route path='/reset_password' element={<ResetPassword />} />
+          </Routes>
+        </BackSection>
+      ) : (
         <Routes>
-          <Route path="/login" element={<ModalAuth />} />
-          <Route path="/registration" element={< ModalRegister />} />
-          <Route path="/reset_password" element={<ResetPassword />} />
-        </Routes>
-      </BackSection> :
-        <Routes>
-          <Route path='/verification' element={ <VerificationPage />} />
-          <Route path="/create-profile" element={<Questionnaire />} />
-          <Route path="/feed" element={<MainLayout />}>
-            <Route path="self" element={<UserSelfPage />} />
+          <Route path='/verification' element={<VerificationPage />} />
+          <Route path='/create-profile' element={<Questionnaire />} />
+          <Route element={<MainLayout />}>
+            <Route path='/support' element={<SupportPageLayout />}>
+              <Route path='faq' element={<Faq />}>
+                <Route path='account' element={<AccountSection />} />
+                <Route path='payment' element={<PaymentSection />} />
+                <Route path='safety' element={<SafetySection />} />
+                <Route path='video' element={<VideoSection />} />
+              </Route>
+              <Route path='request' element={<RequestPage />} />
+            </Route>
+            <Route path='/self' element={<UserSelfPage />} />
             {/* <Route path="messanger" element={<Messanger />} /> */}
-            <Route path="forYou" element={null} />
-            <Route path="search" element={null}/>
-            <Route path="settings" element={null} />
-            <Route path="calendar" element={null} />
-            <Route path="favorites" element={null} />
-            <Route path="support" element={null} />
-            <Route path="safety" element={null} />
+            <Route path='/for-you' element={null} />
+            <Route path='/search' element={null} />
+            <Route path='/settings' element={null} />
+            <Route path='/calendar' element={null} />
+            <Route path='/favorites' element={null} />
+            {/* <Route path='/support' element={null} /> */}
+            <Route path='/safety' element={null} />
           </Route>
         </Routes>
-      }
-    </div >);
+      )}
+    </div>
+  );
 };

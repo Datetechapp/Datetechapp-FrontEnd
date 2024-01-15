@@ -48,6 +48,7 @@ export const VerificationPage = () => {
        const handleChange = (index: number, value: string) => {
               const newValues = [...values];
               const currentInputRef = inputRefs[index]?.current;
+
               newValues[index] = value;
 
               if (value.length > 1) {
@@ -59,6 +60,7 @@ export const VerificationPage = () => {
               if (value === '') {
                      if (index > 0 && inputRefs[index - 1]?.current) {
                             const prevInputRef = inputRefs[index - 1]?.current;
+
                             prevInputRef?.focus();
 
                             if (prevInputRef && prevInputRef.setSelectionRange) {
@@ -69,6 +71,7 @@ export const VerificationPage = () => {
                      if (index < values.length - 1 && value.length >= currentInputRef.maxLength) {
                             if (inputRefs[index + 1]?.current) {
                                    const nextInputRef = inputRefs[index + 1]?.current;
+
                                    nextInputRef?.focus();
                             }
                      }

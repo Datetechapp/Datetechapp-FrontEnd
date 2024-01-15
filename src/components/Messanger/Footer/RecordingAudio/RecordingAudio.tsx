@@ -22,7 +22,6 @@ export const RecordingAudio: React.FC<RecordingAudioProps> = ({ setIsRecording, 
        const [isRunning, setIsRunning] = useState(false);
        const [isOpenModalDeleteRecord, setIsOpenModalDeleteRecord] = useState(false);
 
-
        const recorderControls = useVoiceVisualizer();
 
        const {
@@ -43,9 +42,11 @@ export const RecordingAudio: React.FC<RecordingAudioProps> = ({ setIsRecording, 
 
        useEffect(() => {
               let intervalId: ReturnType<typeof setInterval>;
+
               if (isRunning) {
                      intervalId = setInterval(() => setRecordingTime(recordingTime + 1), 10);
               }
+
               return () => clearInterval(intervalId);
        }, [isRunning, recordingTime]);
 
@@ -88,8 +89,6 @@ export const RecordingAudio: React.FC<RecordingAudioProps> = ({ setIsRecording, 
               }
        };
 
-
-
        const handleAudioClick = () => {
               if (audioRef.current?.paused) {
                      onStartAudioPlayback();
@@ -110,7 +109,6 @@ export const RecordingAudio: React.FC<RecordingAudioProps> = ({ setIsRecording, 
               setIsRecordedBlob(false);
               setIsRecording(false);
        };
-
 
        return (
               <div className={css.recordingAudio}>
@@ -166,6 +164,4 @@ export const RecordingAudio: React.FC<RecordingAudioProps> = ({ setIsRecording, 
               </div>
        );
 };
-
-
 

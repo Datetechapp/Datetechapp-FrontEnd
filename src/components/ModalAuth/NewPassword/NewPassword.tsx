@@ -45,10 +45,10 @@ export const NewPassword: FC<NewPasswordInputProps> = ({
             !isPasswordFocused && value.length === 0
               ? css.inputForPassword
               : isPasswordFocused
-                ? css.inputForFocusedPassword
-                : passwordIsValid && !isPasswordFocused
-                  ? css.inputForPasswordValid
-                  : css.inputForPasswordError
+              ? css.inputForFocusedPassword
+              : passwordIsValid && !isPasswordFocused
+              ? css.inputForPasswordValid
+              : css.inputForPasswordError
           }
           value={value}
           onChange={onChange}
@@ -82,10 +82,10 @@ export const NewPassword: FC<NewPasswordInputProps> = ({
             !isConfirmPasswordFocused && confirmPasswordValue.length === 0
               ? css.inputForPassword
               : isConfirmPasswordFocused
-                ? css.inputForFocusedPassword
-                : confirmPasswordIsValid && !isConfirmPasswordFocused
-                  ? css.inputForPasswordValid
-                  : css.inputForPasswordError
+              ? css.inputForFocusedPassword
+              : confirmPasswordIsValid && !isConfirmPasswordFocused
+              ? css.inputForPasswordValid
+              : css.inputForPasswordError
           }
           value={confirmPasswordValue}
           onChange={onConfirmChange}

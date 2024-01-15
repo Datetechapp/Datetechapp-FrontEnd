@@ -6,8 +6,6 @@ import { Button } from '../../common';
 import { EmailOrPhoneInput, PasswordInput, CheckboxBlock, SocialAuth } from '..';
 import { login } from '../../../api';
 
-
-
 export const hasUppercaseLetter = (word: string): boolean => {
   return /[A-Z]/.test(word);
 };

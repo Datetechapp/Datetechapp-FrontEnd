@@ -1,0 +1,27 @@
+.wrapper {
+    background: #272533;
+    height: 100%;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 80px);
+}
+
+.estimation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.estimationText {
+    color: #96A3B4;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+    margin-top: 8px;
+    margin-bottom: 16px;
+}

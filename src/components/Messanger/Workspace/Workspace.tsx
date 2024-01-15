@@ -52,6 +52,7 @@ export const Workspace: FC<WorkspaceProps> = ({ setSelectedMessageText, showRepl
       setCurrentPinnedMessageIndex((prevIndex) => (prevIndex + 1) % pinnedMessages.length);
 
       const selectedMessage = messagesArr.find((message) => message.id === selectedMessageId);
+
       setHighlighted(selectedMessage?.id === selectedMessageId);
     }
   };
@@ -115,6 +116,7 @@ export const Workspace: FC<WorkspaceProps> = ({ setSelectedMessageText, showRepl
   const handleContextMenuAction = (text: string) => {
     setShowContextMenu(false);
     setShowSmileyMenu(false);
+
     if (text === 'To fix' || text === 'Unfix') {
       handleShowModal('To fix');
     } else if (text === 'Forward') {

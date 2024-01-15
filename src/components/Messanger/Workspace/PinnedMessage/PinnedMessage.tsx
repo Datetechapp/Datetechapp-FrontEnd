@@ -4,7 +4,6 @@ import { ReactComponent as IconPin } from '../../../../assets/Messanger/IconPin.
 import { ReactComponent as CloseIcon } from '../../../../assets/Messanger/iconForOnePinnedMessage.svg';
 import { MessageProps } from '../Workspace';
 
-
 interface PinnedMessageProps {
        text: string;
        onClick?: () => void;
@@ -19,7 +18,6 @@ export const PinnedMessage: FC<PinnedMessageProps> = ({ text, onClick, pinnedMes
 
        const maxLength = 80;
        const truncatedText = text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
-
 
        return (
 

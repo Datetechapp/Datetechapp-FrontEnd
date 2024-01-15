@@ -14,7 +14,6 @@ export const fetchData = (params: string) => {
           .then(response => response.json());
 };
 
-
 interface Tokens {
      access: string;
      refresh?: string | null;
@@ -76,6 +75,7 @@ const post = async (
           if (!response.ok) {
                throw new Error(`HTTP error, status code ${response.status}`);
           }
+
           return response;
      });
 };
@@ -123,10 +123,13 @@ export const createProfile = (body: {
                          access: data.access,
                          refresh: data.refresh,
                     };
+
                     saveTokensToLocalStorage(tokens);
+
                     return response;
                });
           }
+
           if (response.status === 401) {
                return refreshAccessToken().then((refreshResponse) => {
                     if (refreshResponse.ok) {
@@ -136,6 +139,7 @@ export const createProfile = (body: {
                     return response;
                });
           }
+
           return response;
      });
 

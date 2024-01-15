@@ -18,11 +18,13 @@ export const SearchMessages: React.FC<SearchMessagesProps> = ({ setShowSearchMes
 
        const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
               const newValue = e.target.value;
+
               setSearchValue(newValue);
        };
 
        const handleClearClick = () => {
               setSearchValue('');
+
               if (inputRef.current) {
                      inputRef.current.focus();
               }

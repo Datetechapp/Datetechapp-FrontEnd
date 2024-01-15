@@ -20,6 +20,7 @@ export const LanguagesSwich = ({
       {item.lang}
     </li>
   ));
+
   return (
     <div className={`Languages ${nameClass}`}>
       <div>
