@@ -1,19 +1,19 @@
-.container{
+.container {
     display: flex;
     background-color: #1F1D2B;
     width: 100%;
-    color: aliceblue;
+    color: #FFF;
 }
 
-.leftPart{
+.leftPart {
     flex: 3;
 }
 
-.wrapper{
+.wrapper {
     width: 95%;
     margin: 0 auto;
 }
 
-.rightPart{
-   flex: 1;
+.rightPart {
+    flex: 1;
 }

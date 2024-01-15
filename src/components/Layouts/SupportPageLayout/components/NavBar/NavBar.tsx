@@ -5,7 +5,7 @@ export function NavBar() {
   const { pathname } = useLocation();
   const themeUrl = pathname.split('/')[2];
 
-  const Links = [
+  const links = [
     {
       title: 'FAQ',
       href: 'faq/account',
@@ -18,10 +18,10 @@ export function NavBar() {
 
   return (
     <nav className={styles.navBar}>
-      {Links.map((link, i) => (
+      {links.map((link) => (
         <NavLink
           to={link.href}
-          key={i}
+          key={link.href}
           className={(navData) =>
             navData.isActive || themeUrl === link.href.split('/')[0]
               ? styles.active

@@ -10,7 +10,8 @@ export function Message({ message }: { message: IMessage }) {
   const [divBlockWidth, setDivBlockWidth] = useState(0);
 
   useEffect(() => {
-    setDivBlockWidth(divBlock.current?.getBoundingClientRect().width as number);
+    const width = divBlock.current?.getBoundingClientRect().width;
+    setDivBlockWidth(width ?? 0);
   }, [message]);
 
   return (

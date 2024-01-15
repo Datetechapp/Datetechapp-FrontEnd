@@ -10,16 +10,16 @@ import { Dispatch, SetStateAction } from 'react';
 import Highlighter from 'react-highlight-words';
 
 export default function RequestTable({
-  handleOpen,
+  handleChangeOpen,
   setId,
   text,
 }: {
-  handleOpen: () => void;
+  handleChangeOpen: () => void;
   setId: Dispatch<SetStateAction<number>>;
   text: string;
 }) {
   const handleModalOpen = (id: number) => {
-    handleOpen();
+    handleChangeOpen();
     setId(id);
   };
 

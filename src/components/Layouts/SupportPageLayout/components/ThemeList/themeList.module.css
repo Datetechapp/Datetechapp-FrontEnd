@@ -1,13 +1,13 @@
-.container{
+.container {
     margin-bottom: 12px;
 }
 
-.themeButtons{
+.themeButtons {
     display: flex;
     gap: 13px;
 }
 
-.themeButtons a{
+.themeButtons a {
     text-decoration: none;
     padding: 8px 14px 8px 14px;
     background: #302E3D;
@@ -17,14 +17,13 @@
     font-size: 14px;
     font-style: normal;
     font-weight: 500;
-    line-height: 18px; /* 128.571% */
-    letter-spacing: 0.1px;
+    line-height: 18px;
 }
 
-.themeButtons a:hover{
+.themeButtons a:hover {
     background: #5F4F7F;
 }
 
-.themeButtons a.active{
+.themeButtons a.active {
     background: #5F4F7F;
 }

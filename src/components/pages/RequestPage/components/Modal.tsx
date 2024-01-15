@@ -3,18 +3,19 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import styles from '../request.module.css';
-import { Table, tableData } from './table-data';
+import { tableData } from './table-data';
 import SimpleCloseIcon from '../../../../assets/SupportServicePanel/SimpleCloseIcon.svg';
 import FileIcon from '../../../../assets/SupportServicePanel/FileIcon.svg';
 import { TextareaAutosize } from '@mui/material';
+import { Table } from './types';
 
 export function RequestModal({
   open,
-  handleClose,
+  handleChangeOpen,
   id,
 }: {
   open: boolean;
-  handleClose: () => void;
+  handleChangeOpen: () => void;
   id: number;
 }) {
   const filteredDataById: Table | undefined = tableData.find(
@@ -25,7 +26,7 @@ export function RequestModal({
     <div>
       <Modal
         open={open}
-        onClose={handleClose}
+        onClose={handleChangeOpen}
         slots={{ backdrop: Backdrop }}
         slotProps={{
           backdrop: {
@@ -53,7 +54,7 @@ export function RequestModal({
                 style={{
                   cursor: 'pointer',
                 }}
-                onClick={handleClose}
+                onClick={handleChangeOpen}
               />
             </div>
             <div className={styles.idSection}>

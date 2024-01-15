@@ -1,8 +1,9 @@
 import styles from './messagesPanel.module.css';
 import { Message } from '../Message/Message';
 import { IMessage } from '../../type';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { format } from 'date-fns';
+import { v4 as uuid } from 'uuid';
 
 export function MessagesPanel({ messages }: { messages: IMessage[] }) {
   const refs = useRef<HTMLDivElement>(null);
@@ -20,8 +21,8 @@ export function MessagesPanel({ messages }: { messages: IMessage[] }) {
       {messages.length !== 0 ? (
         <div className={styles.fullPanel}>
           <p className={styles.date}>{format(new Date(), 'dd MMMM yyyy')}</p>
-          {messages.map((message, i) => (
-            <Message key={i} message={message} />
+          {messages.map((message) => (
+            <Message key={uuid()} message={message} />
           ))}
           <div ref={refs}></div>
         </div>
