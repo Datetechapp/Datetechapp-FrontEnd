@@ -1,10 +1,18 @@
-export const notifications = [
+type Notification = {
+  id: number;
+  type: 'event' | 'like' | 'new' | 'decline' | 'accept';
+  user: string;
+  event: string | null;
+  time: string;
+};
+
+export const notifications: Notification[] = [
     {
       id: 1,
-      type: 'event',
+      type: 'new',
       user: 'Liza',
-      event: 'Coffee date',
-      time: '2021-10-29T10:00:00Z',
+      event: 'Movie night',
+      time: '2021-11-01T11:00:00Z',
     },
     {
       id: 2,
@@ -15,10 +23,10 @@ export const notifications = [
     },
     {
       id: 3,
-      type: 'new',
+      type: 'event',
       user: 'Liza',
-      event: 'Movie night',
-      time: '2021-11-01T11:00:00Z',
+      event: 'Coffee date',
+      time: '2021-10-29T10:00:00Z',
     },
     {
       id: 4,

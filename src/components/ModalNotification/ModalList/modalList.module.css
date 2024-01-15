@@ -1,0 +1,35 @@
+.notification_item{
+    padding: 4px 0;
+    display: flex;
+}
+.notification_item img{
+    max-width: 48px;
+    max-height: 48px;
+    border-radius:50% ;
+}
+.event_details{
+    text-align: start;
+    padding-left: 8px;
+}
+.event_details p{
+    color:#FFF;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: 0.1px;
+}
+.user{
+    font-size: 14px;
+    color: #C896EF;
+}
+.time{
+    color: #E1DBED;
+    font-family: Montserrat;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 14px;
+    letter-spacing: 0.1px;
+}
