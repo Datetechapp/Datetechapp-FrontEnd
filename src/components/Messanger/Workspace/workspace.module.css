@@ -1,7 +1,12 @@
 .workspaceWrapper {
-       height: 78.4vh;
        display: flex;
        flex-direction: column;
+       flex-grow: 1;
+       overflow-y: auto;
+}
+
+.workspaceWrapper::-webkit-scrollbar {
+       display: none;
 }
 
 .workspaceWithReplyWrapper {
@@ -16,10 +21,26 @@
 .workspaceContainer {
        background: #1F1D2B;
        display: flex;
-       flex-direction: column; 
+       flex-direction: column;
        justify-content: flex-end;
        position: relative;
        flex-grow: 1;
+}
+
+.workspaceContainerEmpty {
+       background: #1F1D2B;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       position: relative;
+       flex-grow: 1;
+}
+
+
+
+.messageBlock {
+       display: flex;
+       flex-direction: column;
 }
 
 .messagesContainer {
@@ -38,3 +59,4 @@
        line-height: 18px;
        color: var(--Grey, #96A3B4);
 }
+

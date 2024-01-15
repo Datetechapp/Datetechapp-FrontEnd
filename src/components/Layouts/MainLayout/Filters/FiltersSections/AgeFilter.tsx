@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import styles from '../Filters.module.css';
 import usersIcon from '../../../../../assets/feed/users.svg';
 
-const AgeFilter = () => {
+export const AgeFilter = () => {
   const [ageRange, setAgeRange] = useState([18, 100]);
   const updateAgeRange = (value1: number, value2: number) => {
     setAgeRange([value1, value2]);

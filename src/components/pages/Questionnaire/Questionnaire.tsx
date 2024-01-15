@@ -59,6 +59,7 @@ export function Questionnaire() {
                      currentValidDay = Number(value) >= 1 && Number(value) <= 31;
 
                      if (value && !currentValidDay) {
+                            setDay('');
                             alert('Please enter a number from 1 to 31.');
                      } else {
                             setDay(value);
@@ -68,6 +69,7 @@ export function Questionnaire() {
                      currentValidMonth = Number(value) >= 1 && Number(value) <= 12;
 
                      if (value && !currentValidMonth) {
+                            setMonth('');
                             alert('Please enter a number from 1 to 12.');
                      } else {
                             setMonth(value);

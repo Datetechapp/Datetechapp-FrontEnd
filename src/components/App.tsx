@@ -12,7 +12,7 @@ import { ChangePassword } from './pages/ChangePassword';
 import { VerificationPage } from './pages/ModalRegister/VerificationPage';
 import { Questionnaire } from './pages/Questionnaire';
 import { RecordingAudio } from './Messanger/Footer/RecordingAudio/RecordingAudio';
-
+import { Filters } from './Layouts/MainLayout/Filters/Filters';
 
 export const App = () => {
 
@@ -22,6 +22,7 @@ export const App = () => {
   
   return (
     <div>
+      {/* <Filters /> */}
       {/* <ModalWelcome /> */}
       {/* <Messanger /> */}
 

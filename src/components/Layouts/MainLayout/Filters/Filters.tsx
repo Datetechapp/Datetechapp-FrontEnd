@@ -7,7 +7,7 @@ import InterestedInFilter from './FiltersSections/InterestedInFilter';
 import AgeFilter from './FiltersSections/AgeFilter';
 import ModalFilters from './FiltersSections/ModalFilters';
 
-const Filters = () => {
+export const Filters = () => {
   const [expandedSection, setExpandedSection] = useState('');
 
   const toggleExpand = (category: string) => {

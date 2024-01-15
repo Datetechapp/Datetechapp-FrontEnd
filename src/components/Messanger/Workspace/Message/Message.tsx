@@ -44,7 +44,7 @@ export const Message: React.FC<MessageProps> = ({
 
        return (
               <div className={`${isMe ? css.me : css.other} ${isSelected ? css.selectedBlockMessage : ''} ${currentPinnedMessageIndex.toString() === id && highlighted ? css.highlighted : ''}`}>
-                     <div>
+                     <div className={isMe ? css.blockMessageForMe : ''}>
                             <div
                                    className={`${isMe ? css.messageInfoMe : css.messageInfoOther} ${isSelected ? css.selectedMessage : ''
                                           }`}

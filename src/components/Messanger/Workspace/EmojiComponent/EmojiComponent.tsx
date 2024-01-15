@@ -21,7 +21,10 @@ export const EmojiComponent: FC<EmojiComponentsProps> = ({ isMe }) => {
   return (
     <div className={`${css.emojiBlock} ${isMe ? css.emojiBlockForMe : ''}`}>
       <EmojiPicker onEmojiClick={handleEmojiClick} />
+
       <EmojiArrow className={css.arrowIcon} onClick={handleEmojOpen} />
+
+
     </div>
   );
 };

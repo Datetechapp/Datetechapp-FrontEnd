@@ -13,7 +13,7 @@ interface InputProps {
   max?: string;
   readOnly?: boolean;
   inputRef?: MutableRefObject<HTMLInputElement | null>;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   onFocus?: (e: FocusEvent<HTMLInputElement>) => void;
   onBlur?: (e: ChangeEvent<HTMLInputElement>) => void;
   defaultChecked?: boolean;

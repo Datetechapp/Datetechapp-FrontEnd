@@ -7,3 +7,4 @@ export { EmojiComponent } from './EmojiComponent';
 export { Message } from './Message';
 export { PinnedMessage } from './PinnedMessage';
 export { SearchMessages } from './SearchMessages';
+export { EmptyStory } from './EmptyStory';

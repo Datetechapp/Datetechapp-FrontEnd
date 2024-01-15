@@ -144,5 +144,5 @@ export const login = (body: {
      password: string;
      remember_me: boolean;
 }): Promise<Response> =>
-     post('/login', body).then((response) => response.json());
+     post('api/login/', body).then((response) => response.json());
 

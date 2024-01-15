@@ -75,7 +75,7 @@ export const Login = () => {
         navigate('/feed');
 
       } else {
-        throw new Error('Ошибка при выполнении запроса: ' + response.status);
+        throw new Error('Ошибка при выполнении запроса: ');
       }
     });
   };

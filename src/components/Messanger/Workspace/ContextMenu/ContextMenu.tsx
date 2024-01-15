@@ -3,7 +3,7 @@ import { v4 as uuid } from 'uuid';
 import { ReactComponent as Answer } from '../../../../assets/Messanger/ContextMenu/Answer.svg';
 import { ReactComponent as Copy } from '../../../../assets/Messanger/ContextMenu/Copy.svg';
 import { ReactComponent as Fix } from '../../../../assets/Messanger/ContextMenu/Fix.svg';
-import { ReactComponent as Forward } from '../../../../assets/Messanger/ContextMenu/Forward.svg';
+import { ReactComponent as Complain } from '../../../../assets/Messanger/ContextMenu/Complain.svg';
 import { ReactComponent as Delete } from '../../../../assets/Messanger/ContextMenu/Delete.svg';
 import { Button } from '../../../common/button';
 import css from './contextMenu.module.css';
@@ -15,15 +15,11 @@ interface ContextMenuProps {
   onContextMenuAction: (text: string) => void;
 }
 
-export const ContextMenu: FC<ContextMenuProps> = ({
-  show,
-  onContextMenuAction,
-  isPinned,
-  isMe,
-}) => {
+export const ContextMenu: FC<ContextMenuProps> = ({ show, onContextMenuAction, isPinned, isMe }) => {
+  
   const contextMenuInfo = [
     {
-      text: 'Answer',
+      text: 'Reply',
       photo: <Answer className={css.iconForContextMenuFeature} />,
     },
     { text: 'Copy', photo: <Copy className={css.iconForContextMenuFeature} /> },
@@ -31,10 +27,8 @@ export const ContextMenu: FC<ContextMenuProps> = ({
       text: isPinned ? 'Unfix' : 'To fix',
       photo: <Fix className={css.iconForContextMenuFeature} />,
     },
-    {
-      text: 'Forward',
-      photo: <Forward className={css.iconForContextMenuFeature} />,
-    },
+    { text: 'Complain', photo: <Complain className={css.iconForContextMenuFeature} /> },
+    { text: 'Delete', photo: <Delete className={css.iconForContextMenuFeature} /> },
   ];
 
   if (!show) {
@@ -45,25 +39,17 @@ export const ContextMenu: FC<ContextMenuProps> = ({
     <div className={css.contextMenuWrapper}>
       <div className={`${css.contextMenu} ${isMe ? css.contextMenuForMe : ''}`}>
         {contextMenuInfo.map((button) => (
-          <div key={uuid()} className={css.contextMenuBlock}>
+          <div key={uuid()} className={button.text === 'To fix' || button.text === 'Unfix' ? css.contextMenuBlockToFix : css.contextMenuBlock}>
             {button.photo}
             <Button
-              className={css.contextMenuFeature}
+              className={button.text === 'Delete' || button.text === 'Complain'
+                ? css.contextMenuFeatureRed : css.contextMenuFeature}
               onClick={() => onContextMenuAction(button.text)}
             >
               {button.text}
             </Button>
           </div>
         ))}
-        <div className={css.contextMenuBlock}>
-          <Delete className={css.iconForContextMenuFeature} />
-          <Button
-            className={css.contextMenuDelete}
-            onClick={() => onContextMenuAction('Delete')}
-          >
-            Delete
-          </Button>
-        </div>
       </div>
     </div>
   );
