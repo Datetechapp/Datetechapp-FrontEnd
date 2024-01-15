@@ -45,3 +45,6 @@
 .BtnUpload:active {
     background: #5F4F7F;
 }
+.header__buttons img{
+    position: relative;
+}
