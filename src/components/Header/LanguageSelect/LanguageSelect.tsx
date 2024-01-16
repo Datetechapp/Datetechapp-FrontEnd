@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './LanguageSelect.module.css';
 import '../LanguagesSwich.css';
 import { languages } from '../language';
-import { useState, FC, useEffect } from 'react';
+import { useState} from 'react';
 import { ReactComponent as ActiveArrow } from '../../../assets/Header/activeArrow.svg';
 import { ReactComponent as PassiveArrow } from '../../../assets/Header/passiveArrow.svg';
 
@@ -15,7 +15,7 @@ export const LanguageSelect = () => {
 	};
 	const switchLang = (event: React.MouseEvent) => {
 		const lang = event.currentTarget.textContent;
-		
+
 		setselectLang(lang || 'English');
 	};
 
