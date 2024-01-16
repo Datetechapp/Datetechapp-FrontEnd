@@ -45,6 +45,33 @@
 .BtnUpload:active {
     background: #5F4F7F;
 }
-.header__buttons img{
+   
+.notifications{
     position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.count_notifications{
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 8px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 25px; /* 312.5% */
+    letter-spacing: -0.5px;
+    background-color: #D75048;
+    border-radius:50%;
+    width: 15px;
+    height: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFF;
+
 }

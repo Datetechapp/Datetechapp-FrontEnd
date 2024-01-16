@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { FC } from 'react';
 import styles from './modalNotification.module.css';
 import { Button } from 'components/common';
 import { notifications } from './notification';
 import ModalList from './ModalList/ModalList';
    
-const ModalNotification = () => {
+type NotificationProp = {
+onClose: ()=> void;
+}
+
+const ModalNotification: FC<NotificationProp> = ({onClose}) => {
 
 	return (
-		<div className={styles.notification__container}>
+		<div className={styles.notification__container} onMouseLeave={onClose}>
 			<h3 className={styles.notification__title}>Notifications</h3>
 			<div className={styles.notification__description}>
 				{notifications.length === 0 ? (
