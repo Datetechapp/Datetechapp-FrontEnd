@@ -1,0 +1,44 @@
+.push__container{
+    padding: 16px;
+    border-radius: 10px;
+    border: 1px solid #C896EF;
+    background: #32303E;
+    max-width: 341px;
+}
+.push_title{
+    padding-bottom: 8px;
+    color:  #FFF;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 18px; 
+    letter-spacing: 0.1px;
+}
+.push_description{
+    display: flex;
+}
+.push_description img{
+    max-width: 49px;
+    max-height: 49px;
+    border-radius: 50%;
+}
+.message__box p{
+    color:#FFF;
+    padding-left: 8px;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 18px;
+    letter-spacing: 0.1px;
+}
+.message__box span{
+    color:#C896EF;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 18px;
+    letter-spacing: 0.1px;
+}
