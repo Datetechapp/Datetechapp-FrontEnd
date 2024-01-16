@@ -23,7 +23,10 @@ export const MainLayoutHeader: FC = () => {
 				<img src={logo} alt="logo" />
 			</div>
 			<div className="header__buttons">
-				<div className="notifications" onMouseEnter={handleOpenModal}>
+				<div className="notifications" 
+        onMouseEnter={handleOpenModal}
+        // onClick={}
+        >
 					<div className="count_notifications">{notifications.length}</div>
 					<img src={bell} alt="notifications" />
 				</div>

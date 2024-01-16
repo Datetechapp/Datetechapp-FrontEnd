@@ -1,6 +1,6 @@
 import React from 'react';
-import avatar from '../../../assets/user/avatar Ivan.svg';
-import styles from './modalList.module.css';
+import avatar from '../../../../assets/user/avatar Ivan.svg';
+import styles from './NotificationItem.module.css';
 
 type Notification = {
 	id: number;
@@ -10,7 +10,7 @@ type Notification = {
 	time: string;
 };
 
-const ModalList = ({ notification }: { notification: Notification }) => {
+const NotificationItem = ({ notification }: { notification: Notification }) => {
 	const newTime = new Date(notification.time).toLocaleString('en-US', {
 		day: 'numeric',
 		month: 'short',
@@ -33,15 +33,13 @@ const ModalList = ({ notification }: { notification: Notification }) => {
 	} else if (notification.type === 'accept') {
 		textEvent = <>{userName} accepted your event</>;
 	}
-
-	return (
+	
+    return (
 		<div className={styles.notification_item}>
 			<div className={styles.notification_item_container}>
 				<img src={avatar} alt="avatar" />
 				<div className={styles.event_details}>
-					<p className={styles.text_event}>
-						{textEvent}
-					</p>
+					<p className={styles.text_event}>{textEvent}</p>
 					<span className={styles.time}>{newTime}</span>
 				</div>
 			</div>
@@ -49,4 +47,4 @@ const ModalList = ({ notification }: { notification: Notification }) => {
 	);
 };
 
-export default ModalList;
+export default NotificationItem;
