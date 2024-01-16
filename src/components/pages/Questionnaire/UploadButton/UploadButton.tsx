@@ -18,7 +18,7 @@ export const UploadButton: React.FC<UploadButtonProps> = ({
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.files && event.target.files.length > 0) {
+    if (event.target.files && event.target.files?.length) {
       const file = event.target.files[0];
 
       onUpload(file);

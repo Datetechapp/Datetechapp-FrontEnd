@@ -11,7 +11,6 @@ interface HeaderProps {
        setShowSearchMessages: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-
 export const Header: React.FC<HeaderProps> = ({ setShowSearchMessages }) => {
        return (
               <div className={css.headerWrapper}>

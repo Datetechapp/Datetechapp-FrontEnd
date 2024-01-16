@@ -3,7 +3,7 @@ import type { FC, ChangeEvent, FocusEvent, MutableRefObject } from 'react';
 interface InputProps {
   id?: string;
   value?: string;
-  className: string;
+  className?: string;
   type: string;
   autoComplete?: string;
   name?: string;
@@ -16,6 +16,8 @@ interface InputProps {
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   onFocus?: (e: FocusEvent<HTMLInputElement>) => void;
   onBlur?: (e: ChangeEvent<HTMLInputElement>) => void;
+  defaultChecked?: boolean;
+  isDisabled?: boolean,
 }
 
 export const Input: FC<InputProps> = ({
@@ -34,6 +36,8 @@ export const Input: FC<InputProps> = ({
   min,
   max,
   readOnly,
+  defaultChecked,
+  isDisabled,
 }) => (
   <input
     id={id}
@@ -51,5 +55,7 @@ export const Input: FC<InputProps> = ({
     min={min}
     max={max}
     readOnly={readOnly}
+    defaultChecked={defaultChecked}
+    disabled={isDisabled} 
   />
 );

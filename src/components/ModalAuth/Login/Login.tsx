@@ -1,17 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import validator from 'validator';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import css from './login.module.css';
 import { Button } from '../../common';
-import {
-  EmailOrPhoneInput,
-  PasswordInput,
-  CheckboxBlock,
-  SocialAuth,
-} from '..';
+import { EmailOrPhoneInput, PasswordInput, CheckboxBlock, SocialAuth } from '..';
 import { login } from '../../../api';
-
-const rememberTheData = 'Remember me';
 
 export const hasUppercaseLetter = (word: string): boolean => {
   return /[A-Z]/.test(word);
@@ -23,19 +16,18 @@ export const hasSpecialCharacters = (word: string): boolean => {
   return specialCharactersRegex.test(word);
 };
 
-export function Login() {
+export const Login = () => {
   const [emailOrPhoneValue, setEmailOrPhoneValue] = useState('');
   const [passwordValue, setPasswordValue] = useState('');
   const [type, setType] = useState<'email' | 'phone'>('email');
-  const [rememberLogin, setRememberLogin] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-
   const [isValidPassword, setIsValidPassword] = useState(false);
-
   const [isFocusedEmail, setIsFocusedEmail] = useState(false);
   const [isFocusedPassword, setIsFocusedPassword] = useState(false);
 
   const isLogin = true;
+  const navigate = useNavigate();
 
   const handleFocusChange = () => {
     setIsFocusedEmail(!isFocusedEmail);
@@ -64,22 +56,22 @@ export function Login() {
     setPasswordValue(e.target.value);
     setIsValidPassword(
       e.target.value.length >= 8 &&
-        hasUppercaseLetter(e.target.value) &&
-        hasSpecialCharacters(e.target.value),
+      hasUppercaseLetter(e.target.value) &&
+      hasSpecialCharacters(e.target.value),
     );
   };
 
-  const handleSubmit = (
-    e: React.FormEvent<HTMLFormElement> | React.KeyboardEvent<HTMLInputElement>,
-  ) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement> | React.KeyboardEvent<HTMLInputElement>) => {
     e.preventDefault();
     login({
       username: emailOrPhoneValue,
       password: passwordValue,
-      rememberLogin,
+      remember_me: rememberMe,
     }).then((response) => {
       if (response.ok) {
         setErrorMessage('');
+        navigate('/feed');
+
       } else {
         throw new Error('Ошибка при выполнении запроса: ' + response.status);
       }
@@ -87,7 +79,7 @@ export function Login() {
   };
 
   const handleRememberLoginChange = () => {
-    setRememberLogin(!rememberLogin);
+    setRememberMe(!rememberMe);
   };
 
   useEffect(() => {
@@ -139,13 +131,12 @@ export function Login() {
           {errorMessage && <div className={css.errorMsg}>{errorMessage}</div>}
         </div>
         <div className={css.checkboxForgotBlock}>
-          {!errorMessage && (
-            <CheckboxBlock
-              rememberLogin={rememberLogin}
-              handleRememberLoginChange={handleRememberLoginChange}
-              rememberTheData={rememberTheData}
-            />
-          )}
+          <CheckboxBlock
+            rememberLogin={rememberMe}
+            handleRememberLoginChange={handleRememberLoginChange}
+            rememberTheData='Remember me'
+          />
+
           {!errorMessage && (
             <Link to="/reset_password" className={css.forgotPassword}>
               Forgot Password?
@@ -166,4 +157,4 @@ export function Login() {
       <SocialAuth />
     </div>
   );
-}
+};

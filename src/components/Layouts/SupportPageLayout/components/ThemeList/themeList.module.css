@@ -1,0 +1,29 @@
+.container {
+    margin-bottom: 12px;
+}
+
+.themeButtons {
+    display: flex;
+    gap: 13px;
+}
+
+.themeButtons a {
+    text-decoration: none;
+    padding: 8px 14px 8px 14px;
+    background: #302E3D;
+    color: white;
+    border-radius: 30px;
+    transition: all 0.7s ease;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+}
+
+.themeButtons a:hover {
+    background: #5F4F7F;
+}
+
+.themeButtons a.active {
+    background: #5F4F7F;
+}

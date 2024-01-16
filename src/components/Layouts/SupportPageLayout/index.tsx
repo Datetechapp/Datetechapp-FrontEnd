@@ -1,0 +1,1 @@
+export { SupportPageLayout } from './SupportPageLayout';

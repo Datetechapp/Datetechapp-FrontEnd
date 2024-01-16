@@ -41,7 +41,6 @@ export const Message: React.FC<MessageProps> = ({
               }
        }, [highlighted]);
 
-
        return (
               <div className={`${isMe ? css.me : css.other} ${isSelected ? css.selectedBlockMessage : ''} ${currentPinnedMessageIndex.toString() === id && highlighted ? css.highlighted : ''}`}>
                      <div>
@@ -55,7 +54,6 @@ export const Message: React.FC<MessageProps> = ({
                                           {isPinned && <PinnedIcon className={css.pinnedIcon} />}
                                           <span className={css.messageTimestampt}>{timestamp}</span>
                                    </div>
-
 
                             </div>
                             <ContextMenu

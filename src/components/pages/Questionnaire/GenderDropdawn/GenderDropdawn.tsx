@@ -57,8 +57,6 @@ export const GenderDropdawn: FC<GenderDropdownProps> = ({
     onChange(event);
   };
 
-  console.log(sex);
-
   return (
     <div className={css.genderDropdawnWrapper}>
       <div className={css.blockForRadio}>
