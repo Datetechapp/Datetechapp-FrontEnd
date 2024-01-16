@@ -5,9 +5,11 @@ import logo from '../../../../assets/ModalAuth/logo.svg';
 import './index.css';
 import ModalNotification from 'components/ModalNotification/ModalNotification';
 import { notifications } from 'components/ModalNotification/notification';
+import { useNavigate } from 'react-router-dom';
 
 export const MainLayoutHeader: FC = () => {
 	const [isModalVisible, setIsModalVisible] = useState(false);
+	const navigate = useNavigate() ;
 
 	const handleOpenModal = () => {
 		setIsModalVisible(true);
@@ -25,7 +27,7 @@ export const MainLayoutHeader: FC = () => {
 			<div className="header__buttons">
 				<div className="notifications" 
         onMouseEnter={handleOpenModal}
-        // onClick={}
+        onClick={() => navigate('/notification')}
         >
 					<div className="count_notifications">{notifications.length}</div>
 					<img src={bell} alt="notifications" />
