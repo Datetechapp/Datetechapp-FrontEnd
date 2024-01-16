@@ -21,10 +21,11 @@ import {
   SafetySection,
 } from './pages/Faq';
 import { RequestPage } from './pages/RequestPage';
+import NotificationPage from './pages/NotificationPage/NotificationPage';
 
 export const App = () => {
   const { pathname } = useLocation();
-
+  
   const locationForBackSection =
     pathname == '/login' ||
     pathname == '/registration' ||
@@ -60,6 +61,7 @@ export const App = () => {
               <Route path='request' element={<RequestPage />} />
             </Route>
             <Route path='/self' element={<UserSelfPage />} />
+            <Route path='/notification' element={<NotificationPage />} />
             {/* <Route path="messanger" element={<Messanger />} /> */}
             <Route path='/for-you' element={null} />
             <Route path='/search' element={null} />

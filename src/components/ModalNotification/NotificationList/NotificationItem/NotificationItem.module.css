@@ -1,6 +1,10 @@
 .notification_item_container{
     padding: 4px 0;
     display: flex;
+    width: 100%;
+}
+.notification_item:hover{
+    background-color: #272533;
 }
 .notification_item img{
     max-width: 48px;
