@@ -1,36 +1,48 @@
 .emojiBlock {
-       margin-top: 10px;
+       margin-top: 8px;
        display: flex;
-       background-color: #E9E3F5;
-       width: 320px;
+       background-color: rgba(255, 255, 255, 0.60);
+       width: 256px;
+       height: 32px;
        border-radius: 50px;
-       margin-left: 48px;
        position: relative;
+       padding: 4px 4px;
+       gap: 9px;
 }
 
-.emojiBlock::after {
-       content: "";
-       position: absolute;
-       border: 13px solid transparent;
-       border-top: 8px solid #E9E3F5;
-       top: 39px;
-       left: 77px;
+.emojiBlock aside :nth-child(2) ul :nth-child(2) :nth-child(2) {
+       display: flex !important;
+       flex-wrap: wrap;
+       column-gap: 4px;
+       row-gap: 8px;
+       margin: 0;
 }
 
+.emojiBlock aside :nth-child(2) ul :nth-child(2) :nth-child(2) button {
+       width: 24px;
+       height: 24px;
+}
+
+.emojiBlock aside :nth-child(2) ul :nth-child(2) :nth-child(2) button img:hover {
+       background-color: none;
+}
 
 .emojiBlock aside {
-       
        background-color: rgba(0, 0, 0, 0);
        border: none !important;
-       width: 350px;
-       height: 40px !important;
+       width: 216px !important;
+       height: 32px !important;
+}
 
+.emojiBlock aside button img {
+       padding: 0 !important;
+       max-width: 24px !important;
+       max-height: 24px !important;
 }
 
 .arrowIcon {
-       width: 49px;
+       width: 22px;
        align-self: center;
-       padding-right: 15px;
        cursor: pointer;
 }
 
@@ -53,9 +65,5 @@
 }
 
 .emojiBlockForMe {
-       margin-left: 279px;
-}
-
-.emojiBlockForMe::after {
-       left: 230px;
+       align-self: flex-end;
 }

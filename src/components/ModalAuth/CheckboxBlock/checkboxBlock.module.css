@@ -38,12 +38,12 @@
 }
 
 .checkboxForPassword[type="checkbox"]::after {
-       content: url("../../../assets/ModalAuth/checkMark.svg");
+       content: url("../../../assets/ForCommonModal/checkMarkIcon.svg");
        display: none;
        position: absolute;
        top: 50%;
        left: 50%;
-       transform: translate(-45%, -50%);
+       transform: translate(-45%, -40%);
        color: #5F4F7F;
 }
 

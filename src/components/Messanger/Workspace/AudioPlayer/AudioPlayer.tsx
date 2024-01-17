@@ -33,20 +33,9 @@ export const AudioPlayer = () => {
               }
        }, [volume, isVolumeBlockHovered, isHovered]);
 
-       // useEffect(() => {
-       //        if (audioRef.current) {
-       //               audioRef.current.volume = volume;
-       //        }
-       // }, [volume]);
-
        const handleVolumeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
               const newVolume = parseFloat(event.target.value);
-
               setVolume(newVolume);
-
-              // if (audioRef.current) {
-              //        audioRef.current.volume = newVolume;
-              // }
        };
 
        const handleRangeChange = (e: React.ChangeEvent<HTMLInputElement>) => {

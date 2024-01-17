@@ -9,10 +9,10 @@ import { Messanger } from '../components/Messanger';
 import { useLocation } from 'react-router-dom';
 import { HeaderSecondary } from './HeaderSecondary';
 import { ChangePassword } from './pages/ChangePassword';
-import { VerificationPage } from './pages/VerificationPage';
+import { VerificationPage } from './pages/ModalRegister/VerificationPage';
 import { Questionnaire } from './pages/Questionnaire';
 import { RecordingAudio } from './Messanger/Footer/RecordingAudio/RecordingAudio';
-
+import { Filters } from './Layouts/MainLayout/Filters/Filters';
 
 export const App = () => {
 
@@ -22,28 +22,27 @@ export const App = () => {
   
   return (
     <div>
+      {/* <Filters /> */}
       {/* <ModalWelcome /> */}
-      <Messanger />
+      {/* <Messanger /> */}
 
-      {/* <VerificationPage />
-      <ChangePassword /> */}
+      {/* <ChangePassword /> */}
 
       {locationForBackSection ? <BackSection >
         <Routes>
-
           <Route path="/login" element={<ModalAuth />} />
           <Route path="/registration" element={< ModalRegister />} />
           <Route path="/reset_password" element={<ResetPassword />} />
-          {/* <Route path="/messanger" element={<Messanger />} /> */}
         </Routes>
       </BackSection> :
         <Routes>
+          <Route path='/verification' element={ <VerificationPage />} />
           <Route path="/create-profile" element={<Questionnaire />} />
           <Route path="/feed" element={<MainLayout />}>
             <Route path="self" element={<UserSelfPage />} />
             {/* <Route path="messanger" element={<Messanger />} /> */}
             <Route path="forYou" element={null} />
-            <Route path="search" element={null} />
+            <Route path="search" element={null}/>
             <Route path="settings" element={null} />
             <Route path="calendar" element={null} />
             <Route path="favorites" element={null} />

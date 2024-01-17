@@ -1,6 +1,8 @@
 .messangerWrapper {
        width: 75vw;
-
+       height: 100vh;
+       display: flex;
+       flex-direction: column;
 }
 
 

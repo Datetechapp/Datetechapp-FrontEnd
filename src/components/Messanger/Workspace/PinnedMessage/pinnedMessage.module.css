@@ -26,7 +26,6 @@
 .pinnedMessagesContainer {
        display: flex;
        width: inherit;
-       position: absolute;
        z-index: 2;
        gap: 12px;
        height: 54px;
