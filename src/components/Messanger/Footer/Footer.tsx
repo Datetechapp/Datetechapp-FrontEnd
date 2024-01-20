@@ -10,7 +10,6 @@ import { ModalClipElements } from './ModalClipElements';
 import { RecordingAudio } from './RecordingAudio/RecordingAudio';
 import { useVoiceVisualizer, VoiceVisualizer } from 'react-voice-visualizer';
 
-
 interface FooterProps {
        selectedMessageText: string;
        showReplyMessage: boolean;
@@ -52,8 +51,6 @@ export const Footer: FC<FooterProps> = ({
        const handleCloseSelectedImage = () => {
               setSelectedFile(null);
        };
-
-
 
        return (
               <div>

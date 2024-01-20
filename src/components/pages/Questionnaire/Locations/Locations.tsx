@@ -26,6 +26,7 @@ export const Locations = () => {
                 key: item.wikiDataId,
               };
             });
+
             setFilteredOptions(cities);
             console.log(cities);
           }
@@ -47,6 +48,7 @@ export const Locations = () => {
     const filtered = filteredOptions.filter(option =>
       option.value.toLowerCase().includes(value.toLowerCase())
     );
+
     setFilteredOptions(filtered);
   };
 

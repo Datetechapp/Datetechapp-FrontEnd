@@ -13,7 +13,6 @@ import { VerificationPage } from './pages/ModalRegister/VerificationPage';
 import { Questionnaire } from './pages/Questionnaire';
 import { RecordingAudio } from './Messanger/Footer/RecordingAudio/RecordingAudio';
 
-
 export const App = () => {
 
   const { pathname } = useLocation();

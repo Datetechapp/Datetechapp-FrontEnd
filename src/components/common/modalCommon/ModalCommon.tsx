@@ -35,6 +35,7 @@ export const ModalCommon: FC<ModalCommonProps> = ({
   const handleNotShowModal = useCallback(() => {
     document.body.style.overflow = 'unset';
     onChange(false);
+
     if (pathname === '/reset_password') {
       navigate('/login');
     }
