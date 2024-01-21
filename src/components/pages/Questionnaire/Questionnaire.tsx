@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { HeaderSecondary } from 'components/HeaderSecondary';
+import { HeaderSecondary } from 'components/pages/Questionnaire/HeaderSecondary';
 import moment from 'moment';
 import { Input, Button, Checkbox } from 'components/common';
 import { QuestionBlock } from './QuestionBlock';

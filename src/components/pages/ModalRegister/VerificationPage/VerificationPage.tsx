@@ -1,5 +1,5 @@
 import css from './verificationPage.module.css';
-import { HeaderSecondary } from 'components/HeaderSecondary';
+import { HeaderSecondary } from 'components/pages/Questionnaire/HeaderSecondary';
 import { Input } from 'components/common';
 import { useState, useEffect, useRef } from 'react';
 import { Button } from 'components/common';

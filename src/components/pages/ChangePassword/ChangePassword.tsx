@@ -1,4 +1,4 @@
-import { HeaderSecondary } from 'components/HeaderSecondary';
+import { HeaderSecondary } from 'components/pages/Questionnaire/HeaderSecondary';
 import { NewPassword } from 'components/ModalAuth';
 import React, { useState } from 'react';
 import { Button } from 'components/common';
@@ -20,8 +20,8 @@ export const ChangePassword = () => {
     setPasswordValue(e.target.value);
     setPasswordValid(
       e.target.value.length >= 8 &&
-        hasUppercaseLetter(e.target.value) &&
-        hasSpecialCharacters(e.target.value)
+      hasUppercaseLetter(e.target.value) &&
+      hasSpecialCharacters(e.target.value)
     );
   };
 
