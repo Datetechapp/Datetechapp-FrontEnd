@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../Filters.module.css';
 import locationIcon from '../../../../../assets/user/location.svg';
-import { min } from 'lodash';
 
 const Geolocation = () => {
   const maxRange = 20;
