@@ -1,4 +1,4 @@
-.LanguageSelect {
+.languageSelect {
   display: flex;
   gap: 12px;
   justify-content: end;
@@ -18,14 +18,51 @@
   letter-spacing: 0.1px;
 }
 
-.LanguageSelect.Visible {
+.languagesBox {
+  min-width: 304px;
+  padding: 16px 8px ;
+  border-radius: 0px 0px 5px 5px;
+  background: #32303E; 
   position: absolute;
+  top: 40px;
+  left: -50px;
   z-index: 1;
   display: block;
   opacity: 1;
   animation: languagevisible 0.5s ease-in-out;
 }
-
+.languagesItem{
+  color: #FFF;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: 0.1px;
+  transition: 0.4s ease-in;
+}
+.languagesItem_box{
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  width: 100%;
+}
+.languagesItem_box:not(:last-child){
+  margin-bottom: 8px;
+}
+.languagesItem_box:hover{
+  background-color: #5F4F7F;
+}
+.language{
+  padding-top: 4px;
+  color:  #E1DBED;
+  font-family: Montserrat;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: 0.1px;
+}
 @keyframes languagevisible {
   0% {
     display: none;
