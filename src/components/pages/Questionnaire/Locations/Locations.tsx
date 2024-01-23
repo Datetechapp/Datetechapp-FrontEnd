@@ -26,7 +26,6 @@ export const Locations = () => {
                 key: item.wikiDataId,
               };
             });
-
             setFilteredOptions(cities);
             console.log(cities);
           }
@@ -48,7 +47,6 @@ export const Locations = () => {
     const filtered = filteredOptions.filter(option =>
       option.value.toLowerCase().includes(value.toLowerCase())
     );
-
     setFilteredOptions(filtered);
   };
 
@@ -58,7 +56,6 @@ export const Locations = () => {
 
   return (
     <div className={css.searchBlockWrapper}>
-
       <SearchIcon className={css.searchIcon} />
       <AutoComplete
         className={css.locations}

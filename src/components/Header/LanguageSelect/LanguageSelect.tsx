@@ -1,35 +1,46 @@
+import React from 'react';
 import styles from './LanguageSelect.module.css';
 import '../LanguagesSwich.css';
-import { LanguagesSwich } from '../LanguagesSwich';
 import { languages } from '../language';
-import { useState, FC } from 'react';
+import { useState} from 'react';
 import { ReactComponent as ActiveArrow } from '../../../assets/Header/activeArrow.svg';
 import { ReactComponent as PassiveArrow } from '../../../assets/Header/passiveArrow.svg';
 
 export const LanguageSelect = () => {
-  const [activeVisible, setactiveVisible] = useState<string>('');
-  const [selectLang, setselectLang] = useState<string>('English');
+	const [activeMenu, setActiveMenu] = useState(false);
+	const [selectLang, setselectLang] = useState('English');
 
-  const handleChangeVisibility = () => {
-    if (!activeVisible) {
-      setactiveVisible('Visible');
-    } else {
-      setactiveVisible('');
-    }
-  };
+	const handleActiveMenu = () => {
+		setActiveMenu(!activeMenu);
+	};
+	const switchLang = (event: React.MouseEvent) => {
+		const lang = event.currentTarget.textContent;
 
-  return (
-    <div
-      onClick={() => handleChangeVisibility()}
-      className={styles.LanguageSelect}
-    >
-      <p className={styles.selectLanguage}>{selectLang}</p>
-      {activeVisible ? <PassiveArrow /> : <ActiveArrow />}
-      <LanguagesSwich
-        ChangeLang={setselectLang}
-        nameClass={activeVisible}
-        language={languages}
-      />
-    </div>
-  );
+		setselectLang(lang || 'English');
+	};
+
+	return (
+		<div onClick={handleActiveMenu} className={styles.languageSelect}>
+			<p className={styles.selectLanguage}>{selectLang}</p>
+			{activeMenu ? <PassiveArrow /> : <ActiveArrow />}
+			{activeMenu && (
+				<div className={styles.languagesBox}>
+					<ul className={styles.languagesList}>
+						{languages.map((language) => (
+							<div className={styles.languagesItem_box} >
+								<li
+									key={language}
+									className={styles.languagesItem}
+									onClick={switchLang}
+								>
+									{language}
+								</li>
+								<span className={styles.language}>{language}</span>
+							</div>
+						))}
+					</ul>
+				</div>
+			)}
+		</div>
+	);
 };
