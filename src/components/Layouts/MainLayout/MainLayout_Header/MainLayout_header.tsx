@@ -1,9 +1,8 @@
-import { Button } from 'components/common';
 import { FC } from 'react';
 import { NavLink } from 'react-router-dom';
-import bell from '../../../../assets/Header/bell.svg';
-import calendar from '../../../../assets/Header/calendar.svg';
-import arrow from '../../../../assets/Header/arrow_button.svg';
+import bell from '../../../../assets/feed/bell.svg';
+import calendar from '../../../../assets/feed/calendar.svg';
+import arrow from '../../../../assets/feed/arrow.svg';
 import logo from '../../../../assets/ModalAuth/logo.svg';
 import avatar from '../../../../assets/user/avatar Ivan.svg';
 import './index.css';
