@@ -1,11 +1,11 @@
-.push__container{
+.pushContainer{
     padding: 16px;
     border-radius: 10px;
     border: 1px solid #C896EF;
     background: #32303E;
     max-width: 341px;
 }
-.push_title{
+.pushTitle{
     padding-bottom: 8px;
     color:  #FFF;
     font-family: Montserrat;
@@ -15,15 +15,15 @@
     line-height: 18px; 
     letter-spacing: 0.1px;
 }
-.push_description{
+.pushDescription{
     display: flex;
 }
-.push_description img{
+.pushDescription img{
     max-width: 49px;
     max-height: 49px;
     border-radius: 50%;
 }
-.message__box p{
+.messageBox p{
     color:#FFF;
     padding-left: 8px;
     font-family: Montserrat;
@@ -33,7 +33,7 @@
     line-height: 18px;
     letter-spacing: 0.1px;
 }
-.message__box span{
+.messageBox span{
     color:#C896EF;
     font-family: Montserrat;
     font-size: 14px;

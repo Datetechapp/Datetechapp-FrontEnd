@@ -11,11 +11,11 @@ const pushArr = {
 
 const PushNotification = () => {
 	return (
-		<div className={style.push__container}>
-			<h4 className={style.push_title}>New message</h4>
-			<div className={style.push_description}>
+		<div className={style.pushContainer}>
+			<h4 className={style.pushTitle}>New message</h4>
+			<div className={style.pushDescription}>
                 <img src={avatar} alt="photo" />
-                <div className={style.message__box}>
+                <div className={style.messageBox}>
                     <p><span>{pushArr.name}</span> {pushArr.message}</p>
                 </div>
             </div>

@@ -30,16 +30,16 @@ const NotificationItem = ({ notification }: { notification: Notification }) => {
 		textEvent = <>You have a new event from {userName}</>;
 	} else if (notification.type === 'decline') {
 		textEvent = <>{userName} refused you the event</>;
-	} else if (notification.type === 'accept') {
+	} else {
 		textEvent = <>{userName} accepted your event</>;
 	}
 	
     return (
-		<div className={styles.notification_item}>
-			<div className={styles.notification_item_container}>
+		<div className={styles.notificationItem}>
+			<div className={styles.notificationItemContainer}>
 				<img src={avatar} alt="avatar" />
-				<div className={styles.event_details}>
-					<p className={styles.text_event}>{textEvent}</p>
+				<div className={styles.eventDetails}>
+					<p className={styles.textEvent}>{textEvent}</p>
 					<span className={styles.time}>{newTime}</span>
 				</div>
 			</div>

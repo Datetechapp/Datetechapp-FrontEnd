@@ -1,4 +1,4 @@
-.notification__container{
+.notificationContainer{
     max-width: 373px;
     padding: 0 16px;
     width: 100%;
@@ -10,7 +10,7 @@
     border-radius: 0px 0px 10px 10px;
     background:  #32303E;
 }
-.notification__title{
+.notificationTitle{
     border-bottom: 1px solid #5F4F7F;
     padding: 16px 0;
     font-family: Montserrat;
@@ -21,7 +21,7 @@
     letter-spacing: 0.2px;
     color: #fff;
 }
-.btn_notification{
+.btnNotification{
     border-top: 1px solid #5F4F7F;
     border-bottom: none;
     border-left: none;
@@ -35,6 +35,6 @@
     cursor: pointer;
     transition: all 0.5s ease-in-out;
 }
-.btn_notification:hover{
+.btnNotification:hover{
     color: #FFF;
 }

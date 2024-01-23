@@ -6,13 +6,13 @@ import NotificationItem from './NotificationItem/NotificationItem';
 const NotificationList = () => {
 
 	return (
-		<div className={styles.notification__description}>
+		<div className={styles.notificationDescription}>
 				{notifications.length === 0 ? (
-					<p className={styles.notification__text}>You have no notifications</p>
+					<p className={styles.notificationText}>You have no notifications</p>
 				) : (
-                    <ul className={styles.notification__list}>
+                    <ul className={styles.notificationList}>
 						{notifications.map((notification) => (
-							<li key={notification.id} className={styles.notification__item}>
+							<li key={notification.id} className={styles.notificationItem}>
 								<NotificationItem
 								notification={notification}
 								/>

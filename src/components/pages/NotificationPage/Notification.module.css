@@ -1,10 +1,10 @@
-.page_container{
+.pageContainer{
     display: flex;
     flex-direction: column;
     margin: 0 auto;
     align-items: flex-start;
 }
-.page_title{
+.pageTitle{
     padding: 16px 0;
     color:  #FFF;
     font-family: Montserrat;
@@ -15,7 +15,7 @@
     letter-spacing: -0.5px;
     
 }
-.page_box{
+.pageBox{
     background-color: #32303E;
     padding: 16px 8px;
     border-radius: 0px 0px 10px 10px;

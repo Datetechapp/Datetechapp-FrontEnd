@@ -4,9 +4,9 @@ import NotificationList from 'components/ModalNotification/NotificationList/Noti
 
 const NotificationPage = () => {
   return (
-    <div className={style.page_container}>
-      <h2 className={style.page_title}>Notifications</h2>
-      <div className={style.page_box}>
+    <div className={style.pageContainer}>
+      <h2 className={style.pageTitle}>Notifications</h2>
+      <div className={style.pageBox}>
         <NotificationList/>
       </div>
     </div>

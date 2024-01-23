@@ -1,21 +1,22 @@
-.notification_item_container{
+.notificationItemContainer{
     padding: 4px 0;
     display: flex;
     width: 100%;
+    cursor: pointer;
 }
-.notification_item:hover{
+.notificationItem:hover{
     background-color: #272533;
 }
-.notification_item img{
+.notificationItem img{
     max-width: 48px;
     max-height: 48px;
     border-radius:50% ;
 }
-.event_details{
+.eventDetails{
     text-align: start;
     padding-left: 8px;
 }
-.event_details p{
+.eventDetails p{
     color:#FFF;
     font-family: Montserrat;
     font-size: 14px;
