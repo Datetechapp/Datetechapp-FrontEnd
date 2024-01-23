@@ -5,15 +5,16 @@ import logo from '../../../../assets/ModalAuth/logo.svg';
 import './index.css';
 
 export const MainLayoutHeader: FC = () => {
-  return (
-    <div className="header__wrapper">
-      <div className="logo">
-        <img src={logo} alt="logo" />
-      </div>
-      <div className="header__buttons">
-        <img src={bell} alt="notifications" />
-        <Button className="BtnUpload">Upload</Button>
-      </div>
-    </div>
-  );
+
+	return (
+		<div className="header__wrapper">
+		  <div className="logo">
+			<img src={logo} alt="logo" />
+		  </div>
+		  <div className="header__buttons">
+			<img src={bell} alt="notifications" />
+			<Button className="BtnUpload">Upload</Button>
+		  </div>
+		</div>
+	  );
 };
