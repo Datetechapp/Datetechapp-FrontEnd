@@ -16,20 +16,23 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: flex-start;
-    height: 100%;
+    width: 100%;
     background-color: var(--dark-background);
     background-image: url("../../../assets/NavPanel/Dust.svg");
 }
 .main_layout__chats {
-    min-width: 352px;
-    height: 100%;
+    width: 352px;
+    display: flex;
 }
 .main_layout__matching{
     background-color: var(--dark-background);
     background-image: url("../../../assets/NavPanel/Dust.svg");
+    width: 100%;
+    height: 100%;
+    display: flex;
 }
 .main_layout__filters{
     background-color: var(--panel-background);
-    height: 100%;
+    width: 296px;
+    display: flex; 
 }

@@ -15,7 +15,6 @@ export const MainLayout: FC = () => {
         <div className='main_layout__chats'></div>
          <div className='main_layout__matching'>
          <MatchingFeed/>
-         
         </div> 
         <div className='main_layout__filters'>
           <Filters />

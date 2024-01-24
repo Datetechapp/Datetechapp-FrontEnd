@@ -1,4 +1,10 @@
-
+.filters {
+  
+  width:  296px;
+  display: flex;
+flex-direction: column;
+height: fit-content;
+}
 
 .filters_header {
   display: flex;
@@ -133,7 +139,7 @@
     cursor: ew-resize;
     -webkit-appearance: none;
     margin-top: -7px;
-    z-index: 999;
+    z-index: 99;
     position: relative;
   }
 

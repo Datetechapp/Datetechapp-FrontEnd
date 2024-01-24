@@ -19,7 +19,7 @@ export const Filters = () => {
   };
 
   return (
-    <>
+    <div className={styles.filters}>
       <div className={styles.filters_header}>
         <span className={styles.filters_title}>Filters</span>
         <button className={styles.filters_clear_button} onClick={handleClear}>
@@ -50,7 +50,7 @@ export const Filters = () => {
           setExpandedSection={setExpandedSection}
         />
       </div>
-    </>
+    </div>
   );
 };
 
