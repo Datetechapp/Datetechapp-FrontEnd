@@ -11,11 +11,10 @@ export const MainLayout: FC = () => {
         <MainLayoutHeader />
       </header>
       <div className='main_layout__wrapper'>
-        {/* <MainLayoutNav /> */}
         <Outlet />
-        {/* <div className='main_layout__info_panel'>
+         <div className='main_layout__info_panel'>
           <Outlet />
-        </div> */}
+        </div> 
         <div className='main_layout__message_panel'>
           <Filters />
         </div>
