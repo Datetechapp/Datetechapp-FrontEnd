@@ -7,13 +7,19 @@ import { useLocation } from 'react-router-dom';
 import { VerificationPage } from './pages/ModalRegister/VerificationPage';
 import { Questionnaire } from './pages/Questionnaire';
 import { SupportPageLayout } from './Layouts/SupportPageLayout';
-import { AccountSection, Faq, PaymentSection, VideoSection, SafetySection } from './pages/Faq';
+import {
+  AccountSection,
+  Faq,
+  PaymentSection,
+  VideoSection,
+  SafetySection,
+} from './pages/Faq';
 import { RequestPage } from './pages/RequestPage';
 import NotificationPage from './pages/NotificationPage/NotificationPage';
 
 export const App = () => {
   const { pathname } = useLocation();
-  
+
   const locationForBackSection =
     pathname == '/login' ||
     pathname == '/registration' ||
@@ -24,24 +30,24 @@ export const App = () => {
       {locationForBackSection ? (
         <BackSection>
           <Routes>
-            <Route path='/login' element={<ModalAuth />} />
-            <Route path='/registration' element={<ModalRegister />} />
-            <Route path='/reset_password' element={<ResetPassword />} />
+            <Route path="/login" element={<ModalAuth />} />
+            <Route path="/registration" element={<ModalRegister />} />
+            <Route path="/reset_password" element={<ResetPassword />} />
           </Routes>
         </BackSection>
       ) : (
         <Routes>
-          <Route path='/verification' element={<VerificationPage />} />
-          <Route path='/create-profile' element={<Questionnaire />} />
-          <Route path='/feed' element={<MainLayout />} />
-          <Route path='/support' element={<SupportPageLayout />}>
-            <Route path='faq' element={<Faq />}>
-              <Route path='account' element={<AccountSection />} />
-              <Route path='payment' element={<PaymentSection />} />
-              <Route path='safety' element={<SafetySection />} />
-              <Route path='video' element={<VideoSection />} />
+          <Route path="/verification" element={<VerificationPage />} />
+          <Route path="/create-profile" element={<Questionnaire />} />
+          <Route path="/feed" element={<MainLayout />} />
+          <Route path="/support" element={<SupportPageLayout />}>
+            <Route path="faq" element={<Faq />}>
+              <Route path="account" element={<AccountSection />} />
+              <Route path="payment" element={<PaymentSection />} />
+              <Route path="safety" element={<SafetySection />} />
+              <Route path="video" element={<VideoSection />} />
             </Route>
-            <Route path='request' element={<RequestPage />} />
+            <Route path="request" element={<RequestPage />} />
           </Route>
         </Routes>
       )}

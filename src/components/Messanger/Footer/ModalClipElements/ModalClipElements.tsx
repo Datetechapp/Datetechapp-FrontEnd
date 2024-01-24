@@ -27,7 +27,7 @@ export const ModalClipElements: FC<ModalClipElementsProps> = ({
 
   const handleEmojiClick = (
     emojiObject: { emoji: string },
-    event: MouseEvent
+    event: MouseEvent,
   ) => {
     const emojiChangeEvent = {
       target: {
@@ -54,7 +54,7 @@ export const ModalClipElements: FC<ModalClipElementsProps> = ({
           <img
             src={URL.createObjectURL(file)}
             className={css.clipElem}
-            alt='Selected'
+            alt="Selected"
           />
         </div>
         <div className={css.blockInputForClipsDescription}>
@@ -65,8 +65,8 @@ export const ModalClipElements: FC<ModalClipElementsProps> = ({
           </div>
           <Input
             className={css.fieldForMessage}
-            type='text'
-            placeholder='Add a caption...'
+            type="text"
+            placeholder="Add a caption..."
             value={value}
             onChange={onChange}
           />

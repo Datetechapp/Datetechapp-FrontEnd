@@ -20,13 +20,13 @@ export const ChangePassword = () => {
     setPasswordValue(e.target.value);
     setPasswordValid(
       e.target.value.length >= 8 &&
-      hasUppercaseLetter(e.target.value) &&
-      hasSpecialCharacters(e.target.value)
+        hasUppercaseLetter(e.target.value) &&
+        hasSpecialCharacters(e.target.value),
     );
   };
 
   const handleConfirmPasswordChange = (
-    e: React.ChangeEvent<HTMLInputElement>
+    e: React.ChangeEvent<HTMLInputElement>,
   ) => {
     setConfirmPasswordValue(e.target.value);
   };
@@ -40,7 +40,7 @@ export const ChangePassword = () => {
     <>
       {!isOpenModalChangedPassword ? (
         <div className={css.changePasswordWrapper}>
-          <HeaderSecondary text='Log out' />
+          <HeaderSecondary text="Log out" />
           <div className={css.main}>
             <div className={css.formBlock}>
               <h2 className={css.title}>Create a new password</h2>
@@ -71,9 +71,9 @@ export const ChangePassword = () => {
           <ModalCommon
             isOpen={isOpenModalChangedPassword}
             onChange={setIsOpenModalChangedPassword}
-            textTitle='Password changed'
-            textSubtitle='Your password has been successfully changed'
-            buttonText='OK'
+            textTitle="Password changed"
+            textSubtitle="Your password has been successfully changed"
+            buttonText="OK"
             isThereACancel={true}
           />
         </div>

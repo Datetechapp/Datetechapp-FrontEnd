@@ -24,9 +24,7 @@ export const ModalForDeleteMessage: FC<ModalForFixProps> = ({
       overlayClassName={css.overlayModal}
     >
       <div className={css.modalDeleteBlock}>
-        <h2 className={css.modalDeleteMessageTitle}>
-          Delete selected message
-        </h2>
+        <h2 className={css.modalDeleteMessageTitle}>Delete selected message</h2>
         <div className={css.checkboxBlock}>
           <Checkbox className={css.checkboxForDeleteMessage} />
           <p className={css.checkboxText}>Delete for me and Michael</p>
@@ -39,7 +37,6 @@ export const ModalForDeleteMessage: FC<ModalForFixProps> = ({
             Delete
           </Button>
         </div>
-        
       </div>
     </Modal>
   );

@@ -30,10 +30,16 @@ export const UploadButton: React.FC<UploadButtonProps> = ({
   };
 
   return (
-    <div className={inputId === 'video-upload-button' ? css.blockForUploadVideoButton : inputId === 'photo-upload-button' ? css.blockForUploadPhotoButton : css.blockForClipPhoto}>
-      <label htmlFor={inputId}>
-        {icon}
-      </label>
+    <div
+      className={
+        inputId === 'video-upload-button'
+          ? css.blockForUploadVideoButton
+          : inputId === 'photo-upload-button'
+          ? css.blockForUploadPhotoButton
+          : css.blockForClipPhoto
+      }
+    >
+      <label htmlFor={inputId}>{icon}</label>
       <Input
         inputRef={inputRef}
         id={inputId}

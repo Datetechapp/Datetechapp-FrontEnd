@@ -1,61 +1,57 @@
 .emojiBlock {
-       margin-top: 10px;
-       display: flex;
-       background-color: #E9E3F5;
-       width: 320px;
-       border-radius: 50px;
-       margin-left: 48px;
-       position: relative;
+  margin-top: 10px;
+  display: flex;
+  background-color: #e9e3f5;
+  width: 320px;
+  border-radius: 50px;
+  margin-left: 48px;
+  position: relative;
 }
 
 .emojiBlock::after {
-       content: "";
-       position: absolute;
-       border: 13px solid transparent;
-       border-top: 8px solid #E9E3F5;
-       top: 39px;
-       left: 77px;
+  content: '';
+  position: absolute;
+  border: 13px solid transparent;
+  border-top: 8px solid #e9e3f5;
+  top: 39px;
+  left: 77px;
 }
 
-
 .emojiBlock aside {
-       
-       background-color: rgba(0, 0, 0, 0);
-       border: none !important;
-       width: 350px;
-       height: 40px !important;
-
+  background-color: rgba(0, 0, 0, 0);
+  border: none !important;
+  width: 350px;
+  height: 40px !important;
 }
 
 .arrowIcon {
-       width: 49px;
-       align-self: center;
-       padding-right: 15px;
-       cursor: pointer;
+  width: 49px;
+  align-self: center;
+  padding-right: 15px;
+  cursor: pointer;
 }
-
 
 .emojiBlock aside div:nth-child(1),
 .emojiBlock aside :nth-child(3) {
-       display: none;
+  display: none;
 }
 
 .emojiBlock aside :nth-child(2) {
-       overflow: hidden !important;
+  overflow: hidden !important;
 }
 
 .emojiBlock aside :nth-child(2) ul li:nth-child(1) {
-       display: none;
+  display: none;
 }
 
 .emojiBlock aside :nth-child(2) ul li:nth-child(2) div:nth-child(1) {
-       display: none;
+  display: none;
 }
 
 .emojiBlockForMe {
-       margin-left: 279px;
+  margin-left: 279px;
 }
 
 .emojiBlockForMe::after {
-       left: 230px;
+  left: 230px;
 }

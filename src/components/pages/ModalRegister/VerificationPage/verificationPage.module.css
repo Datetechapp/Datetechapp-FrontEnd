@@ -1,175 +1,173 @@
 .verificationPageWrapper {
-       height: 100vh;
+  height: 100vh;
 }
 
 .main {
-       position: relative;
-       background: url("../../../../assets/Messanger/BackgroundForMessanger.png") #1F1D2B repeat;
-       height: 91.5vh;
+  position: relative;
+  background: url('../../../../assets/Messanger/BackgroundForMessanger.png')
+    #1f1d2b repeat;
+  height: 91.5vh;
 }
 
 .main::before {
-       content: "";
-       position: absolute;
-       top: 0;
-       left: 0;
-       width: 12.5%;
-       height: 4px;
-       background-image: linear-gradient(180deg, #9747FF 0%, #DE77C7 100%);
-
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 12.5%;
+  height: 4px;
+  background-image: linear-gradient(180deg, #9747ff 0%, #de77c7 100%);
 }
 
 .main::after {
-       content: "";
-       position: absolute;
-       top: 0;
-       left: 12.5%;
-       width: 87.5%;
-       height: 4px;
-       background-color: gray;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 12.5%;
+  width: 87.5%;
+  height: 4px;
+  background-color: gray;
 }
 
 .formBlock {
-       display: flex;
-       flex-direction: column;
-       align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .title {
-       color: var(--White, #FFF);
-       font-family: Montserrat;
-       font-size: 22px;
-       font-weight: 600;
-       line-height: 24px;
-       letter-spacing: -0.5px;
-       margin-top: 48px;
+  color: var(--White, #fff);
+  font-family: Montserrat;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: -0.5px;
+  margin-top: 48px;
 }
 
 .subtitle {
-       color: var(--White, #FFF);
-       font-family: Montserrat;
-       font-size: 16px;
-       font-weight: 400;
-       line-height: 20px;
-       margin-top: 12px;
+  color: var(--White, #fff);
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  margin-top: 12px;
 }
 
 .email {
-       color: var(--White, #FFF);
-       font-family: Montserrat;
-       font-size: 16px;
-       font-weight: 600;
-       line-height: 20px;
-       letter-spacing: 0.2px;
+  color: var(--White, #fff);
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0.2px;
 }
 
 .inputsBlock {
-       margin-top: 32px;
-       display: flex;
-       gap: 16px;
+  margin-top: 32px;
+  display: flex;
+  gap: 16px;
 }
 
 .inputForVerify {
-       width: 40px;
-       height: 48px;
-       border-radius: 5px;
-       border: 1px solid var(--Violet_Stroke, #5F4F7F);
-       background: var(--Dark_Elements_Background, #201B27);
-       text-align: center;
-       color: var(--White, #FFF);
-       font-family: Montserrat;
-       font-size: 16px;
-       font-style: normal;
-       font-weight: 500;
-       line-height: 20px;
-
+  width: 40px;
+  height: 48px;
+  border-radius: 5px;
+  border: 1px solid var(--Violet_Stroke, #5f4f7f);
+  background: var(--Dark_Elements_Background, #201b27);
+  text-align: center;
+  color: var(--White, #fff);
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
 }
 
-
-
 .inputForVerify:focus {
-       border: 1px solid var(--Violet_Active, #C896EF);
-       outline: none;
+  border: 1px solid var(--Violet_Active, #c896ef);
+  outline: none;
 }
 
 .inputWithError {
-       width: 40px;
-       height: 48px;
-       border-radius: 5px;
-       border: 1px solid var(--Violet_Stroke, #D75048);
-       background: var(--Dark_Elements_Background, #201B27);
-       text-align: center;
-       color: var(--White, #FFF);
-       font-family: Montserrat;
-       font-size: 16px;
-       font-style: normal;
-       font-weight: 500;
-       line-height: 20px;
+  width: 40px;
+  height: 48px;
+  border-radius: 5px;
+  border: 1px solid var(--Violet_Stroke, #d75048);
+  background: var(--Dark_Elements_Background, #201b27);
+  text-align: center;
+  color: var(--White, #fff);
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
 }
 
 .errorMessage {
-       color: var(--Red_Error, #D75048);
-       font-family: Montserrat;
-       font-size: 12px;
-       font-weight: 400;
-       line-height: 14px;
-       letter-spacing: 0.1px;
-       margin-top: 8px;
+  color: var(--Red_Error, #d75048);
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: 0.1px;
+  margin-top: 8px;
 }
 
 .inputWithError:focus {
-       border: 1px solid var(--Violet_Active, #C896EF);
-       outline: none;
+  border: 1px solid var(--Violet_Active, #c896ef);
+  outline: none;
 }
 
-
-
 .continueBtn {
-       width: 392px;
-       height: 48px;
-       padding: 10px 18px;
-       border-radius: 5px;
-       background: var(--Dark_Grey_Menu, #302E3D);
-       color: var(--Violet_Stroke, #5F4F7F);
-       text-align: center;
-       font-family: Montserrat;
-       font-size: 16px;
-       font-weight: 600;
-       line-height: 20px;
-       margin-top: 40px;
+  width: 392px;
+  height: 48px;
+  padding: 10px 18px;
+  border-radius: 5px;
+  background: var(--Dark_Grey_Menu, #302e3d);
+  color: var(--Violet_Stroke, #5f4f7f);
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  margin-top: 40px;
 }
 
 .continueBtnValid {
-       width: 392px;
-       height: 48px;
-       padding: 10px 18px;
-       border-radius: 5px;
-       background: var(--Gradient, linear-gradient(180deg, #9747FF 0%, #DE77C7 100%));
-       color: var(--White, #FFF);
-       text-align: center;
-       font-family: Montserrat;
-       font-size: 16px;
-       font-weight: 600;
-       line-height: 20px;
-       margin-top: 40px;
+  width: 392px;
+  height: 48px;
+  padding: 10px 18px;
+  border-radius: 5px;
+  background: var(
+    --Gradient,
+    linear-gradient(180deg, #9747ff 0%, #de77c7 100%)
+  );
+  color: var(--White, #fff);
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  margin-top: 40px;
 }
 
 .passiveLink {
-       color: var(--Grey, #96A3B4);
-       font-family: Montserrat;
-       font-size: 14px;
-       font-weight: 600;
-       line-height: 18px;
-       margin-top: 16px;
-       cursor: pointer;
+  color: var(--Grey, #96a3b4);
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+  margin-top: 16px;
+  cursor: pointer;
 }
 
 .activeLink {
-       color: var(--Grey, #E1DBED);
-       font-family: Montserrat;
-       font-size: 14px;
-       font-weight: 600;
-       line-height: 18px;
-       margin-top: 16px;
-       cursor: pointer;
-} 
+  color: var(--Grey, #e1dbed);
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+  margin-top: 16px;
+  cursor: pointer;
+}

@@ -11,6 +11,7 @@ export function Message({ message }: { message: IMessage }) {
 
   useEffect(() => {
     const width = divBlock.current?.getBoundingClientRect().width;
+
     setDivBlockWidth(width ?? 0);
   }, [message]);
 
