@@ -1,0 +1,66 @@
+.modalContainer{
+    background-color: #201B27;
+    border-radius: 8px;
+    border: 1px solid#FFE0AA;
+    max-width: 432px;
+    padding: 24px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.modalLogo{
+    display: flex;
+    align-items: flex-start;
+    justify-content: end;
+}
+.imgLogo{
+    max-width: 118px;
+    
+}
+.imgClose{
+    cursor: pointer;
+    padding-left: 109px;
+}
+.modalContent{
+    text-align: center;
+    padding: 32px 0 40px 0;
+}
+.modalTitle{
+    padding-bottom: 8px;
+    font-family: Montserrat;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: -0.5px;
+    background: linear-gradient(86deg, #FFE0AA 0.58%, #FFAEA9 33.26%, #FFA7F6 67.03%, #DD7CFF 98.42%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.modalText{
+    color: var(--White, #FFF);
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px; 
+    letter-spacing: 0.1px;
+}
+.modalBtn{
+    cursor: pointer;
+    width: 100%;
+    padding: 16px 18px;
+    border-radius: 5px;
+    border: none;
+    background: linear-gradient(180deg, #9747FF 0%, #DE77C7 100%);
+    color: var(--White, #FFF);
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0.2px;
+}
