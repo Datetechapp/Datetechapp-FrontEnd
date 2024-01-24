@@ -12,12 +12,12 @@ export const MainLayout: FC = () => {
         <MainLayoutHeader />
       </header>
       <div className='main_layout__wrapper'>
-        <Outlet />
-         <div className='main_layout__info_panel'>
+        <div className='main_layout__chats'></div>
+         <div className='main_layout__matching'>
          <MatchingFeed/>
-          <Outlet />
+         
         </div> 
-        <div className='main_layout__message_panel'>
+        <div className='main_layout__filters'>
           <Filters />
         </div>
       </div>

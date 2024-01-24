@@ -13,15 +13,23 @@
     --dark-background: #1F1D2B;
 }
 .main_layout__wrapper{
-    display: grid;
-    grid-template-rows: calc(100vh - 96px);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 100%;
     background-color: var(--dark-background);
     background-image: url("../../../assets/NavPanel/Dust.svg");
 }
-.main_layout__info_panel{
+.main_layout__chats {
+    min-width: 352px;
+    height: 100%;
+}
+.main_layout__matching{
     background-color: var(--dark-background);
     background-image: url("../../../assets/NavPanel/Dust.svg");
 }
-.main_layout__message_panel{
+.main_layout__filters{
     background-color: var(--panel-background);
+    height: 100%;
 }
