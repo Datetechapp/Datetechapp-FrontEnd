@@ -1,5 +1,5 @@
 .modalContainer::before {
-  content: url('../../../../assets/ForCommonModal/checkMarkIcon.svg');
+  content: url("../../../../assets/ForCommonModal/checkMarkIcon.svg");
   display: none;
 }
 
@@ -54,14 +54,14 @@
   margin-top: 12px;
 }
 
-.checkboxForPinMessage[type='checkbox'] {
+.checkboxForPinMessage[type="checkbox"] {
   position: relative;
   width: 16px;
   height: 16px;
 }
 
-.checkboxForPinMessage[type='checkbox']::before {
-  content: '';
+.checkboxForPinMessage[type="checkbox"]::before {
+  content: "";
   display: block;
   position: absolute;
   top: 0;
@@ -73,12 +73,12 @@
   border-radius: 3px;
 }
 
-.checkboxForPinMessage[type='checkbox']:checked::before {
+.checkboxForPinMessage[type="checkbox"]:checked::before {
   background-color: #e9e3f5;
 }
 
-.checkboxForPinMessage[type='checkbox']::after {
-  content: url('../../../../assets/ForCommonModal/checkMarkIcon.svg');
+.checkboxForPinMessage[type="checkbox"]::after {
+  content: url("../../../../assets/ForCommonModal/checkMarkIcon.svg");
   display: none;
   position: absolute;
   top: 65%;
@@ -86,7 +86,7 @@
   transform: translate(-50%, -50%);
 }
 
-.checkboxForPinMessage[type='checkbox']:checked::after {
+.checkboxForPinMessage[type="checkbox"]:checked::after {
   display: block;
 }
 

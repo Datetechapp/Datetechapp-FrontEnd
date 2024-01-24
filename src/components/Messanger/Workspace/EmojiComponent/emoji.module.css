@@ -9,7 +9,7 @@
 }
 
 .emojiBlock::after {
-  content: '';
+  content: "";
   position: absolute;
   border: 13px solid transparent;
   border-top: 8px solid #e9e3f5;

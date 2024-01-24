@@ -13,7 +13,7 @@ button {
 .messageSignIn {
   width: 95px;
   text-align: center;
-  font-family: 'Montserrat', Arial, sans-serif;
+  font-family: "Montserrat", Arial, sans-serif;
   font-size: 24px;
   font-weight: 600;
   line-height: 26px;
@@ -52,12 +52,12 @@ button {
   border: 1.5px solid #5f4f7f;
   background-color: #201b27;
   color: #e9e3f5;
-  font-family: 'Montserrat', Arial, sans-serif;
+  font-family: "Montserrat", Arial, sans-serif;
   font-size: 18px;
   font-weight: 400;
   line-height: 25px;
   letter-spacing: -0.5px;
-  background-image: url('../../../assets/ModalAuth/Union.svg');
+  background-image: url("../../../assets/ModalAuth/Union.svg");
   background-repeat: no-repeat;
   background-position: right 18px center;
 }
@@ -70,12 +70,12 @@ button {
   border: 1.5px solid #c896ef;
   background-color: #201b27;
   color: #e9e3f5;
-  font-family: 'Montserrat', Arial, sans-serif;
+  font-family: "Montserrat", Arial, sans-serif;
   font-size: 18px;
   font-weight: 400;
   line-height: 25px;
   letter-spacing: -0.5px;
-  background-image: url('../../../assets/ModalAuth/UnionFocus.svg');
+  background-image: url("../../../assets/ModalAuth/UnionFocus.svg");
   background-repeat: no-repeat;
   background-position: right 18px center;
 }
@@ -91,7 +91,7 @@ button {
 .inputForFocusedEmail::placeholder,
 .inputForPassword::placeholder,
 .inputForFocusedPassword::placeholder {
-  font-family: 'Montserrat', Arial, sans-serif;
+  font-family: "Montserrat", Arial, sans-serif;
   font-size: 18px;
   font-weight: 600;
   line-height: 25px;
@@ -107,7 +107,7 @@ button {
   border: 1.5px solid #5f4f7f;
   background-color: #201b27;
   color: #e9e3f5;
-  font-family: 'Montserrat', Arial, sans-serif;
+  font-family: "Montserrat", Arial, sans-serif;
   font-size: 18px;
   font-weight: 400;
   line-height: 25px;
@@ -122,7 +122,7 @@ button {
   border: 1.5px solid #c896ef;
   background-color: #201b27;
   color: #e9e3f5;
-  font-family: 'Montserrat', Arial, sans-serif;
+  font-family: "Montserrat", Arial, sans-serif;
   font-size: 18px;
   font-weight: 400;
   line-height: 25px;
@@ -140,7 +140,7 @@ button {
   padding: 16px 18px;
   border-radius: 5px;
   background-color: #302e3d;
-  font-family: 'Montserrat', Arial, sans-serif;
+  font-family: "Montserrat", Arial, sans-serif;
   font-size: 16px;
   font-weight: 600;
   line-height: 17px;
@@ -154,7 +154,7 @@ button {
   padding: 16px 18px;
   border-radius: 5px;
   background: linear-gradient(180deg, #9747ff 0%, #e551e8 100%);
-  font-family: 'Montserrat', Arial, sans-serif;
+  font-family: "Montserrat", Arial, sans-serif;
   font-size: 16px;
   font-weight: 600;
   line-height: 17px;
@@ -168,7 +168,7 @@ button {
 
 .errorMsg {
   margin-top: 6px;
-  font-family: 'Montserrat', Arial, sans-serif;
+  font-family: "Montserrat", Arial, sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 17px;
@@ -178,7 +178,7 @@ button {
 }
 
 .forgotPassword {
-  font-family: 'Montserrat', Arial, sans-serif;
+  font-family: "Montserrat", Arial, sans-serif;
   font-weight: 600;
   font-size: 12px;
   line-height: 14px;
@@ -187,7 +187,7 @@ button {
 }
 
 .enterVerificCode {
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 500;
   font-size: 18px;
   line-height: 25px;
@@ -198,7 +198,7 @@ button {
 }
 
 .enterNewPassword {
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 500;
   font-size: 18px;
   line-height: 25px;
@@ -217,7 +217,7 @@ button {
 
 .resendVerificate {
   margin: 20px 0 0 0;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 500;
   font-size: 16px;
   line-height: 25px;
@@ -230,7 +230,7 @@ button {
 
 .linkToSignUp {
   margin: 66px 0 65px 0;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 500;
   font-size: 16px;
   line-height: 17px;
@@ -242,7 +242,7 @@ button {
 
 .linkToSignUpWithMargin {
   margin: 128px 0 66px 0;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 500;
   font-size: 16px;
   line-height: 17px;

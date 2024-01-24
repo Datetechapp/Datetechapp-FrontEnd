@@ -59,7 +59,7 @@
 }
 
 .contextMenuWithoutPhoto::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 0;
   height: 0;
@@ -70,7 +70,7 @@
 }
 
 .contextMenu::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 0;
   height: 0;

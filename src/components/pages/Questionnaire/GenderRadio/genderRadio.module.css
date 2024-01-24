@@ -4,7 +4,7 @@
   background: #1f1d2b;
   border: 1.5px solid var(--super-white, #e1dbed);
   border-radius: 5px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 600;
   font-size: 18px;
   line-height: 25px;
@@ -26,7 +26,7 @@
   background: var(--Violet_Active, #c896ef);
   border: 1.5px solid var(--super-white, #e1dbed);
   border-radius: 5px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 600;
   font-size: 18px;
   line-height: 25px;
@@ -37,7 +37,7 @@
   justify-content: center;
 }
 
-input[type='radio'] {
+input[type="radio"] {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;

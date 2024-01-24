@@ -5,7 +5,7 @@
   border-radius: 5px;
   top: 50.5px;
   right: -233px;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-style: normal;
   font-weight: 600;
   font-size: 18px;
@@ -16,7 +16,7 @@
 }
 
 .Languages::before {
-  content: '';
+  content: "";
   clear: both;
   display: block;
   position: absolute;
@@ -32,7 +32,7 @@
 }
 
 .Languages div::before {
-  content: '';
+  content: "";
   clear: both;
   display: block;
   position: absolute;
@@ -43,7 +43,7 @@
 }
 
 .Languages div::after {
-  content: '';
+  content: "";
   clear: both;
   display: block;
   position: absolute;

@@ -4,13 +4,13 @@
 
 .main {
   position: relative;
-  background: url('../../../../assets/Messanger/BackgroundForMessanger.png')
+  background: url("../../../../assets/Messanger/BackgroundForMessanger.png")
     #1f1d2b repeat;
   height: 91.5vh;
 }
 
 .main::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -20,7 +20,7 @@
 }
 
 .main::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 12.5%;

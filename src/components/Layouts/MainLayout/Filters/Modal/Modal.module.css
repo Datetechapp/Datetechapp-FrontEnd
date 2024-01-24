@@ -87,7 +87,7 @@
   font-weight: 500;
   line-height: 20px;
   letter-spacing: 0.2px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   border-radius: 30px;
   background: var(--Panel_Background, #272533);
 }
@@ -124,7 +124,7 @@
 
 h1 {
   color: var(--White, #fff);
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 22px;
   font-style: normal;
   font-weight: 600;
@@ -175,7 +175,7 @@ h1 {
 
 .modal_bottom_1line span {
   color: var(--White, #fff);
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 600;
@@ -193,7 +193,7 @@ h1 {
 }
 
 .checkbox_container label::before {
-  content: '';
+  content: "";
   display: inline-block;
   width: 14.5px;
   height: 14.5px;
@@ -211,7 +211,7 @@ h1 {
   background-color: #fff;
   border-color: #fff;
   color: black;
-  content: url('../../../../../assets/feed/check.svg');
+  content: url("../../../../../assets/feed/check.svg");
   display: flex;
   align-items: center;
   margin: auto;

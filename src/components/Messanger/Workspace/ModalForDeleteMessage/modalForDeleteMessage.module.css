@@ -49,14 +49,14 @@
   margin-top: 12px;
 }
 
-.checkboxForDeleteMessage[type='checkbox'] {
+.checkboxForDeleteMessage[type="checkbox"] {
   position: relative;
   width: 16px;
   height: 16px;
 }
 
-.checkboxForDeleteMessage[type='checkbox']::before {
-  content: '';
+.checkboxForDeleteMessage[type="checkbox"]::before {
+  content: "";
   display: block;
   position: absolute;
   top: 0;
@@ -68,12 +68,12 @@
   border-radius: 3px;
 }
 
-.checkboxForDeleteMessage[type='checkbox']:checked::before {
+.checkboxForDeleteMessage[type="checkbox"]:checked::before {
   background-color: #e9e3f5;
 }
 
-.checkboxForDeleteMessage[type='checkbox']::after {
-  content: url('../../../../assets/ForCommonModal/checkMarkIcon.svg');
+.checkboxForDeleteMessage[type="checkbox"]::after {
+  content: url("../../../../assets/ForCommonModal/checkMarkIcon.svg");
   display: none;
   position: absolute;
   top: 65%;
@@ -81,7 +81,7 @@
   transform: translate(-50%, -50%);
 }
 
-.checkboxForDeleteMessage[type='checkbox']:checked::after {
+.checkboxForDeleteMessage[type="checkbox"]:checked::after {
   display: block;
 }
 
