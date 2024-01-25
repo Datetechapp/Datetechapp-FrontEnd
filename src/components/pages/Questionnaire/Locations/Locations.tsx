@@ -28,9 +28,7 @@ export const Locations = () => {
                 };
               },
             );
-
             setFilteredOptions(cities);
-            console.log(cities);
           }
         })
         .catch((error) => {

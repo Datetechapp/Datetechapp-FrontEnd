@@ -26,7 +26,7 @@ module.exports = {
       { allowTemplateLiterals: true, avoidEscape: true },
     ],
     'import/extensions': 'off',
-    'prettier/prettier': 'error',
+    'prettier/prettier': ["error", { endOfLine: 'auto' }],
     'import/prefer-default-export': 'off',
     // 'max-lines-per-function': ['warn', 40],
     'padding-line-between-statements': [
