@@ -1,7 +1,7 @@
 .languageSelect {
   display: flex;
   gap: 12px;
-  justify-content: end;
+  justify-content: flex-end;
   cursor: pointer;
   position: relative;
   width: 152px;
