@@ -18,14 +18,17 @@ export const Locations = () => {
       fetchData(inputValue)
         .then((result) => {
           if (result && result.data && Array.isArray(result.data)) {
-            const cities = result.data.map((item: { city: string, country: string, wikiDataId: string }) => {
-              return {
-                value: `${item.city}, ${item.country}`,
-                city: item.city,
-                country: item.country,
-                key: item.wikiDataId,
-              };
-            });
+            const cities = result.data.map(
+              (item: { city: string; country: string; wikiDataId: string }) => {
+                return {
+                  value: `${item.city}, ${item.country}`,
+                  city: item.city,
+                  country: item.country,
+                  key: item.wikiDataId,
+                };
+              },
+            );
+
             setFilteredOptions(cities);
             console.log(cities);
           }
@@ -34,7 +37,7 @@ export const Locations = () => {
           console.error(error);
         });
     }, 1500),
-    []
+    [],
   );
 
   useEffect(() => {
@@ -44,9 +47,10 @@ export const Locations = () => {
   const handleInputChange = (value: string) => {
     setInputValue(value);
 
-    const filtered = filteredOptions.filter(option =>
-      option.value.toLowerCase().includes(value.toLowerCase())
+    const filtered = filteredOptions.filter((option) =>
+      option.value.toLowerCase().includes(value.toLowerCase()),
     );
+
     setFilteredOptions(filtered);
   };
 

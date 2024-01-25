@@ -1,27 +1,27 @@
 * {
-    padding: 0;
-    margin: 0;
-    font-family: "Montserrat";
-    font-size: 20px;
-    font-weight: 500; 
+  padding: 0;
+  margin: 0;
+  font-family: "Montserrat";
+  font-size: 20px;
+  font-weight: 500;
 }
 
-#root{
-    --panel-background: #272533;
-    --text-color: #5F4F7F;
-    --active-text-color: #E9E3F5;
-    --dark-background: #1F1D2B;
+#root {
+  --panel-background: #272533;
+  --text-color: #5f4f7f;
+  --active-text-color: #e9e3f5;
+  --dark-background: #1f1d2b;
 }
-.main_layout__wrapper{
-    display: grid;
-    grid-template-rows: calc(100vh - 96px);
-    background-color: var(--dark-background);
-    background-image: url("../../../assets/NavPanel/Dust.svg");
+.main_layout__wrapper {
+  display: grid;
+  grid-template-rows: calc(100vh - 96px);
+  background-color: var(--dark-background);
+  background-image: url("../../../assets/NavPanel/Dust.svg");
 }
-.main_layout__info_panel{
-    background-color: var(--dark-background);
-    background-image: url("../../../assets/NavPanel/Dust.svg");
+.main_layout__info_panel {
+  background-color: var(--dark-background);
+  background-image: url("../../../assets/NavPanel/Dust.svg");
 }
-.main_layout__message_panel{
-    background-color: var(--panel-background);
+.main_layout__message_panel {
+  background-color: var(--panel-background);
 }

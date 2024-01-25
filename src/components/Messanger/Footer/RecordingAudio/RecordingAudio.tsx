@@ -11,148 +11,149 @@ import { useVoiceVisualizer, VoiceVisualizer } from 'react-voice-visualizer';
 import { ModalCommon } from 'components/common';
 
 interface RecordingAudioProps {
-       setIsRecording: React.Dispatch<React.SetStateAction<boolean>>;
-       setIsRecordedBlob: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsRecording: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsRecordedBlob: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const RecordingAudio: React.FC<RecordingAudioProps> = ({ setIsRecording, setIsRecordedBlob }) => {
+export const RecordingAudio: React.FC<RecordingAudioProps> = ({
+  setIsRecording,
+  setIsRecordedBlob,
+}) => {
+  const [recordingTime, setRecordingTime] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isRunning, setIsRunning] = useState(false);
+  const [isOpenModalDeleteRecord, setIsOpenModalDeleteRecord] = useState(false);
 
-       const [recordingTime, setRecordingTime] = useState(0);
-       const [isPlaying, setIsPlaying] = useState(false);
-       const [isRunning, setIsRunning] = useState(false);
-       const [isOpenModalDeleteRecord, setIsOpenModalDeleteRecord] = useState(false);
+  const recorderControls = useVoiceVisualizer();
 
-       const recorderControls = useVoiceVisualizer();
+  const {
+    isRecordingInProgress: isRecorderRecording,
+    startRecording,
+    stopRecording,
+    recordedBlob,
+    audioRef,
+    isRecordingInProgress,
+    clearCanvas,
+    audioSrc,
+  } = recorderControls;
 
-       const {
-              isRecordingInProgress:
-              isRecorderRecording,
-              startRecording,
-              stopRecording,
-              recordedBlob,
-              audioRef,
-              isRecordingInProgress,
-              clearCanvas,
-              audioSrc,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const timerRef = useRef<any>(null);
 
-       } = recorderControls;
+  useEffect(() => {
+    let intervalId: ReturnType<typeof setInterval>;
 
-       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-       const timerRef = useRef<any>(null);
+    if (isRunning) {
+      intervalId = setInterval(() => setRecordingTime(recordingTime + 1), 10);
+    }
 
-       useEffect(() => {
-              let intervalId: ReturnType<typeof setInterval>;
+    return () => clearInterval(intervalId);
+  }, [isRunning, recordingTime]);
 
-              if (isRunning) {
-                     intervalId = setInterval(() => setRecordingTime(recordingTime + 1), 10);
-              }
+  const padZero = useCallback((value: number) => {
+    return value.toString().padStart(2, '0');
+  }, []);
 
-              return () => clearInterval(intervalId);
-       }, [isRunning, recordingTime]);
+  const minutes = Math.floor(recordingTime / 6000);
+  const seconds = Math.floor((recordingTime / 100) % 60);
+  const milliseconds = Math.floor((recordingTime % 100) / 10);
 
-       const padZero = useCallback((value: number) => {
-              return value.toString().padStart(2, '0');
-       }, []);
+  const onStartAudioPlayback = () => {
+    setIsPlaying(true);
+  };
 
-       const minutes = Math.floor(recordingTime / 6000);
-       const seconds = Math.floor((recordingTime / 100) % 60);
-       const milliseconds = Math.floor((recordingTime % 100) / 10);
+  const onEndAudioPlayback = () => {
+    setIsPlaying(false);
+  };
 
-       const onStartAudioPlayback = () => {
-              setIsPlaying(true);
-       };
+  const onPausedAudioPlayback = () => {
+    console.log('onPausedAudioPlayback');
+  };
 
-       const onEndAudioPlayback = () => {
-              setIsPlaying(false);
-       };
+  const onResumeAudioPlayback = () => {
+    console.log('onResumeAudioPlayback');
+  };
 
-       const onPausedAudioPlayback = () => {
-              console.log('onPausedAudioPlayback');
-       };
+  const handleMicrophoneClick = () => {
+    if (isRecordingInProgress) {
+      stopRecording();
+      setIsRecording(false);
+      setIsRunning(!isRunning);
+      setIsRecordedBlob(true);
+      // clearInterval(timerRef.current);
+    } else {
+      startRecording();
+      setIsRunning(!isRunning);
+      setIsRecording(true);
+      // recordingTimer();
+    }
+  };
 
-       const onResumeAudioPlayback = () => {
-              console.log('onResumeAudioPlayback');
-       };
+  const handleAudioClick = () => {
+    if (audioRef.current?.paused) {
+      onStartAudioPlayback();
+      audioRef.current.play();
+      setIsPlaying(true);
+    } else {
+      onPausedAudioPlayback();
+      audioRef.current?.pause();
+      setIsPlaying(false);
+    }
+  };
 
-       const handleMicrophoneClick = () => {
-              if (isRecordingInProgress) {
-                     stopRecording();
-                     setIsRecording(false);
-                     setIsRunning(!isRunning);
-                     setIsRecordedBlob(true);
-                     // clearInterval(timerRef.current);
-              } else {
-                     startRecording();
-                     setIsRunning(!isRunning);
-                     setIsRecording(true);
-                     // recordingTimer();
-              }
-       };
+  const handleDeleteRecord = () => {
+    setIsOpenModalDeleteRecord(true);
+    clearCanvas();
+    setRecordingTime(0);
+    // timerRef.current = 0;
+    setIsRecordedBlob(false);
+    setIsRecording(false);
+  };
 
-       const handleAudioClick = () => {
-              if (audioRef.current?.paused) {
-                     onStartAudioPlayback();
-                     audioRef.current.play();
-                     setIsPlaying(true);
-              } else {
-                     onPausedAudioPlayback();
-                     audioRef.current?.pause();
-                     setIsPlaying(false);
-              }
-       };
-
-       const handleDeleteRecord = () => {
-              setIsOpenModalDeleteRecord(true);
-              clearCanvas();
-              setRecordingTime(0);
-              // timerRef.current = 0;
-              setIsRecordedBlob(false);
-              setIsRecording(false);
-       };
-
-       return (
-              <div className={css.recordingAudio}>
-                     {isRecordingInProgress ? (
-                            <>
-                                   <StopIcon
-                                          className={css.stopIcon}
-                                          onClick={handleMicrophoneClick}
-                                   />
-                                   <RecordingPoint className={css.recordingPoint} />
-                                   <p className={css.timeIsRecording}>{minutes.toString().padStart(2, '0')}:
-                                          {seconds.toString().padStart(2, '0')},
-                                          {milliseconds.toString()}</p>
-                            </>
-                     ) :
-                            recordedBlob ? (
-                                   <>
-                                          {!isPlaying && <PlayIcon className={css.playIcon} onClick={handleAudioClick} />}
-                                          {isPlaying && <PauseIcon className={css.playIcon} onClick={handleAudioClick} />}
-                                          <SendIcon className={css.sendIcon} />
-                                          <DeleteIcon className={css.deleteIcon} onClick={handleDeleteRecord} />
-                                          <audio ref={audioRef} src={audioSrc} onEnded={onEndAudioPlayback} />
-                                          <p className={css.timeIsRecorded}>{minutes.toString().padStart(2, '0')}:
-                                                 {seconds.toString().padStart(2, '0')},
-                                                 {milliseconds.toString()}</p>
-                                   </>
-                            ) :
-                                   (
-                                          <Microphone
-                                                 className={css.microphone}
-                                                 onClick={handleMicrophoneClick}
-                                          />
-                                   )}
-                     <ModalCommon
-                            textTitle='Delete?'
-                            textSubtitle='Are you sure you want to delete the voice message recording?'
-                            buttonText='No'
-                            secondButtonText='Delete'
-                            onChange={setIsOpenModalDeleteRecord}
-                            isOpen={isOpenModalDeleteRecord}
-                            isThereACancel={false}
-                            darkModal={true}
-                     />
-                     {/* <div className={!isPlaying ? css.visualizerContainerHidden : css.visualizerContainer}>
+  return (
+    <div className={css.recordingAudio}>
+      {isRecordingInProgress ? (
+        <>
+          <StopIcon className={css.stopIcon} onClick={handleMicrophoneClick} />
+          <RecordingPoint className={css.recordingPoint} />
+          <p className={css.timeIsRecording}>
+            {minutes.toString().padStart(2, '0')}:
+            {seconds.toString().padStart(2, '0')},{milliseconds.toString()}
+          </p>
+        </>
+      ) : recordedBlob ? (
+        <>
+          {!isPlaying && (
+            <PlayIcon className={css.playIcon} onClick={handleAudioClick} />
+          )}
+          {isPlaying && (
+            <PauseIcon className={css.playIcon} onClick={handleAudioClick} />
+          )}
+          <SendIcon className={css.sendIcon} />
+          <DeleteIcon className={css.deleteIcon} onClick={handleDeleteRecord} />
+          <audio ref={audioRef} src={audioSrc} onEnded={onEndAudioPlayback} />
+          <p className={css.timeIsRecorded}>
+            {minutes.toString().padStart(2, '0')}:
+            {seconds.toString().padStart(2, '0')},{milliseconds.toString()}
+          </p>
+        </>
+      ) : (
+        <Microphone
+          className={css.microphone}
+          onClick={handleMicrophoneClick}
+        />
+      )}
+      <ModalCommon
+        textTitle="Delete?"
+        textSubtitle="Are you sure you want to delete the voice message recording?"
+        buttonText="No"
+        secondButtonText="Delete"
+        onChange={setIsOpenModalDeleteRecord}
+        isOpen={isOpenModalDeleteRecord}
+        isThereACancel={false}
+        darkModal={true}
+      />
+      {/* <div className={!isPlaying ? css.visualizerContainerHidden : css.visualizerContainer}>
                             <VoiceVisualizer
                                    controls={recorderControls}
                                    // ref={audioRef}
@@ -161,7 +162,6 @@ export const RecordingAudio: React.FC<RecordingAudioProps> = ({ setIsRecording, 
                                    secondaryBarColor="#C896EF"
                             />
                      </div> */}
-              </div>
-       );
+    </div>
+  );
 };
-

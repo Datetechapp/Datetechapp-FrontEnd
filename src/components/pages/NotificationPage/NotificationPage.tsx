@@ -7,7 +7,7 @@ const NotificationPage = () => {
     <div className={style.pageContainer}>
       <h2 className={style.pageTitle}>Notifications</h2>
       <div className={style.pageBox}>
-        <NotificationList/>
+        <NotificationList />
       </div>
     </div>
   );

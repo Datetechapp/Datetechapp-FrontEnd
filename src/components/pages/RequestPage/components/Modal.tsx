@@ -19,7 +19,7 @@ export function RequestModal({
   id: number;
 }) {
   const filteredDataById: Table | undefined = tableData.find(
-    (item) => item.id === id
+    (item) => item.id === id,
   );
 
   return (

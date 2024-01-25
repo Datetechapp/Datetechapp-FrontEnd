@@ -1,84 +1,87 @@
 .formBlock {
-       display: flex;
-       flex-direction: column;
-       align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .title {
-       padding: 0 12px;
-       text-align: center;
-       width: 392px;
-       color: var(--White, #FFF);
-       font-family: Montserrat;
-       font-size: 22px;
-       font-weight: 600;
-       line-height: 24px;
-       letter-spacing: -0.5px;
-       margin-top: 48px;
+  padding: 0 12px;
+  text-align: center;
+  width: 392px;
+  color: var(--White, #fff);
+  font-family: Montserrat;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: -0.5px;
+  margin-top: 48px;
 }
 
 .subtitle {
-       width: 392px;
-       margin-top: 12px;
-       color: var(--White, #FFF);
-       font-family: Montserrat;
-       font-size: 14px;
-       font-style: normal;
-       font-weight: 400;
-       line-height: 18px;
+  width: 392px;
+  margin-top: 12px;
+  color: var(--White, #fff);
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
 }
 
 .inputForName {
-       width: 392px;
-       height: 48px;
-       border-radius: 5px;
-       padding: 0 16px;
-       border: 1.5px solid var(--Violet_Stroke, #5F4F7F);
-       background: var(--Dark_Elements_Background, #201B27);
-       color: var(--White, #FFF);
-       font-family: Montserrat;
-       font-size: 16px;
-       font-style: normal;
-       font-weight: 500;
-       line-height: 20px;
-       margin-top: 32px;
+  width: 392px;
+  height: 48px;
+  border-radius: 5px;
+  padding: 0 16px;
+  border: 1.5px solid var(--Violet_Stroke, #5f4f7f);
+  background: var(--Dark_Elements_Background, #201b27);
+  color: var(--White, #fff);
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  margin-top: 32px;
 }
 
 .inputForName:focus {
-       border: 1px solid var(--Violet_Active, #C896EF);
-       outline: none;
+  border: 1px solid var(--Violet_Active, #c896ef);
+  outline: none;
 }
 
 .inputForName::placeholder {
-       color: var(--Violet_Stroke, #5F4F7F);
+  color: var(--Violet_Stroke, #5f4f7f);
 }
 
 .continueBtn {
-       width: 392px;
-       height: 48px;
-       padding: 10px 18px;
-       border-radius: 5px;
-       background: var(--Dark_Grey_Menu, #302E3D);
-       color: var(--Violet_Stroke, #5F4F7F);
-       text-align: center;
-       font-family: Montserrat;
-       font-size: 16px;
-       font-weight: 600;
-       line-height: 20px;
-       margin-top: 40px;
+  width: 392px;
+  height: 48px;
+  padding: 10px 18px;
+  border-radius: 5px;
+  background: var(--Dark_Grey_Menu, #302e3d);
+  color: var(--Violet_Stroke, #5f4f7f);
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  margin-top: 40px;
 }
 
 .continueBtnValid {
-       width: 392px;
-       height: 48px;
-       padding: 10px 18px;
-       border-radius: 5px;
-       background: var(--Gradient, linear-gradient(180deg, #9747FF 0%, #DE77C7 100%));
-       color: var(--White, #FFF);
-       text-align: center;
-       font-family: Montserrat;
-       font-size: 16px;
-       font-weight: 600;
-       line-height: 20px;
-       margin-top: 40px;
+  width: 392px;
+  height: 48px;
+  padding: 10px 18px;
+  border-radius: 5px;
+  background: var(
+    --Gradient,
+    linear-gradient(180deg, #9747ff 0%, #de77c7 100%)
+  );
+  color: var(--White, #fff);
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  margin-top: 40px;
 }

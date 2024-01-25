@@ -1,84 +1,83 @@
 @keyframes fadeIn {
-       from {
-              opacity: 0;
-       }
+  from {
+    opacity: 0;
+  }
 
-       to {
-              opacity: 1;
-       }
+  to {
+    opacity: 1;
+  }
 }
 
-
 .modalForwardMessage {
-       position: relative;
-       width: 348px;
-       height: 196px;
-       top: 50%;
-       left: 50%;
-       transform: translate(-50%, -50%);
-       background: var(--white, #E9E3F5);
-       padding: 30px;
-       outline: none;
-       border-radius: 7px;
-       animation: fadeIn 0.7s ease-in-out forwards;
+  position: relative;
+  width: 348px;
+  height: 196px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--white, #e9e3f5);
+  padding: 30px;
+  outline: none;
+  border-radius: 7px;
+  animation: fadeIn 0.7s ease-in-out forwards;
 }
 
 .overlayModal {
-       position: fixed;
-       top: 0;
-       left: 0;
-       right: 0;
-       bottom: 0;
-       background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modalForwardMessageTitle {
-       color: var(--violet-stroke, #5F4F7F);
-       text-align: center;
-       font-family: Montserrat;
-       font-size: 16px;
-       font-weight: 600;
-       line-height: 25px;
-       letter-spacing: -0.5px;
+  color: var(--violet-stroke, #5f4f7f);
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 25px;
+  letter-spacing: -0.5px;
 }
 
 .buttonBlock {
-       margin-top: 26px;
-       display: flex;
-       gap: 12px;
+  margin-top: 26px;
+  display: flex;
+  gap: 12px;
 }
 
 .btnCancel {
-       width: 138px;
-       height: 40px;
-       border-radius: 5px;
-       border: 1px solid var(--violet-stroke, #5F4F7F);
-       background: var(--white, #E9E3F5);
-       color: var(--violet-stroke, #5F4F7F);
-       text-align: center;
-       font-family: Montserrat;
-       font-size: 16px;
-       font-weight: 500;
-       line-height: 25px;
-       letter-spacing: -0.5px;
+  width: 138px;
+  height: 40px;
+  border-radius: 5px;
+  border: 1px solid var(--violet-stroke, #5f4f7f);
+  background: var(--white, #e9e3f5);
+  color: var(--violet-stroke, #5f4f7f);
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 25px;
+  letter-spacing: -0.5px;
 }
 
 .btnSelect {
-       width: 138px;
-       height: 40px;
-       border-radius: 5px;
-       border: 1px solid var(--violet-stroke, #5F4F7F);
-       background: var(--violet-stroke, #5F4F7F);
-       color: var(--white, #E9E3F5);
-       text-align: center;
-       font-family: Montserrat;
-       font-size: 16px;
-       font-weight: 500;
-       line-height: 25px;
-       letter-spacing: -0.5px;
+  width: 138px;
+  height: 40px;
+  border-radius: 5px;
+  border: 1px solid var(--violet-stroke, #5f4f7f);
+  background: var(--violet-stroke, #5f4f7f);
+  color: var(--white, #e9e3f5);
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 25px;
+  letter-spacing: -0.5px;
 }
 
 .modalForwardBlock {
-       margin: 0 auto;
-       width: 288px;
+  margin: 0 auto;
+  width: 288px;
 }

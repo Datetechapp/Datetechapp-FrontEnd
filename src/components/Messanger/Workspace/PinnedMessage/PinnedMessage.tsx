@@ -5,40 +5,54 @@ import { ReactComponent as CloseIcon } from '../../../../assets/Messanger/iconFo
 import { MessageProps } from '../Workspace';
 
 interface PinnedMessageProps {
-       text: string;
-       onClick?: () => void;
-       togglePinnedMessage: () => void;
-       pinnedMessages: MessageProps[];
-       setPinnedMessages: Dispatch<SetStateAction<MessageProps[]>>;
-       currentPinnedMessageIndex: number;
-       setCurrentPinnedMessageIndex: Dispatch<SetStateAction<number>>;
+  text: string;
+  onClick?: () => void;
+  togglePinnedMessage: () => void;
+  pinnedMessages: MessageProps[];
+  setPinnedMessages: Dispatch<SetStateAction<MessageProps[]>>;
+  currentPinnedMessageIndex: number;
+  setCurrentPinnedMessageIndex: Dispatch<SetStateAction<number>>;
 }
 
-export const PinnedMessage: FC<PinnedMessageProps> = ({ text, onClick, pinnedMessages, setPinnedMessages, setCurrentPinnedMessageIndex, currentPinnedMessageIndex, togglePinnedMessage }) => {
+export const PinnedMessage: FC<PinnedMessageProps> = ({
+  text,
+  onClick,
+  pinnedMessages,
+  setPinnedMessages,
+  setCurrentPinnedMessageIndex,
+  currentPinnedMessageIndex,
+  togglePinnedMessage,
+}) => {
+  const maxLength = 80;
+  const truncatedText =
+    text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
 
-       const maxLength = 80;
-       const truncatedText = text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
+  return (
+    <div
+      onClick={() => togglePinnedMessage()}
+      className={css.pinnedMessagesContainer}
+    >
+      <div className={css.indicatorContainer}>
+        {pinnedMessages.map((pinnedMessage, index) => (
+          <div
+            className={`${css.indicator} ${
+              index === currentPinnedMessageIndex ? css.active : ''
+            }`}
+            key={pinnedMessage.id}
+            onClick={() => setCurrentPinnedMessageIndex(index)}
+          ></div>
+        ))}
+      </div>
+      <div className={css.pinnedMessageWrapper} onClick={onClick}>
+        <p className={css.description}>Pinned Message</p>
+        <p className={css.pinnedMessage}>{truncatedText}</p>
+      </div>
 
-       return (
-
-              <div onClick={() => togglePinnedMessage()} className={css.pinnedMessagesContainer}>
-                     <div className={css.indicatorContainer}>
-                            {pinnedMessages.map((pinnedMessage, index) => (
-                                   <div
-                                          className={`${css.indicator} ${index === currentPinnedMessageIndex ? css.active : ''
-                                                 }`}
-                                          key={pinnedMessage.id}
-                                          onClick={() => setCurrentPinnedMessageIndex(index)}
-                                   ></div>
-                            ))}
-                     </div>
-                     <div className={css.pinnedMessageWrapper} onClick={onClick}>
-                            <p className={css.description}>Pinned Message</p>
-                            <p className={css.pinnedMessage}>{truncatedText}</p>
-                     </div>
-
-                     {pinnedMessages.length === 1 ? <CloseIcon onClick={() => setPinnedMessages([])} /> : <IconPin />}
-
-              </div>
-       );
+      {pinnedMessages.length === 1 ? (
+        <CloseIcon onClick={() => setPinnedMessages([])} />
+      ) : (
+        <IconPin />
+      )}
+    </div>
+  );
 };
