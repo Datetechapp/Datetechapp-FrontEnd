@@ -8,17 +8,17 @@ module.exports = {
     //'airbnb',
     //'airbnb/hooks',
     'plugin:@typescript-eslint/recommended',
-    //'plugin:prettier/recommended',*/
     'eslint:recommended',
+    'plugin:prettier/recommended',
   ],
-  plugins: ['@typescript-eslint'],
+  plugins: ['@typescript-eslint', 'prettier'],
   rules: {
     'no-console': 'warn',
     semi: [2, 'always'],
-    'max-len': [
-      'warn',
-      { code: 120, ignorePattern: '^import\\s.+\\sfrom\\s.+;$' },
-    ],
+    // 'max-len': [
+    //   'warn',
+    //   { code: 120, ignorePattern: '^import\\s.+\\sfrom\\s.+;$' },
+    // ],
     'no-multiple-empty-lines': ['warn', { max: 1, maxEOF: 1 }],
     quotes: [
       'error',
@@ -26,9 +26,9 @@ module.exports = {
       { allowTemplateLiterals: true, avoidEscape: true },
     ],
     'import/extensions': 'off',
-    //'prettier/prettier': 'error',
+    'prettier/prettier': ["error", { endOfLine: 'auto' }],
     'import/prefer-default-export': 'off',
-    'max-lines-per-function': ['warn', 40],
+    // 'max-lines-per-function': ['warn', 40],
     'padding-line-between-statements': [
       'warn',
       {

@@ -57,7 +57,8 @@ const Geolocation = () => {
           style={sliderStyle}
         />
         <label className={styles.location_label} htmlFor="location-range">
-        {locationRange === minRange ? null : renderSymbol()}{locationRange} km
+          {locationRange === minRange ? null : renderSymbol()}
+          {locationRange} km
         </label>
       </div>
     </div>

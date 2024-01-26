@@ -8,29 +8,28 @@ import { ReactComponent as PhoneIcon } from '../../../assets/Messanger/PhoneIcon
 import React from 'react';
 
 interface HeaderProps {
-       setShowSearchMessages: React.Dispatch<React.SetStateAction<boolean>>
+  setShowSearchMessages: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const Header: React.FC<HeaderProps> = ({ setShowSearchMessages }) => {
-       return (
-              <div className={css.headerWrapper}>
-                     <div className={css.blockWithPreviousStep}>
-                            <ArrowLeft />
-                            <div className={css.blockPhotoWithName}>
-                                   <Photo />
-                                   <div className={css.info}>
-                                          <p className={css.name}>Michael</p>
-                                          <p className={css.isOnline}>Online</p>
-                                   </div>
-                            </div>
-
-                     </div>
-                     <div className={css.messangerFeatures}>
-                            <PhoneIcon />
-                            <SearchIcon onClick={() => setShowSearchMessages(true)} />
-                            <CalendarIcon />
-                            <Options />
-                     </div>
-              </div>
-       );
+  return (
+    <div className={css.headerWrapper}>
+      <div className={css.blockWithPreviousStep}>
+        <ArrowLeft />
+        <div className={css.blockPhotoWithName}>
+          <Photo />
+          <div className={css.info}>
+            <p className={css.name}>Michael</p>
+            <p className={css.isOnline}>Online</p>
+          </div>
+        </div>
+      </div>
+      <div className={css.messangerFeatures}>
+        <PhoneIcon />
+        <SearchIcon onClick={() => setShowSearchMessages(true)} />
+        <CalendarIcon />
+        <Options />
+      </div>
+    </div>
+  );
 };

@@ -20,6 +20,7 @@ export function ThemeList() {
       href: 'video',
     },
   ];
+
   return (
     <div className={styles.container}>
       <div className={styles.themeButtons}>

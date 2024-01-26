@@ -35,7 +35,7 @@ export const Footer: FC<FooterProps> = ({
 
   const handleEmojiClick = (
     emojiObject: { emoji: string },
-    event: MouseEvent
+    event: MouseEvent,
   ) => {
     setMessageValue(messageValue + emojiObject.emoji);
   };
@@ -99,8 +99,8 @@ export const Footer: FC<FooterProps> = ({
               <UploadButton
                 icon={<Clip className={css.clipIcon} />}
                 onUpload={handleUploadFile}
-                inputId='clipUpload'
-                accept='image/*'
+                inputId="clipUpload"
+                accept="image/*"
               />
             )}
           </div>
@@ -113,7 +113,7 @@ export const Footer: FC<FooterProps> = ({
                 ? css.fieldWithBlob
                 : css.fieldForRecording
             }
-            type='text'
+            type="text"
             placeholder={isRecordedBlob || isRecording ? '' : 'Message...'}
             value={messageValue}
             onChange={handleInputChange}

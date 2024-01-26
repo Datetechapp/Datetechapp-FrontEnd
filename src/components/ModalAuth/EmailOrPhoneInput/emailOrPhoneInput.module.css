@@ -2,8 +2,8 @@
 .inputForEmail:-webkit-autofill:hover,
 .inputForEmail:-webkit-autofill:focus,
 .inputForEmail:-webkit-autofill:active {
-       transition: background-color 5000s;
-       -webkit-text-fill-color: #fff !important;
+  transition: background-color 5000s;
+  -webkit-text-fill-color: #fff !important;
 }
 
 /* .inputForEmail {

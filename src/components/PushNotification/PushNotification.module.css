@@ -1,44 +1,44 @@
-.pushContainer{
-    padding: 16px;
-    border-radius: 10px;
-    border: 1px solid #C896EF;
-    background: #32303E;
-    max-width: 341px;
+.pushContainer {
+  padding: 16px;
+  border-radius: 10px;
+  border: 1px solid #c896ef;
+  background: #32303e;
+  max-width: 341px;
 }
-.pushTitle{
-    padding-bottom: 8px;
-    color:  #FFF;
-    font-family: Montserrat;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 18px; 
-    letter-spacing: 0.1px;
+.pushTitle {
+  padding-bottom: 8px;
+  color: #fff;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: 0.1px;
 }
-.pushDescription{
-    display: flex;
+.pushDescription {
+  display: flex;
 }
-.pushDescription img{
-    max-width: 49px;
-    max-height: 49px;
-    border-radius: 50%;
+.pushDescription img {
+  max-width: 49px;
+  max-height: 49px;
+  border-radius: 50%;
 }
-.messageBox p{
-    color:#FFF;
-    padding-left: 8px;
-    font-family: Montserrat;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 18px;
-    letter-spacing: 0.1px;
+.messageBox p {
+  color: #fff;
+  padding-left: 8px;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: 0.1px;
 }
-.messageBox span{
-    color:#C896EF;
-    font-family: Montserrat;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 18px;
-    letter-spacing: 0.1px;
+.messageBox span {
+  color: #c896ef;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: 0.1px;
 }
