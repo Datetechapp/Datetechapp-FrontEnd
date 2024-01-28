@@ -20,7 +20,7 @@ export function Switcher({ isChecked, setIsChecked }: CheckProps) {
         </div>
       </div>
       <label className={styles.switch}>
-        <input type="checkbox" checked={isChecked} onClick={handleChecked} />
+        <input type="checkbox" checked={isChecked} onChange={handleChecked} />
         <span
           className={
             isChecked ? styles.sliderIsChecked : styles.sliderIsntChecked

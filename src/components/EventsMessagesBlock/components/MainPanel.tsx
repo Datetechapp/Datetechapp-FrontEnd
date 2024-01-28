@@ -1,33 +1,29 @@
+import { useAppSelector } from 'hooks/hooks';
 import styles from '../eventsMessagesBlock.module.css';
-import { IEvents, IMessages } from '../types';
-import { EventsBlock } from './EventsBlock';
-import { MessagesBlock } from './MessagesBlock';
+import { EventsBlock } from './EventsBlock/EventsBlock';
+import { MessagesBlock } from './MessagesBlock/MessagesBlock';
+import { getAllEvents } from '../../../store/events/selectors';
+export function MainPanel({ isChecked }: { isChecked: boolean }) {
+  const messages = [];
 
-export function MainPanel({
-  events,
-  messages,
-  isChecked,
-}: {
-  events: IEvents[];
-  messages: IMessages[];
-  isChecked: boolean;
-}) {
+  const events = useAppSelector(getAllEvents);
+
   return (
     <div className={styles.mainPanel_wrapper}>
       {isChecked ? (
         events.length != 0 ? (
           <EventsBlock />
         ) : (
-          <p className={styles.emptyMessage}>
-            Your events will appear here when you have them
-          </p>
+          <div className={styles.emptyMessage}>
+            <p> Your events will appear here when you have them</p>
+          </div>
         )
       ) : messages.length != 0 ? (
         <MessagesBlock />
       ) : (
-        <p className={styles.emptyMessage}>
-          Your messages will appear here when you have them
-        </p>
+        <div className={styles.emptyMessage}>
+          <p>Your messages will appear here when you have them</p>
+        </div>
       )}
     </div>
   );
