@@ -15,7 +15,12 @@ export function RequestPage() {
 
   return (
     <div className={styles.container}>
-      <SearchInput text={text} setText={setText} />
+      <SearchInput
+        text={text}
+        setText={setText}
+        placeholder="Enter ticket number"
+        customStyles={{ borderColor: 'transparent' }}
+      />
       <RequestTable
         handleChangeOpen={handleChangeOpen}
         setId={setId}

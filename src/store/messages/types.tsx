@@ -6,4 +6,6 @@ export interface IMessageProps {
   time: string;
   isNew: boolean;
   message: string;
+  premium?: boolean;
+  status: string;
 }

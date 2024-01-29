@@ -17,7 +17,7 @@ export default function Event({
       <div className={styles.eventWrapper}>
         <div className={styles.icon}>
           <div className={styles.imageWrapper}>
-            <img src={item.image} alt="" />
+            <img src={item.image} alt={item.name} />
           </div>
           <div className={styles.iconRightPartOuter}>
             <div className={styles.iconRightPartInner}>

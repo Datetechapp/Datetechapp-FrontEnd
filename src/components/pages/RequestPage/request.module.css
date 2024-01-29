@@ -1,3 +1,9 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
 .header th {
   color: #c896ef;
   font-family: Montserrat;
@@ -19,9 +25,9 @@
   justify-content: space-between;
   align-items: center;
   border-radius: 100px;
-  border: 1px solid #c896ef;
+  border: 1px solid;
   background: #272533;
-  margin-bottom: 24px;
+  transition: all 0.2s ease-in-out;
 }
 
 .searchInput .input {
@@ -35,6 +41,14 @@
   line-height: 20px;
   background: transparent;
   border: none;
+}
+
+.searchInput:focus-within {
+  border-color:  #c896ef !important;
+}
+
+.searchInput .input::placeholder{
+  color: #5F4F7F
 }
 
 .close {
