@@ -1,8 +1,16 @@
+@value Panel_Background: #272533;
+@value Panel_Stroke: #32303E;
+@value Dark_Background: #1F1D2B;
+@value Violet_Stroke: #5F4F7F;
+@value Violet_Active: #C896EF;
+@value Back_White: #E1DBED;
+@value Red_Error: rgba(215, 80, 72, 1);
+
 .container {
     height: 80vh;
     display: flex;
     flex-direction: column;
-    background: #272533;
+    background: Panel_Background;
     padding-top: 32px;
     width: 352px;
     position: absolute;
@@ -12,7 +20,7 @@
 }
 
 .switcherContainer {
-    background: #1F1D2B;
+    background: Dark_Background;
     border-radius: 100px;
     height: 40px;
     position: relative;
@@ -38,7 +46,7 @@
 }
 
 .part p {
-    color: #5F4F7F;
+    color: Violet_Stroke;
     font-size: 16px;
     font-style: normal;
     font-weight: 600;
@@ -46,7 +54,7 @@
 }
 
 .circle {
-    background: rgba(215, 80, 72, 1);
+    background: Red_Error;
     height: 10px;
     width: 10px;
     border-radius: 100%;
@@ -83,7 +91,7 @@
     font-weight: 600;
     line-height: 20px;
     width: 159px;
-    background-color: #272533;
+    background-color: Panel_Background;
     transition: .4s;
     border-radius: 100px;
     margin: 1px;
@@ -112,7 +120,7 @@
     font-weight: 600;
     line-height: 20px;
     width: 159px;
-    background-color: #272533;
+    background-color: Panel_Background;
     transition: .4s;
     border-radius: 100px;
     margin: 1px;
@@ -124,7 +132,7 @@ input:checked+.sliderIsChecked:before {
     transform: translateX(100%);
 }
 
-.mainPanel_wrapper {
+.mainPanelWrapper {
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -141,7 +149,7 @@ input:checked+.sliderIsChecked:before {
 }
 
 .emptyMessage p {
-    color: #5F4F7F;
+    color: Violet_Stroke;
     text-align: center;
     font-size: 16px;
     font-style: normal;
@@ -151,36 +159,36 @@ input:checked+.sliderIsChecked:before {
 }
 
 
-.mainPanel_wrapper::-webkit-scrollbar {
+.mainPanelWrapper::-webkit-scrollbar {
     width: 0px;
 }
 
-.event_container {
+.eventContainer {
     cursor: pointer;
     padding: 0px 16px;
     background: transparent;
     transition: all 0.3s ease-in-out;
 }
 
-.event_wrapper {
+.eventWrapper {
     background: transparent;
     display: flex;
     gap: 10px;
-    border-bottom: 1px solid #5F4F7F;
+    border-bottom: 1px solid Violet_Stroke;
     align-items: center;
     padding: 12px 0px;
 }
 
-.event_container:hover {
-    background: #5F4F7F
+.eventContainer:hover {
+    background: Violet_Stroke;
 }
 
-.event_newContainer {
+.eventNewContainer {
     padding: 0px 16px;
     background: linear-gradient(86deg, rgba(255, 224, 170, 0.20) 0.58%, rgba(255, 174, 169, 0.20) 33.26%, rgba(255, 167, 246, 0.20) 67.03%, rgba(221, 124, 255, 0.20) 98.42%), #272533;
 }
 
-.event_newContainer .image_wrapper {
+.eventNewContainer .imageWrapper {
     border-radius: 100%;
     width: 66px;
     height: 66px;
@@ -190,24 +198,24 @@ input:checked+.sliderIsChecked:before {
     background: linear-gradient(180deg, rgba(151, 71, 255, 1) 0%, rgba(222, 119, 199, 1) 100%);
 }
 
-.event_container .image_wrapper {
+.eventContainer .imageWrapper {
     border-radius: 100%;
     width: 66px;
     height: 66px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: transparent
+    background: transparent;
 }
 
-.event_newContainer .image_wrapper img {
+.eventNewContainer .imageWrapper img {
     width: 60px;
     height: 60px;
 }
 
 
-.event_container:hover .icon_rightPartInner {
-    border-color: #C896EF
+.eventContainer:hover .iconRightPartInner {
+    border-color: Violet_Active;
 }
 
 .icon {
@@ -215,10 +223,10 @@ input:checked+.sliderIsChecked:before {
     align-items: end;
 }
 
-.icon_rightPartOuter {
+.iconRightPartOuter {
     width: 53px;
     height: 53px;
-    background: #272533;
+    background: Panel_Background;
     border-radius: 100%;
     margin-left: -15px;
     display: flex;
@@ -226,11 +234,11 @@ input:checked+.sliderIsChecked:before {
     align-items: center;
 }
 
-.icon_rightPartInner {
+.iconRightPartInner {
     width: 48px;
     height: 48px;
-    border: 1px solid #5F4F7F;
-    background: #32303E;
+    border: 1px solid Violet_Stroke;
+    background: Panel_Stroke;
     border-radius: 100%;
     display: flex;
     flex-direction: column;
@@ -239,7 +247,7 @@ input:checked+.sliderIsChecked:before {
     transition: all 0.3s ease-in-out;
 }
 
-.icon_rightPartInner p:nth-child(1) {
+.iconRightPartInner p:nth-child(1) {
     font-family: Montserrat;
     font-size: 18px;
     font-style: normal;
@@ -247,7 +255,7 @@ input:checked+.sliderIsChecked:before {
     line-height: 22px;
 }
 
-.icon_rightPartInner p:nth-child(2) {
+.iconRightPartInner p:nth-child(2) {
     font-family: Montserrat;
     font-size: 12px;
     font-style: normal;
@@ -273,7 +281,7 @@ input:checked+.sliderIsChecked:before {
     font-style: normal;
     font-weight: 500;
     line-height: 18px;
-    color: #C896EF;
+    color: Violet_Active;
 }
 
 .where {
@@ -316,7 +324,7 @@ input:checked+.sliderIsChecked:before {
     line-height: 14px;
 }
 
-.see_all {
+.seeAll {
     width: 100%;
     text-align: end;
     margin-top: 16px;
@@ -324,20 +332,20 @@ input:checked+.sliderIsChecked:before {
     padding-right: 16px;
 }
 
-.see_all p {
+.seeAll p {
     font-family: Montserrat;
     font-size: 12px;
     font-style: normal;
     font-weight: 500;
     line-height: 14px;
-    color: #E1DBED;
+    color: Back_White;
     transition: all 0.2s ease-in-out;
 }
 
-.see_all p:hover {
-    color: #C896EF
+.seeAll p:hover {
+    color: Violet_Active
 }
 
-.see_all p:active {
-    color: #5F4F7F
+.seeAll p:active {
+    color: Violet_Stroke
 }

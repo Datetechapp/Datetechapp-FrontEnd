@@ -9,11 +9,11 @@ export function EventsBlock() {
   const events = useAppSelector(getAllEvents);
   const [value, setValue] = useState(6);
   const [showUpNewEventStyle, setShowUpNewEventStyle] =
-    useState('event_newContainer');
+    useState('eventNewContainer');
 
   useEffect(() => {
     setTimeout(() => {
-      setShowUpNewEventStyle('event_container');
+      setShowUpNewEventStyle('eventContainer');
     }, 2000);
 
     return;
@@ -31,7 +31,7 @@ export function EventsBlock() {
         ))
         .splice(0, value)}
       <div
-        className={styles.see_all}
+        className={styles.seeAll}
         onClick={() => {
           setValue(events.length);
         }}

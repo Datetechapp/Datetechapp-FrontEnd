@@ -12,16 +12,16 @@ export default function Event({
   return (
     <div
       className={
-        !item.isNew ? styles.event_container : styles[showUpNewEventStyle]
+        !item.isNew ? styles.eventContainer : styles[showUpNewEventStyle]
       }
     >
-      <div className={styles.event_wrapper}>
+      <div className={styles.eventWrapper}>
         <div className={styles.icon}>
-          <div className={styles.image_wrapper}>
+          <div className={styles.imageWrapper}>
             <img src={item.image} alt="" />
           </div>
-          <div className={styles.icon_rightPartOuter}>
-            <div className={styles.icon_rightPartInner}>
+          <div className={styles.iconRightPartOuter}>
+            <div className={styles.iconRightPartInner}>
               <p>{item.day}</p>
               <p>{item.month}</p>
             </div>

@@ -9,7 +9,7 @@ export function MainPanel({ isChecked }: { isChecked: boolean }) {
   const events = useAppSelector(getAllEvents);
 
   return (
-    <div className={styles.mainPanel_wrapper}>
+    <div className={styles.mainPanelWrapper}>
       {isChecked ? (
         events.length != 0 ? (
           <EventsBlock />

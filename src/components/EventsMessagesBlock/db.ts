@@ -29,7 +29,7 @@ export const events = [
     month: 'Jul',
     name: 'Liza',
     event: 'Ipaba',
-    time: '9:03',
+    time: '09:03',
     isNew: false,
   },
   {
@@ -39,7 +39,7 @@ export const events = [
     month: 'Nov',
     name: 'Mikhael',
     event: 'Basel',
-    time: '4:12',
+    time: '04:12',
     isNew: false,
   },
   {
@@ -49,7 +49,7 @@ export const events = [
     month: 'Jun',
     name: 'Liza',
     event: 'Qishui',
-    time: '8:09',
+    time: '08:09',
     isNew: false,
   },
   {
@@ -69,7 +69,7 @@ export const events = [
     month: 'Nov',
     name: 'Mikhael',
     event: 'Ning’er',
-    time: '4:49',
+    time: '04:49',
     isNew: false,
   },
   {
