@@ -1,7 +1,9 @@
 import Mikhael from '../../assets/EventsMessagesBlock/Michael.svg';
 import Liza from '../../assets/EventsMessagesBlock/Liza.svg';
+import { IEventProps } from 'store/events/types';
+import { IMessageProps } from 'store/messages/types';
 
-export const events = [
+export const events: IEventProps[] = [
   {
     id: '09a0e39a-982b-490b-a7c8-e08918aee044',
     image: Mikhael,
@@ -80,6 +82,54 @@ export const events = [
     name: 'Liza',
     event: 'Randuagung',
     time: '10:48',
+    isNew: false,
+  },
+];
+
+export const messages: IMessageProps[] = [
+  {
+    id: '0',
+    message: 'Hi! You have a cool video.',
+    image: Mikhael,
+    name: 'Mikhael',
+    weekDay: 'Mon',
+    time: '12:30',
+    isNew: true,
+  },
+  {
+    id: '1',
+    message: 'I would like to meet you.',
+    image: Liza,
+    name: 'Liza',
+    weekDay: 'Mon',
+    time: '12:30',
+    isNew: true,
+  },
+  {
+    id: '2',
+    message: "Hi!Thanks. I'm very pleased.",
+    image: Mikhael,
+    name: 'Mikhael',
+    weekDay: 'Thu',
+    time: '10:30',
+    isNew: false,
+  },
+  {
+    id: '3',
+    message: "but I'm very tired today",
+    image: Mikhael,
+    name: 'Mikhael',
+    weekDay: 'Thu',
+    time: '10:30',
+    isNew: false,
+  },
+  {
+    id: '4',
+    message: 'i will write to you tomorrow..',
+    image: Liza,
+    name: 'Liza',
+    weekDay: 'Thu',
+    time: '10:30',
     isNew: false,
   },
 ];

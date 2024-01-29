@@ -1,6 +1,5 @@
 import { IEventProps } from 'store/events/types';
 import styles from '../../eventsMessagesBlock.module.css';
-import { useCallback, useEffect, useState } from 'react';
 
 export default function Event({
   item,

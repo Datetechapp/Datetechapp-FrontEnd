@@ -1,1 +1,0 @@
-export { useGetEventsQuery } from './slice';

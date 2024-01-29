@@ -1,8 +1,4 @@
-import {
-  createSlice,
-  createEntityAdapter,
-  createSelector,
-} from '@reduxjs/toolkit';
+import { createSlice, createEntityAdapter } from '@reduxjs/toolkit';
 import { events } from '../../components/EventsMessagesBlock/db';
 
 const eventsAdapter = createEntityAdapter();
@@ -19,7 +15,7 @@ export const { reducer, actions } = createSlice({
     eventCreate: (state, action) => {
       eventsAdapter.addOne(state, action.payload);
     },
-    heroesDelete: (state, action) => {
+    eventsDelete: (state, action) => {
       eventsAdapter.removeOne(state, action.payload);
     },
   },
@@ -27,4 +23,4 @@ export const { reducer, actions } = createSlice({
 
 export default reducer;
 
-export const { eventCreate, heroesDelete } = actions;
+export const { eventCreate, eventsDelete } = actions;
