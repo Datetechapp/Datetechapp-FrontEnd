@@ -1,0 +1,1 @@
+export { PaymentBar } from './PaymentBar';
