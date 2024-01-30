@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { AutoComplete } from 'antd';
-import { fetchData } from '../../../../api';
+import { AutoComplete, Input } from 'antd';
 import debounce from 'lodash/debounce';
+import { useCallback, useEffect, useState } from 'react';
+import { fetchData } from '../../../../api';
 import { ReactComponent as SearchIcon } from '../../../../assets/CreateAccountForm/searchLocationIcon.svg';
 import css from './locations.module.css';
 
@@ -18,7 +18,7 @@ export const Locations = () => {
       fetchData(inputValue)
         .then((result) => {
           if (result && result.data && Array.isArray(result.data)) {
-            const cities = result.data.map((item: { city: string, country: string, wikiDataId: string }) => {
+            const cities = result.data.map((item: { city: string; country: string; wikiDataId: string }) => {
               return {
                 value: `${item.city}, ${item.country}`,
                 city: item.city,
@@ -34,7 +34,7 @@ export const Locations = () => {
           console.error(error);
         });
     }, 1500),
-    []
+    [],
   );
 
   useEffect(() => {
@@ -44,27 +44,27 @@ export const Locations = () => {
   const handleInputChange = (value: string) => {
     setInputValue(value);
 
-    const filtered = filteredOptions.filter(option =>
-      option.value.toLowerCase().includes(value.toLowerCase())
-    );
+    const filtered = filteredOptions.filter((option) => option.value.toLowerCase().includes(value.toLowerCase()));
+
     setFilteredOptions(filtered);
   };
 
-  const onSelect = (value: string) => {
-    setInputValue(value);
-  };
+  const onSelect = (value: string) => setInputValue(value);
 
   return (
     <div className={css.searchBlockWrapper}>
       <SearchIcon className={css.searchIcon} />
+
       <AutoComplete
         className={css.locations}
         options={filteredOptions}
         onSearch={handleInputChange}
         onSelect={onSelect}
         value={inputValue}
-        placeholder="Search"
-      />
+        popupClassName={css.popup}
+      >
+        <Input className={css.search} placeholder="Search" />
+      </AutoComplete>
     </div>
   );
 };
