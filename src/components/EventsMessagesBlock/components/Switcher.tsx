@@ -1,4 +1,3 @@
-import React, { useRef, useState } from 'react';
 import styles from '../eventsMessagesBlock.module.css';
 import { CheckProps } from '../types';
 
@@ -9,6 +8,9 @@ export function Switcher({ isChecked, setIsChecked }: CheckProps) {
 
   return (
     <div className={styles.switcherContainer}>
+      <div className={!isChecked ? styles.switcher : styles.swtcherIsChecked}>
+        <div>Hello</div>
+      </div>
       <div className={styles.main}>
         <div className={styles.part}>
           <p>Messages</p>
@@ -25,6 +27,7 @@ export function Switcher({ isChecked, setIsChecked }: CheckProps) {
           className={
             isChecked ? styles.sliderIsChecked : styles.sliderIsntChecked
           }
+          id="slider"
         ></span>
       </label>
     </div>

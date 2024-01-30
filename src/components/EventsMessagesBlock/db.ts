@@ -122,7 +122,7 @@ export const messages: IMessageProps[] = [
   },
   {
     id: '3',
-    message: "But I'm very tired today",
+    message: "But I'm very tired today sdasdasdsad",
     image: Mikhael,
     name: 'Mikhael',
     weekDay: 'Thu',
@@ -133,7 +133,7 @@ export const messages: IMessageProps[] = [
   },
   {
     id: '4',
-    message: 'I will write to you tomorrow..',
+    message: 'I will write to you tomorrow okey?s asdasdasdasdas',
     image: Liza,
     name: 'Liza',
     weekDay: 'Thu',
