@@ -1,0 +1,21 @@
+.boxHistory{
+    
+    
+}
+.textHistory{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    height: calc(112px + 10px);
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid var(--Violet_Stroke, #5F4F7F);
+    background: var(--Dark_Elements_Background, #201B27);
+    color: var(--Violet_Stroke, #5F4F7F);
+    font-family: Montserrat;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: 0.1px;
+}
