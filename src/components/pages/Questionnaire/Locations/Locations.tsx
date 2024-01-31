@@ -1,4 +1,4 @@
-import { AutoComplete, Input } from 'antd';
+import { AutoComplete, ConfigProvider, Input } from 'antd';
 import debounce from 'lodash/debounce';
 import { type ReactNode, useCallback, useState } from 'react';
 
@@ -10,10 +10,14 @@ import css from './locations.module.css';
 type Location = {
   city: string;
   country: string;
+  wikiDataId: string;
 };
-type LocationOption = Location & {
+type LocationOption = {
   value: string;
+  city: string;
+  country: string;
   label: ReactNode;
+  key: string;
 };
 
 export const Locations = () => {
@@ -23,16 +27,16 @@ export const Locations = () => {
   const fetchDebounce = useCallback(
     debounce((value: string) => {
       fetchData(value)
-        .then(({ data, wikiDataId }) => {
+        .then(({ data }) => {
           const cities = data
-            .map(({ city, country }: Location) => {
+            .map(({ city, country, wikiDataId }: Location) => {
               if (!city.toLowerCase().startsWith(value.toLowerCase())) return;
 
               const matchCity = city.slice(0, value.length);
               const restCity = city.slice(value.length);
 
               return {
-                value: wikiDataId,
+                value: `${city}, ${country}`,
                 city,
                 country,
                 label: (
@@ -41,11 +45,12 @@ export const Locations = () => {
                     <span className={css.mismatch}>{restCity + ', ' + country}</span>
                   </>
                 ),
+                key: wikiDataId,
               };
             })
             .filter(Boolean);
 
-          setFilteredOptions(cities);
+          setFilteredOptions(cities as LocationOption[]);
         })
         .catch(console.error);
     }, 1500),
@@ -61,18 +66,27 @@ export const Locations = () => {
 
   return (
     <div className={css.searchBlockWrapper}>
-      <SearchIcon className={css.searchIcon} />
-
-      <AutoComplete
-        className={css.locations}
-        options={filteredOptions}
-        onSearch={handleInputChange}
-        onSelect={onSelect}
-        value={inputValue}
-        popupClassName={css.popup}
+      <ConfigProvider
+        theme={{
+          components: {
+            Select: {
+              optionPadding: 0,
+            },
+          },
+        }}
       >
-        <Input className={css.search} placeholder="Search" />
-      </AutoComplete>
+        <SearchIcon className={css.searchIcon} />
+        <AutoComplete
+          className={css.locations}
+          options={filteredOptions}
+          onSearch={handleInputChange}
+          onSelect={onSelect}
+          value={inputValue}
+          popupClassName={css.popup}
+        >
+          <Input className={css.search} placeholder="Search" />
+        </AutoComplete>
+      </ConfigProvider>
     </div>
   );
 };
