@@ -7,17 +7,16 @@ export function Switcher({ isChecked, setIsChecked }: CheckProps) {
   };
 
   return (
-    <div className={styles.switcherContainer}>
-      <div
-        className={
-          isChecked
-            ? styles.switcherContainerIsChecked
-            : styles.switcherContainerIsNonChecked
-        }
-        onClick={handleChecked}
-      >
-        <div className={styles.switcher}>
-          {isChecked ? 'Events' : 'Messages'}
+    <div className={styles.switcherContainer} onClick={handleChecked}>
+      <div className={styles.switcherContainerWrapper}>
+        <div
+          className={styles.switcher}
+          style={{
+            transform: isChecked ? 'translateX(100%)' : 'translateX(0%)',
+          }}
+        >
+          <p>{isChecked ? 'Events' : 'Messages'}</p>
+          <div className={styles.circle}></div>
         </div>
       </div>
       <div className={styles.main}>
@@ -30,15 +29,6 @@ export function Switcher({ isChecked, setIsChecked }: CheckProps) {
           <div className={styles.circle}></div>
         </div>
       </div>
-      <label className={styles.switch}>
-        <input type="checkbox" checked={isChecked} onChange={handleChecked} />
-        <span
-          className={
-            isChecked ? styles.sliderIsChecked : styles.sliderIsntChecked
-          }
-          id="slider"
-        ></span>
-      </label>
     </div>
   );
 }

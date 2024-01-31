@@ -18,10 +18,12 @@ export function MessagesBlock({ messages }: { messages: IMessageProps[] }) {
           customStyles={{ borderColor: '#5F4F7F' }}
         />
       </div>
-      <div className={styles.messageBlockContainer}>
-        {messages.map((message) => (
-          <Message message={message} key={uid()} />
-        ))}
+      <div className="animate__animated animate__fadeIn">
+        <div className={styles.messageBlockContainer}>
+          {messages.map((message) => (
+            <Message message={message} key={uid()} />
+          ))}
+        </div>
       </div>
     </div>
   );

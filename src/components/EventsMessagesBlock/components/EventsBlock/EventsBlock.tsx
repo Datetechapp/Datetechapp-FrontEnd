@@ -4,6 +4,7 @@ import { getAllEvents } from 'store/events/selectors';
 import styles from '../../eventsMessagesBlock.module.css';
 import { useEffect, useState } from 'react';
 import { v4 as uid } from 'uuid';
+import 'animate.css';
 
 export function EventsBlock() {
   const events = useAppSelector(getAllEvents);
@@ -20,7 +21,7 @@ export function EventsBlock() {
   }, [events.length]);
 
   return (
-    <>
+    <div className="animate__animated animate__fadeIn">
       {events
         .map((item) => (
           <Event
@@ -38,6 +39,6 @@ export function EventsBlock() {
       >
         {value !== events.length ? <p>See all</p> : null}
       </div>
-    </>
+    </div>
   );
 }

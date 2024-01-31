@@ -36,7 +36,8 @@
     top: 0;
     left: -16px;
     display: flex;
-    width: 352px;
+    margin-left: 16px;
+    width: 100%;
     height: 100%;
     justify-content: center;
     align-items: center;
@@ -67,104 +68,34 @@
     margin-top: 1px;
 }
 
-
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
 .switcher {
     background: #272533;
     z-index: 1;
-    width: 159px;
+    width: 50%;
     height: 38px;
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 8px;
     border-radius: 30px;
     align-self: flex-end;
-cursor: pointer;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
 }
 
-.switcherContainerIsChecked {
-    display: flex;
-    margin: 1px;
-    justify-content: end;
-    cursor: pointer;
-}
-
-.switcherContainerIsNonChecked{
-    display: flex;
-    margin: 1px;
-    justify-content: start;
-    cursor: pointer;
-}
-
-/* .sliderIsntChecked {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0px;
-    right: 0;
-    bottom: 0;
-    -webkit-transition: .4s;
-    transition: .4s;
-} */
-
-/* .sliderIsntChecked:before {
-    position: absolute;
-    content: "Messages "url('../../assets/EventsMessagesBlock//Circle.svg');
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 38px;
+.switcher p {
+    font-family: Montserrat;
     font-size: 16px;
     font-style: normal;
     font-weight: 600;
     line-height: 20px;
-    width: 159px;
-    background-color: Panel_Background;
-    transition: .4s;
-    border-radius: 100px;
-    margin: 1px;
 }
 
-.sliderIsChecked {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0px;
-    right: 0;
-    bottom: 0;
-    -webkit-transition: .4s;
-    transition: .4s;
-} */
-
-/* .sliderIsChecked:before {
-    position: absolute;
-    content: "Events "url('../../assets/EventsMessagesBlock//Circle.svg');
+.switcherContainerWrapper {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 38px;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 20px;
-    width: 159px;
-    background-color: Panel_Background;
-    transition: .4s;
-    border-radius: 100px;
     margin: 1px;
-} */
-
-
-
-input:checked+.sliderIsChecked:before {
-    -webkit-transform: translateX(100%);
-    -ms-transform: translateX(100%);
-    transform: translateX(100%);
+    cursor: pointer;
+    flex-grow: 1;
 }
 
 .mainPanelWrapper {
@@ -192,7 +123,6 @@ input:checked+.sliderIsChecked:before {
     line-height: 20px;
     height: fit-content;
 }
-
 
 .mainPanelWrapper::-webkit-scrollbar {
     width: 0px;
