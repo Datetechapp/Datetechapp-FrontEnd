@@ -1,13 +1,20 @@
 import { IEventProps } from 'store/events/types';
 import styles from '../../eventsMessagesBlock.module.css';
+import { FC, PropsWithChildren } from 'react';
+import { ModalBox } from 'components/common/modal';
 
-export default function Event({
-  item,
-  showUpNewEventStyle,
-}: {
+interface EventProps {
   item: IEventProps;
   showUpNewEventStyle: string;
-}) {
+  open: boolean;
+  handleChangeOpen: () => void;
+}
+export const Event: FC<PropsWithChildren<EventProps>> = ({
+  item,
+  showUpNewEventStyle,
+  open,
+  handleChangeOpen,
+}) => {
   return (
     <div
       className={
@@ -43,4 +50,4 @@ export default function Event({
       </div>
     </div>
   );
-}
+};
