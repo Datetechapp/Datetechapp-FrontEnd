@@ -8,8 +8,17 @@ export function Switcher({ isChecked, setIsChecked }: CheckProps) {
 
   return (
     <div className={styles.switcherContainer}>
-      <div className={!isChecked ? styles.switcher : styles.swtcherIsChecked}>
-        <div>Hello</div>
+      <div
+        className={
+          isChecked
+            ? styles.switcherContainerIsChecked
+            : styles.switcherContainerIsNonChecked
+        }
+        onClick={handleChecked}
+      >
+        <div className={styles.switcher}>
+          {isChecked ? 'Events' : 'Messages'}
+        </div>
       </div>
       <div className={styles.main}>
         <div className={styles.part}>
