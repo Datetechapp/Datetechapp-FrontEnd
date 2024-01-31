@@ -1,52 +1,60 @@
 import { AutoComplete, Input } from 'antd';
 import debounce from 'lodash/debounce';
-import { useCallback, useEffect, useState } from 'react';
+import { type ReactNode, useCallback, useState } from 'react';
+
 import { fetchData } from '../../../../api';
+
 import { ReactComponent as SearchIcon } from '../../../../assets/CreateAccountForm/searchLocationIcon.svg';
 import css from './locations.module.css';
 
-interface OptionsProps {
+type Location = {
+  city: string;
+  country: string;
+};
+type LocationOption = Location & {
   value: string;
-}
+  label: ReactNode;
+};
 
 export const Locations = () => {
   const [inputValue, setInputValue] = useState('');
-  const [filteredOptions, setFilteredOptions] = useState<OptionsProps[]>([]);
+  const [filteredOptions, setFilteredOptions] = useState<LocationOption[]>([]);
 
   const fetchDebounce = useCallback(
-    debounce((inputValue: string) => {
-      fetchData(inputValue)
-        .then((result) => {
-          if (result && result.data && Array.isArray(result.data)) {
-            const cities = result.data.map((item: { city: string; country: string; wikiDataId: string }) => {
+    debounce((value: string) => {
+      fetchData(value)
+        .then(({ data, wikiDataId }) => {
+          const cities = data
+            .map(({ city, country }: Location) => {
+              if (!city.toLowerCase().startsWith(value.toLowerCase())) return;
+
+              const matchCity = city.slice(0, value.length);
+              const restCity = city.slice(value.length);
+
               return {
-                value: `${item.city}, ${item.country}`,
-                city: item.city,
-                country: item.country,
-                key: item.wikiDataId,
+                value: wikiDataId,
+                city,
+                country,
+                label: (
+                  <>
+                    <span className={css.match}>{matchCity}</span>
+                    <span className={css.mismatch}>{restCity + ', ' + country}</span>
+                  </>
+                ),
               };
-            });
-            setFilteredOptions(cities);
-            console.log(cities);
-          }
+            })
+            .filter(Boolean);
+
+          setFilteredOptions(cities);
         })
-        .catch((error) => {
-          console.error(error);
-        });
+        .catch(console.error);
     }, 1500),
     [],
   );
 
-  useEffect(() => {
-    fetchDebounce(inputValue);
-  }, [inputValue]);
-
   const handleInputChange = (value: string) => {
     setInputValue(value);
-
-    const filtered = filteredOptions.filter((option) => option.value.toLowerCase().includes(value.toLowerCase()));
-
-    setFilteredOptions(filtered);
+    fetchDebounce(value);
   };
 
   const onSelect = (value: string) => setInputValue(value);
