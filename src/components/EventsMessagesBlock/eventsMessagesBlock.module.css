@@ -74,7 +74,7 @@
 }
 
 .switcher {
-    background: #272533;
+    background: Panel_Background;
     z-index: 1;
     width: 50%;
     height: 38px;

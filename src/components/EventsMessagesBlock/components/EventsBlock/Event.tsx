@@ -1,7 +1,6 @@
 import { IEventProps } from 'store/events/types';
-import styles from '../../eventsMessagesBlock.module.css';
 import { FC, PropsWithChildren } from 'react';
-import { ModalBox } from 'components/common/modal';
+import styles from '../../eventsMessagesBlock.module.css';
 
 interface EventProps {
   item: IEventProps;

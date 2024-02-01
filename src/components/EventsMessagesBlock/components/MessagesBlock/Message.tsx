@@ -1,6 +1,6 @@
-import styles from './messagesBlock.module.css';
 import { IMessageProps } from 'store/messages/types';
 import { ReactComponent as PremiumStar } from '../../../../assets/EventsMessagesBlock/PremiumStar.svg';
+import styles from './messagesBlock.module.css';
 
 export function Message({ message }: { message: IMessageProps }) {
   const isOnline = (status: string) => {
@@ -11,6 +11,11 @@ export function Message({ message }: { message: IMessageProps }) {
     }
   };
 
+  const gradientBackground =
+    'linear-gradient(180deg, rgba(151, 71, 255, 1) 0%, rgba(222, 119, 199, 1) 100%)';
+
+  const transparentBackground = 'transparent';
+
   return (
     <div className={styles.messageContainer}>
       <div className={styles.messageWrapper}>
@@ -19,8 +24,8 @@ export function Message({ message }: { message: IMessageProps }) {
             className={styles.imageWrapper}
             style={{
               background: message.premium
-                ? 'linear-gradient(180deg, rgba(151, 71, 255, 1) 0%, rgba(222, 119, 199, 1) 100%)'
-                : 'transparent',
+                ? gradientBackground
+                : transparentBackground,
             }}
           >
             <img src={message.image} alt={message.name} />

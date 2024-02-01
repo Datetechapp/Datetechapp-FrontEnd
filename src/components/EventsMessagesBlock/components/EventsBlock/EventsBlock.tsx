@@ -3,19 +3,23 @@ import { useAppSelector } from 'hooks/hooks';
 import { getAllEvents } from 'store/events/selectors';
 import { useEffect, useState } from 'react';
 import { ModalBox } from 'components/common/modal';
-import { v4 as uid } from 'uuid';
 import SimpleCloseIcon from '../../../../assets/SupportServicePanel/SimpleCloseIcon.svg';
+import { Button } from 'components/common';
+import { v4 as uid } from 'uuid';
 import styles from '../../eventsMessagesBlock.module.css';
 import 'animate.css';
-import { Button } from 'components/common';
 
 export function EventsBlock() {
+  const defaultLengthOfeventItems = 6;
+  const defaultEventNewContainerStyle = 'eventNewContainer';
+
   const events = useAppSelector(getAllEvents);
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState(6);
+  const [value, setValue] = useState(defaultLengthOfeventItems);
   const [eventId, setEventId] = useState('');
-  const [showUpNewEventStyle, setShowUpNewEventStyle] =
-    useState('eventNewContainer');
+  const [showUpNewEventStyle, setShowUpNewEventStyle] = useState(
+    defaultEventNewContainerStyle,
+  );
 
   useEffect(() => {
     setTimeout(() => {
