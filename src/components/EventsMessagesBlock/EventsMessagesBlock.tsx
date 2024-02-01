@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { MainPanel, Switcher } from './components';
 import styles from './eventsMessagesBlock.module.css';
+
 export function EventsMessagesBlock() {
   const [isChecked, setIsChecked] = useState(false);
 

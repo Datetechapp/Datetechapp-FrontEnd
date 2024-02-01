@@ -1,9 +1,10 @@
 import { useAppSelector } from 'hooks/hooks';
-import styles from '../eventsMessagesBlock.module.css';
 import { EventsBlock } from './EventsBlock/EventsBlock';
 import { MessagesBlock } from './MessagesBlock/MessagesBlock';
 import { getAllEvents } from '../../../store/events/selectors';
 import { getAllMessages } from '../../../store/messages/selectors';
+import styles from '../eventsMessagesBlock.module.css';
+
 export function MainPanel({ isChecked }: { isChecked: boolean }) {
   const events = useAppSelector(getAllEvents);
   const messages = useAppSelector(getAllMessages);

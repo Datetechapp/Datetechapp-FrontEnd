@@ -10,12 +10,12 @@ import styles from '../../eventsMessagesBlock.module.css';
 import 'animate.css';
 
 export function EventsBlock() {
-  const defaultLengthOfeventItems = 6;
+  const defaultLengthOfEventItems = 6;
   const defaultEventNewContainerStyle = 'eventNewContainer';
 
   const events = useAppSelector(getAllEvents);
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState(defaultLengthOfeventItems);
+  const [value, setValue] = useState(defaultLengthOfEventItems);
   const [eventId, setEventId] = useState('');
   const [showUpNewEventStyle, setShowUpNewEventStyle] = useState(
     defaultEventNewContainerStyle,
@@ -25,8 +25,6 @@ export function EventsBlock() {
     setTimeout(() => {
       setShowUpNewEventStyle('eventContainer');
     }, 2000);
-
-    return;
   }, [events.length]);
 
   const handleChangeOpen = () => {
@@ -69,7 +67,7 @@ export function EventsBlock() {
         <div className={styles.eventsModalContainer}>
           <div className={styles.eventsModalHeader}>
             <div className={styles.headerTitle}>
-              <span>{event?.event}</span>
+              <span>{event?.event}&nbsp;</span>
               <span> with&nbsp;</span>
               <span>{event?.name}</span>
             </div>
@@ -88,15 +86,15 @@ export function EventsBlock() {
             </div>
             <div className={styles.eventInfo}>
               <div className={styles.eventInfoDescription}>
-                <span>Location:</span>
+                <span>Location:&nbsp;</span>
                 <span>Stade Roland-Garros, Paris, France</span>
               </div>
               <div className={styles.eventInfoDescription}>
-                <span>Date:</span>
+                <span>Date:&nbsp;</span>
                 <span>{event?.dateEvent}</span>
               </div>
               <div className={styles.eventInfoDescription}>
-                <span>Time:</span>
+                <span>Time:&nbsp;</span>
                 <span>{event?.time} AM</span>
               </div>
             </div>

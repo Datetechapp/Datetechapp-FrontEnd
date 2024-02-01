@@ -332,14 +332,11 @@
     margin-bottom: 32px;
 }
 
-.headerTitle span:nth-child(1) {
-    font-family: Montserrat;
-    font-size: 22px;
-    font-style: normal;
-    font-weight: 600;
+.headerTitle {
+    display: flex;
 }
 
-.headerTitle span:nth-child(3) {
+.headerTitle span:nth-child(1) {
     font-family: Montserrat;
     font-size: 22px;
     font-style: normal;
@@ -351,6 +348,13 @@
     font-size: 22px;
     font-style: normal;
     font-weight: 400;
+}
+
+.headerTitle span:nth-child(3) {
+    font-family: Montserrat;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 600;
 }
 
 .eventInfo {
@@ -377,14 +381,12 @@
 }
 
 .userLogo img {
-
     width: 100px;
     height: 100px;
 }
 
 .eventInfoDescription {
     display: flex;
-    gap: 4px;
 }
 
 .eventInfoDescription span:nth-child(1) {

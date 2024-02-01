@@ -6,6 +6,7 @@ interface EventProps {
   item: IEventProps;
   showUpNewEventStyle: string;
 }
+
 export const Event: FC<PropsWithChildren<EventProps>> = ({
   item,
   showUpNewEventStyle,
