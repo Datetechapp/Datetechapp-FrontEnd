@@ -1,11 +1,13 @@
 import { Event } from './Event';
 import { useAppSelector } from 'hooks/hooks';
 import { getAllEvents } from 'store/events/selectors';
-import styles from '../../eventsMessagesBlock.module.css';
 import { useEffect, useState } from 'react';
-import { v4 as uid } from 'uuid';
-import 'animate.css';
 import { ModalBox } from 'components/common/modal';
+import { v4 as uid } from 'uuid';
+import SimpleCloseIcon from '../../../../assets/SupportServicePanel/SimpleCloseIcon.svg';
+import styles from '../../eventsMessagesBlock.module.css';
+import 'animate.css';
+import { Button } from 'components/common';
 
 export function EventsBlock() {
   const events = useAppSelector(getAllEvents);
@@ -32,6 +34,8 @@ export function EventsBlock() {
     handleChangeOpen();
   };
 
+  const event = events.find((item) => item.id === eventId);
+
   return (
     <div className="animate__animated animate__fadeIn">
       {events
@@ -41,8 +45,6 @@ export function EventsBlock() {
               item={item}
               key={uid()}
               showUpNewEventStyle={showUpNewEventStyle}
-              handleChangeOpen={handleChangeOpen}
-              open={open}
             />
           </div>
         ))
@@ -55,8 +57,53 @@ export function EventsBlock() {
       >
         {value !== events.length ? <p>See all</p> : null}
       </div>
-      <ModalBox open={open} handleChangeOpen={handleChangeOpen}>
-        <div>{eventId}</div>
+      <ModalBox
+        open={open}
+        handleChangeOpen={handleChangeOpen}
+        maxWidth="600px"
+      >
+        <div className={styles.eventsModalContainer}>
+          <div className={styles.eventsModalHeader}>
+            <div className={styles.headerTitle}>
+              <span>{event?.event}</span>
+              <span> with&nbsp;</span>
+              <span>{event?.name}</span>
+            </div>
+            <img
+              src={SimpleCloseIcon}
+              alt="SimpleCloseIcon"
+              style={{
+                cursor: 'pointer',
+              }}
+              onClick={handleChangeOpen}
+            />
+          </div>
+          <div className={styles.eventsModalMain}>
+            <div className={styles.userLogo}>
+              <img src={event?.image} alt={event?.name} />
+            </div>
+            <div className={styles.eventInfo}>
+              <div className={styles.eventInfoDescription}>
+                <span>Location:</span>
+                <span>Stade Roland-Garros, Paris, France</span>
+              </div>
+              <div className={styles.eventInfoDescription}>
+                <span>Date:</span>
+                <span>{event?.dateEvent}</span>
+              </div>
+              <div className={styles.eventInfoDescription}>
+                <span>Time:</span>
+                <span>{event?.time} AM</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className={styles.eventModalButtons}>
+          <div className={styles.linearBorder}>
+            <Button className={styles.cancelButton}>Cancel</Button>
+          </div>
+          <Button className={styles.editButton}>Edit</Button>
+        </div>
       </ModalBox>
     </div>
   );

@@ -58,6 +58,11 @@
     font-style: normal;
     font-weight: 600;
     line-height: 16px;
+    transition: all 0.2s ease-in-out;
+}
+
+.part:hover p{
+    color: white;
 }
 
 .circle {
@@ -313,4 +318,127 @@
 
 .seeAll p:active {
     color: Violet_Stroke
+}
+
+.eventsModalContainer{
+   display: flex;
+   width: 100%;
+   flex-direction: column;
+}
+
+.eventsModalHeader{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 32px;
+}
+
+.headerTitle span:nth-child(1){
+    font-family: Montserrat;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+}
+
+.headerTitle span:nth-child(3){
+    font-family: Montserrat;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+}
+
+.headerTitle span:nth-child(2){
+    font-family: Montserrat;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 300;
+}
+
+.eventInfo{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.eventsModalMain{
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-start;
+    gap: 24px;
+    align-items: center;
+    padding-bottom: 24px;
+    border-bottom: 1px #32303E solid;
+    margin-bottom: 24px;
+}
+
+.userLogo{
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.userLogo img{
+
+    width: 100px;
+    height: 100px;
+}
+
+.eventInfoDescription{
+    display: flex;
+    gap: 4px;
+}
+
+.eventInfoDescription span:nth-child(1){
+    font-family: Montserrat;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+}
+
+.eventInfoDescription span:nth-child(2){
+    font-family: Montserrat;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+}
+
+.eventModalButtons{
+    display: flex;
+    width: 100%;
+    gap: 24px;
+}
+
+.linearBorder{
+    background: linear-gradient(180deg, rgba(151, 71, 255, 1) 0%, rgba(222, 119, 199, 1) 100%);
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.cancelButton{
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+    border-radius: 5px;
+    border: transparent;
+    color: white;
+    padding: 10px 0px;    
+    background: Dark_Background;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+}
+
+.editButton{
+    width: 50%;
+    background: linear-gradient(180deg, rgba(151, 71, 255, 1) 0%, rgba(222, 119, 199, 1) 100%);
+    color: white;
+    border: transparent;
+    border-radius: 5px;
+    padding: 10px 0px; 
+    font-family: Montserrat;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
 }

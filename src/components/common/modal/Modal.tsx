@@ -8,12 +8,14 @@ import { FC, PropsWithChildren } from 'react';
 interface ModalBoxProps {
   open: boolean;
   handleChangeOpen: () => void;
+  maxWidth?: string;
 }
 
 export const ModalBox: FC<PropsWithChildren<ModalBoxProps>> = ({
   children,
   open,
   handleChangeOpen,
+  maxWidth,
 }) => {
   return (
     <div>
@@ -28,7 +30,14 @@ export const ModalBox: FC<PropsWithChildren<ModalBoxProps>> = ({
         }}
       >
         <Fade in={open}>
-          <Box className={styles.modalContainer}>{children}</Box>
+          <Box
+            className={styles.modalContainer}
+            sx={{
+              maxWidth,
+            }}
+          >
+            {children}
+          </Box>
         </Fade>
       </Modal>
     </div>

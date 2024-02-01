@@ -6,14 +6,10 @@ import { ModalBox } from 'components/common/modal';
 interface EventProps {
   item: IEventProps;
   showUpNewEventStyle: string;
-  open: boolean;
-  handleChangeOpen: () => void;
 }
 export const Event: FC<PropsWithChildren<EventProps>> = ({
   item,
   showUpNewEventStyle,
-  open,
-  handleChangeOpen,
 }) => {
   return (
     <div

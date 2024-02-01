@@ -7,4 +7,5 @@ export interface IEventProps {
   event: string;
   time: string;
   isNew: boolean;
+  dateEvent?: string;
 }
