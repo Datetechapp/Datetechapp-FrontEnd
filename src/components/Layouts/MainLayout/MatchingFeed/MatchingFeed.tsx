@@ -1,36 +1,36 @@
-import { useState } from "react";
-import styles from "./MatchingFeed.module.css";
-import profilePic from "../../../../assets/feed/profile_img.png";
+import { useState } from 'react';
+import styles from './MatchingFeed.module.css';
+import profilePic from '../../../../assets/feed/profile_img.png';
 
 const profilesData = [
   {
     id: 1,
-    name: "Mary",
-    age: "22",
-    city: "Paris",
-    country: "France",
+    name: 'Mary',
+    age: '22',
+    city: 'Paris',
+    country: 'France',
     img: profilePic,
   },
   {
     id: 2,
-    name: "Jane",
-    age: "28",
-    city: "Paris",
-    country: "France",
+    name: 'Jane',
+    age: '28',
+    city: 'Paris',
+    country: 'France',
     img: profilePic,
   },
   {
     id: 3,
-    name: "Claire",
-    age: "24",
-    city: "Paris",
-    country: "France",
+    name: 'Claire',
+    age: '24',
+    city: 'Paris',
+    country: 'France',
     img: profilePic,
   },
 ];
 
 const MatchingFeed = () => {
-  const [isActive, setActive] = useState(false);
+  const [activeButton, setActiveButton] = useState('Interested');
 
   return (
     <div className={styles.matching_container}>
@@ -50,8 +50,22 @@ const MatchingFeed = () => {
       </div>
       <div className={styles.matching_feed}>
         <div className={styles.matching_nav}>
-          <div className={styles.nav_category}>Interested in you</div>
-          <div className={styles.nav_category}>New People</div>
+          <div
+            className={`${styles.nav_category} ${
+              activeButton === 'Interested' ? styles.interested_active : ''
+            }`}
+            onClick={() => setActiveButton('Interested')}
+          >
+            Interested in you
+          </div>
+          <div
+            className={`${styles.nav_category} ${
+              activeButton === 'NewPeople' ? styles.new_people_active : ''
+            }`}
+            onClick={() => setActiveButton('NewPeople')}
+          >
+            New People
+          </div>
         </div>
         <div className={styles.matching_profiles}>
           {profilesData.map((profile) => (
@@ -61,10 +75,10 @@ const MatchingFeed = () => {
                   <img className={styles.profile_picture} src={profile.img} />
                   <div>
                     <div className={styles.profile_city}>
-                      {profile.city + ", " + profile.country}
+                      {profile.city + ', ' + profile.country}
                     </div>
                     <div className={styles.profile_name}>
-                      {profile.name + ", " + profile.age}
+                      {profile.name + ', ' + profile.age}
                     </div>
                   </div>
                 </div>

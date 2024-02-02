@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import styles from "../Filters.module.css";
-import locationIcon from "../../../../../assets/user/location.svg";
+import React, { useState, useEffect } from 'react';
+import styles from '../Filters.module.css';
+import locationIcon from '../../../../../assets/user/location.svg';
 
 const Geolocation = () => {
   const maxRange = 20;
@@ -14,10 +14,10 @@ const Geolocation = () => {
   };
 
   const setBackgroundColor = (normalizedValue: number) => {
-    const inputLocation = document.getElementById("location-range");
+    const inputLocation = document.getElementById('location-range');
 
     inputLocation?.style.setProperty(
-      "--sliderLinGra",
+      '--sliderLinGra',
       `linear-gradient(to right, #C896EF ${normalizedValue}%, #5F4F7F ${normalizedValue}%)`,
     );
   };
@@ -33,7 +33,7 @@ const Geolocation = () => {
   };
 
   const renderSymbol = () => {
-    return locationRange === maxRange ? "> " : "< ";
+    return locationRange === maxRange ? '> ' : '< ';
   };
 
   return (
