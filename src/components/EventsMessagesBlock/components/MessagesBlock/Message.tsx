@@ -3,13 +3,8 @@ import { ReactComponent as PremiumStar } from '../../../../assets/EventsMessages
 import styles from './messagesBlock.module.css';
 
 export function Message({ message }: { message: IMessageProps }) {
-  const isOnline = (status: string) => {
-    if (status == 'online') {
-      return 'onlineStatus';
-    } else {
-      return '';
-    }
-  };
+  const isOnline = (status: string) =>
+    status === 'online' ? 'onlineStatus' : '';
 
   const gradientBackground =
     'linear-gradient(180deg, rgba(151, 71, 255, 1) 0%, rgba(222, 119, 199, 1) 100%)';
@@ -50,11 +45,11 @@ export function Message({ message }: { message: IMessageProps }) {
             >
               {message.message}
             </p>
-            {message.isNew ? (
+            {message.isNew && (
               <div className={styles.newMessageIcon}>
                 <p>1</p>
               </div>
-            ) : null}
+            )}
           </div>
         </div>
       </div>

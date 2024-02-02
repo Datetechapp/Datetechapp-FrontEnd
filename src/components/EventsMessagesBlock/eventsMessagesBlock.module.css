@@ -55,7 +55,6 @@
 .part p {
     color: Violet_Stroke;
     font-size: 16px;
-    font-style: normal;
     font-weight: 600;
     line-height: 16px;
     transition: all 0.2s ease-in-out;
@@ -91,7 +90,6 @@
 .switcher p {
     font-family: Montserrat;
     font-size: 16px;
-    font-style: normal;
     font-weight: 600;
     line-height: 20px;
 }
@@ -123,7 +121,6 @@
     color: Violet_Stroke;
     text-align: center;
     font-size: 16px;
-    font-style: normal;
     font-weight: 500;
     line-height: 20px;
     height: fit-content;
@@ -220,7 +217,6 @@
 .iconRightPartInner p:nth-child(1) {
     font-family: Montserrat;
     font-size: 18px;
-    font-style: normal;
     font-weight: 600;
     line-height: 22px;
 }
@@ -228,7 +224,6 @@
 .iconRightPartInner p:nth-child(2) {
     font-family: Montserrat;
     font-size: 12px;
-    font-style: normal;
     font-weight: 500;
     line-height: 14px;
 }
@@ -240,7 +235,6 @@
 .who span:nth-child(1) {
     font-family: Montserrat;
     font-size: 14px;
-    font-style: normal;
     font-weight: 500;
     line-height: 18px;
 }
@@ -248,7 +242,6 @@
 .who span:nth-child(2) {
     font-family: Montserrat;
     font-size: 14px;
-    font-style: normal;
     font-weight: 500;
     line-height: 18px;
     color: Violet_Active;
@@ -261,7 +254,6 @@
 .where span:nth-child(1) {
     font-family: Montserrat;
     font-size: 12px;
-    font-style: normal;
     font-weight: 600;
     line-height: 14px;
 }
@@ -269,7 +261,6 @@
 .where span:nth-child(2) {
     font-family: Montserrat;
     font-size: 12px;
-    font-style: normal;
     font-weight: 400;
     line-height: 14px;
 }
@@ -281,7 +272,6 @@
 .when span:nth-child(1) {
     font-family: Montserrat;
     font-size: 12px;
-    font-style: normal;
     font-weight: 600;
     line-height: 14px;
 }
@@ -289,7 +279,6 @@
 .when span:nth-child(2) {
     font-family: Montserrat;
     font-size: 12px;
-    font-style: normal;
     font-weight: 400;
     line-height: 14px;
 }
@@ -305,7 +294,6 @@
 .seeAll p {
     font-family: Montserrat;
     font-size: 12px;
-    font-style: normal;
     font-weight: 500;
     line-height: 14px;
     color: Back_White;
@@ -339,21 +327,18 @@
 .headerTitle span:nth-child(1) {
     font-family: Montserrat;
     font-size: 22px;
-    font-style: normal;
     font-weight: 600;
 }
 
 .headerTitle span:nth-child(2) {
     font-family: Montserrat;
     font-size: 22px;
-    font-style: normal;
     font-weight: 400;
 }
 
 .headerTitle span:nth-child(3) {
     font-family: Montserrat;
     font-size: 22px;
-    font-style: normal;
     font-weight: 600;
 }
 
@@ -392,14 +377,12 @@
 .eventInfoDescription span:nth-child(1) {
     font-family: Montserrat;
     font-size: 16px;
-    font-style: normal;
     font-weight: 600;
 }
 
 .eventInfoDescription span:nth-child(2) {
     font-family: Montserrat;
     font-size: 16px;
-    font-style: normal;
     font-weight: 400;
 }
 
@@ -428,7 +411,6 @@
     background: Dark_Background;
     font-family: Montserrat;
     font-size: 16px;
-    font-style: normal;
     font-weight: 600;
 }
 
@@ -441,6 +423,5 @@
     padding: 10px 0px;
     font-family: Montserrat;
     font-size: 16px;
-    font-style: normal;
     font-weight: 600;
 }

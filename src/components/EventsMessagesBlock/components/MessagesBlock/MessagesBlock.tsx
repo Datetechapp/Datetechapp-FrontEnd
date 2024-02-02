@@ -2,11 +2,12 @@ import SearchInput from 'components/pages/RequestPage/components/SearchInput';
 import styles from './messagesBlock.module.css';
 import { useState } from 'react';
 import { Message } from './Message';
-import { IMessageProps } from 'store/messages/types';
-import { v4 as uid } from 'uuid';
+import { useAppSelector } from 'hooks/hooks';
+import { getAllMessages } from 'store/messages/selectors';
 
-export function MessagesBlock({ messages }: { messages: IMessageProps[] }) {
+export function MessagesBlock() {
   const [text, setText] = useState('');
+  const messages = useAppSelector(getAllMessages);
 
   return (
     <div className={styles.container}>
@@ -21,7 +22,7 @@ export function MessagesBlock({ messages }: { messages: IMessageProps[] }) {
       <div className="animate__animated animate__fadeIn">
         <div className={styles.messageBlockContainer}>
           {messages.map((message) => (
-            <Message message={message} key={uid()} />
+            <Message message={message} key={message.id} />
           ))}
         </div>
       </div>

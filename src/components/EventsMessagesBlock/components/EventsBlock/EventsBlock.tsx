@@ -14,9 +14,7 @@ export function EventsBlock() {
   const defaultEventNewContainerStyle = 'eventNewContainer';
 
   const events = useAppSelector(getAllEvents);
-  const [open, setOpen] = useState(false);
   const [value, setValue] = useState(defaultLengthOfEventItems);
-  const [eventId, setEventId] = useState('');
   const [showUpNewEventStyle, setShowUpNewEventStyle] = useState(
     defaultEventNewContainerStyle,
   );
@@ -27,27 +25,24 @@ export function EventsBlock() {
     }, 2000);
   }, [events.length]);
 
+  const [eventState, setEventState] = useState({ open: false, eventId: '' });
+
   const handleChangeOpen = () => {
-    setOpen(!open);
+    setEventState({ ...eventState, open: !eventState.open });
   };
 
   const showModal = (id: string) => {
-    setEventId(id);
-    handleChangeOpen();
+    setEventState({ ...eventState, eventId: id, open: true });
   };
 
-  const event = events.find((item) => item.id === eventId);
+  const event = events.find((item) => item.id === eventState.eventId);
 
   return (
     <div className="animate__animated animate__fadeIn">
       {events
         .map((item) => (
-          <div onClick={() => showModal(item.id)}>
-            <Event
-              item={item}
-              key={uid()}
-              showUpNewEventStyle={showUpNewEventStyle}
-            />
+          <div onClick={() => showModal(item.id)} key={item.id}>
+            <Event item={item} showUpNewEventStyle={showUpNewEventStyle} />
           </div>
         ))
         .splice(0, value)}
@@ -60,7 +55,7 @@ export function EventsBlock() {
         {value !== events.length ? <p>See all</p> : null}
       </div>
       <ModalBox
-        open={open}
+        open={eventState.open}
         handleChangeOpen={handleChangeOpen}
         maxWidth="600px"
       >

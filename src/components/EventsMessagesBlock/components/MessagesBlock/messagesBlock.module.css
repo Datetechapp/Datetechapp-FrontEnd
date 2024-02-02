@@ -80,7 +80,6 @@
 .headerMessage p:nth-child(1) {
     font-family: Montserrat;
     font-size: 16px;
-    font-style: normal;
     font-weight: 600;
     line-height: 20px;
 }
@@ -88,7 +87,6 @@
 .headerMessage p:nth-child(2) {
     font-family: Montserrat;
     font-size: 12px;
-    font-style: normal;
     font-weight: 400;
     line-height: 14px;
     position: absolute;
@@ -106,7 +104,6 @@
     overflow: hidden;
     font-family: Montserrat;
     font-size: 16px;
-    font-style: normal;
     font-weight: 400;
     line-height: 20px;
     flex-grow: 1;
@@ -130,6 +127,5 @@
     color: var(--Dark_Background, #1F1D2B);
     font-family: Montserrat;
     font-size: 10px;
-    font-style: normal;
     font-weight: 600;
 }
