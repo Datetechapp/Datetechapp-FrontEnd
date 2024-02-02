@@ -7,9 +7,12 @@ import arrow from '../../../../assets/feed/arrow.svg';
 import logo from '../../../../assets/ModalAuth/logo.svg';
 import avatar from '../../../../assets/user/avatar Ivan.svg';
 import './index.css';
+import ModalPremium from './ModalPremium/ModalPremium';
 
 export const MainLayoutHeader: FC = () => {
   const [dropdownVisible, setDropdownVisible] = useState(false);
+  const [isModalOpen, setModalOpen] = useState(false);
+
   const dropdownRef = useRef<HTMLDivElement>(null);
   const handleDropdownClick = () => {
     setDropdownVisible(!dropdownVisible);
@@ -35,6 +38,10 @@ export const MainLayoutHeader: FC = () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
 
   return (
     <div className="header__wrapper">
@@ -71,10 +78,22 @@ export const MainLayoutHeader: FC = () => {
               </div>
             </div>
 
-            <img src={arrow} alt="button arrow" className="user_img" />
+            <img
+              src={arrow}
+              alt="button arrow"
+              className={`user_img ${dropdownVisible ? `arrow_rotate` : ''}`}
+            />
           </div>
         </button>
-        {dropdownVisible && <DropdownContent closeDropdown={closeDropdown} />}
+        {dropdownVisible && (
+          <DropdownContent
+            closeDropdown={closeDropdown}
+            setModalOpen={setModalOpen}
+          />
+        )}
+        {isModalOpen && (
+          <ModalPremium isOpen={isModalOpen} closeModal={closeModal} />
+        )}
       </div>
     </div>
   );

@@ -15,10 +15,12 @@ const ModalPremium: React.FC<ModalPremiumProps> = ({ isOpen, closeModal }) => {
           <div className={styles.overlay} onClick={closeModal}></div>
           <div className={styles.modal_premium_wrap}>
             <div className={styles.modal_premium}>
-              <div className="logo">
+              <div className={styles.premium_logo}>
                 <div></div>
                 <img src={logo} alt="logo" />
-                <div className={styles.logo_button}>x</div>
+                <div className={styles.logo_button} onClick={closeModal}>
+                  ×
+                </div>
               </div>
               <div>
                 <div className={styles.header_premium}>Become a Premium</div>
