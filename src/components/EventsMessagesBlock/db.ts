@@ -13,7 +13,7 @@ export const events: IEventProps[] = [
     event: 'Tennis',
     time: '11:11',
     isNew: true,
-    dateEvent: '29 August 2024',
+    dateEvent: '08 February 2024',
   },
   {
     id: 'ddc842ca-8076-44aa-9f1b-df617f5108e8',
@@ -24,7 +24,7 @@ export const events: IEventProps[] = [
     event: 'Football',
     time: '12:42',
     isNew: true,
-    dateEvent: '01 September 2024',
+    dateEvent: '05 February 2024',
   },
   {
     id: '91f9fc47-6cba-4d0e-b178-725a7097aeed',
@@ -35,7 +35,7 @@ export const events: IEventProps[] = [
     event: 'Theatre',
     time: '09:03',
     isNew: false,
-    dateEvent: '10 March 2024',
+    dateEvent: '02 July 2024',
   },
   {
     id: 'f4ec0016-e9d0-4061-aa8f-2a1757a5bb5e',
@@ -46,7 +46,7 @@ export const events: IEventProps[] = [
     event: 'Coffee',
     time: '04:12',
     isNew: false,
-    dateEvent: '05 September 2024',
+    dateEvent: '16 November 2024',
   },
   {
     id: '74a96dca-f912-4d0c-ad0a-10ef3ffb0bcb',
@@ -57,7 +57,7 @@ export const events: IEventProps[] = [
     event: 'Cinema',
     time: '08:09',
     isNew: false,
-    dateEvent: '28 February 2024',
+    dateEvent: '31 June 2024',
   },
   {
     id: 'cf0c33ff-65d6-44bd-9871-e6a5a667e78d',
@@ -68,7 +68,7 @@ export const events: IEventProps[] = [
     event: 'Tennis',
     time: '10:07',
     isNew: false,
-    dateEvent: '01 July 2024',
+    dateEvent: '20 October 2024',
   },
   {
     id: '24847982-6b69-4afc-a44f-df1d3837cabb',
@@ -79,7 +79,7 @@ export const events: IEventProps[] = [
     event: 'Drinking beer',
     time: '04:49',
     isNew: false,
-    dateEvent: '12 October 2024',
+    dateEvent: '28 November 2024',
   },
   {
     id: 'ca615d09-ad4a-4447-9562-fd3b9566ddc8',
@@ -90,7 +90,7 @@ export const events: IEventProps[] = [
     event: 'Cafe',
     time: '10:48',
     isNew: false,
-    dateEvent: '25 November 2024',
+    dateEvent: '31 April 2024',
   },
 ];
 
