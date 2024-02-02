@@ -1,19 +1,16 @@
 import { Outlet } from 'react-router-dom';
 import style from './PaymentPageLayout.module.css';
 import { PaymentBar } from './components/PaymentBar';
-import { PaymentHistory } from './components/PaymentHistory';
+import { PaymentSubscription } from './components/PaymentSubscription';
 
 export const PaymentPageLayout = () => {
   return (
     <div className={style.container}>
       <div className={style.leftBar}>
         <PaymentBar />
-        <div>
-          <Outlet />
-        </div>
       </div>
       <div className={style.mainContent}>
-        <PaymentHistory />
+        <Outlet />
       </div>
     </div>
   );

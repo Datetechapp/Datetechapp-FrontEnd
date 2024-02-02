@@ -1,10 +1,7 @@
 .containerBar{
+    height: 100%;
     padding: 24px 16px;
     background: var(--Panel_Background, #272533);
-    flex-direction: column;
-    align-items: flex-start;
-    flex-shrink: 0;
-    max-width: 352px;
 }
 .titleBar{
     padding: calc(16px - 8px) 0;
@@ -20,10 +17,12 @@
     -webkit-text-fill-color: transparent;
 }
 .linksBox{
-padding: 16px 0;
+    padding: 16px 0;
 }
 .linkItem{
+    text-decoration: none;
     cursor: pointer;
+    border-radius: 4px;
     padding: 8px;
     width: 100%;
     display: flex;
@@ -35,7 +34,7 @@ padding: 16px 0;
     font-size: 14px;
     font-style: normal;
     font-weight: 500;
-    line-height: 18px; /* 128.571% */
+    line-height: 18px;
     letter-spacing: 0.1px;
 }
 .linkItem img{
@@ -43,6 +42,9 @@ padding: 16px 0;
 }
 .linkItem:first-child{
     margin-bottom: 4px;
+}
+.linkItem.active{
+    background-color: #32303e;
 }
 .btnBar{
     width: 100%;
