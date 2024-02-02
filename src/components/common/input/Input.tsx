@@ -18,6 +18,7 @@ interface InputProps {
   onBlur?: (e: ChangeEvent<HTMLInputElement>) => void;
   defaultChecked?: boolean;
   isDisabled?: boolean;
+  style?: object;
 }
 
 export const Input: FC<InputProps> = ({

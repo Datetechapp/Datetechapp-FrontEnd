@@ -91,13 +91,14 @@ export function CustomizedAccordions() {
 
   return (
     <div>
-      {accordionData.map((item) => (
+      {accordionData.map((item, i) => (
         <Accordion
           expanded={expanded === `panel${item.panel}`}
           onChange={handleChange(`panel${item.panel}`)}
           sx={{
             borderBottom: '1px solid #272533',
           }}
+          key={i}
         >
           <AccordionSummary
             aria-controls="panel1d-content"

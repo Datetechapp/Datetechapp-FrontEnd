@@ -28,6 +28,7 @@ export const Locations = () => {
                 };
               },
             );
+
             setFilteredOptions(cities);
           }
         })
