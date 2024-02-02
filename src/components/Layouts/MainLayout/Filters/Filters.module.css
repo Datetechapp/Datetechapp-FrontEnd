@@ -1,9 +1,8 @@
 .filters {
-  
-  width:  296px;
+  width: 296px;
   display: flex;
-flex-direction: column;
-height: fit-content;
+  flex-direction: column;
+  height: fit-content;
 }
 
 .filters_header {
