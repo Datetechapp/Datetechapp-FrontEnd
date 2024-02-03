@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import styles from './MatchingFeed.module.css';
 import profilePic from '../../../../assets/feed/profile_img.png';
+import MatchedProfile from './MatchedProfile/MatchedProfile';
 
-const profilesData = [
+const profilesDataInterestedInYou = [
   {
     id: 1,
     name: 'Mary',
@@ -29,13 +30,69 @@ const profilesData = [
   },
 ];
 
+const profilesDataNewPeople = [
+  {
+    id: 1,
+    name: 'Anna',
+    age: '22',
+    city: 'Paris',
+    country: 'France',
+    img: profilePic,
+  },
+  {
+    id: 2,
+    name: 'Tony',
+    age: '28',
+    city: 'Paris',
+    country: 'France',
+    img: profilePic,
+  },
+  {
+    id: 3,
+    name: 'Milly',
+    age: '24',
+    city: 'Paris',
+    country: 'France',
+    img: profilePic,
+  },
+];
+
 const MatchingFeed = () => {
   const [activeButton, setActiveButton] = useState('Interested');
+  const [profilesData, setProfilesData] = useState(
+    activeButton === 'Interested'
+      ? profilesDataInterestedInYou
+      : profilesDataNewPeople,
+  );
+
+  const handleDeleteProfile = (id: number) => {
+    const updatedProfilesData = profilesData.filter(
+      (profile) => profile.id !== id,
+    );
+
+    setProfilesData(updatedProfilesData);
+  };
+
+  const switchTab = (tab: string) => {
+    setActiveButton(tab);
+
+    if (tab === 'Interested') {
+      setProfilesData(profilesDataInterestedInYou);
+    } else if (tab === 'NewPeople') {
+      setProfilesData(profilesDataNewPeople);
+    }
+  };
 
   return (
     <div className={styles.matching_container}>
       <div>
-        <button className={styles.container_icons}>
+        <button
+          className={styles.container_icons}
+          onClick={(event) => {
+            event.stopPropagation();
+            //onDelete();
+          }}
+        >
           <svg
             className={`${styles.closeIcon} ${styles.matchingButtons}`}
             width="22"
@@ -54,7 +111,7 @@ const MatchingFeed = () => {
             className={`${styles.nav_category} ${
               activeButton === 'Interested' ? styles.interested_active : ''
             }`}
-            onClick={() => setActiveButton('Interested')}
+            onClick={() => switchTab('Interested')}
           >
             Interested in you
           </div>
@@ -62,36 +119,18 @@ const MatchingFeed = () => {
             className={`${styles.nav_category} ${
               activeButton === 'NewPeople' ? styles.new_people_active : ''
             }`}
-            onClick={() => setActiveButton('NewPeople')}
+            onClick={() => switchTab('NewPeople')}
           >
             New People
           </div>
         </div>
         <div className={styles.matching_profiles}>
           {profilesData.map((profile) => (
-            <div key={profile.id} className={styles.profile_matched}>
-              <div className={styles.profile_container_info}>
-                <div className={styles.profile_info}>
-                  <img className={styles.profile_picture} src={profile.img} />
-                  <div>
-                    <div className={styles.profile_city}>
-                      {profile.city + ', ' + profile.country}
-                    </div>
-                    <div className={styles.profile_name}>
-                      {profile.name + ', ' + profile.age}
-                    </div>
-                  </div>
-                </div>
-                <div className={styles.profile_dots}>...</div>
-              </div>
-
-              <div>
-                <video className={styles.video_profile} controls>
-                  <source src="" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-            </div>
+            <MatchedProfile
+              key={profile.id}
+              profile={profile}
+              onDelete={(id) => handleDeleteProfile(id)}
+            />
           ))}
         </div>
       </div>
