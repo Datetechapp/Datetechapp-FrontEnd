@@ -1,31 +1,31 @@
-import { useState } from "react";
-import styles from "./MatchingFeed.module.css";
-import profilePic from "../../../../assets/feed/profile_img.png";
-import MatchedProfile from "./MatchedProfile/MatchedProfile";
+import { useState } from 'react';
+import styles from './MatchingFeed.module.css';
+import profilePic from '../../../../assets/feed/profile_img.png';
+import MatchedProfile from './MatchedProfile/MatchedProfile';
 
 const profilesDataInterestedInYou = [
   {
     id: 1,
-    name: "Mary",
-    age: "22",
-    city: "Paris",
-    country: "France",
+    name: 'Mary',
+    age: '22',
+    city: 'Paris',
+    country: 'France',
     img: profilePic,
   },
   {
     id: 2,
-    name: "Jane",
-    age: "28",
-    city: "Paris",
-    country: "France",
+    name: 'Jane',
+    age: '28',
+    city: 'Paris',
+    country: 'France',
     img: profilePic,
   },
   {
     id: 3,
-    name: "Claire",
-    age: "24",
-    city: "Paris",
-    country: "France",
+    name: 'Claire',
+    age: '24',
+    city: 'Paris',
+    country: 'France',
     img: profilePic,
   },
 ];
@@ -33,34 +33,34 @@ const profilesDataInterestedInYou = [
 const profilesDataNewPeople = [
   {
     id: 1,
-    name: "Anna",
-    age: "22",
-    city: "Paris",
-    country: "France",
+    name: 'Anna',
+    age: '22',
+    city: 'Paris',
+    country: 'France',
     img: profilePic,
   },
   {
     id: 2,
-    name: "Tony",
-    age: "28",
-    city: "Paris",
-    country: "France",
+    name: 'Tony',
+    age: '28',
+    city: 'Paris',
+    country: 'France',
     img: profilePic,
   },
   {
     id: 3,
-    name: "Milly",
-    age: "24",
-    city: "Paris",
-    country: "France",
+    name: 'Milly',
+    age: '24',
+    city: 'Paris',
+    country: 'France',
     img: profilePic,
   },
 ];
 
 const MatchingFeed = () => {
-  const [activeButton, setActiveButton] = useState("Interested");
+  const [activeButton, setActiveButton] = useState('Interested');
   const [profilesData, setProfilesData] = useState(
-    activeButton === "Interested"
+    activeButton === 'Interested'
       ? profilesDataInterestedInYou
       : profilesDataNewPeople,
   );
@@ -82,9 +82,9 @@ const MatchingFeed = () => {
   const switchTab = (tab: string) => {
     setActiveButton(tab);
 
-    if (tab === "Interested") {
+    if (tab === 'Interested') {
       setProfilesData(profilesDataInterestedInYou);
-    } else if (tab === "NewPeople") {
+    } else if (tab === 'NewPeople') {
       setProfilesData(profilesDataNewPeople);
     }
   };
@@ -115,17 +115,17 @@ const MatchingFeed = () => {
         <div className={styles.matching_nav}>
           <div
             className={`${styles.nav_category} ${
-              activeButton === "Interested" ? styles.interested_active : ""
+              activeButton === 'Interested' ? styles.interested_active : ''
             }`}
-            onClick={() => switchTab("Interested")}
+            onClick={() => switchTab('Interested')}
           >
             Interested in you
           </div>
           <div
             className={`${styles.nav_category} ${
-              activeButton === "NewPeople" ? styles.new_people_active : ""
+              activeButton === 'NewPeople' ? styles.new_people_active : ''
             }`}
-            onClick={() => switchTab("NewPeople")}
+            onClick={() => switchTab('NewPeople')}
           >
             New People
           </div>

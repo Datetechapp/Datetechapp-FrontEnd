@@ -1,9 +1,10 @@
-import React from "react";
-import playButtonIcon from "../../../../assets/feed/PlayIcon.svg";
-import contactIcon from "../../../../assets/feed/Contact.svg";
-import questionIcon from "../../../../assets/feed/Question.svg";
-import globeIcon from "../../../../assets/feed/Globe.svg";
-import logoutIcon from "../../../../assets/feed/Logout.svg";
+import React from 'react';
+import playButtonIcon from '../../../../../assets/feed/PlayIcon.svg';
+import contactIcon from '../../../../../assets/feed/Contact.svg';
+import questionIcon from '../../../../../assets/feed/Question.svg';
+import globeIcon from '../../../../../assets/feed/Globe.svg';
+import logoutIcon from '../../../../../assets/feed/Logout.svg';
+import styles from './Dropdown.module.css';
 
 type DropdownContentProps = {
   closeDropdown: () => void;
@@ -15,7 +16,6 @@ const DropdownContent: React.FC<DropdownContentProps> = ({
   setModalOpen,
 }) => {
   const openModalPremium = () => {
-    console.log("Opening modal");
     setModalOpen(true);
     closeDropdown();
   };
@@ -27,30 +27,30 @@ const DropdownContent: React.FC<DropdownContentProps> = ({
   return (
     <>
       <div
-        style={{ display: "flex" }}
-        className="dropdown-content"
+        style={{ display: 'flex' }}
+        className={styles.dropdown_content}
         id="dropdown"
       >
         <button
-          className="dropdown-button-premium"
+          className={styles.dropdown_button_premium}
           onClick={() => openModalPremium()}
         >
           Try Premium
         </button>
-        <div className="dropdown-options">
-          <a href="#" className="dropdown-item" onClick={handleLinkClick}>
+        <div className={styles.dropdown_options}>
+          <a href="#" className={styles.dropdown_item} onClick={handleLinkClick}>
             <img src={playButtonIcon} alt="for you" />
             <span>For you</span>
           </a>
-          <a href="#" className="dropdown-item" onClick={handleLinkClick}>
+          <a href="#" className={styles.dropdown_item} onClick={handleLinkClick}>
             <img src={contactIcon} alt="view profile" />
             <span>View Profile</span>
           </a>
-          <a href="#" className="dropdown-item" onClick={handleLinkClick}>
+          <a href="#" className={styles.dropdown_item} onClick={handleLinkClick}>
             <img src={questionIcon} alt="feedback and help" />
             <span>Feedback and help</span>
           </a>
-          <a href="#" className="dropdown-item" onClick={handleLinkClick}>
+          <a href="#" className={styles.dropdown_item} onClick={handleLinkClick}>
             <img src={globeIcon} alt="english" />
             <span>English</span>
           </a>
@@ -58,7 +58,7 @@ const DropdownContent: React.FC<DropdownContentProps> = ({
 
         <a
           href="#"
-          className="dropdown-item logout_item"
+          className={`${styles.dropdown_item} ${styles.logout_item}`}
           onClick={handleLinkClick}
         >
           <img src={logoutIcon} alt="log out" />

@@ -1,5 +1,5 @@
-import React from "react";
-import styles from "./MatchedProfile.module.css";
+import React from 'react';
+import styles from './MatchedProfile.module.css';
 
 interface UserProfileCardProps {
   profile: {
