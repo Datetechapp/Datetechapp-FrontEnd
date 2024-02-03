@@ -1,6 +1,6 @@
-import React from 'react';
-import styles from './ModalPremium.module.css';
-import logo from '../../../../../assets/ModalAuth/logo.svg';
+import React from "react";
+import styles from "./ModalPremium.module.css";
+import logo from "../../../../../assets/ModalAuth/logo.svg";
 
 type ModalPremiumProps = {
   isOpen: boolean;

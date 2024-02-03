@@ -11,8 +11,9 @@
   width: 32px;
   border: 3px;
   fill: none;
-  transition: fill 0.3s;
-  transition: stroke 0.3s;
+  transition:
+    fill 0.3s,
+    stroke 0.3s;
   stroke: url(#paint0_linear_6978_64739);
 }
 
@@ -56,6 +57,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transition:
+    background-color 0.3s,
+    box-shadow 0.3s;
 }
 
 .myGradient {

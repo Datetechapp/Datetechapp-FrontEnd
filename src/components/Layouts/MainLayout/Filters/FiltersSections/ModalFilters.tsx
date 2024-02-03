@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import styles from '../Filters.module.css';
-import Modal from '../Modal/Modal';
-import arrowIcon from '../../../../../assets/feed/arrow.svg';
+import React, { useState } from "react";
+import styles from "../Filters.module.css";
+import Modal from "../Modal/Modal";
+import arrowIcon from "../../../../../assets/feed/arrow.svg";
 
 interface SelectedCheckboxesState {
   lookingFor: string[];
@@ -60,12 +60,12 @@ const ModalFilters: React.FC<ModalFiltersProps> = ({
 
   const handleCheckboxChange = (category: string, value: string) => {
     const setCount =
-      category === 'lookingFor'
+      category === "lookingFor"
         ? setSelectedLookingForCount
         : setSelectedInterestsCount;
 
     setSelectedCheckboxes((prev) => {
-      if (category === 'lookingFor' || category === 'interests') {
+      if (category === "lookingFor" || category === "interests") {
         return {
           ...prev,
           [category]: updateCheckboxes(prev[category], value, setCount),
@@ -93,7 +93,7 @@ const ModalFilters: React.FC<ModalFiltersProps> = ({
           <span>{label}</span>
         </div>
         <button className={styles.buttonArrowIcon}>
-          {category === 'lookingFor' || category === 'interests' ? (
+          {category === "lookingFor" || category === "interests" ? (
             selectedCheckboxes[category]?.length ? (
               <span className={styles.selectedCount}>
                 {selectedCheckboxes[category].length}
@@ -111,7 +111,7 @@ const ModalFilters: React.FC<ModalFiltersProps> = ({
       {expandedSection === category && (
         <Modal
           category={category}
-          onClose={() => setExpandedSection('')}
+          onClose={() => setExpandedSection("")}
           selectedCheckboxes={
             selectedCheckboxes[category as keyof SelectedCheckboxesState]
           }

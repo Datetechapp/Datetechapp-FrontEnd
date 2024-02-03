@@ -1,5 +1,5 @@
-import React from 'react';
-import styles from './MatchedProfile.module.css';
+import React from "react";
+import styles from "./MatchedProfile.module.css";
 
 interface UserProfileCardProps {
   profile: {
@@ -11,14 +11,22 @@ interface UserProfileCardProps {
     img: string;
   };
   onDelete: (id: number) => void;
+  setSelectedProfileId: React.Dispatch<React.SetStateAction<number | null>>;
 }
 
 const MatchedProfile: React.FC<UserProfileCardProps> = ({
   profile,
   onDelete,
+  setSelectedProfileId,
 }) => {
   return (
-    <div className={styles.profile_matched}>
+    <div
+      className={styles.profile_matched}
+      onClick={() => {
+        setSelectedProfileId(profile.id);
+        console.log(setSelectedProfileId, profile.id);
+      }}
+    >
       <div className={styles.profile_container_info}>
         <div className={styles.profile_info}>
           <img
