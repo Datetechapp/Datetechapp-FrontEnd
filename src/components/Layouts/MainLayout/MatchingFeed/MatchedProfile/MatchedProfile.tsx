@@ -9,6 +9,8 @@ interface UserProfileCardProps {
     city: string;
     country: string;
     img: string;
+    isLiked: boolean;
+    likeYou: boolean;
   };
   onDelete: (id: number) => void;
   setSelectedProfileId: React.Dispatch<React.SetStateAction<number | null>>;
@@ -24,7 +26,6 @@ const MatchedProfile: React.FC<UserProfileCardProps> = ({
       className={styles.profile_matched}
       onClick={() => {
         setSelectedProfileId(profile.id);
-        console.log(setSelectedProfileId, profile.id);
       }}
     >
       <div className={styles.profile_container_info}>

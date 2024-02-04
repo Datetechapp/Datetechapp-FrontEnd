@@ -2,6 +2,7 @@ import { useState } from 'react';
 import styles from './MatchingFeed.module.css';
 import profilePic from '../../../../assets/feed/profile_img.png';
 import MatchedProfile from './MatchedProfile/MatchedProfile';
+import IsMatchedModal from './IsMatchedModal/IsMatchedModal';
 
 const profilesDataInterestedInYou = [
   {
@@ -11,6 +12,8 @@ const profilesDataInterestedInYou = [
     city: 'Paris',
     country: 'France',
     img: profilePic,
+    isLiked: false,
+    likeYou: true,
   },
   {
     id: 2,
@@ -19,6 +22,8 @@ const profilesDataInterestedInYou = [
     city: 'Paris',
     country: 'France',
     img: profilePic,
+    isLiked: false,
+    likeYou: true,
   },
   {
     id: 3,
@@ -27,6 +32,8 @@ const profilesDataInterestedInYou = [
     city: 'Paris',
     country: 'France',
     img: profilePic,
+    isLiked: false,
+    likeYou: true,
   },
 ];
 
@@ -38,6 +45,8 @@ const profilesDataNewPeople = [
     city: 'Paris',
     country: 'France',
     img: profilePic,
+    isLiked: false,
+    likeYou: false,
   },
   {
     id: 2,
@@ -46,6 +55,8 @@ const profilesDataNewPeople = [
     city: 'Paris',
     country: 'France',
     img: profilePic,
+    isLiked: false,
+    likeYou: false,
   },
   {
     id: 3,
@@ -54,6 +65,8 @@ const profilesDataNewPeople = [
     city: 'Paris',
     country: 'France',
     img: profilePic,
+    isLiked: false,
+    likeYou: false,
   },
 ];
 
@@ -68,6 +81,7 @@ const MatchingFeed = () => {
   const [selectedProfileId, setSelectedProfileId] = useState<number | null>(
     null,
   );
+  const [showMatchModal, setShowMatchModal] = useState(false);
 
   const handleDeleteProfile = () => {
     if (selectedProfileId !== null) {
@@ -79,6 +93,35 @@ const MatchingFeed = () => {
     }
   };
 
+  const handleLikeProfile = () => {
+    if (selectedProfileId !== null) {
+      setProfilesData((prevProfilesData) => {
+        const updatedProfilesData = prevProfilesData.map((profile) => {
+          if (profile.id === selectedProfileId) {
+            return {
+              ...profile,
+              isLiked: !profile.isLiked,
+            };
+          }
+
+          return profile;
+        });
+
+        const selectedProfile = updatedProfilesData.find(
+          (profile) => profile.id === selectedProfileId,
+        );
+
+        console.log('Updated profilesData:', updatedProfilesData);
+
+        if (selectedProfile?.isLiked && selectedProfile?.likeYou) {
+          setShowMatchModal(true);
+        }
+
+        return updatedProfilesData;
+      });
+    }
+  };
+
   const switchTab = (tab: string) => {
     setActiveButton(tab);
 
@@ -87,6 +130,10 @@ const MatchingFeed = () => {
     } else if (tab === 'NewPeople') {
       setProfilesData(profilesDataNewPeople);
     }
+  };
+
+  const closeMatchedModal = () => {
+    setShowMatchModal(false);
   };
 
   return (
@@ -142,7 +189,13 @@ const MatchingFeed = () => {
         </div>
       </div>
       <div>
-        <button className={styles.container_icons}>
+        <button
+          className={styles.container_icons}
+          onClick={(event) => {
+            event.stopPropagation();
+            handleLikeProfile();
+          }}
+        >
           <svg
             className={`${styles.heartIcon} ${styles.matchingButtons}`}
             width="36"
@@ -174,6 +227,9 @@ const MatchingFeed = () => {
           </svg>
         </button>
       </div>
+      {showMatchModal && (
+        <IsMatchedModal closeMatchedModal={closeMatchedModal} />
+      )}
     </div>
   );
 };

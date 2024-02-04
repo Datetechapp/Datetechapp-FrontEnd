@@ -38,19 +38,35 @@ const DropdownContent: React.FC<DropdownContentProps> = ({
           Try Premium
         </button>
         <div className={styles.dropdown_options}>
-          <a href="#" className={styles.dropdown_item} onClick={handleLinkClick}>
+          <a
+            href="#"
+            className={styles.dropdown_item}
+            onClick={handleLinkClick}
+          >
             <img src={playButtonIcon} alt="for you" />
             <span>For you</span>
           </a>
-          <a href="#" className={styles.dropdown_item} onClick={handleLinkClick}>
+          <a
+            href="#"
+            className={styles.dropdown_item}
+            onClick={handleLinkClick}
+          >
             <img src={contactIcon} alt="view profile" />
             <span>View Profile</span>
           </a>
-          <a href="#" className={styles.dropdown_item} onClick={handleLinkClick}>
+          <a
+            href="#"
+            className={styles.dropdown_item}
+            onClick={handleLinkClick}
+          >
             <img src={questionIcon} alt="feedback and help" />
             <span>Feedback and help</span>
           </a>
-          <a href="#" className={styles.dropdown_item} onClick={handleLinkClick}>
+          <a
+            href="#"
+            className={styles.dropdown_item}
+            onClick={handleLinkClick}
+          >
             <img src={globeIcon} alt="english" />
             <span>English</span>
           </a>
