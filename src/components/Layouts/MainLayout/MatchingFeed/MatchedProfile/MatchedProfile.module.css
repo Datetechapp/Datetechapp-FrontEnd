@@ -1,6 +1,6 @@
 .profile_matched {
   width: 324px;
-  height: 584px;
+  height: 530px;
   border-radius: 10px;
   background-color: #302e3d;
   display: flex;
@@ -9,9 +9,25 @@
   margin-top: 5px;
 }
 
-.video_profile {
+.videoContainer {
+  position: relative;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.videoProfile {
   width: 324px;
-  height: 500px;
+  height: 476px;
+}
+
+.overlayIcons {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
 }
 
 .profile_name {
@@ -54,14 +70,13 @@
   color: #ffffff;
   width: 32px;
   height: 32px;
-  padding: 0px 10px 0px 10px;
-  border-radius: 100px;
-  font-size: 26px;
-  font-weight: 400;
-  line-height: 20px;
+  border-radius: 29px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
+  padding: 6px;
+padding-bottom: 19px;
 }
 
 .profile_dots:hover {
@@ -114,4 +129,97 @@
   height: 20px;
   padding: 3px 2px;
   margin-left: 8px;
+}
+
+.soundIcon {
+  position: absolute;
+  top: 150px; 
+  left: 120px;
+  cursor: pointer;
+  width: 32px;
+height: 32px;
+padding: 6px;
+border-radius: 29px;
+background-color: #5F4F7F;
+
+
+}
+
+.soundIcon:hover {
+  opacity: 1;
+}
+
+.iconControls {
+  position: absolute;
+  top: -50px; 
+  left: 50%;
+  transform: translateX(-50%);
+  width: 48px;
+height: 48px;
+padding: 7.55px 8.92px 7.55px 8.5px;
+
+}
+
+.volumeBlock {
+  position: absolute;
+  top: 35px; 
+  left: 120px;
+  border-radius: 8px;
+  border: 1px solid var(--Panel_Stroke, #32303e);
+  background: var(--Dark_Background, #1f1d2b);
+  transform: rotate(0deg);
+  bottom: 104px;
+  width: 32px;
+height: 104px;
+}
+
+.editorVolume {
+  position: absolute;
+  bottom: 50px;
+  left: -20px;
+  width: 72px;
+  -webkit-appearance: none;
+  height: 4px;
+  background: linear-gradient(
+    to right,
+    #c896ef 0%,
+    #c896ef var(--thumb-percentage, 50%),
+    #5f4f7f var(--thumb-percentage, 50%),
+    #5f4f7f 100%
+  );
+  border-radius: 3px;
+  outline: none;
+  align-self: center;
+  width: 72px;
+border: 4px;
+rotate: -90deg;
+
+}
+
+.editorVolume::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background-color: #c896ef;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.profile_dots_copy {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  cursor: pointer;
+  top: 190px; 
+  left: 120px;
+  border-radius: 29px;
+  background: #5F4F7F80;
+width: 32px;
+height: 32px;
+padding: 6px;
+padding-bottom: 9px;
 }
