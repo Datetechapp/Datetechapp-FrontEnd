@@ -61,7 +61,7 @@
     #ffa7f6 67.03%,
     #dd7cff 98.42%
   );
-  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   text-align: center;
 }

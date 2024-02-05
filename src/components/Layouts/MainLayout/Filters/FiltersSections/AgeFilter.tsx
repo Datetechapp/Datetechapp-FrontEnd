@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import styles from '../Filters.module.css';
-import usersIcon from '../../../../../assets/feed/users.svg';
+import { useState, useEffect } from "react";
+import styles from "../Filters.module.css";
+import usersIcon from "../../../../../assets/feed/users.svg";
 
 const AgeFilter = () => {
   const [ageRange, setAgeRange] = useState([18, 100]);
@@ -21,9 +21,9 @@ const AgeFilter = () => {
     const normalizedValue2 = ((value2 - min) / (max - min)) * 100;
     const gradient2 = `linear-gradient(to right, #5F4F7F ${normalizedValue1}%, #C896EF ${normalizedValue1}%, #C896EF  ${normalizedValue2}%, #5F4F7F ${normalizedValue2}%)`;
 
-    const input2 = document.getElementById('age-range-1');
+    const input2 = document.getElementById("age-range-1");
 
-    input2?.style.setProperty('--ageSlidLinGra', gradient2);
+    input2?.style.setProperty("--ageSlidLinGra", gradient2);
   };
 
   const ageSliderStyle = {

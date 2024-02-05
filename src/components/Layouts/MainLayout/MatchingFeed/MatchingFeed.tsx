@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
-import styles from './MatchingFeed.module.css';
-import profilePic from '../../../../assets/feed/profile_img.png';
-import MatchedProfile from './MatchedProfile/MatchedProfile';
-import IsMatchedModal from './IsMatchedModal/IsMatchedModal';
+import { useState, useEffect } from "react";
+import styles from "./MatchingFeed.module.css";
+import profilePic from "../../../../assets/feed/profile_img.png";
+import MatchedProfile from "./MatchedProfile/MatchedProfile";
+import IsMatchedModal from "./IsMatchedModal/IsMatchedModal";
 import left from "../../../../assets/feed/Left.svg";
 import right from "../../../../assets/feed/Right.svg";
 import up from "../../../../assets/feed/Up.svg";
@@ -11,30 +11,30 @@ import down from "../../../../assets/feed/Down.svg";
 const profilesDataInterestedInYou = [
   {
     id: 1,
-    name: 'Mary',
-    age: '22',
-    city: 'Paris',
-    country: 'France',
+    name: "Mary",
+    age: "22",
+    city: "Paris",
+    country: "France",
     img: profilePic,
     isLiked: false,
     likeYou: true,
   },
   {
     id: 2,
-    name: 'Jane',
-    age: '28',
-    city: 'Paris',
-    country: 'France',
+    name: "Jane",
+    age: "28",
+    city: "Paris",
+    country: "France",
     img: profilePic,
     isLiked: false,
     likeYou: true,
   },
   {
     id: 3,
-    name: 'Claire',
-    age: '24',
-    city: 'Paris',
-    country: 'France',
+    name: "Claire",
+    age: "24",
+    city: "Paris",
+    country: "France",
     img: profilePic,
     isLiked: false,
     likeYou: true,
@@ -44,30 +44,30 @@ const profilesDataInterestedInYou = [
 const profilesDataNewPeople = [
   {
     id: 1,
-    name: 'Anna',
-    age: '22',
-    city: 'Paris',
-    country: 'France',
+    name: "Anna",
+    age: "22",
+    city: "Paris",
+    country: "France",
     img: profilePic,
     isLiked: false,
     likeYou: false,
   },
   {
     id: 2,
-    name: 'Tony',
-    age: '28',
-    city: 'Paris',
-    country: 'France',
+    name: "Tony",
+    age: "28",
+    city: "Paris",
+    country: "France",
     img: profilePic,
     isLiked: false,
     likeYou: false,
   },
   {
     id: 3,
-    name: 'Milly',
-    age: '24',
-    city: 'Paris',
-    country: 'France',
+    name: "Milly",
+    age: "24",
+    city: "Paris",
+    country: "France",
     img: profilePic,
     isLiked: false,
     likeYou: false,
@@ -75,9 +75,9 @@ const profilesDataNewPeople = [
 ];
 
 const MatchingFeed = () => {
-  const [activeButton, setActiveButton] = useState('Interested');
+  const [activeButton, setActiveButton] = useState("Interested");
   const [profilesData, setProfilesData] = useState(
-    activeButton === 'Interested'
+    activeButton === "Interested"
       ? profilesDataInterestedInYou
       : profilesDataNewPeople,
   );
@@ -127,9 +127,9 @@ const MatchingFeed = () => {
   const switchTab = (tab: string) => {
     setActiveButton(tab);
 
-    if (tab === 'Interested') {
+    if (tab === "Interested") {
       setProfilesData(profilesDataInterestedInYou);
-    } else if (tab === 'NewPeople') {
+    } else if (tab === "NewPeople") {
       setProfilesData(profilesDataNewPeople);
     }
   };
@@ -140,9 +140,15 @@ const MatchingFeed = () => {
 
   useEffect(() => {
     if (selectedProfileId !== null) {
-      const selectedProfile = profilesData.find(profile => profile.id === selectedProfileId);
-  
-      if (selectedProfile && selectedProfile.isLiked && selectedProfile.likeYou) {
+      const selectedProfile = profilesData.find(
+        (profile) => profile.id === selectedProfileId,
+      );
+
+      if (
+        selectedProfile &&
+        selectedProfile.isLiked &&
+        selectedProfile.likeYou
+      ) {
         setShowMatchModal(true);
       }
     }
@@ -174,17 +180,17 @@ const MatchingFeed = () => {
         <div className={styles.matching_nav}>
           <div
             className={`${styles.nav_category} ${
-              activeButton === 'Interested' ? styles.interested_active : ''
+              activeButton === "Interested" ? styles.interested_active : ""
             }`}
-            onClick={() => switchTab('Interested')}
+            onClick={() => switchTab("Interested")}
           >
             Interested in you
           </div>
           <div
             className={`${styles.nav_category} ${
-              activeButton === 'NewPeople' ? styles.new_people_active : ''
+              activeButton === "NewPeople" ? styles.new_people_active : ""
             }`}
-            onClick={() => switchTab('NewPeople')}
+            onClick={() => switchTab("NewPeople")}
           >
             New People
           </div>
@@ -240,13 +246,25 @@ const MatchingFeed = () => {
         </button>
       </div>
       {showMatchModal && (
-        <IsMatchedModal closeMatchedModal={closeMatchedModal} selectedProfileId={selectedProfileId} profilesData={profilesData}/>
+        <IsMatchedModal
+          closeMatchedModal={closeMatchedModal}
+          selectedProfileId={selectedProfileId}
+          profilesData={profilesData}
+        />
       )}
       <div className={styles.arrowButtons_directions}>
-      <div className={styles.arrowButton_direction}><img src={left} alt="left" /></div>
-      <div className={styles.arrowButton_direction}><img src={up} alt="up" /></div>
-      <div className={styles.arrowButton_direction}><img src={down} alt="down" /></div>
-      <div className={styles.arrowButton_direction}><img src={right} alt="right" /></div>
+        <div className={styles.arrowButton_direction}>
+          <img src={left} alt="left" />
+        </div>
+        <div className={styles.arrowButton_direction}>
+          <img src={up} alt="up" />
+        </div>
+        <div className={styles.arrowButton_direction}>
+          <img src={down} alt="down" />
+        </div>
+        <div className={styles.arrowButton_direction}>
+          <img src={right} alt="right" />
+        </div>
       </div>
     </div>
   );
