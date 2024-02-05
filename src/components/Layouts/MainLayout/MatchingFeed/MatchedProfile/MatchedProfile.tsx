@@ -44,7 +44,7 @@ const MatchedProfile: React.FC<UserProfileCardProps> = ({
             </div>
           </div>
         </div>
-        <div className={styles.profile_dots}>...</div>
+        <div className={styles.profile_dots}>...<div className={styles.shareProfileElement}>Share profile</div></div>
       </div>
 
       <div>
