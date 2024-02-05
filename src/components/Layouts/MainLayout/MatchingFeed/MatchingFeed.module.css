@@ -135,3 +135,30 @@
   font-weight: 600;
   line-height: 20px;
 }
+
+.arrowButtons_directions {
+  position: absolute;
+  width: 120px;
+height: 24px;
+top: 700px;
+left: 967px;
+gap: 8px;
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+border: none;
+}
+
+.arrowButton_direction {
+  width: 24px;
+height: 24px;
+border-radius: 4px;
+background-color: #39364A;
+cursor: auto;
+display: flex;
+justify-content: center;
+align-items: center;
+border: none;
+
+}

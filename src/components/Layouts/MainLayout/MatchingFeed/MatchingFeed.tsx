@@ -3,6 +3,10 @@ import styles from './MatchingFeed.module.css';
 import profilePic from '../../../../assets/feed/profile_img.png';
 import MatchedProfile from './MatchedProfile/MatchedProfile';
 import IsMatchedModal from './IsMatchedModal/IsMatchedModal';
+import left from "../../../../assets/feed/Left.svg";
+import right from "../../../../assets/feed/Right.svg";
+import up from "../../../../assets/feed/Up.svg";
+import down from "../../../../assets/feed/Down.svg";
 
 const profilesDataInterestedInYou = [
   {
@@ -238,6 +242,12 @@ const MatchingFeed = () => {
       {showMatchModal && (
         <IsMatchedModal closeMatchedModal={closeMatchedModal} selectedProfileId={selectedProfileId} profilesData={profilesData}/>
       )}
+      <div className={styles.arrowButtons_directions}>
+      <div className={styles.arrowButton_direction}><img src={left} alt="left" /></div>
+      <div className={styles.arrowButton_direction}><img src={up} alt="up" /></div>
+      <div className={styles.arrowButton_direction}><img src={down} alt="down" /></div>
+      <div className={styles.arrowButton_direction}><img src={right} alt="right" /></div>
+      </div>
     </div>
   );
 };
