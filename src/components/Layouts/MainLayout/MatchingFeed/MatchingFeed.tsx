@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './MatchingFeed.module.css';
 import profilePic from '../../../../assets/feed/profile_img.png';
 import MatchedProfile from './MatchedProfile/MatchedProfile';
@@ -111,8 +111,6 @@ const MatchingFeed = () => {
           (profile) => profile.id === selectedProfileId,
         );
 
-        console.log('Updated profilesData:', updatedProfilesData);
-
         if (selectedProfile?.isLiked && selectedProfile?.likeYou) {
           setShowMatchModal(true);
         }
@@ -135,6 +133,16 @@ const MatchingFeed = () => {
   const closeMatchedModal = () => {
     setShowMatchModal(false);
   };
+
+  useEffect(() => {
+    if (selectedProfileId !== null) {
+      const selectedProfile = profilesData.find(profile => profile.id === selectedProfileId);
+  
+      if (selectedProfile && selectedProfile.isLiked && selectedProfile.likeYou) {
+        setShowMatchModal(true);
+      }
+    }
+  }, [selectedProfileId, profilesData]);
 
   return (
     <div className={styles.matching_container}>
@@ -228,7 +236,7 @@ const MatchingFeed = () => {
         </button>
       </div>
       {showMatchModal && (
-        <IsMatchedModal closeMatchedModal={closeMatchedModal} />
+        <IsMatchedModal closeMatchedModal={closeMatchedModal} selectedProfileId={selectedProfileId} profilesData={profilesData}/>
       )}
     </div>
   );

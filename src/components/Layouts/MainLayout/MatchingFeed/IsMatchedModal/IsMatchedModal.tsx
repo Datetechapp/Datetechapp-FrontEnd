@@ -1,12 +1,28 @@
 import React from 'react';
+import avatar from '../../../../../assets/user/avatar Ivan.svg';
 import styles from './IsMatchedModal.module.css';
 
 type ModalMatchedProps = {
+    selectedProfileId: number | null; 
+    profilesData: {
+        id: number;
+        name: string;
+        age: string;
+        city: string;
+        country: string;
+        img: string;
+        isLiked: boolean;
+        likeYou: boolean;
+      }[];
   closeMatchedModal: () => void;
 };
 
-const IsMatchedModal: React.FC<ModalMatchedProps> = ({ closeMatchedModal }) => {
-  return (
+const IsMatchedModal: React.FC<ModalMatchedProps> = ({ profilesData, selectedProfileId, closeMatchedModal }) => {
+    if (selectedProfileId !== null) {
+       
+        const selectedProfile = profilesData.find(profile => profile.id === selectedProfileId);
+
+    return (
     <>
       <div
         className={styles.overlay}
@@ -20,12 +36,12 @@ const IsMatchedModal: React.FC<ModalMatchedProps> = ({ closeMatchedModal }) => {
           <span className={styles.matchHeaderText}>MATCH!</span>
         </p>
         <p className={styles.matchTextLine}>
-          <span className={styles.coloredText}>You</span> and
-          <span className={styles.coloredText}> </span> have liked each other!
+          <span className={styles.coloredText}>You</span> and 
+          <span className={styles.coloredText}> {selectedProfile?.name} </span> have liked each other!
         </p>
         <div className={styles.imagesContainer}>
-          <img className={styles.matchImage} alt="Your profile" />
-          <img className={styles.matchImage} alt="Other person's profile" />
+          <img className={styles.matchImage} src={avatar} alt="Your profile" />
+          <img className={`${styles.matchImage} ${styles.partnerImage}`} src={selectedProfile?.img} alt={selectedProfile?.name + "'s profile"} />
         </div>
         <div className={styles.matchButtonsContainer}>
           <button
@@ -47,7 +63,9 @@ const IsMatchedModal: React.FC<ModalMatchedProps> = ({ closeMatchedModal }) => {
         </div>
       </div>
     </>
-  );
+  );}
+
+  return null;
 };
 
 export default IsMatchedModal;
