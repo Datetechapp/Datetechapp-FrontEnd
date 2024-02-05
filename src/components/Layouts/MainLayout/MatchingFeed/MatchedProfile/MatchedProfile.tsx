@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import share from "../../../../../assets/feed/share.svg";
 import styles from "./MatchedProfile.module.css";
 
 interface UserProfileCardProps {
@@ -21,6 +22,12 @@ const MatchedProfile: React.FC<UserProfileCardProps> = ({
   onDelete,
   setSelectedProfileId,
 }) => {
+  const [isShareProfileVisible, setShareProfileVisible] = useState(false);
+
+  const handleShareButtonClick = () => {
+    setShareProfileVisible(!isShareProfileVisible);
+  };
+
   return (
     <div
       className={styles.profile_matched}
@@ -44,7 +51,15 @@ const MatchedProfile: React.FC<UserProfileCardProps> = ({
             </div>
           </div>
         </div>
-        <div className={styles.profile_dots}>...<div className={styles.shareProfileElement}>Share profile</div></div>
+        <div className={styles.profile_dots} onClick={handleShareButtonClick}>
+          ...
+          {isShareProfileVisible && (
+            <div className={styles.shareProfileElement}>
+              <img src={share} alt="share" />
+              Share profile
+            </div>
+          )}
+        </div>
       </div>
 
       <div>
