@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import style from './PaymentSubscription.module.css';
 import { Button } from './../../../../common/button/';
 import { ModalConfirmation } from 'components/pages/PaymentPage/components/ModalConfirmation';
+import { PaymentDetails } from './PaymentDetails';
 export const PaymentSubscription = () => {
   const [openCancel, setOpenCancel] = useState(false);
   const handleOpenCancel = () => {
@@ -26,7 +27,9 @@ export const PaymentSubscription = () => {
         <div className={style.contentBox}>
           <div className={style.subscriptionDetails}>
             <p>Subscription can be canceled at any time</p>
-            <div className={style.list}></div>
+            <>
+              <PaymentDetails />
+            </>
           </div>
           <div className={style.btnBox}>
             <Button className={style.btnSubscription}>

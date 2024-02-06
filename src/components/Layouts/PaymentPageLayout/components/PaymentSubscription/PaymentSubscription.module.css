@@ -97,6 +97,7 @@
     background: rgb(39, 37, 51);
 }
 .subscriptionDetails p{
+    padding-bottom: 18px;
     color: #5f4f7f;
     font-family: Montserrat;
     font-size: 12px;
@@ -105,11 +106,6 @@
     letter-spacing: 0.1px;
 }
 
-.list{
-    width: 380px;
-height: 120px;
-border: 2px solid rgb(95, 79, 127);
-}
 .btnBox{
     align-self: end;
     display: flex;
