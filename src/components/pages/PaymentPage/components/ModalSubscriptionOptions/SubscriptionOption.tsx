@@ -91,7 +91,7 @@ export const SubscriptionOption: FC<ISubscription> = ({ onClose, isOpen }) => {
           </ul>
         </div>
       </div>
-      {isOpen && (
+      {openModal && (
         <ModalPayment
           isOpen={true}
           isThereACancel={true}
