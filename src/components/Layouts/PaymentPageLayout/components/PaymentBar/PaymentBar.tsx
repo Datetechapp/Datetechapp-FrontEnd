@@ -4,6 +4,9 @@ import subscription from './../../../../../assets/Payment/Subscriptions.svg';
 import history from './../../../../../assets/Payment/History.svg';
 import { NavLink, useLocation } from 'react-router-dom';
 import { useState } from 'react';
+import { ModalPayment } from './../../../../pages/PaymentPage/components/ModalPayment';
+import logo from './../../../../../assets/ModalAuth/logo.svg';
+import SubscriptionOption from 'components/pages/PaymentPage/components/ModalSubscriptionOptions/SubscriptionOption';
 
 const links = [
   {
@@ -18,9 +21,24 @@ const links = [
   },
 ];
 export const PaymentBar = () => {
+  const [openModal, setOpenModal] = useState(false);
+  const [openOptions, setOpenOptions] = useState(false);
   const { pathname } = useLocation();
   const isActive = (path: string) => {
     return pathname === path;
+  };
+
+  const handleOpenModal = () => {
+    setOpenModal(true);
+  };
+  const handleCloseModal = () => {
+    setOpenModal(false);
+    setOpenOptions(false);
+  };
+
+  const handleLearnMore = () => {
+    setOpenModal(false);
+    setOpenOptions(true);
   };
 
   return (
@@ -40,7 +58,26 @@ export const PaymentBar = () => {
           </NavLink>
         ))}
       </div>
-      <Button className={style.btnBar}>Try Premium</Button>
+      <Button className={style.btnBar} onClick={handleOpenModal}>
+        Try Premium
+      </Button>
+      {openModal && (
+        <ModalPayment
+          isOpen={true}
+          isThereACancel={true}
+          onChange={handleCloseModal}
+          textTitle="Become a Premium"
+          textSubtitle="To view people who are «Interested in you» you need to subscribe to a Premium account"
+          buttonText="Learn more"
+          darkModal={true}
+          fcFirstBtn={handleLearnMore}
+        >
+          <img src={logo} alt={logo} className={style.logo} />
+        </ModalPayment>
+      )}
+      {openOptions && (
+        <SubscriptionOption isOpen={true} onClose={handleCloseModal} />
+      )}
     </div>
   );
 };

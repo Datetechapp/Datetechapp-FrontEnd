@@ -24,9 +24,11 @@
     border: 1px solid var(--Violet_Active, #c896ef);
     background: var(--Dark_Elements_Background, #201b27);
 }
-.darkModalTitle{
+.title{
     padding: 34px 0 8px;
     font-family: Montserrat;
+}
+.darkModalTitle{
     font-size: 22px;
     font-style: normal;
     font-weight: 600;
@@ -37,7 +39,7 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-.darkTitleBlock{
+.titleBlock{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -46,23 +48,25 @@
 .iconCancel{
     cursor: pointer;
     align-self: end;
-    margin-bottom: 6px;
 }
-.logo_box{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 68px;
-    height: 68px;
-    border-radius: 50px;
-    box-shadow: 0px 0px 30px 0px #5f4f7f80;
-    background: #1f1d2b;
+.modalTitle{
+    color: #5f4f7f;
+    font-family: Montserrat;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: -0.5px;
 }
-.darkModalLogo{
-    width: 32px;
-    height: 32px;
+.subtitle{
+    color: rgb(95, 79, 127);
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0px;
+    text-align: center;
+}
 
-}
 .darkModalSubtitle{
     color: #ffffff;
     font-family: Montserrat;
@@ -70,23 +74,27 @@
     font-weight: 400;
     line-height: 18px;
     letter-spacing: 0.1px;
-    text-align: center;
-}
-.darkModalFirstBtn{
-
 }
 .firstBtn{
-    margin-top: 48px;
+    margin-top: 40px;
     display: block;
     width: 100%;
     padding: 16px 18px;
     background: linear-gradient(180deg, #9747ff 0%, #e551e8 100%);
     border-radius: 5px;
     border: none;
-    color: #e9e3f5;
+    color: #FFFFFF;
     font-family: "Montserrat", Arial, sans-serif;
     font-weight: 600;
     font-size: 16px;
     line-height: 20px;
     letter-spacing: 0.2px;
 }
+@keyframes fadeIn {
+    from {
+      opacity: 0; 
+    }
+    to {
+      opacity: 1; 
+    }
+  }

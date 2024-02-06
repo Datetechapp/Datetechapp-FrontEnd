@@ -7,15 +7,13 @@ import { Button } from './../../../../common/button';
 interface ModalPaymentProps {
   onRequestClose?: () => void;
   textTitle: string;
-  textSubtitle: string;
-  textEmail?: string;
+  textSubtitle?: string;
   buttonText?: string;
   darkModal?: boolean;
   secondButtonText?: string;
   isOpen: boolean;
   isThereACancel: boolean;
   onChange: React.Dispatch<React.SetStateAction<boolean>>;
-  logo: string;
   fcFirstBtn?: () => void;
 }
 
@@ -27,9 +25,9 @@ export const ModalPayment: FC<ModalPaymentProps> = ({
   darkModal,
   onChange,
   buttonText,
-  logo,
   secondButtonText,
   fcFirstBtn,
+  children,
 }) => {
   const handleCloseModal = () => {
     document.body.style.overflow = 'unset';
@@ -43,11 +41,7 @@ export const ModalPayment: FC<ModalPaymentProps> = ({
       className={`${style.modal} ${darkModal ? style.darkModal : ''}`}
       overlayClassName={style.overlayModal}
     >
-      <div
-        className={
-          !darkModal ? style.titleAndCancelBlock : style.darkTitleBlock
-        }
-      >
+      <div className={style.titleBlock}>
         {isThereACancel && (
           <img
             className={style.iconCancel}
@@ -56,14 +50,10 @@ export const ModalPayment: FC<ModalPaymentProps> = ({
             onClick={handleCloseModal}
           />
         )}
-        <div className={style.logo_box}>
-          <img
-            src={logo}
-            alt={logo}
-            className={`${style.logo} ${darkModal ? style.darkModalLogo : ''}`}
-          />
-        </div>
-        <h2 className={!darkModal ? style.modalTitle : style.darkModalTitle}>
+        {children}
+        <h2
+          className={`${style.title} ${darkModal ? style.darkModalTitle : ''}`}
+        >
           {textTitle}
         </h2>
       </div>

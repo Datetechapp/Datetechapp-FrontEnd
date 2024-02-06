@@ -1,0 +1,84 @@
+.modal{
+    max-width: 336px;
+    border-radius: 8px;
+    box-shadow: 0px 26px 80px 0px rgba(0, 0, 0, 0.2),0px 0px 1px 0px rgba(0, 0, 0, 0.2);
+    background: rgb(255, 255, 255);
+    position: relative;
+    width: 432px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 24px;
+    outline: none;
+    border-radius: 7px;
+    animation: fadeIn 0.7s ease-in-out forwards;
+}
+.overlayModal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+.titleBlock{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.iconCancel{
+    align-self: start;
+    cursor: pointer;
+}
+.title{
+    color: #5f4f7f;
+    font-family: Montserrat;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: -0.5px;
+    text-align: left;
+}
+.subtitle{
+    padding: 12px 0 40px;
+    color: #5f4f7f;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0px;
+    text-align: left;
+}
+.btnsBlock{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 11px;
+}
+.btnsBlock button{
+    background: rgb(95, 79, 127);
+    border: none;
+    max-width: 138px;
+    width: 100%;
+    border-radius: 5px;
+    padding: 16px 18px;
+    color: #ffffff;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0.2px;
+    text-align: center;
+}
+.btnsBlock button:hover{
+    background: linear-gradient(180.00deg, rgb(151, 71, 255),rgb(222, 119, 199) 100%);
+}
+
+@keyframes fadeIn {
+    from {
+      opacity: 0; 
+    }
+    to {
+      opacity: 1; 
+    }
+  }

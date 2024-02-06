@@ -60,3 +60,8 @@
     border-radius: 5px;
     background: var(--Gradient, linear-gradient(180deg, #9747FF 0%, #DE77C7 100%));
 }
+.logo{
+    width: 113px;
+    height: 77px;
+    margin-top: -24px;
+}
