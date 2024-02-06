@@ -1,26 +1,29 @@
 import { AutoComplete, ConfigProvider, Input } from 'antd';
 import debounce from 'lodash/debounce';
-import { type ReactNode, useCallback, useState } from 'react';
+import { useCallback, useState, type Dispatch, type ReactNode, type SetStateAction } from 'react';
 
 import { fetchData } from '../../../../api';
 
 import { ReactComponent as SearchIcon } from '../../../../assets/CreateAccountForm/searchLocationIcon.svg';
 import css from './locations.module.css';
 
+type Props = {
+  setLocation: Dispatch<SetStateAction<string>>;
+};
+
 type Location = {
   city: string;
   country: string;
   wikiDataId: string;
 };
+
 type LocationOption = {
   value: string;
-  city: string;
-  country: string;
   label: ReactNode;
-  key: string;
+  key?: string;
 };
 
-export const Locations = () => {
+export const Locations = ({ setLocation }: Props) => {
   const [inputValue, setInputValue] = useState('');
   const [filteredOptions, setFilteredOptions] = useState<LocationOption[]>([]);
 
@@ -37,8 +40,6 @@ export const Locations = () => {
 
               return {
                 value: `${city}, ${country}`,
-                city,
-                country,
                 label: (
                   <>
                     <span className={css.match}>{matchCity}</span>
@@ -58,23 +59,32 @@ export const Locations = () => {
   );
 
   const handleInputChange = (value: string) => {
+    setLocation('');
     setInputValue(value);
     fetchDebounce(value);
   };
 
-  const onSelect = (value: string) => setInputValue(value);
+  const onSelect = (value: string) => {
+    const [city, country] = value.split(', ');
+
+    setFilteredOptions([
+      {
+        value: `${city}, ${country}`,
+        label: (
+          <>
+            <span className={css.match}>{city}</span>
+            <span className={css.mismatch}>{', ' + country}</span>
+          </>
+        ),
+      },
+    ]);
+    setInputValue(value);
+    setLocation(value);
+  };
 
   return (
     <div className={css.searchBlockWrapper}>
-      <ConfigProvider
-        theme={{
-          components: {
-            Select: {
-              optionPadding: 0,
-            },
-          },
-        }}
-      >
+      <ConfigProvider theme={{ components: { Select: { optionPadding: 0 } } }}>
         <SearchIcon className={css.searchIcon} />
         <AutoComplete
           className={css.locations}

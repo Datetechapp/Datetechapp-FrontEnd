@@ -31,6 +31,7 @@ export function Questionnaire() {
   const [isThereAVideo, setIsThereAVideo] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   const [showModalUploadVideo, setShowModalUploadVideo] = useState(false);
+  const [location, setLocation] = useState('');
 
   const handlePreviousStep = () => {
     setStep((prevStep) => prevStep - 1);
@@ -280,7 +281,7 @@ export function Questionnaire() {
             <PreviousStep className={css.previousStepArrow} onClick={handlePreviousStep} />
             <div className={css.form}>
               <h2 className={css.title}>Add video</h2>
-              <p className={css.subtitle}>Upload videos no longer than 1 minute that allow users to get to know you better. </p>
+              <p className={css.subtitle}>Upload videos no longer than 1 minute that allow users to get to know you better.</p>
               <VideoUploader onUpload={handleVideoUpload} onChange={setIsThereAVideo} video={video} />
               {showModalUploadVideo && (
                 <ModalUploadVideo
@@ -310,22 +311,26 @@ export function Questionnaire() {
           </div>
         )}
         {step === 6 && (
-          // <div className={css.blockWithPreviousArrow}>
-          //   <PreviousStep className={css.previousStepArrow} onClick={handlePreviousStep} />
-          //   <div className={css.form}>
-          //     <h2 className={css.title}>We need your locations for best matches</h2>
-          //     <Button className={css.continueBtnValid} onClick={() => {}}>
-          //       Allow location access
-          //     </Button>
-          //     <p className={css.textButton}>I will set up it manually</p>
-          //   </div>
-          // </div>
           <div className={css.blockWithPreviousArrow}>
             <PreviousStep className={css.previousStepArrow} onClick={handlePreviousStep} />
             <div className={css.form}>
               <h2 className={css.title}>We need your locations for best matches</h2>
-              <Locations />
-              <Button className={css.continueBtn} onClick={() => {}} disabled={true}>
+              <Button className={css.continueBtnValid} onClick={() => {}}>
+                Allow location access
+              </Button>
+              <p className={css.textButton} onClick={() => setStep(step + 1)}>
+                I will set up it manually
+              </p>
+            </div>
+          </div>
+        )}
+        {step === 7 && (
+          <div className={css.blockWithPreviousArrow}>
+            <PreviousStep className={css.previousStepArrow} onClick={handlePreviousStep} />
+            <div className={css.form}>
+              <h2 className={css.title}>We need your locations for best matches</h2>
+              <Locations setLocation={setLocation} />
+              <Button className={location ? css.continueBtnValid : css.continueBtn} onClick={handleSubmit} disabled={!location}>
                 Continue
               </Button>
             </div>

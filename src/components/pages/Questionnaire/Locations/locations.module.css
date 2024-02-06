@@ -17,7 +17,7 @@
 
 .search {
   padding: 14px 16px 14px 48px;
-  font: normal 500 14px/18px var(--ff);
+  font: 500 14px/18px var(--ff);
   background-color: var(--Dark_Elements_Background, #201b27);
   border-radius: 8px;
   border-color: var(--Violet_Active, #c896ef);
@@ -36,7 +36,7 @@
 
 .popup {
   padding: 5px 16px;
-  font: normal 500 14px/18px var(--ff);
+  font: 500 14px/18px var(--ff);
   letter-spacing: 0.1px;
 
   background-color: var(--Dark_Elements_Background, #201b27);
@@ -45,13 +45,13 @@
 }
 
 .match {
-  font: normal 500 14px/18px var(--ff);
+  font: 500 14px/18px var(--ff);
   letter-spacing: 0.1px;
   color: var(--Violet_Active, #c896ef);
 }
 
 .mismatch {
-  font: normal 500 14px/18px var(--ff);
+  font: 500 14px/18px var(--ff);
   letter-spacing: 0.1px;
   color: var(--White, #fff);
 }
