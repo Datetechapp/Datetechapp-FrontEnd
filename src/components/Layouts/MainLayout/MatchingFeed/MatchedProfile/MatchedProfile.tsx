@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import share from "../../../../../assets/feed/share.svg";
+import copy from "../../../../../assets/feed/copy.svg";
+import report from "../../../../../assets/feed/report.svg";
 import styles from "./MatchedProfile.module.css";
 import { ReactComponent as SoundOnIcon } from "../../../../../assets/CreateAccountForm/soundIcon.svg";
 import { ReactComponent as SoundOffIcon } from "../../../../../assets/CreateAccountForm/soundOff.svg";
@@ -16,6 +18,7 @@ interface UserProfileCardProps {
     img: string;
     isLiked: boolean;
     likeYou: boolean;
+    video: string;
   };
   onDelete: (id: number) => void;
   setSelectedProfileId: React.Dispatch<React.SetStateAction<number | null>>;
@@ -34,9 +37,14 @@ const MatchedProfile: React.FC<UserProfileCardProps> = ({
 
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isShareProfileVisible, setShareProfileVisible] = useState(false);
+  const [isCopyLinkVisible, setCopyLinkVisible] = useState(false);
 
   const handleShareButtonClick = () => {
     setShareProfileVisible(!isShareProfileVisible);
+  };
+
+  const handleCopyButtonClick = () => {
+    setCopyLinkVisible(!isCopyLinkVisible);
   };
 
   const handleVideoClick = () => {
@@ -129,7 +137,7 @@ const MatchedProfile: React.FC<UserProfileCardProps> = ({
 
       <div className={styles.videoContainer}>
         <video className={styles.videoProfile}>
-          <source src="" type="video/mp4" />
+          <source src={profile.video} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         <div className={styles.overlayIcons}>
@@ -187,15 +195,24 @@ const MatchedProfile: React.FC<UserProfileCardProps> = ({
               />
             )}
           </div>
-          <div className={styles.profile_dots_copy} onClick={handleShareButtonClick}>
-          ...
-          {isShareProfileVisible && (
-            <div className={styles.copyProfileElement}>
-              <img src={share} alt="share" />
-              Share profile
-            </div>
-          )}
-        </div>
+          <div
+            className={styles.profile_dots_copy}
+            onClick={handleCopyButtonClick}
+          >
+            {isCopyLinkVisible && (
+              <div className={styles.copyLinkElement}>
+                <div className={styles.copyElement}>
+                  <img src={copy} alt="copy" />
+                  Copy link
+                </div>
+                <div className={styles.reportElement}>
+                  <img src={report} alt="report" />
+                  Report video
+                </div>
+              </div>
+            )}
+            ...
+          </div>
         </div>
       </div>
     </div>

@@ -18,6 +18,7 @@ const profilesDataInterestedInYou = [
     img: profilePic,
     isLiked: false,
     likeYou: true,
+    video: "",
   },
   {
     id: 2,
@@ -28,6 +29,7 @@ const profilesDataInterestedInYou = [
     img: profilePic,
     isLiked: false,
     likeYou: true,
+    video: "",
   },
   {
     id: 3,
@@ -38,6 +40,7 @@ const profilesDataInterestedInYou = [
     img: profilePic,
     isLiked: false,
     likeYou: true,
+    video: "",
   },
 ];
 
@@ -51,6 +54,7 @@ const profilesDataNewPeople = [
     img: profilePic,
     isLiked: false,
     likeYou: false,
+    video: "",
   },
   {
     id: 2,
@@ -61,6 +65,7 @@ const profilesDataNewPeople = [
     img: profilePic,
     isLiked: false,
     likeYou: false,
+    video: "",
   },
   {
     id: 3,
@@ -71,6 +76,7 @@ const profilesDataNewPeople = [
     img: profilePic,
     isLiked: false,
     likeYou: false,
+    video: "",
   },
 ];
 

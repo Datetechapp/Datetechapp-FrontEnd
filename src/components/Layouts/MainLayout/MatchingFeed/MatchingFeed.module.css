@@ -110,12 +110,15 @@
 }
 
 .matching_profiles {
-  overflow-y: auto;
+  width: 324px;
   height: 630px;
   display: flex;
   flex-direction: column;
   color: #fff;
   gap: 7px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
 }
 
 .interested_active {
