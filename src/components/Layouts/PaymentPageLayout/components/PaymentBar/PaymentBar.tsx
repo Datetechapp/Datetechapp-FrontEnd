@@ -6,7 +6,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import { ModalPayment } from './../../../../pages/PaymentPage/components/ModalPayment';
 import logo from './../../../../../assets/ModalAuth/logo.svg';
-import SubscriptionOption from 'components/pages/PaymentPage/components/ModalSubscriptionOptions/SubscriptionOption';
+import { SubscriptionOption } from 'components/pages/PaymentPage/components/ModalSubscriptionOptions';
 
 const links = [
   {

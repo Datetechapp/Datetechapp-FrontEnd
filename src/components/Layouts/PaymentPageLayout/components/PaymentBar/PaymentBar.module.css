@@ -5,9 +5,7 @@
 }
 .titleBar{
     padding: calc(16px - 8px) 0;
-    font-family: Montserrat;
     font-size: 20px;
-    font-style: normal;
     font-weight: 600;
     line-height: 24px;
     letter-spacing: -0.5px;
@@ -30,9 +28,7 @@
     align-items: center;
     color: var(--White, #FFF);
     font-variant-numeric: lining-nums proportional-nums;
-    font-family: Montserrat;
     font-size: 14px;
-    font-style: normal;
     font-weight: 500;
     line-height: 18px;
     letter-spacing: 0.1px;
@@ -50,9 +46,7 @@
     width: 100%;
     padding: 10px 16px;
     color: var(--White, #FFF);
-    font-family: Montserrat;
     font-size: 16px;
-    font-style: normal;
     font-weight: 600;
     line-height: 20px;
     letter-spacing: 0.2px;

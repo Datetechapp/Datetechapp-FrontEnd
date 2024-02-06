@@ -3,14 +3,14 @@
 }
 .subscriptionBox{
     overflow: hidden;
+    position: relative;
     border-radius: 10px;
     border: 1px solid #FFE0AA;
     background: #201b27;
     padding: 24px;
     width: 100%;
-    z-index: 2;
 }
-/* .subscriptionBox::after{
+.subscriptionBox::after{
     content: '';
     display: block;
     position: absolute;
@@ -21,7 +21,6 @@
     top: 228px ;
     transform: rotate(-11.73deg);
     filter: blur(53px);
-    z-index: 1;
 }
 .subscriptionBox::before{
     content: '';
@@ -34,8 +33,7 @@
     top: -93px;
     right: -210px;
     transform: rotate(-12.82deg);
-    z-index: 1;
-} */
+}
 
 .headerBox{
     width: 100%;
@@ -43,6 +41,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative;
+    z-index: 5;
 }
 .dateHeaderBox{
     padding-top: 10px;
@@ -87,14 +87,16 @@
 }
 
 .contentBox{
+    position: relative;
+    z-index: 4;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 30px 40px 40px;
     box-sizing: border-box;
-    border: 1px solid rgb(95, 79, 127);
+    border: 1px solid #5f4f7f;
     border-radius: 10px;
-    background: rgb(39, 37, 51);
+    background: #272533;
 }
 .subscriptionDetails p{
     padding-bottom: 18px;

@@ -8,9 +8,7 @@
     border: 1px solid var(--Violet_Stroke, #5F4F7F);
     background: var(--Dark_Elements_Background, #201B27);
     color: var(--Violet_Stroke, #5F4F7F);
-    font-family: Montserrat;
     font-size: 18px;
-    font-style: normal;
     font-weight: 600;
     line-height: 22px;
     letter-spacing: 0.1px;
@@ -23,9 +21,7 @@
     border-bottom: 1px solid var(--Violet_Stroke, #5F4F7F);
     height: 70px;
     color: var(--Violet_Active, #C896EF);
-    font-family: Montserrat;
     font-size: 16px;
-    font-style: normal;
     font-weight: 600;
     line-height: 20px; 
     letter-spacing: 0.2px;
@@ -34,9 +30,7 @@
 .rowTitle td{
    height: 50px;
     color: var(--White, #FFF);
-    font-family: Montserrat;
     font-size: 14px;
-    font-style: normal;
     font-weight: 500;
     line-height: 18px; 
     letter-spacing: 0.1px;

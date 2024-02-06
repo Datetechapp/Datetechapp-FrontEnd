@@ -12,8 +12,10 @@
     outline: none;
     border-radius: 7px;
     animation: fadeIn 0.7s ease-in-out forwards;
+    z-index: 6;
 }
 .overlayModal{
+    z-index: 6;
     position: fixed;
     top: 0;
     left: 0;
@@ -32,7 +34,6 @@
 }
 .title{
     color: #5f4f7f;
-    font-family: Montserrat;
     font-size: 22px;
     font-weight: 600;
     line-height: 24px;
@@ -42,12 +43,9 @@
 .subtitle{
     padding: 12px 0 40px;
     color: #5f4f7f;
-    font-family: Montserrat;
     font-size: 16px;
     font-weight: 400;
     line-height: 20px;
-    letter-spacing: 0px;
-    text-align: left;
 }
 .btnsBlock{
     display: flex;
@@ -63,7 +61,6 @@
     border-radius: 5px;
     padding: 16px 18px;
     color: #ffffff;
-    font-family: Montserrat;
     font-size: 16px;
     font-weight: 600;
     line-height: 20px;

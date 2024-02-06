@@ -11,7 +11,7 @@ interface ISubscription {
   isOpen: boolean;
 }
 
-const SubscriptionOption: FC<ISubscription> = ({ onClose, isOpen }) => {
+export const SubscriptionOption: FC<ISubscription> = ({ onClose, isOpen }) => {
   const [openModal, setOpenModal] = useState(false);
   const handleCloseModal = () => {
     document.body.style.overflow = 'unset';
@@ -91,7 +91,7 @@ const SubscriptionOption: FC<ISubscription> = ({ onClose, isOpen }) => {
           </ul>
         </div>
       </div>
-      {openModal && (
+      {isOpen && (
         <ModalPayment
           isOpen={true}
           isThereACancel={true}
@@ -124,5 +124,3 @@ const SubscriptionOption: FC<ISubscription> = ({ onClose, isOpen }) => {
     </Modal>
   );
 };
-
-export default SubscriptionOption;

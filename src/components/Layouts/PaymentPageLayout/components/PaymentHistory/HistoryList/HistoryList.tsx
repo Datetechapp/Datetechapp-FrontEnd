@@ -11,13 +11,11 @@ import {
 
 export const HistoryList = () => {
   const getRowClass = (status: string) => {
-    if (status === 'paid') {
-      return style.rowPaid;
-    } else if (status === 'progress') {
-      return style.rowProgress;
-    }
-
-    return style.rowCancel;
+    return status === 'well paid'
+      ? style.rowPaid
+      : status === 'in progress'
+      ? style.rowProgress
+      : style.rowCancel;
   };
 
   return (
