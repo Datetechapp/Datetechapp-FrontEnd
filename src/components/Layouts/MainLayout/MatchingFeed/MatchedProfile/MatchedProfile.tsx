@@ -1,12 +1,12 @@
-import React, { useState, useEffect, useRef } from "react";
-import share from "../../../../../assets/feed/share.svg";
-import copy from "../../../../../assets/feed/copy.svg";
-import report from "../../../../../assets/feed/report.svg";
-import styles from "./MatchedProfile.module.css";
-import { ReactComponent as SoundOnIcon } from "../../../../../assets/CreateAccountForm/soundIcon.svg";
-import { ReactComponent as SoundOffIcon } from "../../../../../assets/CreateAccountForm/soundOff.svg";
-import { ReactComponent as PlayIcon } from "../../../../../assets/CreateAccountForm/playIcon.svg";
-import { ReactComponent as PauseIcon } from "../../../../../assets/CreateAccountForm/pauseIcon.svg";
+import React, { useState, useEffect, useRef } from 'react';
+import share from '../../../../../assets/feed/share.svg';
+import copy from '../../../../../assets/feed/copy.svg';
+import report from '../../../../../assets/feed/report.svg';
+import styles from './MatchedProfile.module.css';
+import { ReactComponent as SoundOnIcon } from '../../../../../assets/CreateAccountForm/soundIcon.svg';
+import { ReactComponent as SoundOffIcon } from '../../../../../assets/CreateAccountForm/soundOff.svg';
+import { ReactComponent as PlayIcon } from '../../../../../assets/CreateAccountForm/playIcon.svg';
+import { ReactComponent as PauseIcon } from '../../../../../assets/CreateAccountForm/pauseIcon.svg';
 
 interface UserProfileCardProps {
   profile: {
@@ -65,7 +65,7 @@ const MatchedProfile: React.FC<UserProfileCardProps> = ({
     const rangeInput = volumeRef.current as HTMLInputElement;
 
     if (rangeInput) {
-      rangeInput.style.setProperty("--thumb-percentage", `${volume * 100}%`);
+      rangeInput.style.setProperty('--thumb-percentage', `${volume * 100}%`);
     }
   }, [volume, isVolumeBlockHovered, isHovered]);
 
@@ -95,7 +95,7 @@ const MatchedProfile: React.FC<UserProfileCardProps> = ({
         100;
 
       e.target.style.setProperty(
-        "--thumb-percentage",
+        '--thumb-percentage',
         `${thumbPositionPercentage}%`,
       );
     }

@@ -16,11 +16,6 @@
   --text-color: #5f4f7f;
   --active-text-color: #e9e3f5;
   --dark-background: #1f1d2b;
-#root {
-  --panel-background: #272533;
-  --text-color: #5f4f7f;
-  --active-text-color: #e9e3f5;
-  --dark-background: #1f1d2b;
 }
 .main_layout__wrapper {
   display: flex;
@@ -46,4 +41,3 @@
   width: 296px;
   display: flex;
 }
-

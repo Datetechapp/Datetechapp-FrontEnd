@@ -1,6 +1,6 @@
-import React from "react";
-import avatar from "../../../../../assets/user/avatar Ivan.svg";
-import styles from "./IsMatchedModal.module.css";
+import React from 'react';
+import avatar from '../../../../../assets/user/avatar Ivan.svg';
+import styles from './IsMatchedModal.module.css';
 
 type ModalMatchedProps = {
   selectedProfileId: number | null;
@@ -43,9 +43,9 @@ const IsMatchedModal: React.FC<ModalMatchedProps> = ({
           <p className={styles.matchTextLine}>
             <span className={styles.coloredText}>You</span> and
             <span className={styles.coloredText}>
-              {" "}
-              {selectedProfile?.name}{" "}
-            </span>{" "}
+              {' '}
+              {selectedProfile?.name}{' '}
+            </span>{' '}
             have liked each other!
           </p>
           <div className={styles.imagesContainer}>

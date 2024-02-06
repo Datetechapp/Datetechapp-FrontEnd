@@ -1,10 +1,10 @@
-import React from "react";
-import playButtonIcon from "../../../../../assets/feed/PlayIcon.svg";
-import contactIcon from "../../../../../assets/feed/Contact.svg";
-import questionIcon from "../../../../../assets/feed/Question.svg";
-import globeIcon from "../../../../../assets/feed/Globe.svg";
-import logoutIcon from "../../../../../assets/feed/Logout.svg";
-import styles from "./Dropdown.module.css";
+import React from 'react';
+import playButtonIcon from '../../../../../assets/feed/PlayIcon.svg';
+import contactIcon from '../../../../../assets/feed/Contact.svg';
+import questionIcon from '../../../../../assets/feed/Question.svg';
+import globeIcon from '../../../../../assets/feed/Globe.svg';
+import logoutIcon from '../../../../../assets/feed/Logout.svg';
+import styles from './Dropdown.module.css';
 
 type DropdownContentProps = {
   closeDropdown: () => void;
@@ -27,7 +27,7 @@ const DropdownContent: React.FC<DropdownContentProps> = ({
   return (
     <>
       <div
-        style={{ display: "flex" }}
+        style={{ display: 'flex' }}
         className={styles.dropdown_content}
         id="dropdown"
       >

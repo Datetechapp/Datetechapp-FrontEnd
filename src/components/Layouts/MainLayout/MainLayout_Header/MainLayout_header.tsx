@@ -1,13 +1,13 @@
-import { FC, useState, useEffect, useRef } from "react";
-import { NavLink } from "react-router-dom";
-import DropdownContent from "./DropdownContent/DropdownContent";
-import bell from "../../../../assets/feed/bell.svg";
-import calendar from "../../../../assets/feed/calendar.svg";
-import arrow from "../../../../assets/feed/arrow.svg";
-import logo from "../../../../assets/ModalAuth/logo.svg";
-import avatar from "../../../../assets/user/avatar Ivan.svg";
-import "./index.css";
-import ModalPremium from "./ModalPremium/ModalPremium";
+import { FC, useState, useEffect, useRef } from 'react';
+import { NavLink } from 'react-router-dom';
+import DropdownContent from './DropdownContent/DropdownContent';
+import bell from '../../../../assets/feed/bell.svg';
+import calendar from '../../../../assets/feed/calendar.svg';
+import arrow from '../../../../assets/feed/arrow.svg';
+import logo from '../../../../assets/ModalAuth/logo.svg';
+import avatar from '../../../../assets/user/avatar Ivan.svg';
+import './index.css';
+import ModalPremium from './ModalPremium/ModalPremium';
 
 export const MainLayoutHeader: FC = () => {
   const [dropdownVisible, setDropdownVisible] = useState(false);
@@ -32,10 +32,10 @@ export const MainLayoutHeader: FC = () => {
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
 
@@ -64,12 +64,12 @@ export const MainLayoutHeader: FC = () => {
               <NavLink
                 to="self"
                 className={({ isActive }) =>
-                  isActive ? "active_self_link" : "deactive_self_link"
+                  isActive ? 'active_self_link' : 'deactive_self_link'
                 }
               >
                 <div className="nav_panel_user_pic">
-                  {" "}
-                  <img src={avatar} alt="avatar" />{" "}
+                  {' '}
+                  <img src={avatar} alt="avatar" />{' '}
                 </div>
               </NavLink>
               <div>
@@ -81,7 +81,7 @@ export const MainLayoutHeader: FC = () => {
             <img
               src={arrow}
               alt="button arrow"
-              className={`user_img ${dropdownVisible ? `arrow_rotate` : ""}`}
+              className={`user_img ${dropdownVisible ? `arrow_rotate` : ''}`}
             />
           </div>
         </button>
