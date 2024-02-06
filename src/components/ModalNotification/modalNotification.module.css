@@ -1,0 +1,40 @@
+.notificationContainer {
+  max-width: 373px;
+  padding: 0 16px;
+  width: 100%;
+  position: absolute;
+  top: 95px;
+  right: 50px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0px 0px 10px 10px;
+  background: #32303e;
+}
+.notificationTitle {
+  border-bottom: 1px solid #5f4f7f;
+  padding: 16px 0;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0.2px;
+  color: #fff;
+}
+.btnNotification {
+  border-top: 1px solid #5f4f7f;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  padding: 16px 8px;
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  color: #c896ef;
+  background-color: inherit;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+.btnNotification:hover {
+  color: #fff;
+}

@@ -20,6 +20,7 @@ export function ThemeList() {
       href: 'video',
     },
   ];
+
   return (
     <div className={styles.container}>
       <div className={styles.themeButtons}>
@@ -27,6 +28,7 @@ export function ThemeList() {
           <NavLink
             to={button.href}
             className={(navData) => (navData.isActive ? styles.active : '')}
+            key={button.title}
           >
             {button.title}
           </NavLink>

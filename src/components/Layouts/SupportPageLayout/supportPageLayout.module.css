@@ -1,19 +1,20 @@
 .container {
-    display: flex;
-    background-color: #1F1D2B;
-    width: 100%;
-    color: #FFF;
+  display: flex;
+  background-color: #1f1d2b;
+  width: 100%;
+  color: #fff;
+  height: 100vh;
 }
 
 .leftPart {
-    flex: 3;
+  flex: 3;
 }
 
 .wrapper {
-    width: 95%;
-    margin: 0 auto;
+  width: 95%;
+  margin: 0 auto;
 }
 
 .rightPart {
-    flex: 1;
+  flex: 1;
 }

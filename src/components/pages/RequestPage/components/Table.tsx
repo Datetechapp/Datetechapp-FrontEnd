@@ -24,7 +24,7 @@ export default function RequestTable({
   };
 
   const filteredData = tableData.filter((item) =>
-    item.id.toString().includes(text)
+    item.id.toString().includes(text),
   );
 
   return (
