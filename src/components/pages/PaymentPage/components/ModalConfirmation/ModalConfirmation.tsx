@@ -12,7 +12,13 @@ interface IConfirmation {
 }
 
 export const ModalConfirmation: FC<IConfirmation> = ({ onClose, isOpen }) => {
+  const [openModal, setOpenModal] = useState(false);
+  const handleOpenModal = () => {
+    setOpenModal(true);
+  };
   const handleCloseModal = () => {
+    document.body.style.overflow = 'unset';
+    setOpenModal(false);
     onClose();
   };
 
@@ -39,11 +45,11 @@ export const ModalConfirmation: FC<IConfirmation> = ({ onClose, isOpen }) => {
         <Button className={style.firstBtn} onClick={handleCloseModal}>
           Back
         </Button>
-        <Button className={style.secondBtn} onClick={handleCloseModal}>
+        <Button className={style.secondBtn} onClick={handleOpenModal}>
           Cancel
         </Button>
       </div>
-      {isOpen && (
+      {openModal && (
         <ModalPayment
           isOpen={true}
           isThereACancel={true}
