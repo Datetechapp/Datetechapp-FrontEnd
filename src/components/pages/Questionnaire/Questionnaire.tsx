@@ -13,7 +13,7 @@ const textForName = 'Tell us more! What do you like to be called?';
 const textForButton = 'Continue';
 
 export function Questionnaire() {
-  const [step, setStep] = useState(6);
+  const [step, setStep] = useState(0);
   const [name, setName] = useState('');
   const [day, setDay] = useState('');
   const [isValidDay, setIsValidDay] = useState(false);
@@ -102,7 +102,7 @@ export function Questionnaire() {
     }
   };
 
-  const handleGenderChange = (event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) => {
+  const handleGenderChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     if (event.target.value === 'Male' || event.target.value === 'Female') {
       setSex(event.target.value);
       setGender('');
@@ -112,7 +112,7 @@ export function Questionnaire() {
     }
   };
 
-  const handleGenderFilter = (event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) => {
+  const handleGenderFilter = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     if (event.target.value === 'Male') {
       setGenderFilter('Male');
     } else {
@@ -137,7 +137,17 @@ export function Questionnaire() {
   };
 
   const handleSubmit = () => {
-    // Отправка ответов анкеты
+    const form = {
+      name,
+      birthday: `${month}-${day}-${year}`,
+      sex: sex || gender,
+      genderFilter,
+      isChecked,
+      photo,
+      video,
+      location,
+    };
+    console.log(form);
   };
 
   return (
