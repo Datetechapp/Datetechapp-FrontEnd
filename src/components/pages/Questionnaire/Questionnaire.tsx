@@ -16,20 +16,18 @@ export function Questionnaire() {
   const [step, setStep] = useState(0);
   const [name, setName] = useState('');
   const [day, setDay] = useState('');
-  const [isValidDay, setIsValidDay] = useState(false);
   const [month, setMonth] = useState('');
-  const [isValidMonth, setIsValidMonth] = useState(false);
   const [year, setYear] = useState('');
+  const [isValidDay, setIsValidDay] = useState(false);
+  const [isValidMonth, setIsValidMonth] = useState(false);
   const [isValidYear, setIsValidYear] = useState(false);
   const [isValidBirthday, setIsValidBirthday] = useState(false);
   const [sex, setSex] = useState('');
   const [gender, setGender] = useState('');
-  const [genderFilter, setGenderFilter] = useState('');
-  const [isThereAPhoto, setIsThereAPhoto] = useState(false);
+  const [sexOrientation, setSexOrientation] = useState('');
   const [photo, setPhoto] = useState<string | null>(null);
   const [video, setVideo] = useState<Blob | null>(null);
-  const [isThereAVideo, setIsThereAVideo] = useState(false);
-  const [isChecked, setIsChecked] = useState(false);
+  const [showSexOrientation, setShowSexOrientation] = useState(false);
   const [showModalUploadVideo, setShowModalUploadVideo] = useState(false);
   const [location, setLocation] = useState('');
 
@@ -112,40 +110,28 @@ export function Questionnaire() {
     }
   };
 
-  const handleGenderFilter = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    if (event.target.value === 'Male') {
-      setGenderFilter('Male');
-    } else {
-      setGenderFilter('Female');
-    }
+  const handleOrientationChange = ({ target }: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    setSexOrientation(target.value);
   };
 
-  const handleCheckChange = () => {
-    setIsChecked(!isChecked);
-  };
+  const handleCheckChange = () => setShowSexOrientation(!showSexOrientation);
 
-  const handlePhotoUpload = (file: string | null) => {
-    setPhoto(file);
-  };
+  const handlePhotoUpload = (file: string | null) => setPhoto(file);
 
-  const handleVideoUpload = (fileData: Blob | null, isRemoved?: boolean) => {
-    if (isRemoved) {
-      setVideo(null);
-    } else {
-      setVideo(fileData);
-    }
-  };
+  const handleVideoUpload = (fileData: Blob | null) => setVideo(fileData);
 
   const handleSubmit = () => {
+    const [city, country] = location.split(', ');
     const form = {
       name,
-      birthday: `${month}-${day}-${year}`,
+      birthday: `${year}-${month}-${day}`,
       sex: sex || gender,
-      genderFilter,
-      isChecked,
+      show_sex_orientation: showSexOrientation,
+      sex_orientation: sexOrientation,
+      city,
+      country,
       photo,
       video,
-      location,
     };
     console.log(form);
   };
@@ -249,12 +235,12 @@ export function Questionnaire() {
             <PreviousStep className={css.previousStepArrow} onClick={handlePreviousStep} />
             <div className={css.form}>
               <h2 className={css.title}>Show me in searches for...</h2>
-              <GenderDropdawn onChange={handleGenderFilter} showGenders={false} sex={genderFilter} />
+              <GenderDropdawn onChange={handleOrientationChange} showGenders={false} sex={sexOrientation} />
               <div className={css.checkboxBlockWrapper}>
                 <p className={css.titleForCheckboxBlock}>Privacy</p>
                 <div className={css.checkboxBlock}>
                   <p className={css.checkboxDescription}>Open my gender identity</p>
-                  <Checkbox className={css.checkboxForIdentity} checked={isChecked} onChange={handleCheckChange} />
+                  <Checkbox className={css.checkboxForIdentity} checked={showSexOrientation} onChange={handleCheckChange} />
                 </div>
                 <p className={css.checkboxInfo}>
                   by clicking you agree that your gender identity will be visible to other users in your profile
@@ -262,9 +248,9 @@ export function Questionnaire() {
               </div>
 
               <Button
-                className={genderFilter ? css.continueBtnValid : css.continueBtn}
+                className={sexOrientation ? css.continueBtnValid : css.continueBtn}
                 onClick={() => setStep(step + 1)}
-                disabled={!genderFilter}
+                disabled={!sexOrientation}
               >
                 Continue
               </Button>
@@ -277,11 +263,11 @@ export function Questionnaire() {
             <div className={css.form}>
               <h2 className={css.title}>Share a couple photos of yourself</h2>
               <p className={css.subtitle}>Add a profile photo so that other users can get a better look at you</p>
-              <PhotoUploader onUpload={handlePhotoUpload} onChange={setIsThereAPhoto} photo={photo || ''} />
-              {!isThereAPhoto && <p className={css.warning}>We accept JPGs and PNGs of at least 500x500px</p>}
-              {isThereAPhoto && <p className={css.compliment}>Good choice!</p>}
-              <Button className={!isThereAPhoto ? css.skipBtn : css.continueBtnValid} onClick={() => setStep(step + 1)}>
-                {!isThereAPhoto ? 'Skip' : 'Continue'}
+              <PhotoUploader onUpload={handlePhotoUpload} photo={photo || ''} />
+              {!photo && <p className={css.warning}>We accept JPGs and PNGs of at least 500x500px</p>}
+              {photo && <p className={css.compliment}>Good choice!</p>}
+              <Button className={!photo ? css.skipBtn : css.continueBtnValid} onClick={() => setStep(step + 1)}>
+                {!photo ? 'Skip' : 'Continue'}
               </Button>
             </div>
           </div>
@@ -292,7 +278,7 @@ export function Questionnaire() {
             <div className={css.form}>
               <h2 className={css.title}>Add video</h2>
               <p className={css.subtitle}>Upload videos no longer than 1 minute that allow users to get to know you better.</p>
-              <VideoUploader onUpload={handleVideoUpload} onChange={setIsThereAVideo} video={video} />
+              <VideoUploader onUpload={handleVideoUpload} video={video} />
               {showModalUploadVideo && (
                 <ModalUploadVideo
                   isShowModalUploadVideo={showModalUploadVideo}
@@ -302,13 +288,13 @@ export function Questionnaire() {
                   onUpload={handleVideoUpload}
                 />
               )}
-              {!isThereAVideo && (
+              {!video && (
                 <div>
                   <p className={css.promptForVideo}>Don't you have any ideas?</p>
                   <p className={css.linkExamplesVideo}>We have examples</p>
                 </div>
               )}
-              {isThereAVideo ? (
+              {video ? (
                 <Button className={css.continueBtnValid} onClick={() => setStep(step + 1)}>
                   Continue
                 </Button>
