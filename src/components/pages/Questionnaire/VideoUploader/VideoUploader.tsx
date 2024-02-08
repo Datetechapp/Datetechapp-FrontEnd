@@ -26,11 +26,16 @@ export const VideoUploader: FC<VideoUploaderProps> = ({ onUpload, video }) => {
     const allowedExtensions = ['mp4', 'mov', 'avi', 'wmv'];
     const allowedMaxSize = 1024 * 1024 * 1024;
 
-    if (allowedExtensions.includes(fileExtension) && file.size <= allowedMaxSize) {
+    if (
+      allowedExtensions.includes(fileExtension) &&
+      file.size <= allowedMaxSize
+    ) {
       const reader = new FileReader();
 
       reader.onload = () => {
-        const videoData = new Blob([new Uint8Array(reader.result as ArrayBuffer)]);
+        const videoData = new Blob([
+          new Uint8Array(reader.result as ArrayBuffer),
+        ]);
 
         onUpload(videoData);
 
@@ -50,7 +55,9 @@ export const VideoUploader: FC<VideoUploaderProps> = ({ onUpload, video }) => {
 
   const handleVideoClick = () => {
     if (!videoRef.current) return;
-    videoRef.current.paused ? videoRef.current.play() : videoRef.current.pause();
+    videoRef.current.paused
+      ? videoRef.current.play()
+      : videoRef.current.pause();
     setIsPlaying(!videoRef.current.paused);
   };
 
@@ -83,9 +90,14 @@ export const VideoUploader: FC<VideoUploaderProps> = ({ onUpload, video }) => {
 
     if (!isNaN(value)) {
       const thumbPositionPercentage =
-        ((value - parseFloat(target.min)) / (parseFloat(target.max) - parseFloat(target.min))) * 100;
+        ((value - parseFloat(target.min)) /
+          (parseFloat(target.max) - parseFloat(target.min))) *
+        100;
 
-      target.style.setProperty('--thumb-percentage', `${thumbPositionPercentage}%`);
+      target.style.setProperty(
+        '--thumb-percentage',
+        `${thumbPositionPercentage}%`,
+      );
     }
   };
 
@@ -142,8 +154,15 @@ export const VideoUploader: FC<VideoUploaderProps> = ({ onUpload, video }) => {
               />
             </div>
           )}
-          {!isPlaying && <PlayIcon className={css.iconControls} onClick={handleVideoClick} />}
-          {isPlaying && <PauseIcon className={css.iconControls} onClick={handleVideoClick} />}
+          {!isPlaying && (
+            <PlayIcon className={css.iconControls} onClick={handleVideoClick} />
+          )}
+          {isPlaying && (
+            <PauseIcon
+              className={css.iconControls}
+              onClick={handleVideoClick}
+            />
+          )}
         </div>
       )}
     </>

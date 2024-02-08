@@ -3,7 +3,13 @@ import { ChangeEvent, useState } from 'react';
 
 import { Button, Checkbox, Input } from 'components/common';
 import { HeaderSecondary } from 'components/pages/Questionnaire/HeaderSecondary';
-import { GenderDropdawn, Locations, ModalUploadVideo, PhotoUploader, VideoUploader } from '.';
+import {
+  GenderDropdawn,
+  Locations,
+  ModalUploadVideo,
+  PhotoUploader,
+  VideoUploader,
+} from '.';
 import { QuestionBlock } from './QuestionBlock';
 
 import { ReactComponent as PreviousStep } from '../../../assets/CreateAccountForm/newPreviousStepArrow.svg';
@@ -65,7 +71,8 @@ export function Questionnaire() {
       }
       setIsValidMonth(currentValidMonth);
     } else if (name === 'year') {
-      currentValidYear = Number(value) >= 1950 && Number(value) <= moment().year();
+      currentValidYear =
+        Number(value) >= 1950 && Number(value) <= moment().year();
 
       if (value.length === 4 && !currentValidYear) {
         setYear('');
@@ -100,7 +107,9 @@ export function Questionnaire() {
     }
   };
 
-  const handleGenderChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleGenderChange = (
+    event: ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+  ) => {
     if (event.target.value === 'Male' || event.target.value === 'Female') {
       setSex(event.target.value);
       setGender('');
@@ -110,7 +119,9 @@ export function Questionnaire() {
     }
   };
 
-  const handleOrientationChange = ({ target }: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleOrientationChange = ({
+    target,
+  }: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setSexOrientation(target.value);
   };
 
@@ -168,7 +179,10 @@ export function Questionnaire() {
         )}
         {step === 1 && (
           <div className={css.blockWithPreviousArrow}>
-            <PreviousStep className={css.previousStepArrow} onClick={handlePreviousStep} />
+            <PreviousStep
+              className={css.previousStepArrow}
+              onClick={handlePreviousStep}
+            />
             <div className={css.form}>
               <h2 className={css.title}>Cool! When is your birthday?</h2>
               <div className={css.inputBlock}>
@@ -203,9 +217,13 @@ export function Questionnaire() {
                   placeholder="Year"
                 />
               </div>
-              <p className={css.warning}>You must be at least 18 years old to use DateApp</p>
+              <p className={css.warning}>
+                You must be at least 18 years old to use DateApp
+              </p>
               <Button
-                className={isValidBirthday ? css.continueBtnValid : css.continueBtn}
+                className={
+                  isValidBirthday ? css.continueBtnValid : css.continueBtn
+                }
                 onClick={() => setStep(step + 1)}
                 disabled={!isValidBirthday}
               >
@@ -216,12 +234,22 @@ export function Questionnaire() {
         )}
         {step === 2 && (
           <div className={css.blockWithPreviousArrow}>
-            <PreviousStep className={css.previousStepArrow} onClick={handlePreviousStep} />
+            <PreviousStep
+              className={css.previousStepArrow}
+              onClick={handlePreviousStep}
+            />
             <div className={css.form}>
               <h2 className={css.title}>How do you identify?</h2>
-              <GenderDropdawn onChange={handleGenderChange} showGenders gender={gender} sex={sex} />
+              <GenderDropdawn
+                onChange={handleGenderChange}
+                showGenders
+                gender={gender}
+                sex={sex}
+              />
               <Button
-                className={sex || gender ? css.continueBtnValid : css.continueBtn}
+                className={
+                  sex || gender ? css.continueBtnValid : css.continueBtn
+                }
                 onClick={() => setStep(step + 1)}
                 disabled={!sex && !gender}
               >
@@ -232,23 +260,39 @@ export function Questionnaire() {
         )}
         {step === 3 && (
           <div className={css.blockWithPreviousArrow}>
-            <PreviousStep className={css.previousStepArrow} onClick={handlePreviousStep} />
+            <PreviousStep
+              className={css.previousStepArrow}
+              onClick={handlePreviousStep}
+            />
             <div className={css.form}>
               <h2 className={css.title}>Show me in searches for...</h2>
-              <GenderDropdawn onChange={handleOrientationChange} showGenders={false} sex={sexOrientation} />
+              <GenderDropdawn
+                onChange={handleOrientationChange}
+                showGenders={false}
+                sex={sexOrientation}
+              />
               <div className={css.checkboxBlockWrapper}>
                 <p className={css.titleForCheckboxBlock}>Privacy</p>
                 <div className={css.checkboxBlock}>
-                  <p className={css.checkboxDescription}>Open my gender identity</p>
-                  <Checkbox className={css.checkboxForIdentity} checked={showSexOrientation} onChange={handleCheckChange} />
+                  <p className={css.checkboxDescription}>
+                    Open my gender identity
+                  </p>
+                  <Checkbox
+                    className={css.checkboxForIdentity}
+                    checked={showSexOrientation}
+                    onChange={handleCheckChange}
+                  />
                 </div>
                 <p className={css.checkboxInfo}>
-                  by clicking you agree that your gender identity will be visible to other users in your profile
+                  by clicking you agree that your gender identity will be
+                  visible to other users in your profile
                 </p>
               </div>
 
               <Button
-                className={sexOrientation ? css.continueBtnValid : css.continueBtn}
+                className={
+                  sexOrientation ? css.continueBtnValid : css.continueBtn
+                }
                 onClick={() => setStep(step + 1)}
                 disabled={!sexOrientation}
               >
@@ -259,14 +303,27 @@ export function Questionnaire() {
         )}
         {step === 4 && (
           <div className={css.blockWithPreviousArrow}>
-            <PreviousStep className={css.previousStepArrow} onClick={handlePreviousStep} />
+            <PreviousStep
+              className={css.previousStepArrow}
+              onClick={handlePreviousStep}
+            />
             <div className={css.form}>
               <h2 className={css.title}>Share a couple photos of yourself</h2>
-              <p className={css.subtitle}>Add a profile photo so that other users can get a better look at you</p>
+              <p className={css.subtitle}>
+                Add a profile photo so that other users can get a better look at
+                you
+              </p>
               <PhotoUploader onUpload={handlePhotoUpload} photo={photo || ''} />
-              {!photo && <p className={css.warning}>We accept JPGs and PNGs of at least 500x500px</p>}
+              {!photo && (
+                <p className={css.warning}>
+                  We accept JPGs and PNGs of at least 500x500px
+                </p>
+              )}
               {photo && <p className={css.compliment}>Good choice!</p>}
-              <Button className={!photo ? css.skipBtn : css.continueBtnValid} onClick={() => setStep(step + 1)}>
+              <Button
+                className={!photo ? css.skipBtn : css.continueBtnValid}
+                onClick={() => setStep(step + 1)}
+              >
                 {!photo ? 'Skip' : 'Continue'}
               </Button>
             </div>
@@ -274,10 +331,16 @@ export function Questionnaire() {
         )}
         {step === 5 && (
           <div className={css.blockWithPreviousArrow}>
-            <PreviousStep className={css.previousStepArrow} onClick={handlePreviousStep} />
+            <PreviousStep
+              className={css.previousStepArrow}
+              onClick={handlePreviousStep}
+            />
             <div className={css.form}>
               <h2 className={css.title}>Add video</h2>
-              <p className={css.subtitle}>Upload videos no longer than 1 minute that allow users to get to know you better.</p>
+              <p className={css.subtitle}>
+                Upload videos no longer than 1 minute that allow users to get to
+                know you better.
+              </p>
               <VideoUploader onUpload={handleVideoUpload} video={video} />
               {showModalUploadVideo && (
                 <ModalUploadVideo
@@ -290,16 +353,24 @@ export function Questionnaire() {
               )}
               {!video && (
                 <div>
-                  <p className={css.promptForVideo}>Don't you have any ideas?</p>
+                  <p className={css.promptForVideo}>
+                    Don't you have any ideas?
+                  </p>
                   <p className={css.linkExamplesVideo}>We have examples</p>
                 </div>
               )}
               {video ? (
-                <Button className={css.continueBtnValid} onClick={() => setStep(step + 1)}>
+                <Button
+                  className={css.continueBtnValid}
+                  onClick={() => setStep(step + 1)}
+                >
                   Continue
                 </Button>
               ) : (
-                <Button className={css.skipBtn} onClick={() => setShowModalUploadVideo(true)}>
+                <Button
+                  className={css.skipBtn}
+                  onClick={() => setShowModalUploadVideo(true)}
+                >
                   Skip
                 </Button>
               )}
@@ -308,9 +379,14 @@ export function Questionnaire() {
         )}
         {step === 6 && (
           <div className={css.blockWithPreviousArrow}>
-            <PreviousStep className={css.previousStepArrow} onClick={handlePreviousStep} />
+            <PreviousStep
+              className={css.previousStepArrow}
+              onClick={handlePreviousStep}
+            />
             <div className={css.form}>
-              <h2 className={css.title}>We need your locations for best matches</h2>
+              <h2 className={css.title}>
+                We need your locations for best matches
+              </h2>
               <Button className={css.continueBtnValid} onClick={() => {}}>
                 Allow location access
               </Button>
@@ -322,11 +398,20 @@ export function Questionnaire() {
         )}
         {step === 7 && (
           <div className={css.blockWithPreviousArrow}>
-            <PreviousStep className={css.previousStepArrow} onClick={handlePreviousStep} />
+            <PreviousStep
+              className={css.previousStepArrow}
+              onClick={handlePreviousStep}
+            />
             <div className={css.form}>
-              <h2 className={css.title}>We need your locations for best matches</h2>
+              <h2 className={css.title}>
+                We need your locations for best matches
+              </h2>
               <Locations setLocation={setLocation} />
-              <Button className={location ? css.continueBtnValid : css.continueBtn} onClick={handleSubmit} disabled={!location}>
+              <Button
+                className={location ? css.continueBtnValid : css.continueBtn}
+                onClick={handleSubmit}
+                disabled={!location}
+              >
                 Continue
               </Button>
             </div>

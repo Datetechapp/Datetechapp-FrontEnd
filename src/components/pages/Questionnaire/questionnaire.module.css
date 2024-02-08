@@ -4,13 +4,14 @@
 
 .main {
   position: relative;
-  background: url('../../../assets/Messanger/BackgroundForMessanger.png') #1f1d2b repeat;
+  background: url("../../../assets/Messanger/BackgroundForMessanger.png")
+    #1f1d2b repeat;
   height: 91.5vh;
   padding-top: 48px;
 }
 
 .nameQuestion::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -20,7 +21,7 @@
 }
 
 .birthdayQuestion::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -30,7 +31,7 @@
 }
 
 .genderQuestion::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -40,7 +41,7 @@
 }
 
 .genderFilterQuestion::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -50,7 +51,7 @@
 }
 
 .photoQuestion::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -60,7 +61,7 @@
 }
 
 .videoQuestion::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -70,7 +71,7 @@
 }
 
 .lastQuestion::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -236,7 +237,10 @@
   height: 48px;
   padding: 10px 18px;
   border-radius: 5px;
-  background: var(--Gradient, linear-gradient(180deg, #9747ff 0%, #de77c7 100%));
+  background: var(
+    --Gradient,
+    linear-gradient(180deg, #9747ff 0%, #de77c7 100%)
+  );
   color: var(--White, #fff);
   text-align: center;
   font-family: Montserrat;
@@ -300,7 +304,7 @@
   line-height: 20px;
 }
 
-.checkboxForIdentity[type='checkbox'] {
+.checkboxForIdentity[type="checkbox"] {
   position: relative;
   width: 16px;
   height: 16px;
@@ -308,8 +312,8 @@
   right: 3px;
 }
 
-.checkboxForIdentity[type='checkbox']::before {
-  content: '';
+.checkboxForIdentity[type="checkbox"]::before {
+  content: "";
   display: block;
   position: absolute;
   top: 0;
@@ -321,12 +325,12 @@
   border-radius: 3px;
 }
 
-.checkboxForIdentity[type='checkbox']:checked::before {
+.checkboxForIdentity[type="checkbox"]:checked::before {
   background-color: #fcfcfc;
 }
 
-.checkboxForIdentity[type='checkbox']::after {
-  content: url('../../../assets/ForCommonModal/checkMarkIcon.svg');
+.checkboxForIdentity[type="checkbox"]::after {
+  content: url("../../../assets/ForCommonModal/checkMarkIcon.svg");
   display: none;
   position: absolute;
   top: 50%;
@@ -335,7 +339,7 @@
   color: #5f4f7f;
 }
 
-.checkboxForIdentity[type='checkbox']:checked::after {
+.checkboxForIdentity[type="checkbox"]:checked::after {
   display: block;
 }
 

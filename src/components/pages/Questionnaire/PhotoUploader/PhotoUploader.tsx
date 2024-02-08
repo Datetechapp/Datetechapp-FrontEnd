@@ -16,7 +16,10 @@ interface PhotoUploaderProps {
 }
 
 export const PhotoUploader: FC<PhotoUploaderProps> = ({ onUpload, photo }) => {
-  const [editorPosition, setEditorPosition] = useState<Coordinates>({ x: 0.5, y: 0.5 });
+  const [editorPosition, setEditorPosition] = useState<Coordinates>({
+    x: 0.5,
+    y: 0.5,
+  });
   const [editorScale, setEditorScale] = useState<number>(1.5);
   const editorRef = useRef<AvatarEditor | null>(null);
 
@@ -31,7 +34,8 @@ export const PhotoUploader: FC<PhotoUploaderProps> = ({ onUpload, photo }) => {
     reader.readAsDataURL(file);
   };
 
-  const handlePositionChange = (position: Coordinates) => setEditorPosition(position);
+  const handlePositionChange = (position: Coordinates) =>
+    setEditorPosition(position);
 
   const handleDeletePhoto = () => onUpload(null);
 
@@ -40,9 +44,14 @@ export const PhotoUploader: FC<PhotoUploaderProps> = ({ onUpload, photo }) => {
 
     if (!isNaN(value)) {
       const thumbPositionPercentage =
-        ((value - parseFloat(target.min)) / (parseFloat(target.max) - parseFloat(target.min))) * 100;
+        ((value - parseFloat(target.min)) /
+          (parseFloat(target.max) - parseFloat(target.min))) *
+        100;
 
-      target.style.setProperty('--thumb-percentage', `${thumbPositionPercentage}%`);
+      target.style.setProperty(
+        '--thumb-percentage',
+        `${thumbPositionPercentage}%`,
+      );
     }
   };
 

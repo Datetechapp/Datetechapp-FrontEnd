@@ -1,6 +1,12 @@
 import { AutoComplete, ConfigProvider, Input } from 'antd';
 import debounce from 'lodash/debounce';
-import { useCallback, useState, type Dispatch, type ReactNode, type SetStateAction } from 'react';
+import {
+  useCallback,
+  useState,
+  type Dispatch,
+  type ReactNode,
+  type SetStateAction,
+} from 'react';
 
 import { fetchData } from '../../../../api';
 
@@ -43,7 +49,9 @@ export const Locations = ({ setLocation }: Props) => {
                 label: (
                   <>
                     <span className={css.match}>{matchCity}</span>
-                    <span className={css.mismatch}>{restCity + ', ' + country}</span>
+                    <span className={css.mismatch}>
+                      {restCity + ', ' + country}
+                    </span>
                   </>
                 ),
                 key: wikiDataId,
