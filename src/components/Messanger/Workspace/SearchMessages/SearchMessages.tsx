@@ -8,45 +8,50 @@ import { ReactComponent as ClearText } from '../../../../assets/Messanger/Search
 import { Input } from 'components/common';
 
 interface SearchMessagesProps {
-       setShowSearchMessages: React.Dispatch<React.SetStateAction<boolean>>
+  setShowSearchMessages: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const SearchMessages: React.FC<SearchMessagesProps> = ({ setShowSearchMessages }) => {
-       const [searchValue, setSearchValue] = useState('');
+export const SearchMessages: React.FC<SearchMessagesProps> = ({
+  setShowSearchMessages,
+}) => {
+  const [searchValue, setSearchValue] = useState('');
 
-       const inputRef = useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
-       const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-              const newValue = e.target.value;
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = e.target.value;
 
-              setSearchValue(newValue);
-       };
+    setSearchValue(newValue);
+  };
 
-       const handleClearClick = () => {
-              setSearchValue('');
+  const handleClearClick = () => {
+    setSearchValue('');
 
-              if (inputRef.current) {
-                     inputRef.current.focus();
-              }
-       };
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
 
-       return (
-              <div className={css.searchMessagesWrapper}>
-                     <ScrollUp style={{ cursor: 'pointer' }} />
-                     <ScrollDown style={{ cursor: 'pointer' }} />
-                     <div className={css.fieldSearchingBlock}>
-                            <SearchIcon className={css.searchingIcon} />
-                            <ClearText className={css.clearTextIcon} onClick={handleClearClick} />
-                            <Input
-                                   inputRef={inputRef}
-                                   value={searchValue}
-                                   type='text'
-                                   placeholder='Search'
-                                   className={css.fieldForSearching}
-                                   onChange={handleInputChange}
-                            />
-                     </div>
-                     <CloseIcon style={{ cursor: 'pointer' }} onClick={() => setShowSearchMessages(false)} />
-              </div>
-       );
+  return (
+    <div className={css.searchMessagesWrapper}>
+      <ScrollUp style={{ cursor: 'pointer' }} />
+      <ScrollDown style={{ cursor: 'pointer' }} />
+      <div className={css.fieldSearchingBlock}>
+        <SearchIcon className={css.searchingIcon} />
+        <ClearText className={css.clearTextIcon} onClick={handleClearClick} />
+        <Input
+          inputRef={inputRef}
+          value={searchValue}
+          type="text"
+          placeholder="Search"
+          className={css.fieldForSearching}
+          onChange={handleInputChange}
+        />
+      </div>
+      <CloseIcon
+        style={{ cursor: 'pointer' }}
+        onClick={() => setShowSearchMessages(false)}
+      />
+    </div>
+  );
 };

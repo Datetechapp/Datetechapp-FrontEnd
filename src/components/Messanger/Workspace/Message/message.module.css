@@ -1,81 +1,78 @@
 .other {
-       display: flex;
-       gap: 10px;
+  display: flex;
+  gap: 10px;
 }
 
 .me {
-       display: flex;
-       justify-content: end;
+  display: flex;
+  justify-content: end;
 }
 
-
-
 .messageInfoMe {
-       max-width: 960px;
-       align-self: flex-end;
-       border-radius: 10px 10px 0 10px;
-       background: var(--violet-stroke, #5F4F7F);
-       padding: 4px 8px;
-       display: flex;
-       gap: 8px;
-       align-items: flex-end;
+  max-width: 960px;
+  align-self: flex-end;
+  border-radius: 10px 10px 0 10px;
+  background: var(--violet-stroke, #5f4f7f);
+  padding: 4px 8px;
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
 }
 
 .messageInfoOther {
-       max-width: 960px;
-       align-self: flex-start;
-       padding: 4px 8px;
-       border-radius: 10px 10px 10px 0;
-       background: var(--gray-for-message, #4B4A54);
-       align-self: center;
-       display: flex;
-       gap: 8px;
+  max-width: 960px;
+  align-self: flex-start;
+  padding: 4px 8px;
+  border-radius: 10px 10px 10px 0;
+  background: var(--gray-for-message, #4b4a54);
+  align-self: center;
+  display: flex;
+  gap: 8px;
 }
 
 .messageText {
-       color: var(--white, #E9E3F5);
-       font-family: Montserrat, Arial, Helvetica, sans-serif;
-       font-size: 16px;
-       font-weight: 500;
-       line-height: 25px;
-       letter-spacing: -0.5px;
-
+  color: var(--white, #e9e3f5);
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 25px;
+  letter-spacing: -0.5px;
 }
 
 .messageTimestampt {
-       color: var(--white, #E9E3F5);
-       font-family: Montserrat;
-       font-size: 12px;
-       font-weight: 400;
-       line-height: 14px;
-       height: 12px;
+  color: var(--white, #e9e3f5);
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
+  height: 12px;
 }
 
 .selectedBlockMessage {
-       margin-top: 7px;
+  margin-top: 7px;
 }
 
 .selectedMessage {
-       border: 1px solid white;
+  border: 1px solid white;
 }
 
 .messageInfo {
-       display: flex;
-       gap: 4px;
-       align-self: flex-end;
+  display: flex;
+  gap: 4px;
+  align-self: flex-end;
 }
 
 .highlighted {
-       transition: background-color 1s linear;
-       background-color: var(--Panel_Stroke, #32303E);
-     }
+  transition: background-color 1s linear;
+  background-color: var(--Panel_Stroke, #32303e);
+}
 
 @keyframes fadeOut {
-       0% {
-              opacity: 1;
-       }
+  0% {
+    opacity: 1;
+  }
 
-       100% {
-              opacity: 0;
-       }
+  100% {
+    opacity: 0;
+  }
 }

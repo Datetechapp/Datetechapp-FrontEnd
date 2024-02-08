@@ -3,7 +3,12 @@ import validator from 'validator';
 import { Link, useNavigate } from 'react-router-dom';
 import css from './login.module.css';
 import { Button } from '../../common';
-import { EmailOrPhoneInput, PasswordInput, CheckboxBlock, SocialAuth } from '..';
+import {
+  EmailOrPhoneInput,
+  PasswordInput,
+  CheckboxBlock,
+  SocialAuth,
+} from '..';
 import { login } from '../../../api';
 
 export const hasUppercaseLetter = (word: string): boolean => {
@@ -56,12 +61,14 @@ export const Login = () => {
     setPasswordValue(e.target.value);
     setIsValidPassword(
       e.target.value.length >= 8 &&
-      hasUppercaseLetter(e.target.value) &&
-      hasSpecialCharacters(e.target.value),
+        hasUppercaseLetter(e.target.value) &&
+        hasSpecialCharacters(e.target.value),
     );
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement> | React.KeyboardEvent<HTMLInputElement>) => {
+  const handleSubmit = (
+    e: React.FormEvent<HTMLFormElement> | React.KeyboardEvent<HTMLInputElement>,
+  ) => {
     e.preventDefault();
     login({
       username: emailOrPhoneValue,
@@ -71,7 +78,6 @@ export const Login = () => {
       if (response.ok) {
         setErrorMessage('');
         navigate('/feed');
-
       } else {
         throw new Error('Ошибка при выполнении запроса: ' + response.status);
       }
@@ -134,7 +140,7 @@ export const Login = () => {
           <CheckboxBlock
             rememberLogin={rememberMe}
             handleRememberLoginChange={handleRememberLoginChange}
-            rememberTheData='Remember me'
+            rememberTheData="Remember me"
           />
 
           {!errorMessage && (

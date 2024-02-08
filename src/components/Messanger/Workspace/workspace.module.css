@@ -1,40 +1,40 @@
 .workspaceWrapper {
-       height: 78.4vh;
-       display: flex;
-       flex-direction: column;
+  height: 78.4vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .workspaceWithReplyWrapper {
-       height: 72.3vh;
+  height: 72.3vh;
 }
 
 .headerWorkspace {
-       width: 100%;
-       position: relative;
+  width: 100%;
+  position: relative;
 }
 
 .workspaceContainer {
-       background: #1F1D2B;
-       display: flex;
-       flex-direction: column; 
-       justify-content: flex-end;
-       position: relative;
-       flex-grow: 1;
+  background: #1f1d2b;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+  flex-grow: 1;
 }
 
 .messagesContainer {
-       display: flex;
-       flex-direction: column;
-       gap: 4px;
-       padding: 0 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0 16px 16px;
 }
 
 .dateOfMessages {
-       text-align: center;
-       margin-bottom: 16px;
-       font-family: Montserrat;
-       font-size: 14px;
-       font-weight: 500;
-       line-height: 18px;
-       color: var(--Grey, #96A3B4);
+  text-align: center;
+  margin-bottom: 16px;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  color: var(--Grey, #96a3b4);
 }

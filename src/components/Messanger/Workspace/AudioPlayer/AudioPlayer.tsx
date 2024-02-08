@@ -16,111 +16,113 @@ import { ReactComponent as CloseIcon } from '../../../../assets/AudioPlayer/clos
 // }
 
 export const AudioPlayer = () => {
+  const [speed, setSpeed] = useState<number>(1);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isVolumeBlockHovered, setIsVolumeBlockHovered] = useState(false);
+  const [volume, setVolume] = useState(0.5);
 
-       const [speed, setSpeed] = useState<number>(1);
-       const [isHovered, setIsHovered] = useState(false);
-       const [isVolumeBlockHovered, setIsVolumeBlockHovered] = useState(false);
-       const [volume, setVolume] = useState(0.5);
+  const volumeRef = useRef<HTMLInputElement | null>(null);
 
-       const volumeRef = useRef<HTMLInputElement | null>(null);
+  useEffect(() => {
+    const rangeInput = volumeRef.current as HTMLInputElement;
 
-       useEffect(() => {
-              const rangeInput = volumeRef.current as HTMLInputElement;
+    if (rangeInput) {
+      rangeInput.style.setProperty('--thumb-percentage', `${volume * 100}%`);
+    }
+  }, [volume, isVolumeBlockHovered, isHovered]);
 
-              if (rangeInput) {
-                     rangeInput.style.setProperty('--thumb-percentage', `${volume * 100}%`);
-              }
-       }, [volume, isVolumeBlockHovered, isHovered]);
+  // useEffect(() => {
+  //        if (audioRef.current) {
+  //               audioRef.current.volume = volume;
+  //        }
+  // }, [volume]);
 
-       // useEffect(() => {
-       //        if (audioRef.current) {
-       //               audioRef.current.volume = volume;
-       //        }
-       // }, [volume]);
+  const handleVolumeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newVolume = parseFloat(event.target.value);
 
-       const handleVolumeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-              const newVolume = parseFloat(event.target.value);
+    setVolume(newVolume);
 
-              setVolume(newVolume);
+    // if (audioRef.current) {
+    //        audioRef.current.volume = newVolume;
+    // }
+  };
 
-              // if (audioRef.current) {
-              //        audioRef.current.volume = newVolume;
-              // }
-       };
+  const handleRangeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = parseFloat(e.target.value);
 
-       const handleRangeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-              const value = parseFloat(e.target.value);
+    if (!isNaN(value)) {
+      const thumbPositionPercentage =
+        ((value - parseFloat(e.target.min)) /
+          (parseFloat(e.target.max) - parseFloat(e.target.min))) *
+        100;
 
-              if (!isNaN(value)) {
-                     const thumbPositionPercentage =
-                            ((value - parseFloat(e.target.min)) /
-                                   (parseFloat(e.target.max) - parseFloat(e.target.min))) *
-                            100;
+      e.target.style.setProperty(
+        '--thumb-percentage',
+        `${thumbPositionPercentage}%`,
+      );
+    }
+  };
 
-                     e.target.style.setProperty(
-                            '--thumb-percentage',
-                            `${thumbPositionPercentage}%`,
-                     );
-              }
-       };
+  return (
+    <div className={css.audioPlayerWrapper}>
+      <div className={css.scrollBarBlock}>
+        <RewindAudio />
+        <PlayIcon />
+        <FastFowardAudio />
+      </div>
+      <div>
+        <p className={css.name}>Michael</p>
+        <p className={css.voiceMessage}>Voice Message</p>
+      </div>
+      <div className={css.audioSettings}>
+        {speed === 1 ? (
+          <FirstSpeed onClick={() => setSpeed(2)} />
+        ) : speed === 2 ? (
+          <SecondSpeed onClick={() => setSpeed(3)} />
+        ) : (
+          <ThirdSpeed onClick={() => setSpeed(1)} />
+        )}
 
-       return (
-              <div className={css.audioPlayerWrapper}>
-                     <div className={css.scrollBarBlock}>
-                            <RewindAudio />
-                            <PlayIcon />
-                            <FastFowardAudio />
-                     </div>
-                     <div>
-                            <p className={css.name}>Michael</p>
-                            <p className={css.voiceMessage}>Voice Message</p>
-                     </div>
-                     <div className={css.audioSettings} >
-                            {speed === 1 ? <FirstSpeed onClick={() => setSpeed(2)} />
-                                   : speed === 2 ? <SecondSpeed onClick={() => setSpeed(3)} />
-                                          : <ThirdSpeed onClick={() => setSpeed(1)} />
-                            }
-
-                            {volume ?
-                                   <VolumeIcon
-                                          onMouseEnter={() => setIsHovered(true)}
-                                          onMouseLeave={() => {
-                                                 setTimeout(() => setIsHovered(false), 500);
-                                          }}
-                                          onClick={() => setVolume(0)}
-                                   />
-                                   :
-                                   <MuteIcon
-                                          onMouseEnter={() => setIsHovered(true)}
-                                          onMouseLeave={() => {
-                                                 setTimeout(() => setIsHovered(false), 500);
-                                          }}
-                                          onClick={() => setVolume(1)}
-                                   />
-                            }
-                            <CloseIcon />
-                            {(isHovered || isVolumeBlockHovered) && (
-                                   <div
-                                          className={css.volumeBlock}
-                                          onMouseEnter={() => setIsVolumeBlockHovered(true)}
-                                          onMouseLeave={() => setIsVolumeBlockHovered(false)}
-                                   >
-                                          <input
-                                                 ref={volumeRef}
-                                                 className={css.editorVolume}
-                                                 type="range"
-                                                 min="0"
-                                                 max="1"
-                                                 step="0.01"
-                                                 value={volume}
-                                                 onChange={(e) => {
-                                                        handleVolumeChange(e);
-                                                        handleRangeChange(e);
-                                                 }}
-                                          />
-                                   </div>
-                            )}
-                     </div>
-              </div>
-       );
+        {volume ? (
+          <VolumeIcon
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => {
+              setTimeout(() => setIsHovered(false), 500);
+            }}
+            onClick={() => setVolume(0)}
+          />
+        ) : (
+          <MuteIcon
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => {
+              setTimeout(() => setIsHovered(false), 500);
+            }}
+            onClick={() => setVolume(1)}
+          />
+        )}
+        <CloseIcon />
+        {(isHovered || isVolumeBlockHovered) && (
+          <div
+            className={css.volumeBlock}
+            onMouseEnter={() => setIsVolumeBlockHovered(true)}
+            onMouseLeave={() => setIsVolumeBlockHovered(false)}
+          >
+            <input
+              ref={volumeRef}
+              className={css.editorVolume}
+              type="range"
+              min="0"
+              max="1"
+              step="0.01"
+              value={volume}
+              onChange={(e) => {
+                handleVolumeChange(e);
+                handleRangeChange(e);
+              }}
+            />
+          </div>
+        )}
+      </div>
+    </div>
+  );
 };

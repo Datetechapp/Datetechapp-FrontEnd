@@ -7,8 +7,19 @@ interface ButtonProps {
   form?: string;
 }
 
-export const Button = ({ children, onClick, disabled, className, form }: PropsWithChildren<ButtonProps>) => (
-  <button className={className} onClick={onClick} disabled={disabled} form={form}>
+export const Button = ({
+  children,
+  onClick,
+  disabled,
+  className,
+  form,
+}: PropsWithChildren<ButtonProps>) => (
+  <button
+    className={className}
+    onClick={onClick}
+    disabled={disabled}
+    form={form}
+  >
     {children}
   </button>
 );
