@@ -11,7 +11,7 @@
     z-index: 6;
     overflow: hidden;
     border-radius: 10px;
-    border: 1px solid var(--unnamed, #FFE0AA);
+    border: 1px solid #FFE0AA;
     background: #201b27;
     position: absolute;
     top: 50%;
@@ -54,6 +54,7 @@
     z-index: 5;
     border-bottom: 1px solid #fff;
     padding-bottom: 30px;
+    margin-bottom: 30px;
 }
 .headerBox{
     display: flex;
@@ -87,37 +88,34 @@
     font-size: 22px;
     font-weight: 600;
     line-height: 24px;
-    letter-spacing: -0.5px;
-    background: var(--unnamed, linear-gradient(86deg, #FFE0AA 0.58%, #FFAEA9 33.26%, #FFA7F6 67.03%, #DD7CFF 98.42%));
+    background: linear-gradient(86deg, #FFE0AA 0.58%, #FFAEA9 33.26%, #FFA7F6 67.03%, #DD7CFF 98.42%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 .headerText{
-    color: var(--White, #FFF);
+    color: #FFF;
     font-family: Montserrat;
     font-size: 14px;
     font-weight: 400;
     line-height: 18px;
-    letter-spacing: 0.1px;
 }
 .optionsBox{
-    padding-top: 30px;
     display: flex;
     justify-content: space-between;
 }
 
 .optionList{
     position: relative;
-    z-index: 999;
+    z-index: 9;
     list-style: none;
 }
 .optionItem{
     min-width: 270px;
     padding: 10px 24px;
     border-radius: 30px;
-    border: 1px solid var(--unnamed, #FFE0AA);
-    color: var(--White, #FFF);
+    border: 1px solid #FFE0AA;
+    color: #FFF;
     font-family: Montserrat;
     font-size: 18px;
     font-weight: 500;
@@ -140,18 +138,17 @@
     justify-content: space-between;
 }
 .leftBox p{
-    color: var(--White, #FFF);
+    color: #FFF;
     text-align: center;
     font-family: Montserrat;
     font-size: 12px;
     font-weight: 400;
     line-height: 14px;
-    letter-spacing: 0.1px;
 }
 .priceList{
     list-style: none;
     position: relative;
-    z-index: 999;
+    z-index: 9;
 }
 .priceItem{
     cursor: pointer;
@@ -161,23 +158,22 @@
     justify-content: space-between;
     padding: 18px 24px;
     border-radius: 10px;
-    border: 1px solid var(--Violet_Stroke, #5F4F7F);
-    background: var(--Panel_Background, #272533);
+    border: 1px solid#5F4F7F;
+    background: #272533;
 }
 .priceItem:hover{
-    background: var(--Violet_Stroke, #5F4F7F);
+    background:  #5F4F7F;
 }
 .priceItem:not(:last-child){
     margin-bottom: 12px;
 }
 .priceItem span{
     display: block;
-    color: var(--Violet_Active, #C896EF);
+    color:  #C896EF;
     font-family: Montserrat;
     font-size: 22px;
     font-weight: 600;
     line-height: 24px; 
-    letter-spacing: -0.5px;
 }
 .btnPrice{
     max-width: 134px;
@@ -186,15 +182,28 @@
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-    border: 1px solid var(--Violet_Active, #C896EF);
+    border: 1px solid #C896EF;
     font-family: Montserrat;
     font-size: 24px;
     font-weight: 600;
     line-height: 26px;
-    background: var(--unnamed, linear-gradient(86deg, #FFE0AA 0.58%, #FFAEA9 33.26%, #FFA7F6 67.03%, #DD7CFF 98.42%));
+    background: linear-gradient(86deg, #FFE0AA 0.58%, #FFAEA9 33.26%, #FFA7F6 67.03%, #DD7CFF 98.42%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.logoBox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 68px;
+    height: 68px;
+    flex-shrink: 0;
+    flex-grow: 1;
+    border-radius: 50px;
+    box-shadow: 0px 0px 30px 0px rgba(94, 79, 125, 0.502);
+    background: #1f1d2b;
 }
 @keyframes fadeIn {
     from {
@@ -204,13 +213,3 @@
       opacity: 1; 
     }
   }
-.logoBox{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 68px;
-    height: 68px;
-    border-radius: 50px;
-    box-shadow: 0px 0px 30px 0px #5f4f7f80;
-    background: #1f1d2b;
-}

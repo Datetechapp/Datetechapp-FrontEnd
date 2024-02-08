@@ -1,10 +1,12 @@
-import style from './ModalConfirmation.module.css';
-import Modal from 'react-modal';
-import close from './../../../../../assets/Payment/CloseIcon.svg';
-import { Button } from './../../../../common/button';
 import { FC, useState } from 'react';
+import Modal from 'react-modal';
+
+import { Button } from './../../../../common/button';
 import { ModalPayment } from '../ModalPayment';
+import closeIcon from './../../../../../assets/Payment/CloseIcon.svg';
 import check from './../../../../../assets/Payment/Сheck.svg';
+
+import style from './ModalConfirmation.module.css';
 
 interface IConfirmation {
   onClose: () => void;
@@ -33,7 +35,7 @@ export const ModalConfirmation: FC<IConfirmation> = ({ onClose, isOpen }) => {
         <h2 className={style.title}>Cancel your subscription?</h2>
         <img
           className={style.iconCancel}
-          src={close}
+          src={closeIcon}
           alt="cancel"
           onClick={handleCloseModal}
         />
@@ -42,10 +44,10 @@ export const ModalConfirmation: FC<IConfirmation> = ({ onClose, isOpen }) => {
         You won't be able to access any Premium perks.
       </p>
       <div className={style.btnsBlock}>
-        <Button className={style.firstBtn} onClick={handleCloseModal}>
+        <Button className={style.btnBack} onClick={handleCloseModal}>
           Back
         </Button>
-        <Button className={style.secondBtn} onClick={handleOpenModal}>
+        <Button className={style.btnCancel} onClick={handleOpenModal}>
           Cancel
         </Button>
       </div>

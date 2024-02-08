@@ -5,39 +5,37 @@
     height: calc(112px + 10px);
     padding: 10px;
     border-radius: 10px;
-    border: 1px solid var(--Violet_Stroke, #5F4F7F);
-    background: var(--Dark_Elements_Background, #201B27);
-    color: var(--Violet_Stroke, #5F4F7F);
+    border: 1px solid #5F4F7F;
+    background: #201B27;
+    color: #5F4F7F;
     font-size: 18px;
     font-weight: 600;
     line-height: 22px;
-    letter-spacing: 0.1px;
 }
 .tableContainer{
-    border: 1px solid var(--Violet_Stroke, #5F4F7F);
+    background-color: #201B27;
+    border: 1px solid #5F4F7F;
     border-radius: 16px;
 }
 .tableHeader th{
-    border-bottom: 1px solid var(--Violet_Stroke, #5F4F7F);
+    border-bottom: 1px solid #5F4F7F;
     height: 70px;
-    color: var(--Violet_Active, #C896EF);
+    color: #C896EF;
     font-size: 16px;
     font-weight: 600;
     line-height: 20px; 
-    letter-spacing: 0.2px;
 }
 
 .rowTitle td{
-   height: 50px;
-    color: var(--White, #FFF);
+    height: 50px;
+    color: #FFF;
     font-size: 14px;
     font-weight: 500;
     line-height: 18px; 
-    letter-spacing: 0.1px;
-    border-bottom: 1px solid var(--Violet_Stroke, #5F4F7F);
+    border-bottom: 1px solid #5F4F7F;
 }
 .rowStatus{
-    color: var(--White, #FFF);
+    color:#FFF;
     max-width: 100px;
     text-align: center;
     padding: 5px 8px;
@@ -46,11 +44,11 @@
     font-size: 14px;
 }
 .rowPaid{
-    background: var(--Green_Confirn, #438955);
+    background:#438955;
 }
 .rowProgress{
-    background: var(--Pink_Buttons, #DE77C7);
+    background:#DE77C7;
 }
 .rowCancel{
-    background: var(--gray-for-message, #4B4A54);
+    background:#4B4A54;
 }

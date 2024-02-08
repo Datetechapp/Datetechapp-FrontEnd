@@ -1,14 +1,13 @@
 .containerBar{
     height: 100%;
     padding: 24px 16px;
-    background: var(--Panel_Background, #272533);
+    background: #272533;
 }
 .titleBar{
     padding: calc(16px - 8px) 0;
     font-size: 20px;
     font-weight: 600;
     line-height: 24px;
-    letter-spacing: -0.5px;
     background: linear-gradient(86deg, #FFE0AA 0.58%, #FFAEA9 33.26%, #FFA7F6 67.03%, #DD7CFF 98.42%);
     background-clip: text;
     -webkit-background-clip: text;
@@ -26,12 +25,10 @@
     display: flex;
     justify-content: start;
     align-items: center;
-    color: var(--White, #FFF);
-    font-variant-numeric: lining-nums proportional-nums;
+    color: #FFF;
     font-size: 14px;
     font-weight: 500;
     line-height: 18px;
-    letter-spacing: 0.1px;
 }
 .linkItem img{
     margin-right: 8px;
@@ -45,14 +42,17 @@
 .btnBar{
     width: 100%;
     padding: 10px 16px;
-    color: var(--White, #FFF);
+    color: #FFF;
     font-size: 16px;
     font-weight: 600;
     line-height: 20px;
-    letter-spacing: 0.2px;
     border: none;
     border-radius: 5px;
-    background: var(--Gradient, linear-gradient(180deg, #9747FF 0%, #DE77C7 100%));
+    background: linear-gradient(180deg, #9747FF 0%, #DE77C7 100%);
+    transition: all 0.5s ease-in-out;
+}
+.btnBar:hover{
+    opacity: 0.6;
 }
 .logo{
     width: 113px;

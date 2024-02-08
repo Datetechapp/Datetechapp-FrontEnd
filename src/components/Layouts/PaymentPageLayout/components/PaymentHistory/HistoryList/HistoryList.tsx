@@ -1,5 +1,3 @@
-import style from './HistoryList.module.css';
-import { payment } from '../payment';
 import {
   Table,
   TableBody,
@@ -8,6 +6,10 @@ import {
   TableHead,
   TableRow,
 } from '@mui/material';
+
+import { payment } from '../payment';
+
+import style from './HistoryList.module.css';
 
 export const HistoryList = () => {
   const getRowClass = (status: string) => {
@@ -23,14 +25,7 @@ export const HistoryList = () => {
       {payment.length === 0 ? (
         <p className={style.textHistory}>You do not have paid subscriptions</p>
       ) : (
-        <TableContainer
-          className={style.tableContainer}
-          sx={{
-            backgroundColor: '#201B27',
-            border: '2px solid #C896EF',
-            borderRadius: '10px',
-          }}
-        >
+        <TableContainer className={style.tableContainer}>
           <Table>
             <TableHead>
               <TableRow className={style.tableHeader}>

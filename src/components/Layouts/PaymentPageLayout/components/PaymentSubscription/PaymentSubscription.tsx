@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
-import style from './PaymentSubscription.module.css';
+
 import { Button } from './../../../../common/button/';
 import { ModalConfirmation } from 'components/pages/PaymentPage/components/ModalConfirmation';
 import { PaymentDetails } from './PaymentDetails';
 
+import style from './PaymentSubscription.module.css';
+
 export const PaymentSubscription = () => {
-  const [openCancel, setOpenCancel] = useState(false);
-  const handleOpenCancel = () => {
-    setOpenCancel(true);
-  };
+  const [openCancelModal, setOpenCancelModal] = useState(false);
   const handleCloseModal = () => {
-    setOpenCancel(false);
+    setOpenCancelModal(!openCancelModal);
   };
 
   return (
@@ -36,13 +35,13 @@ export const PaymentSubscription = () => {
             </Button>
             <Button
               className={style.btnSubscription}
-              onClick={handleOpenCancel}
+              onClick={handleCloseModal}
             >
               Cancel subscriptions
             </Button>
           </div>
         </div>
-        {openCancel && (
+        {openCancelModal && (
           <ModalConfirmation isOpen={true} onClose={handleCloseModal} />
         )}
       </div>

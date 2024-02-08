@@ -1,5 +1,7 @@
 import { FC } from 'react';
+
 import { HistoryList } from './HistoryList';
+
 import style from './PaymentHistory.module.css';
 
 export const PaymentHistory: FC = () => {

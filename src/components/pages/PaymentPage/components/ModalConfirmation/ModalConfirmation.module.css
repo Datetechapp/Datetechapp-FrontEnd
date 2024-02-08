@@ -4,7 +4,6 @@
     box-shadow: 0px 26px 80px 0px rgba(0, 0, 0, 0.2),0px 0px 1px 0px rgba(0, 0, 0, 0.2);
     background: rgb(255, 255, 255);
     position: relative;
-    width: 432px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -37,11 +36,10 @@
     font-size: 22px;
     font-weight: 600;
     line-height: 24px;
-    letter-spacing: -0.5px;
     text-align: left;
 }
 .subtitle{
-    padding: 12px 0 40px;
+    padding-block: 12px 40px;
     color: #5f4f7f;
     font-size: 16px;
     font-weight: 400;
@@ -54,7 +52,7 @@
     gap: 11px;
 }
 .btnsBlock button{
-    background: rgb(95, 79, 127);
+    background: #5f4f7f;
     border: none;
     max-width: 138px;
     width: 100%;
@@ -64,8 +62,8 @@
     font-size: 16px;
     font-weight: 600;
     line-height: 20px;
-    letter-spacing: 0.2px;
     text-align: center;
+    transition: all 0.5s ease-in-out;
 }
 .btnsBlock button:hover{
     background: linear-gradient(180.00deg, rgb(151, 71, 255),rgb(222, 119, 199) 100%);

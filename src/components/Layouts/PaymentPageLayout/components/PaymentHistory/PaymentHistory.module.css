@@ -11,12 +11,11 @@
 .titleHistory{
     max-width: 280px;
     padding: 16px 24px;
-    border-bottom: 2px solid var(--Violet_Active, #C896EF);
-    color: var(--White, #FFF);
+    border-bottom: 2px solid#C896EF;
+    color:#FFF;
     font-size: 18px;
     font-weight: 600;
     line-height: 22px;
-    letter-spacing: 0.1px;
 }
 .contentHistory{
     padding-top: 24px;

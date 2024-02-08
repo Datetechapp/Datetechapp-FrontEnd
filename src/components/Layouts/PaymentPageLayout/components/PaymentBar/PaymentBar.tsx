@@ -1,29 +1,32 @@
-import style from './PaymentBar.module.css';
+import { useState } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
+
+import { ModalPayment } from './../../../../pages/PaymentPage/components/ModalPayment';
 import { Button } from './../../../../../components/common/button';
+import { SubscriptionOption } from 'components/pages/PaymentPage/components/ModalSubscriptionOptions';
 import subscription from './../../../../../assets/Payment/Subscriptions.svg';
 import history from './../../../../../assets/Payment/History.svg';
-import { NavLink, useLocation } from 'react-router-dom';
-import { useState } from 'react';
-import { ModalPayment } from './../../../../pages/PaymentPage/components/ModalPayment';
 import logo from './../../../../../assets/ModalAuth/logo.svg';
-import { SubscriptionOption } from 'components/pages/PaymentPage/components/ModalSubscriptionOptions';
+
+import style from './PaymentBar.module.css';
 
 const links = [
   {
     path: '/payment/subscription',
     img: subscription,
-    text: ' My subscriptions',
+    text: 'My subscriptions',
   },
   {
     path: '/payment/history',
     img: history,
-    text: ' Payment history',
+    text: 'Payment history',
   },
 ];
 export const PaymentBar = () => {
   const [openModal, setOpenModal] = useState(false);
   const [openOptions, setOpenOptions] = useState(false);
   const { pathname } = useLocation();
+
   const isActive = (path: string) => {
     return pathname === path;
   };

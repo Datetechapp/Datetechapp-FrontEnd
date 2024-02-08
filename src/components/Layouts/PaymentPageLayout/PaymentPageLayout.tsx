@@ -1,7 +1,8 @@
 import { Outlet } from 'react-router-dom';
-import style from './PaymentPageLayout.module.css';
+
 import { PaymentBar } from './components/PaymentBar';
-import { PaymentSubscription } from './components/PaymentSubscription';
+
+import style from './PaymentPageLayout.module.css';
 
 export const PaymentPageLayout = () => {
   return (

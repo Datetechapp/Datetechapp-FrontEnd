@@ -1,10 +1,12 @@
 import React, { FC, useState } from 'react';
 import Modal from 'react-modal';
-import style from './subscriptionOption.module.css';
+
+import { ModalPayment } from '../ModalPayment';
 import logo from '../../../../../assets/ModalAuth/mod_welc-logo.svg';
 import close from '../../../../../assets/Payment/CloseIcon.svg';
 import check from '../../../../../assets/Payment/Сheck.svg';
-import { ModalPayment } from '../ModalPayment';
+
+import style from './subscriptionOption.module.css';
 
 interface ISubscription {
   onClose: () => void;

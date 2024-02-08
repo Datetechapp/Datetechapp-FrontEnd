@@ -1,7 +1,7 @@
-import React from 'react';
-import style from './PaymentDetails.module.css';
 import status from './../../../../../../assets/Payment/Status.svg';
-import statusAct from './../../../../../../assets/Payment/Status-active.svg';
+import statusActive from './../../../../../../assets/Payment/Status-active.svg';
+
+import style from './PaymentDetails.module.css';
 
 export const PaymentDetails = () => {
   return (
@@ -9,7 +9,7 @@ export const PaymentDetails = () => {
       <ul className={style.listDetails}>
         <li className={style.itemDetails}>
           <div>
-            <img src={statusAct} alt="status" />
+            <img src={statusActive} alt="status" />
             Status
           </div>
           <p className={`${style.statusItem} ${style.active}`}>active</p>

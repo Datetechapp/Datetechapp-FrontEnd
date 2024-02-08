@@ -1,8 +1,10 @@
-import Modal from 'react-modal';
-import style from './ModalPayment.module.css';
 import React, { FC } from 'react';
-import close from './../../../../../assets/Payment/CloseIcon.svg';
+import Modal from 'react-modal';
+
 import { Button } from './../../../../common/button';
+import close from './../../../../../assets/Payment/CloseIcon.svg';
+
+import style from './ModalPayment.module.css';
 
 interface ModalPaymentProps {
   onRequestClose?: () => void;
