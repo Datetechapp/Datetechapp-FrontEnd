@@ -10,74 +10,51 @@
   padding-top: 48px;
 }
 
-.nameQuestion::before {
+.nameQuestion::before,
+.birthdayQuestion::before,
+.genderQuestion::before,
+.genderFilterQuestion::before,
+.photoQuestion::before,
+.videoQuestion::before,
+.locationQuestion::before,
+.lastQuestion::before {
+  --steps: 8;
+  --step: 1;
   content: "";
   position: absolute;
   top: 0;
   left: 0;
-  width: 25%;
+  width: calc(100% / var(--steps) * var(--step));
   height: 4px;
   background-image: linear-gradient(180deg, #9747ff 0%, #de77c7 100%);
 }
 
 .birthdayQuestion::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 37.5%;
-  height: 4px;
-  background-image: linear-gradient(180deg, #9747ff 0%, #de77c7 100%);
+  --step: 2;
 }
 
 .genderQuestion::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 50%;
-  height: 4px;
-  background-image: linear-gradient(180deg, #9747ff 0%, #de77c7 100%);
+  --step: 3;
 }
 
 .genderFilterQuestion::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 62.5%;
-  height: 4px;
-  background-image: linear-gradient(180deg, #9747ff 0%, #de77c7 100%);
+  --step: 4;
 }
 
 .photoQuestion::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 75%;
-  height: 4px;
-  background-image: linear-gradient(180deg, #9747ff 0%, #de77c7 100%);
+  --step: 5;
 }
 
 .videoQuestion::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 87.5%;
-  height: 4px;
-  background-image: linear-gradient(180deg, #9747ff 0%, #de77c7 100%);
+  --step: 6;
+}
+
+.locationQuestion::before {
+  --step: 7;
 }
 
 .lastQuestion::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background-image: linear-gradient(180deg, #9747ff 0%, #de77c7 100%);
+  --step: 8;
 }
 
 .blockWithPreviousArrow {

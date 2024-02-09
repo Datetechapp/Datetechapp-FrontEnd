@@ -49,4 +49,8 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 'off',
   },
   ignorePatterns: ['**/*.css', '**/*.scss'],
+  globals: {
+    GeolocationPosition: 'readonly',
+    GeolocationPositionError: 'readonly',
+  },
 };

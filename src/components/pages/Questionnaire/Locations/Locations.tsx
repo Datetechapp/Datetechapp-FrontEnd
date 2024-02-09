@@ -14,6 +14,7 @@ import { ReactComponent as SearchIcon } from '../../../../assets/CreateAccountFo
 import css from './locations.module.css';
 
 type Props = {
+  location: string;
   setLocation: Dispatch<SetStateAction<string>>;
 };
 
@@ -29,8 +30,8 @@ type LocationOption = {
   key?: string;
 };
 
-export const Locations = ({ setLocation }: Props) => {
-  const [inputValue, setInputValue] = useState('');
+export const Locations = ({ location, setLocation }: Props) => {
+  const [inputValue, setInputValue] = useState(location || '');
   const [filteredOptions, setFilteredOptions] = useState<LocationOption[]>([]);
 
   const fetchDebounce = useCallback(
@@ -61,7 +62,7 @@ export const Locations = ({ setLocation }: Props) => {
 
           setFilteredOptions(cities as LocationOption[]);
         })
-        .catch(console.error);
+        .catch(console.error); // TODO: handle gracefully or show on UI if needed
     }, 1500),
     [],
   );

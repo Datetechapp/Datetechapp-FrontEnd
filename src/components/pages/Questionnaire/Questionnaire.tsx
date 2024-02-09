@@ -107,14 +107,14 @@ export function Questionnaire() {
     }
   };
 
-  const handleGenderChange = (
-    event: ChangeEvent<HTMLInputElement | HTMLSelectElement>,
-  ) => {
-    if (event.target.value === 'Male' || event.target.value === 'Female') {
-      setSex(event.target.value);
+  const handleGenderChange = ({
+    target,
+  }: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    if (target.value === 'Male' || target.value === 'Female') {
+      setSex(target.value);
       setGender('');
     } else {
-      setGender(event.target.value);
+      setGender(target.value);
       setSex('');
     }
   };
@@ -144,7 +144,34 @@ export function Questionnaire() {
       photo,
       video,
     };
-    console.log(form);
+    console.log(form); // TODO: update object and remove when back-end is ready
+  };
+
+  const handleLocationClick = () => {
+    const successPosition = (position: GeolocationPosition) => {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      const url = 'https://api.bigdatacloud.net/data/reverse-geocode-client';
+
+      fetch(`${url}?latitude=${latitude}&longitude=${longitude}`)
+        .then((response) => response.json())
+        .then((data) => {
+          setLocation(`${data?.city}, ${data?.countryName}`); // TODO: implement proper types when API is finalized
+          setStep(step + 1);
+        });
+    };
+
+    function errorPosition(positionError: GeolocationPositionError) {
+      console.log('Unable to retrieve your location:', positionError); // TODO: show UI error
+    }
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(successPosition, errorPosition);
+    } else {
+      console.log('Geolocation not supported'); // TODO: show UI error
+      setStep(step + 1);
+    }
   };
 
   return (
@@ -164,6 +191,8 @@ export function Questionnaire() {
             ? css.photoQuestion
             : step === 5
             ? css.videoQuestion
+            : step === 6
+            ? css.locationQuestion
             : css.lastQuestion
         }`}
       >
@@ -387,7 +416,10 @@ export function Questionnaire() {
               <h2 className={css.title}>
                 We need your locations for best matches
               </h2>
-              <Button className={css.continueBtnValid} onClick={() => {}}>
+              <Button
+                className={css.continueBtnValid}
+                onClick={handleLocationClick}
+              >
                 Allow location access
               </Button>
               <p className={css.textButton} onClick={() => setStep(step + 1)}>
@@ -406,7 +438,7 @@ export function Questionnaire() {
               <h2 className={css.title}>
                 We need your locations for best matches
               </h2>
-              <Locations setLocation={setLocation} />
+              <Locations setLocation={setLocation} location={location} />
               <Button
                 className={location ? css.continueBtnValid : css.continueBtn}
                 onClick={handleSubmit}
