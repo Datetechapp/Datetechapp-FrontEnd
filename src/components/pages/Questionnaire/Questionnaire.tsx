@@ -37,9 +37,7 @@ export function Questionnaire() {
   const [showModalUploadVideo, setShowModalUploadVideo] = useState(false);
   const [location, setLocation] = useState('');
 
-  const handlePreviousStep = () => {
-    setStep((prevStep) => prevStep - 1);
-  };
+  const handlePreviousStep = () => setStep((prevStep) => prevStep - 1);
 
   const handleNameChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setName(event.target.value);
@@ -119,9 +117,9 @@ export function Questionnaire() {
     }
   };
 
-  const handleOrientationChange = ({
-    target,
-  }: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleOrientationChange = (
+    event: ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+  ) => {
     setSexOrientation(target.value);
   };
 

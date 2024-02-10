@@ -44,14 +44,13 @@
   border-radius: 8px;
 }
 
-.match {
+.match,
+.mismatch {
   font: 500 14px/18px var(--ff);
   letter-spacing: 0.1px;
   color: var(--Violet_Active, #c896ef);
 }
 
 .mismatch {
-  font: 500 14px/18px var(--ff);
-  letter-spacing: 0.1px;
   color: var(--White, #fff);
 }
