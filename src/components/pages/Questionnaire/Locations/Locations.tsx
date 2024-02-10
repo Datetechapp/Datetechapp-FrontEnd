@@ -31,7 +31,7 @@ type LocationOption = {
 };
 
 export const Locations = ({ location, setLocation }: Props) => {
-  const [inputValue, setInputValue] = useState(location || '');
+  const [inputValue, setInputValue] = useState(location);
   const [filteredOptions, setFilteredOptions] = useState<LocationOption[]>([]);
 
   const fetchDebounce = useCallback(
