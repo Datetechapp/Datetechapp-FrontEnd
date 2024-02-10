@@ -12,8 +12,10 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "ajv": "^4.11.8",
+    "animate.css": "^4.1.1",
     "antd": "^5.5.0",
     "axios-mock-adapter": "^1.21.5",
+    "concurrently": "^8.2.2",
     "cors": "^2.8.5",
     "date-fns": "^3.1.0",
     "emoji-datasource-apple": "^15.0.1",
@@ -34,6 +36,7 @@
     "react-scripts": "5.0.1",
     "react-select": "^5.7.7",
     "react-textarea-autosize": "^8.5.3",
+    "react-use": "^17.5.0",
     "react-voice-visualizer": "^1.7.4",
     "redux": "^4.2.1",
     "styled-components": "^6.1.6",
@@ -50,7 +53,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix"
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "format": "prettier ./**/*.{js,ts,tsx,css,json} --check",
+    "format:fix": "prettier ./**/*.{js,ts,tsx,css,json} --write"
   },
   "eslintConfig": {
     "extends": [
@@ -89,6 +94,7 @@
     "eslint-plugin-prettier": "^5.0.1",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "json-server": "^0.17.4",
     "prettier": "^3.0.3",
     "typescript": "^5.1.6"
   }

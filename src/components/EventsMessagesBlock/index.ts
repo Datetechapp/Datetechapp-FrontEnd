@@ -1,0 +1,1 @@
+export { EventsMessagesBlock } from './EventsMessagesBlock';

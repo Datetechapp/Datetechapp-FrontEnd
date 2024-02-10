@@ -69,7 +69,7 @@
 }
 
 .continueBtn:disabled {
-  cursor: auto;
+  cursor: default;
 }
 
 .continueBtnValid {

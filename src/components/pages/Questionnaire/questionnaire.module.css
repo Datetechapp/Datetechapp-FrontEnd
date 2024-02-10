@@ -19,7 +19,6 @@
 .locationQuestion::before,
 .lastQuestion::before {
   --steps: 8;
-  --step: 1;
   content: "";
   position: absolute;
   top: 0;
@@ -27,6 +26,10 @@
   width: calc(100% / var(--steps) * var(--step));
   height: 4px;
   background-image: linear-gradient(180deg, #9747ff 0%, #de77c7 100%);
+}
+
+.nameQuestion::before {
+  --step: 1;
 }
 
 .birthdayQuestion::before {
@@ -332,7 +335,7 @@
 
 .textButton {
   margin-top: 16px;
-  font: normal 500 14px/18px var(--ff);
+  font: 500 14px/18px var(--ff);
   letter-spacing: 0.1px;
   color: var(--Grey, #96a3b4);
   cursor: pointer;

@@ -19,7 +19,6 @@
 }
 .header__buttons {
   display: flex;
-  justify-content: space-around;
   justify-content: center;
   gap: 60px;
   max-height: 52px;
@@ -44,4 +43,32 @@
 
 .BtnUpload:active {
   background: #5f4f7f;
+}
+
+.notifications {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.count_notifications {
+  position: absolute;
+  top: 0;
+  right: 0;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 8px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 25px; /* 312.5% */
+  letter-spacing: -0.5px;
+  background-color: #d75048;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
 }
