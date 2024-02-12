@@ -1,20 +1,20 @@
-.dropdown_content {
+.dropdownContent {
   display: none;
   position: absolute;
-  right: 0px;
+  right: 0;
   top: 64px;
   background-color: #32303e;
   min-width: 304px;
-  border-radius: 0px 0px 5px 5px;
+  border-radius: 0 0 5px 5px;
   z-index: 999;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
   gap: 16px;
-  padding: 10px 0px;
+  padding: 10px 0;
 }
 
-.dropdown_item {
+.dropdownItem {
   text-decoration: none;
   display: flex;
   justify-content: flex-start;
@@ -26,31 +26,31 @@
   padding: 8px 12px;
   border-radius: 4px;
   gap: 8px;
+  transition: background-color 0.3s ease-in-out;
 }
 
-.dropdown_item > img {
+.dropdownItem > img {
   width: 24px;
   height: 24px;
 }
 
-.dropdown_item > span {
-  font-family: "Montserrat", sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 18px;
+.dropdownItem > span {
+  font:
+    500 14px/18px "Montserrat",
+    sans-serif;
   letter-spacing: 0.1px;
   text-align: left;
 }
 
-.dropdown_item:hover {
+.dropdownItem:hover {
   background-color: #4b4a54;
 }
 
-.dropdown_item:active {
+.dropdownItem:active {
   background-color: #5f4f7f;
 }
 
-.dropdown_button_premium {
+.dropdownButtonPremium {
   width: 272px;
   height: 36px;
   padding: 10px;
@@ -59,31 +59,30 @@
   color: #ffffff;
   border: none;
   cursor: pointer;
-  font-family: "Montserrat", sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 20px;
+  font:
+    600 16px/20px "Montserrat",
+    sans-serif;
   letter-spacing: 0.2px;
   text-align: center;
 }
 
-.dropdown_button_premium:hover {
+.dropdownButtonPremium:hover {
   background: linear-gradient(270deg, #5e1cb4 0%, #8b41ea 45.31%, #ab23db 100%);
 }
 
-.dropdown_button_premium:active {
+.dropdownButtonPremium:active {
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
     linear-gradient(270deg, #5e1cb4 0%, #8b41ea 45.31%, #ab23db 100%);
 }
 
-.dropdown_options {
+.dropdownOptions {
   display: flex;
   flex-direction: column;
   width: 100%;
   align-items: center;
 }
 
-.logout_item {
+.logoutItem {
   border-top: 1px solid #5f4f7f;
   padding: 24px 12px;
 }

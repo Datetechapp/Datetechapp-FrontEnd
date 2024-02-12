@@ -37,51 +37,51 @@ export const MainLayoutHeader: FC = () => {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, []);
+  }, [closeDropdown]);
 
   const closeModal = () => {
     setModalOpen(false);
   };
 
   return (
-    <div className="header__wrapper">
+    <div className="headerWrapper">
       <div className="logo">
         <img src={logo} alt="logo" />
       </div>
-      <div className="header__info">
-        <div className="header_icons">
-          <button className="header_bell header_icon">
+      <div className="headerInfo">
+        <div className="headerIcons">
+          <button className="headerBell headerIcon">
             <img src={bell} alt="notifications" />
           </button>
-          <button className="header_calendar header_icon">
+          <button className="headerCalendar headerIcon">
             <img src={calendar} alt="calendar" />
           </button>
         </div>
 
-        <button className="user_button" onClick={handleDropdownClick}>
-          <div className="user__info">
-            <div className="user_personal_info">
+        <button className="userButton" onClick={handleDropdownClick}>
+          <div className="userInfo">
+            <div className="userPersonalInfo">
               <NavLink
                 to="self"
                 className={({ isActive }) =>
-                  isActive ? 'active_self_link' : 'deactive_self_link'
+                  isActive ? 'activeSelfLink' : 'deactiveSelfLink'
                 }
               >
-                <div className="nav_panel_user_pic">
+                <div className="navPanelUserPic">
                   {' '}
                   <img src={avatar} alt="avatar" />{' '}
                 </div>
               </NavLink>
               <div>
-                <div className="nav_panel_user_name">Ivan</div>
-                <div className="nav_panel_user_city">Now in Paris</div>
+                <div className="navPanelUserName">Ivan</div>
+                <div className="navPanelUserCity">Now in Paris</div>
               </div>
             </div>
 
             <img
               src={arrow}
               alt="button arrow"
-              className={`user_img ${dropdownVisible ? `arrow_rotate` : ''}`}
+              className={`userImg ${dropdownVisible ? `arrowRotate` : ''}`}
             />
           </div>
         </button>

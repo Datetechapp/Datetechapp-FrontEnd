@@ -1,4 +1,4 @@
-.header__wrapper {
+.headerWrapper {
   height: 64px;
   display: flex;
   justify-content: space-between;
@@ -10,6 +10,7 @@
 .logo {
   width: 67px;
   display: flex;
+  flex: 0 1 auto;
   align-items: center;
   justify-content: center;
 }
@@ -33,18 +34,6 @@
   font-size: 18px;
   line-height: 25px;
   border-radius: 5px;
-  width: 184px;
-  height: 56px;
-  border: 1px solid #e9e3f5;
-  background: none;
-  color: #e9e3f5;
-  text-transform: capitalize;
-  cursor: pointer;
-  outline: inherit;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 25px;
-  border-radius: 5px;
 }
 
 .BtnUpload:hover {
@@ -56,15 +45,15 @@
   background: #5f4f7f;
 }
 
-.header_icons {
+.headerIcons {
   display: flex;
   gap: 24px;
 }
 
-.header_icon {
+.headerIcon {
   display: flex;
   width: 40px;
-  height: 40px;
+  aspect-ratio: 1/1;
   justify-content: center;
   align-items: center;
   gap: 10px;
@@ -75,7 +64,7 @@
   cursor: pointer;
 }
 
-.header_icon img {
+.headerIcon img {
   display: flex;
   width: 24px;
   height: 24px;
@@ -85,7 +74,7 @@
   flex-shrink: 0;
 }
 
-.user__info {
+.userInfo {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -94,14 +83,14 @@
   gap: 12px;
 }
 
-.nav_panel_user_pic {
+.navPanelUserPic {
   flex-shrink: 0;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.nav_panel_user_pic img {
+.navPanelUserPic img {
   width: 100%;
   object-fit: cover;
   border-radius: 48px;
@@ -109,7 +98,7 @@
   height: 48px;
 }
 
-.user_personal_info {
+.userPersonalInfo {
   display: inline-flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -117,46 +106,44 @@
   gap: 4px;
 }
 
-.nav_panel_user_name {
+.navPanelUserName {
   color: var(--White, #fff);
   font-family: "Montserrat", sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 600;
-  line-height: 22px; /* 122.222% */
+  line-height: 22px;
   letter-spacing: 0.1px;
   text-align: left;
 }
 
-.nav_panel_user_city {
+.navPanelUserCity {
   color: var(--super-white, var(--Back_White, #e1dbed));
   font-variant-numeric: lining-nums proportional-nums;
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
-  line-height: 18px; /* 128.571% */
-  letter-spacing: 0.1px;
+  line-height: 18px;
   text-align: left;
 }
 
-.user_button {
+.userButton {
   background-color: transparent;
   border: none;
   padding: 0;
   margin-left: 15px;
   margin-right: 15px;
   cursor: pointer;
-  position: relative;
 }
 
-.user_img {
+.userImg {
   transform: rotate(90deg);
   width: 14px;
   border: 2px;
 }
 
-.header__info {
+.headerInfo {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -164,6 +151,6 @@
   gap: 15px;
 }
 
-.arrow_rotate {
+.arrowRotate {
   rotate: 180deg;
 }

@@ -1,21 +1,7 @@
 import React from 'react';
 import avatar from '../../../../../assets/user/avatar Ivan.svg';
 import styles from './IsMatchedModal.module.css';
-
-type ModalMatchedProps = {
-  selectedProfileId: number | null;
-  profilesData: {
-    id: number;
-    name: string;
-    age: string;
-    city: string;
-    country: string;
-    img: string;
-    isLiked: boolean;
-    likeYou: boolean;
-  }[];
-  closeMatchedModal: () => void;
-};
+import { ModalMatchedProps } from '../interfaces';
 
 const IsMatchedModal: React.FC<ModalMatchedProps> = ({
   profilesData,
@@ -56,7 +42,7 @@ const IsMatchedModal: React.FC<ModalMatchedProps> = ({
             />
             <img
               className={`${styles.matchImage} ${styles.partnerImage}`}
-              src={selectedProfile?.img}
+              src={selectedProfile && selectedProfile.img}
               alt={selectedProfile?.name + "'s profile"}
             />
           </div>

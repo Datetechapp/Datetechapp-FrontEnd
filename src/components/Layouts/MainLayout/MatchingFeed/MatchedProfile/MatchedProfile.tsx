@@ -7,22 +7,7 @@ import { ReactComponent as SoundOnIcon } from '../../../../../assets/CreateAccou
 import { ReactComponent as SoundOffIcon } from '../../../../../assets/CreateAccountForm/soundOff.svg';
 import { ReactComponent as PlayIcon } from '../../../../../assets/CreateAccountForm/playIcon.svg';
 import { ReactComponent as PauseIcon } from '../../../../../assets/CreateAccountForm/pauseIcon.svg';
-
-interface UserProfileCardProps {
-  profile: {
-    id: number;
-    name: string;
-    age: string;
-    city: string;
-    country: string;
-    img: string;
-    isLiked: boolean;
-    likeYou: boolean;
-    video: string;
-  };
-  onDelete: (id: number) => void;
-  setSelectedProfileId: React.Dispatch<React.SetStateAction<number | null>>;
-}
+import { UserProfileCardProps } from '../interfaces';
 
 const MatchedProfile: React.FC<UserProfileCardProps> = ({
   profile,
@@ -33,7 +18,9 @@ const MatchedProfile: React.FC<UserProfileCardProps> = ({
   const [isHovered, setIsHovered] = useState(false);
   const [isVolumeBlockHovered, setIsVolumeBlockHovered] = useState(false);
 
-  const [volume, setVolume] = useState(0.5);
+  const DEFAULT_VOLUME = 0.5;
+
+  const [volume, setVolume] = useState(DEFAULT_VOLUME);
 
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isShareProfileVisible, setShareProfileVisible] = useState(false);
@@ -103,28 +90,28 @@ const MatchedProfile: React.FC<UserProfileCardProps> = ({
 
   return (
     <div
-      className={styles.profile_matched}
+      className={styles.profileMatched}
       onClick={() => {
         setSelectedProfileId(profile.id);
       }}
     >
-      <div className={styles.profile_container_info}>
-        <div className={styles.profile_info}>
+      <div className={styles.profileContainerInfo}>
+        <div className={styles.profileInfo}>
           <img
-            className={styles.profile_picture}
+            className={styles.profilePicture}
             src={profile.img}
             alt={`Profile of ${profile.name}`}
           />
           <div>
-            <div className={styles.profile_city}>
+            <div className={styles.profileCity}>
               {`${profile.city}, ${profile.country}`}
             </div>
-            <div className={styles.profile_name}>
+            <div className={styles.profileName}>
               {`${profile.name}, ${profile.age}`}
             </div>
           </div>
         </div>
-        <div className={styles.profile_dots} onClick={handleShareButtonClick}>
+        <div className={styles.profileDots} onClick={handleShareButtonClick}>
           ...
           {isShareProfileVisible && (
             <div className={styles.shareProfileElement}>
@@ -196,7 +183,7 @@ const MatchedProfile: React.FC<UserProfileCardProps> = ({
             )}
           </div>
           <div
-            className={styles.profile_dots_copy}
+            className={styles.profileDotsCopy}
             onClick={handleCopyButtonClick}
           >
             {isCopyLinkVisible && (

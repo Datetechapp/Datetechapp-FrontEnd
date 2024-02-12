@@ -1,4 +1,4 @@
-.modal_premium {
+.modalPremium {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -28,7 +28,7 @@
   z-index: 998;
 }
 
-.modal_premium_wrap {
+.modalPremiumWrap {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -47,7 +47,7 @@
   z-index: 1001;
 }
 
-.header_premium {
+.headerPremium {
   font-family: "Montserrat", sans-serif;
   font-size: 22px;
   font-weight: 600;
@@ -66,19 +66,18 @@
   text-align: center;
 }
 
-.premium_description {
+.premiumDescription {
   font-size: 14px;
   font-weight: 400;
   line-height: 18px;
-  letter-spacing: 0.1px;
   text-align: center;
   padding-top: 10px;
 }
 
-.premium_button {
+.premiumButton {
   width: 384px;
   height: 48px;
-  padding: 16px, 18px, 16px, 18px;
+  padding: 16px 18px;
   border-radius: 5px;
   gap: 10px;
   background: linear-gradient(180deg, #9747ff 0%, #de77c7 100%);
@@ -91,43 +90,32 @@
   border: none;
 }
 
-.premium_logo {
+.premiumLogo {
   width: 100%;
+  flex-grow: 1;
+  flex-shrink: 0;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
 }
 
-.logo_button {
-  padding: 6px;
+.logoButton {
+  width: 24px;
+  height: 24px;
   background-color: transparent;
-  color: #5f4f7f;
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 20px;
-  letter-spacing: 0.2px;
   cursor: pointer;
-  transition: color 0.3s ease-in-out;
 }
 
-.logo_button:hover {
-  color: #c896ef;
-}
-
-.logo_button:active {
-  color: #b71a78;
-}
-
-.premium_button:hover {
+.premiumButton:hover {
   background: linear-gradient(270deg, #5e1cb4 0%, #8b41ea 45.31%, #ab23db 100%);
 }
 
-.premium_button:active {
+.premiumButton:active {
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
     linear-gradient(270deg, #5e1cb4 0%, #8b41ea 45.31%, #ab23db 100%);
 }
 
-.premium_logo > img {
+.premiumLogo > img {
   width: 113px;
   object-fit: cover;
 }

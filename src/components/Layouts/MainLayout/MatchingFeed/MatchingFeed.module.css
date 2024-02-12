@@ -1,4 +1,4 @@
-.matching_container {
+.matchingContainer {
   display: flex;
   height: 100%;
   width: 100%;
@@ -36,17 +36,17 @@
   fill: #b71a78;
 }
 
-.container_icons:hover {
+.containerIcons:hover {
   background-color: #32303e;
   box-shadow: none;
 }
 
-.container_icons:active {
+.containerIcons:active {
   background-color: #1f1d2b;
   box-shadow: 0 0 10px 3px rgba(95, 79, 127, 0.5);
 }
 
-.container_icons {
+.containerIcons {
   width: 68px;
   height: 68px;
   padding: 13px;
@@ -72,14 +72,14 @@
   fill: url(#paint0_linear_hover_6978_64739);
 }
 
-.matching_feed {
+.matchingFeed {
   display: flex;
   flex-direction: column;
   gap: 20px;
   position: relative;
 }
 
-.matching_nav {
+.matchingNav {
   width: 324px;
   height: 48px;
   color: #5f4f7f;
@@ -96,7 +96,7 @@
   top: 0;
 }
 
-.nav_category {
+.navCategory {
   width: 162px;
   height: 48px;
   padding: 0px, 10px, 0px, 16px;
@@ -109,7 +109,7 @@
   cursor: pointer;
 }
 
-.matching_profiles {
+.matchingProfiles {
   width: 324px;
   height: 630px;
   display: flex;
@@ -121,7 +121,7 @@
   position: relative;
 }
 
-.interested_active {
+.interestedActive {
   background-image: linear-gradient(
     86deg,
     #ffe0aa 0.58%,
@@ -134,7 +134,7 @@
   -webkit-text-fill-color: transparent;
 }
 
-.new_people_active {
+.newPeopleActive {
   border-bottom: 2px solid #c896ef;
   color: #ffffff;
   font-size: 16px;
@@ -142,7 +142,7 @@
   line-height: 20px;
 }
 
-.arrowButtons_directions {
+.arrowButtonsDirections {
   position: absolute;
   width: 120px;
   height: 24px;
@@ -156,7 +156,7 @@
   border: none;
 }
 
-.arrowButton_direction {
+.arrowButtonDirection {
   width: 24px;
   height: 24px;
   border-radius: 4px;
