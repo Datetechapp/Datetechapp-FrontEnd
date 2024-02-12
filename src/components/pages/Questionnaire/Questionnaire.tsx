@@ -117,11 +117,10 @@ export function Questionnaire() {
     }
   };
 
-  const handleOrientationChange = (
-    event: ChangeEvent<HTMLInputElement | HTMLSelectElement>,
-  ) => {
+  const handleOrientationChange = ({
+    target,
+  }: ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
     setSexOrientation(target.value);
-  };
 
   const handleCheckChange = () => setShowSexOrientation(!showSexOrientation);
 

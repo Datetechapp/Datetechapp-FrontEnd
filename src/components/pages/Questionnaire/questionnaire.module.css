@@ -18,7 +18,7 @@
 .videoQuestion::before,
 .locationQuestion::before,
 .lastQuestion::before {
-  --steps: 8;
+  --steps: 9;
   content: "";
   position: absolute;
   top: 0;
@@ -29,35 +29,35 @@
 }
 
 .nameQuestion::before {
-  --step: 1;
-}
-
-.birthdayQuestion::before {
   --step: 2;
 }
 
-.genderQuestion::before {
+.birthdayQuestion::before {
   --step: 3;
 }
 
-.genderFilterQuestion::before {
+.genderQuestion::before {
   --step: 4;
 }
 
-.photoQuestion::before {
+.genderFilterQuestion::before {
   --step: 5;
 }
 
-.videoQuestion::before {
+.photoQuestion::before {
   --step: 6;
 }
 
-.locationQuestion::before {
+.videoQuestion::before {
   --step: 7;
 }
 
-.lastQuestion::before {
+.locationQuestion::before {
   --step: 8;
+}
+
+.lastQuestion::before {
+  --step: 9;
 }
 
 .blockWithPreviousArrow {
