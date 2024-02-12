@@ -1,67 +1,54 @@
-import React, { useState, useRef } from 'react';
+import { useRef, useState, type ChangeEvent, type FC } from 'react';
 import AvatarEditor from 'react-avatar-editor';
-import css from './photoUploader.module.css';
-import { UploadButton } from '../UploadButton';
-import { ReactComponent as CloseIcon } from '../../../../assets/CreateAccountForm/closeIcon.svg';
 import { ReactComponent as AddPhoto } from '../../../../assets/CreateAccountForm/addPhoto.svg';
+import { ReactComponent as CloseIcon } from '../../../../assets/CreateAccountForm/closeIcon.svg';
+import { UploadButton } from '../UploadButton';
+import css from './photoUploader.module.css';
+
+type Coordinates = {
+  x: number;
+  y: number;
+};
 
 interface PhotoUploaderProps {
   onUpload: (imageData: string | null) => void;
-  onChange: React.Dispatch<React.SetStateAction<boolean>>;
   photo: string;
 }
 
-export const PhotoUploader: React.FC<PhotoUploaderProps> = ({
-  onUpload,
-  onChange,
-  photo,
-}) => {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const [editorPosition, setEditorPosition] = useState<{
-    x: number;
-    y: number;
-  }>({ x: 0.5, y: 0.5 });
+export const PhotoUploader: FC<PhotoUploaderProps> = ({ onUpload, photo }) => {
+  const [editorPosition, setEditorPosition] = useState<Coordinates>({
+    x: 0.5,
+    y: 0.5,
+  });
   const [editorScale, setEditorScale] = useState<number>(1.5);
-  const [isPhotoSelected, setIsPhotoSelected] = useState<boolean>(false);
   const editorRef = useRef<AvatarEditor | null>(null);
 
   const handleFileUploaded = (file: File) => {
     const reader = new FileReader();
 
-    reader.onloadend = () => {
-      const imageData = reader.result?.toString() || null;
-
-      setSelectedImage(imageData);
-      setIsPhotoSelected(true);
-      onChange(true);
+    reader.onload = () => {
+      onUpload(reader.result as string);
       setEditorPosition({ x: 0.5, y: 0.5 });
       setEditorScale(1.5);
-      onUpload(imageData);
     };
     reader.readAsDataURL(file);
   };
 
-  const handlePositionChange = (position: { x: number; y: number }) => {
+  const handlePositionChange = (position: Coordinates) =>
     setEditorPosition(position);
-  };
 
-  const handleDeletePhoto = () => {
-    setSelectedImage(null);
-    setIsPhotoSelected(false);
-    onChange(false);
-    onUpload(null);
-  };
+  const handleDeletePhoto = () => onUpload(null);
 
-  const handleRangeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = parseFloat(e.target.value);
+  const handleRangeChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
+    const value = parseFloat(target.value);
 
     if (!isNaN(value)) {
       const thumbPositionPercentage =
-        ((value - parseFloat(e.target.min)) /
-          (parseFloat(e.target.max) - parseFloat(e.target.min))) *
+        ((value - parseFloat(target.min)) /
+          (parseFloat(target.max) - parseFloat(target.min))) *
         100;
 
-      e.target.style.setProperty(
+      target.style.setProperty(
         '--thumb-percentage',
         `${thumbPositionPercentage}%`,
       );

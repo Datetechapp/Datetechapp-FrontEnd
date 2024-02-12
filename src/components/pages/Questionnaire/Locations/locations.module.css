@@ -11,6 +11,45 @@
 .searchIcon {
   position: absolute;
   z-index: 1;
-  top: 5px;
-  left: 5px;
+  top: 12px;
+  left: 16px;
+}
+
+.search {
+  padding: 14px 16px 14px 48px;
+  font: 500 14px/18px var(--ff);
+  background-color: var(--Dark_Elements_Background, #201b27);
+  border-radius: 8px;
+  border-color: var(--Violet_Active, #c896ef);
+  color: var(--White, #fff);
+}
+
+.search:focus-visible,
+.search:hover {
+  background-color: var(--Dark_Elements_Background, #201b27);
+  border-color: var(--Violet_Active, #c896ef);
+}
+
+.search::placeholder {
+  color: var(--Violet_Stroke, #5f4f7f);
+}
+
+.popup {
+  padding: 5px 16px;
+  font: 500 14px/18px var(--ff);
+  letter-spacing: 0.1px;
+  background-color: var(--Dark_Elements_Background, #201b27);
+  border: 1px solid var(--Grey, #96a3b4);
+  border-radius: 8px;
+}
+
+.match,
+.mismatch {
+  font: 500 14px/18px var(--ff);
+  letter-spacing: 0.1px;
+  color: var(--Violet_Active, #c896ef);
+}
+
+.mismatch {
+  color: var(--White, #fff);
 }

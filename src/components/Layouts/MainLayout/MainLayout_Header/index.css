@@ -19,7 +19,6 @@
 }
 .header__buttons {
   display: flex;
-  justify-content: space-around;
   justify-content: center;
   gap: 60px;
   max-height: 52px;
@@ -52,7 +51,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
 }
 .count_notifications {
   position: absolute;

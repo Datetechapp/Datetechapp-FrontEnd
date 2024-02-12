@@ -1,4 +1,4 @@
-.container{
+.container {
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -41,11 +41,11 @@
 }
 
 .searchInput:focus-within {
-  border-color:  #c896ef !important;
+  border-color: #c896ef !important;
 }
 
-.searchInput .input::placeholder{
-  color: #5F4F7F
+.searchInput .input::placeholder {
+  color: #5f4f7f;
 }
 
 .close {
