@@ -68,6 +68,10 @@
   margin-top: 40px;
 }
 
+.continueBtn:disabled {
+  cursor: default;
+}
+
 .continueBtnValid {
   width: 392px;
   height: 48px;

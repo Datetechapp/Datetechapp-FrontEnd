@@ -1,33 +1,25 @@
-import React, { useState, useEffect, useRef } from 'react';
-import css from './videoUploader.module.css';
-import { UploadButton } from '../UploadButton';
+import { useEffect, useRef, useState, type ChangeEvent, type FC } from 'react';
+import { ReactComponent as AddPhoto } from '../../../../assets/CreateAccountForm/addPhoto.svg';
 import { ReactComponent as CloseIcon } from '../../../../assets/CreateAccountForm/closeIcon.svg';
+import { ReactComponent as PauseIcon } from '../../../../assets/CreateAccountForm/pauseIcon.svg';
+import { ReactComponent as PlayIcon } from '../../../../assets/CreateAccountForm/playIcon.svg';
 import { ReactComponent as SoundOnIcon } from '../../../../assets/CreateAccountForm/soundIcon.svg';
 import { ReactComponent as SoundOffIcon } from '../../../../assets/CreateAccountForm/soundOff.svg';
-import { ReactComponent as PlayIcon } from '../../../../assets/CreateAccountForm/playIcon.svg';
-import { ReactComponent as PauseIcon } from '../../../../assets/CreateAccountForm/pauseIcon.svg';
-import { ReactComponent as AddPhoto } from '../../../../assets/CreateAccountForm/addPhoto.svg';
-import { ModalUploadVideo } from '../ModalUploadVideo';
+import { UploadButton } from '../UploadButton';
+import css from './videoUploader.module.css';
 
 interface VideoUploaderProps {
-  onUpload: (fileData: Blob | null, isRemoved?: boolean) => void;
-  onChange: React.Dispatch<React.SetStateAction<boolean>>;
+  onUpload: (fileData: Blob | null) => void;
   video: Blob | null;
 }
 
-export const VideoUploader: React.FC<VideoUploaderProps> = ({
-  onUpload,
-  onChange,
-  video,
-}) => {
-  const [selectedVideo, setSelectedVideo] = useState<File | null>(null);
+export const VideoUploader: FC<VideoUploaderProps> = ({ onUpload, video }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [isVolumeBlockHovered, setIsVolumeBlockHovered] = useState(false);
-
   const [volume, setVolume] = useState(0.5);
-
   const videoRef = useRef<HTMLVideoElement>(null);
+  const volumeRef = useRef<HTMLInputElement>(null);
 
   const handleFileUpload = async (file: File) => {
     const fileExtension = file.name.split('.').pop()!.toLowerCase();
@@ -40,16 +32,12 @@ export const VideoUploader: React.FC<VideoUploaderProps> = ({
     ) {
       const reader = new FileReader();
 
-      reader.onloadend = () => {
-        const videoData =
-          reader.result instanceof ArrayBuffer
-            ? new Blob([new Uint8Array(reader.result)])
-            : null;
+      reader.onload = () => {
+        const videoData = new Blob([
+          new Uint8Array(reader.result as ArrayBuffer),
+        ]);
 
         onUpload(videoData);
-        setSelectedVideo(file);
-        onChange(true);
-        setIsPlaying(false);
 
         if (videoRef.current) {
           videoRef.current.src = URL.createObjectURL(file);
@@ -63,33 +51,18 @@ export const VideoUploader: React.FC<VideoUploaderProps> = ({
     }
   };
 
-  const handleRemoveVideo = () => {
-    setSelectedVideo(null);
-    onChange(false);
-    setIsPlaying(false);
-
-    if (videoRef.current) {
-      videoRef.current.src = '';
-    }
-    onUpload(null, true);
-  };
+  const handleRemoveVideo = () => onUpload(null);
 
   const handleVideoClick = () => {
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause();
-        setIsPlaying(false);
-      } else {
-        videoRef.current.play();
-        setIsPlaying(true);
-      }
-    }
+    if (!videoRef.current) return;
+    videoRef.current.paused
+      ? videoRef.current.play()
+      : videoRef.current.pause();
+    setIsPlaying(!videoRef.current.paused);
   };
 
-  const volumeRef = useRef<HTMLInputElement | null>(null);
-
   useEffect(() => {
-    const rangeInput = volumeRef.current as HTMLInputElement;
+    const rangeInput = volumeRef.current;
 
     if (rangeInput) {
       rangeInput.style.setProperty('--thumb-percentage', `${volume * 100}%`);
@@ -102,8 +75,8 @@ export const VideoUploader: React.FC<VideoUploaderProps> = ({
     }
   }, [volume]);
 
-  const handleVolumeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newVolume = parseFloat(event.target.value);
+  const handleVolumeChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
+    const newVolume = parseFloat(target.value);
 
     setVolume(newVolume);
 
@@ -112,16 +85,16 @@ export const VideoUploader: React.FC<VideoUploaderProps> = ({
     }
   };
 
-  const handleRangeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = parseFloat(e.target.value);
+  const handleRangeChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
+    const value = parseFloat(target.value);
 
     if (!isNaN(value)) {
       const thumbPositionPercentage =
-        ((value - parseFloat(e.target.min)) /
-          (parseFloat(e.target.max) - parseFloat(e.target.min))) *
+        ((value - parseFloat(target.min)) /
+          (parseFloat(target.max) - parseFloat(target.min))) *
         100;
 
-      e.target.style.setProperty(
+      target.style.setProperty(
         '--thumb-percentage',
         `${thumbPositionPercentage}%`,
       );
@@ -149,18 +122,14 @@ export const VideoUploader: React.FC<VideoUploaderProps> = ({
             <SoundOffIcon
               className={css.soundIcon}
               onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => {
-                setTimeout(() => setIsHovered(false), 300);
-              }}
+              onMouseLeave={() => setTimeout(() => setIsHovered(false), 300)}
               onClick={() => setVolume(1)}
             />
           ) : (
             <SoundOnIcon
               className={css.soundIcon}
               onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => {
-                setTimeout(() => setIsHovered(false), 500);
-              }}
+              onMouseLeave={() => setTimeout(() => setIsHovered(false), 500)}
               onClick={() => setVolume(0)}
             />
           )}
@@ -185,20 +154,15 @@ export const VideoUploader: React.FC<VideoUploaderProps> = ({
               />
             </div>
           )}
-          <div className={css.videoControls}>
-            {!isPlaying && (
-              <PlayIcon
-                className={`${css.iconControls}`}
-                onClick={handleVideoClick}
-              />
-            )}
-            {isPlaying && (
-              <PauseIcon
-                className={`${css.iconControls}`}
-                onClick={handleVideoClick}
-              />
-            )}
-          </div>
+          {!isPlaying && (
+            <PlayIcon className={css.iconControls} onClick={handleVideoClick} />
+          )}
+          {isPlaying && (
+            <PauseIcon
+              className={css.iconControls}
+              onClick={handleVideoClick}
+            />
+          )}
         </div>
       )}
     </>

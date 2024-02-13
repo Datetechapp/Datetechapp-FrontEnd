@@ -12,5 +12,5 @@ module.exports = {
       },
     },
   ],
-  endOfLine: 'auto', 
+  endOfLine: 'auto',
 };

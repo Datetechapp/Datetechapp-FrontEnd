@@ -1,21 +1,19 @@
-import React, { FC, PropsWithChildren } from 'react';
-import css from './styles.module.css';
+import { MouseEvent, PropsWithChildren } from 'react';
 
 interface ButtonProps {
-  onClick?: () => void;
+  onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
   disabled?: boolean;
   className?: string;
   form?: string;
-  onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 
-export const Button: FC<PropsWithChildren<ButtonProps>> = ({
+export const Button = ({
   children,
   onClick,
   disabled,
   className,
   form,
-}) => (
+}: PropsWithChildren<ButtonProps>) => (
   <button
     className={className}
     onClick={onClick}
