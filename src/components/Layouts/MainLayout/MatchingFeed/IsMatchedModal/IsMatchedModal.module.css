@@ -13,7 +13,7 @@
   border: 1px solid transparent;
   border-image-slice: 1;
   background-color: #201b27;
-  z-index: 1000;
+  z-index: 10;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -29,7 +29,7 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.6);
-  z-index: 998;
+  z-index: 8;
 }
 
 .matchHeaderLine {

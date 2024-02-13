@@ -113,7 +113,7 @@
 
 .profileDots:hover .shareProfileElement {
   display: flex;
-  z-index: 1010;
+  z-index: 12;
 }
 
 .shareProfileElement:hover {
