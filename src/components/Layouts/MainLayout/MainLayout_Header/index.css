@@ -95,6 +95,15 @@
   display: flex;
   justify-content: center;
 }
+
+.notifications {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .count_notifications {
   position: absolute;
   top: 0;
