@@ -1,3 +1,7 @@
+:root {
+  --ff: Montserrat, Arial, sans-serif;
+}
+
 @font-face {
   font-family: Montserrat;
   src: url("./Montserrat/Montserrat-VariableFont_wght.ttf");

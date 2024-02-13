@@ -1,73 +1,111 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { AutoComplete } from 'antd';
-import { fetchData } from '../../../../api';
+import { AutoComplete, ConfigProvider, Input } from 'antd';
 import debounce from 'lodash/debounce';
+import {
+  useCallback,
+  useState,
+  type Dispatch,
+  type ReactNode,
+  type SetStateAction,
+} from 'react';
+
+import { fetchData } from '../../../../api';
+
 import { ReactComponent as SearchIcon } from '../../../../assets/CreateAccountForm/searchLocationIcon.svg';
 import css from './locations.module.css';
 
-interface OptionsProps {
-  value: string;
-}
+type Props = {
+  location: string;
+  setLocation: Dispatch<SetStateAction<string>>;
+};
 
-export const Locations = () => {
-  const [inputValue, setInputValue] = useState('');
-  const [filteredOptions, setFilteredOptions] = useState<OptionsProps[]>([]);
+type Location = {
+  city: string;
+  country: string;
+  wikiDataId: string;
+};
+
+type LocationOption = {
+  value: string;
+  label: ReactNode;
+  key?: string;
+};
+
+export const Locations = ({ location, setLocation }: Props) => {
+  const [inputValue, setInputValue] = useState(location);
+  const [filteredOptions, setFilteredOptions] = useState<LocationOption[]>([]);
 
   const fetchDebounce = useCallback(
-    debounce((inputValue: string) => {
-      fetchData(inputValue)
-        .then((result) => {
-          if (result && result.data && Array.isArray(result.data)) {
-            const cities = result.data.map(
-              (item: { city: string; country: string; wikiDataId: string }) => {
-                return {
-                  value: `${item.city}, ${item.country}`,
-                  city: item.city,
-                  country: item.country,
-                  key: item.wikiDataId,
-                };
-              },
-            );
+    debounce((value: string) => {
+      fetchData(value)
+        .then(({ data }) => {
+          const cities = data
+            .map(({ city, country, wikiDataId }: Location) => {
+              if (!city.toLowerCase().startsWith(value.toLowerCase())) return;
 
-            setFilteredOptions(cities);
-          }
+              const matchCity = city.slice(0, value.length);
+              const restCity = city.slice(value.length);
+
+              return {
+                value: `${city}, ${country}`,
+                label: (
+                  <>
+                    <span className={css.match}>{matchCity}</span>
+                    <span className={css.mismatch}>
+                      {restCity + ', ' + country}
+                    </span>
+                  </>
+                ),
+                key: wikiDataId,
+              };
+            })
+            .filter(Boolean);
+
+          setFilteredOptions(cities as LocationOption[]);
         })
-        .catch((error) => {
-          console.error(error);
-        });
+        .catch(console.error); // TODO: handle gracefully or show on UI if needed
     }, 1500),
     [],
   );
 
-  useEffect(() => {
-    fetchDebounce(inputValue);
-  }, [inputValue]);
-
   const handleInputChange = (value: string) => {
+    setLocation('');
     setInputValue(value);
-
-    const filtered = filteredOptions.filter((option) =>
-      option.value.toLowerCase().includes(value.toLowerCase()),
-    );
-
-    setFilteredOptions(filtered);
+    fetchDebounce(value);
   };
 
   const onSelect = (value: string) => {
+    const [city, country] = value.split(', ');
+
+    setFilteredOptions([
+      {
+        value: `${city}, ${country}`,
+        label: (
+          <>
+            <span className={css.match}>{city}</span>
+            <span className={css.mismatch}>{', ' + country}</span>
+          </>
+        ),
+      },
+    ]);
     setInputValue(value);
+    setLocation(value);
   };
 
   return (
     <div className={css.searchBlockWrapper}>
-      <SearchIcon className={css.searchIcon} />
-      <AutoComplete
-        className={css.locations}
-        options={filteredOptions}
-        onSearch={handleInputChange}
-        onSelect={onSelect}
-        value={inputValue}
-        placeholder="Search"
-      />
+      <ConfigProvider theme={{ components: { Select: { optionPadding: 0 } } }}>
+        <SearchIcon className={css.searchIcon} />
+        <AutoComplete
+          className={css.locations}
+          options={filteredOptions}
+          onSearch={handleInputChange}
+          onSelect={onSelect}
+          value={inputValue}
+          popupClassName={css.popup}
+        >
+          <Input className={css.search} placeholder="Search" />
+        </AutoComplete>
+      </ConfigProvider>
     </div>
   );
 };
