@@ -7,22 +7,32 @@ import {
   TableRow,
 } from '@mui/material';
 
-import { payment } from '../payment';
-
 import style from './HistoryList.module.css';
+import { useAppSelector } from 'hooks/hooks';
+import { getPaymentData } from 'store/payments/selectors';
+import { IPayment } from '../../../../../../store/payments/types';
+
+enum statusProcess {
+  SuccessProcess = 'well paid',
+  InProcess = 'in progress',
+  CancelProcess = 'cancel',
+  Error = 'error payment',
+}
 
 export const HistoryList = () => {
+  const paymentData = useAppSelector(getPaymentData);
+
   const getRowClass = (status: string) => {
-    return status === 'well paid'
+    return status === statusProcess.SuccessProcess
       ? style.rowPaid
-      : status === 'in progress'
+      : status === statusProcess.InProcess
       ? style.rowProgress
       : style.rowCancel;
   };
 
   return (
     <div className={style.boxHistory}>
-      {payment.length === 0 ? (
+      {paymentData.length === 0 ? (
         <p className={style.textHistory}>You do not have paid subscriptions</p>
       ) : (
         <TableContainer className={style.tableContainer}>
@@ -37,23 +47,31 @@ export const HistoryList = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {payment.map((row) => (
-                <TableRow key={row.id} className={style.rowTitle}>
-                  <TableCell>{row.data}</TableCell>
-                  <TableCell>{row.id}</TableCell>
-                  <TableCell>{row.time}</TableCell>
-                  <TableCell>-{row.price}</TableCell>
-                  <TableCell>
-                    <div
-                      className={`${style.rowStatus} ${getRowClass(
-                        row.status,
-                      )}`}
-                    >
-                      {row.status}
-                    </div>
-                  </TableCell>
-                </TableRow>
-              ))}
+              {paymentData.map(
+                ({
+                  dataPayment,
+                  idUser,
+                  price,
+                  statusProcess,
+                  timeStamp,
+                }: IPayment) => (
+                  <TableRow key={idUser} className={style.rowTitle}>
+                    <TableCell>{dataPayment}</TableCell>
+                    <TableCell>{idUser}</TableCell>
+                    <TableCell>{timeStamp}</TableCell>
+                    <TableCell>-{price}</TableCell>
+                    <TableCell>
+                      <div
+                        className={`${style.rowStatus} ${getRowClass(
+                          statusProcess,
+                        )}`}
+                      >
+                        {statusProcess}
+                      </div>
+                    </TableCell>
+                  </TableRow>
+                ),
+              )}
             </TableBody>
           </Table>
         </TableContainer>
