@@ -18,5 +18,10 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src/components", "src/react-app-env.d.ts", "declarations.d.ts", "src/store/payments/payment.ts"]
+  "include": [
+    "src/components",
+    "src/react-app-env.d.ts",
+    "declarations.d.ts",
+    "src/store/payments/payment.ts"
+  ]
 }

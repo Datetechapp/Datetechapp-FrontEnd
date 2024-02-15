@@ -1,22 +1,22 @@
-.containerHistory{
-    height: 100%;
-    width: 100%;
-    padding: 0 24px;
-    background: url('./../../../../../assets/Messanger/BackgroundForMessanger.png')
+.containerHistory {
+  height: 100%;
+  width: 100%;
+  padding: 0 24px;
+  background: url("./../../../../../assets/Messanger/BackgroundForMessanger.png")
     #1f1d2b repeat;
 }
-.headerHistory{
-    width: 100%;
+.headerHistory {
+  width: 100%;
 }
-.titleHistory{
-    max-width: 280px;
-    padding: 16px 24px;
-    border-bottom: 2px solid#C896EF;
-    color:#FFF;
-    font-size: 18px;
-    font-weight: 600;
-    line-height: 22px;
+.titleHistory {
+  max-width: 280px;
+  padding: 16px 24px;
+  border-bottom: 2px solid#C896EF;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 22px;
 }
-.contentHistory{
-    padding-top: 24px;
+.contentHistory {
+  padding-top: 24px;
 }

@@ -1,36 +1,36 @@
-.containerDetails{
-    border: 0.5px solid #5f4f7f;
-    border-radius: 10px;
-    width: 380px;
-    height: 120px;
+.containerDetails {
+  border: 0.5px solid #5f4f7f;
+  border-radius: 10px;
+  width: 380px;
+  height: 120px;
 }
-.listDetails{
-    list-style: none;
-    display: flex;
-    flex-direction: column;
+.listDetails {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
 }
-.itemDetails{
-    max-height: 30px;
-    padding: 6px 12px; 
-    display: flex;
-    font-size: 14px;
-    color: #ffffff;
-    line-height: 18px;
+.itemDetails {
+  max-height: 30px;
+  padding: 6px 12px;
+  display: flex;
+  font-size: 14px;
+  color: #ffffff;
+  line-height: 18px;
 }
-.itemDetails div{
-    width: 100%;
-    font-weight: 600;
+.itemDetails div {
+  width: 100%;
+  font-weight: 600;
 }
-.itemDetails:not(:last-child){
-    border-bottom: 0.5px solid #5f4f7f;
+.itemDetails:not(:last-child) {
+  border-bottom: 0.5px solid #5f4f7f;
 }
-.itemDetails img{
-    padding-right: 5px;
+.itemDetails img {
+  padding-right: 5px;
 }
-.statusItem{
-    color: #ffffff;
-    font-weight: 500;
+.statusItem {
+  color: #ffffff;
+  font-weight: 500;
 }
-.statusItem.active{
-    color: #438955;
+.statusItem.active {
+  color: #438955;
 }
