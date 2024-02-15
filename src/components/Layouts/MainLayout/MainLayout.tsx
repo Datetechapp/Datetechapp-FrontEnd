@@ -3,6 +3,7 @@ import './index.css';
 import { Outlet } from 'react-router-dom';
 import { Filters } from './Filters/Filters';
 import { MainLayoutHeader } from './MainLayout_Header/MainLayout_header';
+import MatchingFeed from './MatchingFeed/MatchingFeed';
 
 export const MainLayout: FC = () => {
   return (
@@ -11,12 +12,11 @@ export const MainLayout: FC = () => {
         <MainLayoutHeader />
       </header>
       <div className="main_layout__wrapper">
-        {/* <MainLayoutNav /> */}
-        <Outlet />
-        {/* <div className='main_layout__info_panel'>
-          <Outlet />
-        </div> */}
-        <div className="main_layout__message_panel">
+        <div className="main_layout__chats"></div>
+        <div className="main_layout__matching">
+          <MatchingFeed />
+        </div>
+        <div className="main_layout__filters">
           <Filters />
         </div>
       </div>

@@ -1,0 +1,88 @@
+.dropdownContent {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 64px;
+  background-color: #32303e;
+  min-width: 304px;
+  border-radius: 0 0 5px 5px;
+  z-index: 10;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 0;
+}
+
+.dropdownItem {
+  text-decoration: none;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #ffffff;
+  background-color: #32303e;
+  width: 100%;
+  height: 40px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  gap: 8px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.dropdownItem > img {
+  width: 24px;
+  height: 24px;
+}
+
+.dropdownItem > span {
+  font:
+    500 14px/18px "Montserrat",
+    sans-serif;
+  letter-spacing: 0.1px;
+  text-align: left;
+}
+
+.dropdownItem:hover {
+  background-color: #4b4a54;
+}
+
+.dropdownItem:active {
+  background-color: #5f4f7f;
+}
+
+.dropdownButtonPremium {
+  width: 272px;
+  height: 36px;
+  padding: 10px;
+  border-radius: 5px;
+  background: linear-gradient(269deg, #9747ff 0%, #de77c7 100%);
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  font:
+    600 16px/20px "Montserrat",
+    sans-serif;
+  letter-spacing: 0.2px;
+  text-align: center;
+}
+
+.dropdownButtonPremium:hover {
+  background: linear-gradient(270deg, #5e1cb4 0%, #8b41ea 45.31%, #ab23db 100%);
+}
+
+.dropdownButtonPremium:active {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    linear-gradient(270deg, #5e1cb4 0%, #8b41ea 45.31%, #ab23db 100%);
+}
+
+.dropdownOptions {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
+.logoutItem {
+  border-top: 1px solid #5f4f7f;
+  padding: 24px 12px;
+}
