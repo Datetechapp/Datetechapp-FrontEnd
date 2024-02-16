@@ -30,6 +30,7 @@ const initialState: gendersAndPurposeStore = {
   purposes: {},
   sex: {},
 };
+
 export const { reducer, actions } = createSlice({
   name: SLICE_NAME,
   initialState,

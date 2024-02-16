@@ -5,6 +5,8 @@ import { useState, useEffect, useRef } from 'react';
 import { Button } from 'components/common';
 import { resendCode, checkVerificationCode } from 'api';
 import { useNavigate } from 'react-router-dom';
+import { useAppSelector } from 'hooks/hooks';
+import { getEmail } from '../../../../store/email/selectors';
 
 export const VerificationPage = () => {
   const [values, setValues] = useState(['', '', '', '', '', '']);
@@ -15,6 +17,8 @@ export const VerificationPage = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
   const inputRefs = values.map(() => useRef<HTMLInputElement | null>(null));
+
+  const email = useAppSelector(getEmail);
 
   useEffect(() => {
     const countdownInterval = setInterval(() => {
@@ -86,7 +90,7 @@ export const VerificationPage = () => {
   const isDisabled = values.some((value) => value === '');
 
   const handleVerification = () => {
-    checkVerificationCode({ passcode: values.join('') })
+    checkVerificationCode({ username: email, passcode: values.join('') })
       .then(() => {
         navigate('/create-profile');
       })
@@ -102,7 +106,7 @@ export const VerificationPage = () => {
         <div className={css.formBlock}>
           <h2 className={css.title}>Verify your account</h2>
           <p className={css.subtitle}>Enter the 6-digit code we sent you to </p>
-          <p className={css.email}>sgulyako@mail.ru</p>
+          <p className={css.email}>{email}</p>
           <div className={css.inputsBlock}>
             {values.map((value, index) => (
               <Input

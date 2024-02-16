@@ -100,6 +100,7 @@ export const resendCode = (): Promise<Response> =>
   post('/registration/resend-code/');
 
 export const checkVerificationCode = (body: {
+  username: string;
   passcode: string;
 }): Promise<Response> => post('/registration/confirm-email/', body);
 

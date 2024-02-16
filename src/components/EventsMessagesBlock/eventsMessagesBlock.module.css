@@ -7,421 +7,439 @@
 @value Red_Error: rgba(215, 80, 72, 1);
 
 .container {
-    height: 80vh;
-    display: flex;
-    flex-direction: column;
-    background: Panel_Background;
-    padding-top: 32px;
-    width: 352px;
-    position: absolute;
-    z-index: 2;
-    top: calc(50% - 40vh);
-    right: 50%;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  background: Panel_Background;
+  padding-top: 32px;
+  width: 352px;
+  position: absolute;
+  z-index: 2;
+  top: calc(50% - 40vh);
+  right: 50%;
 }
 
 .switcherContainer {
-    background: Dark_Background;
-    border-radius: 100px;
-    height: 40px;
-    position: relative;
-    margin-left: 16px;
-    margin-right: 16px;
-    margin-bottom: 16px;
-    cursor: pointer;
+  background: Dark_Background;
+  border-radius: 100px;
+  height: 40px;
+  position: relative;
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-bottom: 16px;
+  cursor: pointer;
 }
 
 .main {
-    z-index: 0;
-    position: absolute;
-    top: 0;
-    left: -16px;
-    display: flex;
-    margin-left: 16px;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
+  z-index: 0;
+  position: absolute;
+  top: 0;
+  left: -16px;
+  display: flex;
+  margin-left: 16px;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
 }
 
 .part {
-    display: flex;
-    height: 100%;
-    width: 50%;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
+  display: flex;
+  height: 100%;
+  width: 50%;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
 }
 
 .part p {
-    color: Violet_Stroke;
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 16px;
-    transition: all 0.2s ease-in-out;
+  color: Violet_Stroke;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 16px;
+  transition: all 0.2s ease-in-out;
 }
 
 .part:hover p {
-    color: white;
+  color: white;
 }
 
 .circle {
-    background: Red_Error;
-    height: 10px;
-    width: 10px;
-    border-radius: 100%;
-    margin-top: 1px;
+  background: Red_Error;
+  height: 10px;
+  width: 10px;
+  border-radius: 100%;
+  margin-top: 1px;
 }
 
 .switcher {
-    background: Panel_Background;
-    z-index: 1;
-    width: 50%;
-    height: 38px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    border-radius: 30px;
-    align-self: flex-end;
-    cursor: pointer;
-    transition: all 0.4s ease-in-out;
+  background: Panel_Background;
+  z-index: 1;
+  width: 50%;
+  height: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 30px;
+  align-self: flex-end;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
 }
 
 .switcher p {
-    font-family: Montserrat;
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 20px;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
 }
 
 .switcherContainerWrapper {
-    display: flex;
-    margin: 1px;
-    cursor: pointer;
-    flex-grow: 1;
+  display: flex;
+  margin: 1px;
+  cursor: pointer;
+  flex-grow: 1;
 }
 
 .mainPanelWrapper {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto;
 }
 
 .emptyMessage {
-    margin: -16px 18px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-self: center;
+  margin: -16px 18px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
 }
 
 .emptyMessage p {
-    color: Violet_Stroke;
-    text-align: center;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 20px;
-    height: fit-content;
+  color: Violet_Stroke;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  height: fit-content;
 }
 
 .mainPanelWrapper::-webkit-scrollbar {
-    width: 0px;
+  width: 0px;
 }
 
 .eventContainer {
-    cursor: pointer;
-    padding: 0px 16px;
-    background: transparent;
-    transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  padding: 0px 16px;
+  background: transparent;
+  transition: all 0.3s ease-in-out;
 }
 
 .eventWrapper {
-    background: transparent;
-    display: flex;
-    gap: 10px;
-    border-bottom: 1px solid Violet_Stroke;
-    align-items: center;
-    padding: 12px 0px;
+  background: transparent;
+  display: flex;
+  gap: 10px;
+  border-bottom: 1px solid Violet_Stroke;
+  align-items: center;
+  padding: 12px 0px;
 }
 
 .eventContainer:hover {
-    background: Violet_Stroke;
+  background: Violet_Stroke;
 }
 
 .eventNewContainer {
-    padding: 0px 16px;
-    background: linear-gradient(86deg, rgba(255, 224, 170, 0.20) 0.58%, rgba(255, 174, 169, 0.20) 33.26%, rgba(255, 167, 246, 0.20) 67.03%, rgba(221, 124, 255, 0.20) 98.42%), #272533;
+  padding: 0px 16px;
+  background: linear-gradient(
+      86deg,
+      rgba(255, 224, 170, 0.2) 0.58%,
+      rgba(255, 174, 169, 0.2) 33.26%,
+      rgba(255, 167, 246, 0.2) 67.03%,
+      rgba(221, 124, 255, 0.2) 98.42%
+    ),
+    #272533;
 }
 
 .eventNewContainer .imageWrapper {
-    border-radius: 100%;
-    width: 66px;
-    height: 66px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(180deg, rgba(151, 71, 255, 1) 0%, rgba(222, 119, 199, 1) 100%);
+  border-radius: 100%;
+  width: 66px;
+  height: 66px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+    180deg,
+    rgba(151, 71, 255, 1) 0%,
+    rgba(222, 119, 199, 1) 100%
+  );
 }
 
 .eventContainer .imageWrapper {
-    border-radius: 100%;
-    width: 66px;
-    height: 66px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: transparent;
+  border-radius: 100%;
+  width: 66px;
+  height: 66px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
 }
 
 .eventNewContainer .imageWrapper img {
-    width: 60px;
-    height: 60px;
+  width: 60px;
+  height: 60px;
 }
 
-
 .eventContainer:hover .iconRightPartInner {
-    border-color: Violet_Active;
+  border-color: Violet_Active;
 }
 
 .icon {
-    display: flex;
-    align-items: end;
+  display: flex;
+  align-items: flex-end;
 }
 
 .iconRightPartOuter {
-    width: 53px;
-    height: 53px;
-    background: Panel_Background;
-    border-radius: 100%;
-    margin-left: -15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 53px;
+  height: 53px;
+  background: Panel_Background;
+  border-radius: 100%;
+  margin-left: -15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .iconRightPartInner {
-    width: 48px;
-    height: 48px;
-    border: 1px solid Violet_Stroke;
-    background: Panel_Stroke;
-    border-radius: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transition: all 0.3s ease-in-out;
+  width: 48px;
+  height: 48px;
+  border: 1px solid Violet_Stroke;
+  background: Panel_Stroke;
+  border-radius: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
 }
 
 .iconRightPartInner p:nth-child(1) {
-    font-family: Montserrat;
-    font-size: 18px;
-    font-weight: 600;
-    line-height: 22px;
+  font-family: Montserrat;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 22px;
 }
 
 .iconRightPartInner p:nth-child(2) {
-    font-family: Montserrat;
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 14px;
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 14px;
 }
 
 .who {
-    display: flex;
+  display: flex;
 }
 
 .who span:nth-child(1) {
-    font-family: Montserrat;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 18px;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
 }
 
 .who span:nth-child(2) {
-    font-family: Montserrat;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 18px;
-    color: Violet_Active;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  color: Violet_Active;
 }
 
 .where {
-    display: flex;
+  display: flex;
 }
 
 .where span:nth-child(1) {
-    font-family: Montserrat;
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 14px;
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 14px;
 }
 
 .where span:nth-child(2) {
-    font-family: Montserrat;
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 14px;
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
 }
 
 .when {
-    display: flex;
+  display: flex;
 }
 
 .when span:nth-child(1) {
-    font-family: Montserrat;
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 14px;
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 14px;
 }
 
 .when span:nth-child(2) {
-    font-family: Montserrat;
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 14px;
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
 }
 
 .seeAll {
-    width: 100%;
-    text-align: end;
-    margin-top: 16px;
-    cursor: pointer;
-    padding-right: 16px;
+  width: 100%;
+  text-align: end;
+  margin-top: 16px;
+  cursor: pointer;
+  padding-right: 16px;
 }
 
 .seeAll p {
-    font-family: Montserrat;
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 14px;
-    color: Back_White;
-    transition: all 0.2s ease-in-out;
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 14px;
+  color: Back_White;
+  transition: all 0.2s ease-in-out;
 }
 
 .seeAll p:hover {
-    color: Violet_Active
+  color: Violet_Active;
 }
 
 .seeAll p:active {
-    color: Violet_Stroke
+  color: Violet_Stroke;
 }
 
 .eventsModalContainer {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
 }
 
 .eventsModalHeader {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 32px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 32px;
 }
 
 .headerTitle {
-    display: flex;
+  display: flex;
 }
 
 .headerTitle span:nth-child(1) {
-    font-family: Montserrat;
-    font-size: 22px;
-    font-weight: 600;
+  font-family: Montserrat;
+  font-size: 22px;
+  font-weight: 600;
 }
 
 .headerTitle span:nth-child(2) {
-    font-family: Montserrat;
-    font-size: 22px;
-    font-weight: 400;
+  font-family: Montserrat;
+  font-size: 22px;
+  font-weight: 400;
 }
 
 .headerTitle span:nth-child(3) {
-    font-family: Montserrat;
-    font-size: 22px;
-    font-weight: 600;
+  font-family: Montserrat;
+  font-size: 22px;
+  font-weight: 600;
 }
 
 .eventInfo {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .eventsModalMain {
-    display: flex;
-    flex-grow: 1;
-    justify-content: flex-start;
-    gap: 24px;
-    align-items: center;
-    padding-bottom: 24px;
-    border-bottom: 1px #32303E solid;
-    margin-bottom: 24px;
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-start;
+  gap: 24px;
+  align-items: center;
+  padding-bottom: 24px;
+  border-bottom: 1px #32303e solid;
+  margin-bottom: 24px;
 }
 
 .userLogo {
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
 }
 
 .userLogo img {
-    width: 100px;
-    height: 100px;
+  width: 100px;
+  height: 100px;
 }
 
 .eventInfoDescription {
-    display: flex;
+  display: flex;
 }
 
 .eventInfoDescription span:nth-child(1) {
-    font-family: Montserrat;
-    font-size: 16px;
-    font-weight: 600;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 600;
 }
 
 .eventInfoDescription span:nth-child(2) {
-    font-family: Montserrat;
-    font-size: 16px;
-    font-weight: 400;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 400;
 }
 
 .eventModalButtons {
-    display: flex;
-    width: 100%;
-    gap: 24px;
+  display: flex;
+  width: 100%;
+  gap: 24px;
 }
 
 .linearBorder {
-    background: linear-gradient(180deg, rgba(151, 71, 255, 1) 0%, rgba(222, 119, 199, 1) 100%);
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
+  background: linear-gradient(
+    180deg,
+    rgba(151, 71, 255, 1) 0%,
+    rgba(222, 119, 199, 1) 100%
+  );
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
 }
 
 .cancelButton {
-    width: calc(100% - 2px);
-    height: calc(100% - 2px);
-    border-radius: 5px;
-    border: transparent;
-    color: white;
-    padding: 10px 0px;
-    background: Dark_Background;
-    font-family: Montserrat;
-    font-size: 16px;
-    font-weight: 600;
+  width: calc(100% - 2px);
+  height: calc(100% - 2px);
+  border-radius: 5px;
+  border: transparent;
+  color: white;
+  padding: 10px 0px;
+  background: Dark_Background;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 600;
 }
 
 .editButton {
-    width: 50%;
-    background: linear-gradient(180deg, rgba(151, 71, 255, 1) 0%, rgba(222, 119, 199, 1) 100%);
-    color: white;
-    border: transparent;
-    border-radius: 5px;
-    padding: 10px 0px;
-    font-family: Montserrat;
-    font-size: 16px;
-    font-weight: 600;
+  width: 50%;
+  background: linear-gradient(
+    180deg,
+    rgba(151, 71, 255, 1) 0%,
+    rgba(222, 119, 199, 1) 100%
+  );
+  color: white;
+  border: transparent;
+  border-radius: 5px;
+  padding: 10px 0px;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 600;
 }

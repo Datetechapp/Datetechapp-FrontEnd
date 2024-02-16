@@ -7,14 +7,12 @@ import { EmailOrPhoneInput } from '../../../ModalAuth/EmailOrPhoneInput';
 import { NewPassword } from '../../../ModalAuth/NewPassword';
 import { registration } from '../../../../api';
 import { gendersAndPurposeFromBack } from '../../../../store/gendersAndPurpose/slice';
+import { actions } from '../../../../store/email/slice';
 import { useAppDispatch } from 'hooks/hooks';
 import {
   hasUppercaseLetter,
   hasSpecialCharacters,
 } from 'components/ModalAuth/Login/Login';
-
-// const passwordMustBe = 'Password must be at least 8 characters';
-// const enterVerificCode = 'Enter your Verification code';
 
 export const Registration: FC = () => {
   const [emailOrPhoneValue, setEmailOrPhoneValue] = useState('');
@@ -119,6 +117,7 @@ export const Registration: FC = () => {
           .then((response) => {
             if (response.ok) {
               setErrorMessage('');
+              dispatch(actions.setData(emailOrPhoneValue));
               navigate('/verification');
             } else {
               throw new Error(

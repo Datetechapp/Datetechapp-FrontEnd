@@ -15,7 +15,6 @@ import {
   SafetySection,
 } from './pages/Faq';
 import { RequestPage } from './pages/RequestPage';
-import NotificationPage from './pages/NotificationPage/NotificationPage';
 
 export const App = () => {
   const { pathname } = useLocation();
