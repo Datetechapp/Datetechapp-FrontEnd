@@ -1,0 +1,288 @@
+.profileMatched {
+  width: 324px;
+  height: 530px;
+  border-radius: 10px;
+  background-color: #302e3d;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 5px;
+  position: relative;
+}
+
+.videoContainer {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 324px;
+}
+
+.videoProfile {
+  width: 324px;
+  height: 476px;
+}
+
+.overlayIcons {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+}
+
+.profileName {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.2px;
+  text-align: left;
+}
+
+.profileCity {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 14px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.profilePicture {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+}
+
+.profileContainerInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+}
+
+.profileInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.profileDots {
+  color: #ffffff;
+  width: 32px;
+  height: 32px;
+  border-radius: 29px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 6px;
+  padding-bottom: 19px;
+}
+
+.profileDots:hover {
+  background-color: #5f4f7f80;
+  border-radius: 50%;
+}
+
+.shareProfileElement {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 200px;
+  height: 44px;
+  box-shadow: 0px 2px 4px 0px #0000000a;
+  background-color: #ffffff;
+  color: #5f4f7f;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: 0.1px;
+  text-align: left;
+  position: absolute;
+  top: 44px;
+  left: 120px;
+  padding: 8px;
+  border-radius: 5px;
+  gap: 4px;
+  transition:
+    background-color 0.5s ease-in-out,
+    color 0.5s ease-in-out;
+}
+
+.profileDots:hover .shareProfileElement {
+  display: flex;
+  z-index: 12;
+}
+
+.shareProfileElement:hover {
+  background-color: #e1dbed;
+  color: #5f4f7f;
+}
+
+.shareProfileElement:active {
+  background-color: #d5cde5;
+  color: #5f4f7f;
+}
+
+.shareProfileElement > img {
+  width: 20px;
+  height: 20px;
+  padding: 3px 2px;
+  margin-left: 8px;
+}
+
+.soundIcon {
+  position: absolute;
+  top: 140px;
+  left: 120px;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  padding: 6px;
+  border-radius: 29px;
+  background-color: #5f4f7f;
+}
+
+.soundIcon:hover {
+  opacity: 1;
+}
+
+.iconControls {
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 48px;
+  height: 48px;
+  padding: 8px 9px;
+}
+
+.volumeBlock {
+  position: absolute;
+  top: 25px;
+  left: 120px;
+  border-radius: 8px;
+  border: 1px solid var(--Panel_Stroke, #32303e);
+  background: var(--Dark_Background, #1f1d2b);
+  transform: rotate(0deg);
+  bottom: 104px;
+  width: 32px;
+  height: 104px;
+}
+
+.editorVolume {
+  position: absolute;
+  bottom: 50px;
+  left: -20px;
+  width: 72px;
+  -webkit-appearance: none;
+  height: 4px;
+  background: linear-gradient(
+    to right,
+    #c896ef 0%,
+    #c896ef var(--thumb-percentage, 50%),
+    #5f4f7f var(--thumb-percentage, 50%),
+    #5f4f7f 100%
+  );
+  border-radius: 3px;
+  outline: none;
+  align-self: center;
+  width: 72px;
+  border: 4px;
+  rotate: -90deg;
+}
+
+.editorVolume::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background-color: #c896ef;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.profileDotsCopy {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  cursor: pointer;
+  top: 180px;
+  left: 120px;
+  border-radius: 29px;
+  background: #5f4f7f80;
+  width: 32px;
+  height: 32px;
+  padding: 6px;
+  padding-bottom: 9px;
+}
+
+.copyLinkElement {
+  position: absolute;
+  width: 200px;
+  height: 84px;
+  top: -85px;
+  left: -160px;
+  padding: 8px;
+  border-radius: 5px;
+  gap: 4px;
+  box-shadow: 0px 2px 4px 0px #0000000a;
+  background-color: #ffffff;
+  color: #5f4f7f;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  z-index: 9;
+}
+
+.copyElement,
+.reportElement {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: 0.1px;
+  text-align: left;
+  width: 184px;
+  height: 32px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  gap: 8px;
+  transition: all 0.3s ease-in-out;
+}
+
+.copyElement > img {
+  width: 20px;
+  height: 20px;
+  padding: 3px 2px;
+  margin-left: 8px;
+}
+
+.reportElement > img {
+  width: 20px;
+  height: 20px;
+  padding: 3px 2px;
+  margin-left: 8px;
+}
+
+.reportElement {
+  color: #d75048;
+}
+
+.copyElement:hover {
+  color: #5f4f7f;
+  background-color: #e1dbed;
+}
+
+.copyElement:active {
+  color: #5f4f7f;
+  background-color: #d5cde5;
+}

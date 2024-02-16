@@ -1,0 +1,169 @@
+.matchingContainer {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  min-height: 686px;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.heartIcon {
+  width: 32px;
+  border: 3px;
+  fill: none;
+  transition:
+    fill 0.3s,
+    stroke 0.3s;
+  stroke: url(#paint0_linear_6978_64739);
+}
+
+.heartIcon:hover {
+  stroke: #de77c7;
+}
+
+.heartIcon:active {
+  stroke: url(#paint0_linear_6978_64739);
+  fill: url(#paint0_linear_6978_64739);
+}
+
+.closeIcon {
+  width: 21px;
+  fill: #c896ef;
+}
+
+.closeIcon:active {
+  fill: #b71a78;
+}
+
+.containerIcons:hover {
+  background-color: #32303e;
+  box-shadow: none;
+}
+
+.containerIcons:active {
+  background-color: #1f1d2b;
+  box-shadow: 0 0 10px 3px rgba(95, 79, 127, 0.5);
+}
+
+.containerIcons {
+  width: 68px;
+  height: 68px;
+  padding: 13px;
+  border-radius: 50px;
+  background-color: #1f1d2b;
+  box-shadow: 0 0 10px 3px rgba(95, 79, 127, 0.5);
+  border: none;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition:
+    background-color 0.3s,
+    box-shadow 0.3s;
+}
+
+.myGradient {
+  fill: url(#paint0_linear_6978_64739);
+  transition: fill 0.3s ease;
+}
+
+.myGradient:hover {
+  fill: url(#paint0_linear_hover_6978_64739);
+}
+
+.matchingFeed {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+}
+
+.matchingNav {
+  width: 324px;
+  height: 48px;
+  color: #5f4f7f;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0.2px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  border-bottom: solid 1px #5f4f7f;
+  position: sticky;
+  top: 0;
+}
+
+.navCategory {
+  width: 162px;
+  height: 48px;
+  padding: 0px, 10px, 0px, 16px;
+  border: 0px, 0px, 2px, 0px;
+  gap: 10px;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.matchingProfiles {
+  width: 324px;
+  height: 630px;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  gap: 7px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.interestedActive {
+  background-image: linear-gradient(
+    86deg,
+    #ffe0aa 0.58%,
+    #ffaea9 33.26%,
+    #ffa7f6 67.03%,
+    #dd7cff 98.42%
+  );
+  border-bottom: 2px solid #c896ef;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.newPeopleActive {
+  border-bottom: 2px solid #c896ef;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.arrowButtonsDirections {
+  position: absolute;
+  width: 120px;
+  height: 24px;
+  top: 710px;
+  left: 967px;
+  gap: 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border: none;
+}
+
+.arrowButtonDirection {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  background-color: #39364a;
+  cursor: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+}
