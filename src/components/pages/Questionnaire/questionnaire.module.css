@@ -28,35 +28,63 @@
   background-image: linear-gradient(180deg, #9747ff 0%, #de77c7 100%);
 }
 
-.nameQuestion::before {
+.nameQuestion::after,
+.birthdayQuestion::after,
+.genderQuestion::after,
+.genderFilterQuestion::after,
+.photoQuestion::after,
+.videoQuestion::after,
+.locationQuestion::after,
+.lastQuestion::after {
+  --steps: 9;
+  --stepsLeft: calc(var(--steps) - var(--step));
+  content: "";
+  position: absolute;
+  top: 0;
+  left: calc(100% / var(--steps) * var(--step));
+  width: calc(100% / var(--steps) * var(--stepsLeft));
+  height: 4px;
+  background-color: gray;
+}
+
+.nameQuestion::before, 
+.nameQuestion::after
+ {
   --step: 2;
 }
 
-.birthdayQuestion::before {
+.birthdayQuestion::before,
+.birthdayQuestion::after {
   --step: 3;
 }
 
-.genderQuestion::before {
+.genderQuestion::before,
+.genderQuestion::after {
   --step: 4;
 }
 
-.genderFilterQuestion::before {
+.genderFilterQuestion::before,
+.genderFilterQuestion::after {
   --step: 5;
 }
 
-.photoQuestion::before {
+.photoQuestion::before,
+.photoQuestion::after {
   --step: 6;
 }
 
-.videoQuestion::before {
+.videoQuestion::before,
+.videoQuestion::after {
   --step: 7;
 }
 
-.locationQuestion::before {
+.locationQuestion::before,
+.locationQuestion::after {
   --step: 8;
 }
 
-.lastQuestion::before {
+.lastQuestion::before,
+.lastQuestion::after {
   --step: 9;
 }
 

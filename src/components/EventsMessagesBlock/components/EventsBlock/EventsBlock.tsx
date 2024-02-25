@@ -7,7 +7,7 @@ import SimpleCloseIcon from '../../../../assets/SupportServicePanel/SimpleCloseI
 import { Button } from 'components/common';
 import { v4 as uid } from 'uuid';
 import styles from '../../eventsMessagesBlock.module.css';
-import 'animate.css';
+// import 'animate.css';
 
 export function EventsBlock() {
   const defaultLengthOfEventItems = 6;
