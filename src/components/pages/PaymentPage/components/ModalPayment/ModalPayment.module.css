@@ -1,0 +1,103 @@
+.overlayModal {
+  z-index: 6;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal {
+  z-index: 6;
+  position: relative;
+  width: 432px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 24px;
+  outline: none;
+  border-radius: 7px;
+  animation: fadeIn 0.7s ease-in-out forwards;
+}
+.darkModal {
+  border-radius: 8px;
+  border: 1px solid #c896ef;
+  background: #201b27;
+}
+.title {
+  padding: 34px 0 8px;
+}
+.darkModalTitle {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 24px;
+  background: linear-gradient(
+    86deg,
+    #ffe0aa 0.58%,
+    #ffaea9 33.26%,
+    #ffa7f6 67.03%,
+    #dd7cff 98.42%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.titleBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.iconCancel {
+  cursor: pointer;
+  align-self: end;
+}
+.modalTitle {
+  color: #5f4f7f;
+  font-family: Montserrat;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 24px;
+}
+.subtitle {
+  color: rgb(95, 79, 127);
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: center;
+}
+
+.darkModalSubtitle {
+  color: #ffffff;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+}
+.firstBtn {
+  margin-top: 40px;
+  display: block;
+  width: 100%;
+  padding: 16px 18px;
+  background: linear-gradient(180deg, #9747ff 0%, #e551e8 100%);
+  border-radius: 5px;
+  border: none;
+  color: #ffffff;
+  font-family: "Montserrat", Arial, sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  transition: all 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

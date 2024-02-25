@@ -1,0 +1,67 @@
+.containerBar {
+  height: 100%;
+  padding: 24px 16px;
+  background: #272533;
+}
+.titleBar {
+  padding: calc(16px - 8px) 0;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+  background: linear-gradient(
+    86deg,
+    #ffe0aa 0.58%,
+    #ffaea9 33.26%,
+    #ffa7f6 67.03%,
+    #dd7cff 98.42%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.linksBox {
+  padding: 16px 0;
+}
+.linkItem {
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 8px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+}
+.linkItem img {
+  margin-right: 8px;
+}
+.linkItem:first-child {
+  margin-bottom: 4px;
+}
+.linkItem.active {
+  background-color: #32303e;
+}
+.btnBar {
+  width: 100%;
+  padding: 10px 16px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  border: none;
+  border-radius: 5px;
+  background: linear-gradient(180deg, #9747ff 0%, #de77c7 100%);
+  transition: all 0.5s ease-in-out;
+}
+.btnBar:hover {
+  opacity: 0.6;
+}
+.logo {
+  width: 113px;
+  height: 77px;
+  margin-top: -24px;
+}

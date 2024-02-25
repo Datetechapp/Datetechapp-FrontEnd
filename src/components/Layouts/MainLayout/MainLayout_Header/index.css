@@ -13,10 +13,12 @@
   flex: 0 1 auto;
   align-items: center;
 }
+
 .logo,
 .header__buttons {
   margin: 0 30px;
 }
+
 .header__buttons {
   display: flex;
   justify-content: center;

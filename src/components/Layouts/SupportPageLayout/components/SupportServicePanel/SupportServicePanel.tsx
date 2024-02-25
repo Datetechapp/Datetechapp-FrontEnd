@@ -2,14 +2,16 @@ import styles from './supportServicePanel.module.css';
 import { MessagesPanel } from './components/MessagesPanel';
 import { HeaderPanel } from './components/HeaderPanel';
 import { InputPanel } from './components/InputPanel';
-import { useState } from 'react';
-import { data } from './data';
-import { IMessage } from './type';
+import { Dispatch, SetStateAction, useState } from 'react';
 import { RatePanel } from './components/RatePanel';
+import { IMessage } from './type';
 
-export function SupportServicePanel() {
-  const [messages, setMessages] = useState<IMessage[]>(data);
+type Props = {
+  messages: IMessage[];
+  setMessages: Dispatch<SetStateAction<IMessage[]>>;
+};
 
+export function SupportServicePanel({ messages, setMessages }: Props) {
   // *You can make a choice whether you want to see the message input (estimation = false) or smile panel (estimation = true)
 
   const [estimation, setEsimation] = useState(false);

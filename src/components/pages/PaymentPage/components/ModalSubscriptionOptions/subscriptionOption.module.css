@@ -1,0 +1,235 @@
+.overlayModal {
+  z-index: 6;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.modal {
+  z-index: 6;
+  overflow: hidden;
+  border-radius: 10px;
+  border: 1px solid #ffe0aa;
+  background: #201b27;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 24px;
+  max-width: 950px;
+  width: 100%;
+  z-index: 2;
+  animation: fadeIn 0.7s ease-in-out forwards;
+}
+.modal::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 669px;
+  height: 422px;
+  background: linear-gradient(
+    62.24deg,
+    rgba(118, 30, 99, 0.6) 16.983%,
+    rgba(82, 88, 222, 0.6) 86.545%
+  );
+  left: -173px;
+  top: 228px;
+  transform: rotate(-11.73deg);
+  filter: blur(53px);
+  z-index: 1;
+}
+.modal::before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 575px;
+  height: 401px;
+  filter: blur(53px);
+  background: linear-gradient(
+    62.24deg,
+    rgba(118, 30, 99, 0.6) 17.165%,
+    rgba(82, 88, 222, 0.6) 85.807%
+  );
+  top: -93px;
+  right: -210px;
+  transform: rotate(-12.82deg);
+  z-index: 1;
+}
+
+.modalBoxHeader {
+  z-index: 5;
+  border-bottom: 1px solid #fff;
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+}
+.headerBox {
+  display: flex;
+  min-height: 70px;
+}
+.logoImg {
+  width: 64px;
+  height: 45px;
+}
+.headerContent {
+  text-align: center;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.closeImg {
+  z-index: 5;
+  cursor: pointer;
+  align-self: flex-start;
+  padding-left: 52px;
+  transition: all 0.5s ease-in-out;
+}
+
+.closeImg svg path {
+  fill: #c896ef;
+}
+.headerTitle {
+  padding-bottom: 8px;
+  font-family: Montserrat;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 24px;
+  background: linear-gradient(
+    86deg,
+    #ffe0aa 0.58%,
+    #ffaea9 33.26%,
+    #ffa7f6 67.03%,
+    #dd7cff 98.42%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.headerText {
+  color: #fff;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+}
+.optionsBox {
+  display: flex;
+  justify-content: space-between;
+}
+
+.optionList {
+  position: relative;
+  z-index: 9;
+  list-style: none;
+}
+.optionItem {
+  min-width: 270px;
+  padding: 10px 24px;
+  border-radius: 30px;
+  border: 1px solid #ffe0aa;
+  color: #fff;
+  font-family: Montserrat;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: 0.2px;
+}
+.optionItem img {
+  max-width: 16px;
+}
+.optionItem:not(:last-child) {
+  margin-bottom: 12px;
+}
+.optionItem span {
+  padding-left: 12px;
+}
+.leftBox {
+  padding-left: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.leftBox p {
+  color: #fff;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
+}
+.priceList {
+  list-style: none;
+  position: relative;
+  z-index: 9;
+}
+.priceItem {
+  cursor: pointer;
+  width: 536px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 24px;
+  border-radius: 10px;
+  border: 1px solid#5F4F7F;
+  background: #272533;
+}
+.priceItem:hover {
+  background: #5f4f7f;
+}
+.priceItem:not(:last-child) {
+  margin-bottom: 12px;
+}
+.priceItem span {
+  display: block;
+  color: #c896ef;
+  font-family: Montserrat;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 24px;
+}
+.btnPrice {
+  max-width: 134px;
+  width: 100%;
+  padding: 12px 24px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  border: 1px solid #c896ef;
+  font-family: Montserrat;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 26px;
+  background: linear-gradient(
+    86deg,
+    #ffe0aa 0.58%,
+    #ffaea9 33.26%,
+    #ffa7f6 67.03%,
+    #dd7cff 98.42%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.logoBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 68px;
+  height: 68px;
+  flex-shrink: 0;
+  flex-grow: 1;
+  border-radius: 50px;
+  box-shadow: 0px 0px 30px 0px rgba(94, 79, 125, 0.502);
+  background: #1f1d2b;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

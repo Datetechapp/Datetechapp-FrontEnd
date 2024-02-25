@@ -10,6 +10,7 @@
   border-radius: 0px 0px 10px 10px;
   background: #32303e;
 }
+
 .notificationTitle {
   border-bottom: 1px solid #5f4f7f;
   padding: 16px 0;
@@ -21,6 +22,7 @@
   letter-spacing: 0.2px;
   color: #fff;
 }
+
 .btnNotification {
   border-top: 1px solid #5f4f7f;
   border-bottom: none;
@@ -35,6 +37,7 @@
   cursor: pointer;
   transition: all 0.5s ease-in-out;
 }
+
 .btnNotification:hover {
   color: #fff;
 }

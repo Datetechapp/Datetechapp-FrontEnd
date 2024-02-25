@@ -34,9 +34,9 @@ const DropdownContent: React.FC<DropdownContentProps> = ({
   };
 
   const menuItems: MenuItem[] = [
-    { path: '/path1', icon: PlayButtonIcon, text: 'For you' },
-    { path: '/path2', icon: ContactIcon, text: 'View Profile' },
-    { path: '/path3', icon: QuestionIcon, text: 'Feedback and help' },
+    { path: '/feed', icon: PlayButtonIcon, text: 'For you' },
+    { path: '/profile', icon: ContactIcon, text: 'View Profile' },
+    { path: '/support/faq', icon: QuestionIcon, text: 'Feedback and help' },
     { path: '/path4', icon: GlobeIcon, text: 'English' },
   ];
 

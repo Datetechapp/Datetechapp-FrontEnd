@@ -1,0 +1,85 @@
+.modal {
+  max-width: 336px;
+  border-radius: 8px;
+  box-shadow:
+    0px 26px 80px 0px rgba(0, 0, 0, 0.2),
+    0px 0px 1px 0px rgba(0, 0, 0, 0.2);
+  background: rgb(255, 255, 255);
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 24px;
+  outline: none;
+  border-radius: 7px;
+  animation: fadeIn 0.7s ease-in-out forwards;
+  z-index: 6;
+}
+.overlayModal {
+  z-index: 6;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.titleBlock {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.iconCancel {
+  align-self: start;
+  cursor: pointer;
+}
+.title {
+  color: #5f4f7f;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 24px;
+  text-align: left;
+}
+.subtitle {
+  padding-block: 12px 40px;
+  color: #5f4f7f;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+}
+.btnsBlock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+}
+.btnsBlock button {
+  background: #5f4f7f;
+  border: none;
+  max-width: 138px;
+  width: 100%;
+  border-radius: 5px;
+  padding: 16px 18px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  text-align: center;
+  transition: all 0.5s ease-in-out;
+}
+.btnsBlock button:hover {
+  background: linear-gradient(
+    180deg,
+    rgb(151, 71, 255),
+    rgb(222, 119, 199) 100%
+  );
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

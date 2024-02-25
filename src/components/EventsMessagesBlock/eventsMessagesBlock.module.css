@@ -7,16 +7,14 @@
 @value Red_Error: rgba(215, 80, 72, 1);
 
 .container {
-  height: 80vh;
+  height: calc(100vh - 64px);
   display: flex;
   flex-direction: column;
   background: Panel_Background;
   padding-top: 32px;
   width: 352px;
-  position: absolute;
   z-index: 2;
-  top: calc(50% - 40vh);
-  right: 50%;
+  flex-shrink: 0;
 }
 
 .switcherContainer {
@@ -53,7 +51,7 @@
 }
 
 .part p {
-  color: Violet_Stroke;
+  color: #5f4f7f;
   font-size: 16px;
   font-weight: 600;
   line-height: 16px;
@@ -92,6 +90,7 @@
   font-size: 16px;
   font-weight: 600;
   line-height: 20px;
+  color: white;
 }
 
 .switcherContainerWrapper {
@@ -197,7 +196,7 @@
 
 .icon {
   display: flex;
-  align-items: flex-end;
+  align-items: end;
 }
 
 .iconRightPartOuter {
@@ -222,6 +221,7 @@
   justify-content: center;
   align-items: center;
   transition: all 0.3s ease-in-out;
+  color: white;
 }
 
 .iconRightPartInner p:nth-child(1) {
@@ -240,6 +240,7 @@
 
 .who {
   display: flex;
+  color: white;
 }
 
 .who span:nth-child(1) {
@@ -259,6 +260,7 @@
 
 .where {
   display: flex;
+  color: white;
 }
 
 .where span:nth-child(1) {
@@ -277,6 +279,7 @@
 
 .when {
   display: flex;
+  color: white;
 }
 
 .when span:nth-child(1) {
@@ -332,6 +335,7 @@
 
 .headerTitle {
   display: flex;
+  color: white;
 }
 
 .headerTitle span:nth-child(1) {
@@ -382,6 +386,7 @@
 
 .eventInfoDescription {
   display: flex;
+  color: white;
 }
 
 .eventInfoDescription span:nth-child(1) {
