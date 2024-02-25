@@ -7,7 +7,7 @@ import { MainLayoutHeader } from '../MainLayout/MainLayout_Header/MainLayout_hea
 export const MessangerLayout = () => {
   return (
     <div className={style.container}>
-      <header className="mainLayoutHeader">
+      <header className={style.mainLayoutHeader}>
         <MainLayoutHeader />
       </header>
       <section className={style.wrapper}>
