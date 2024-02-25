@@ -1,0 +1,54 @@
+.textHistory {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(112px + 10px);
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #5f4f7f;
+  background: #201b27;
+  color: #5f4f7f;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 22px;
+}
+.tableContainer {
+  background-color: #201b27;
+  border: 1px solid #5f4f7f;
+  border-radius: 16px;
+}
+.tableHeader th {
+  border-bottom: 1px solid #5f4f7f;
+  height: 70px;
+  color: #c896ef;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.rowTitle td {
+  height: 50px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  border-bottom: 1px solid #5f4f7f;
+}
+.rowStatus {
+  color: #fff;
+  max-width: 100px;
+  text-align: center;
+  padding: 5px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 14px;
+}
+.rowPaid {
+  background: #438955;
+}
+.rowProgress {
+  background: #de77c7;
+}
+.rowCancel {
+  background: #4b4a54;
+}
