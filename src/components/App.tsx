@@ -15,6 +15,7 @@ import {
   SafetySection,
 } from './pages/Faq';
 import { RequestPage } from './pages/RequestPage';
+import { Messanger } from './Messanger';
 
 export const App = () => {
   const { pathname } = useLocation();
@@ -39,6 +40,7 @@ export const App = () => {
           <Route path="/verification" element={<VerificationPage />} />
           <Route path="/create-profile" element={<Questionnaire />} />
           <Route path="/feed" element={<MainLayout />} />
+          <Route path="/messanger" element={<Messanger />} />
           <Route path="/support" element={<SupportPageLayout />}>
             <Route path="faq" element={<Faq />}>
               <Route path="account" element={<AccountSection />} />
