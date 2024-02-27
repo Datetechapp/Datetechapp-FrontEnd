@@ -194,7 +194,7 @@ export const Workspace: FC<WorkspaceProps> = ({
         {showSearchMessages && (
           <SearchMessages setShowSearchMessages={setShowSearchMessages} />
         )}
-        {pinnedMessages?.length && (
+        {!!pinnedMessages?.length && (
           <PinnedMessage
             togglePinnedMessage={togglePinnedMessage}
             currentPinnedMessageIndex={currentPinnedMessageIndex}
