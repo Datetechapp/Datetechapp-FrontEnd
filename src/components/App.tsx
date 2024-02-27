@@ -18,6 +18,8 @@ import { RequestPage } from './pages/RequestPage';
 import { PaymentPageLayout } from './Layouts/PaymentPageLayout';
 import { PaymentSubscription } from './Layouts/PaymentPageLayout/components/PaymentSubscription';
 import { PaymentHistory } from './Layouts/PaymentPageLayout/components/PaymentHistory';
+import { MessangerLayout } from './Layouts/MessangerLayout';
+import { Messanger } from './Messanger';
 
 
 export const App = () => {
