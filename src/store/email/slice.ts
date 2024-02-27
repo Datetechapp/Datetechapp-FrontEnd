@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const SLICE_NAME = 'email';
+
 export interface emailStore {
   email: string;
 }
@@ -9,7 +11,7 @@ const initialState: emailStore = {
 };
 
 export const { reducer, actions } = createSlice({
-  name: 'email',
+  name: SLICE_NAME,
   initialState,
   reducers: {
     setData: (state, action) => {

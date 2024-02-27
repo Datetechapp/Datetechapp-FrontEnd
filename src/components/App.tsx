@@ -48,6 +48,7 @@ export const App = () => {
             <Route path="messager/:id?" element={<Messanger />} />
           </Route>
           <Route path="/feed" element={<MainLayout />} />
+          <Route path="/messanger" element={<Messanger />} />
           <Route path="/support" element={<SupportPageLayout />}>
             <Route path="faq" element={<Faq />}>
               <Route path="account" element={<AccountSection />} />
