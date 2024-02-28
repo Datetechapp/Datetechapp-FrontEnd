@@ -5,8 +5,8 @@
   font-style: normal;
   font-weight: 500;
   line-height: 20px;
-  letter-spacing: 0.2px;
 }
+
 .notificationDescription {
   text-align: center;
   display: flex;
@@ -14,10 +14,9 @@
   flex-direction: column;
   justify-content: center;
 }
+
 .notificationList {
-  padding-top: 16px;
   list-style: none;
-}
-.notificationList li {
-  padding-bottom: 16px;
+  display: flex;
+  flex-direction: column;
 }

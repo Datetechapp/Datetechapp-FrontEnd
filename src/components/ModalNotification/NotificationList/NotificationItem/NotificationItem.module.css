@@ -1,21 +1,30 @@
 .notificationItemContainer {
-  padding: 4px 0;
   display: flex;
-  width: 100%;
   cursor: pointer;
+  margin-inline: 16px;
+  padding-block: 16px;
 }
+
+.notificationItem {
+  flex: 1;
+  transition: all 0.2s ease-in-out;
+}
+
 .notificationItem:hover {
   background-color: #272533;
 }
+
 .notificationItem img {
   max-width: 48px;
   max-height: 48px;
   border-radius: 50%;
 }
+
 .eventDetails {
   text-align: start;
   padding-left: 8px;
 }
+
 .eventDetails p {
   color: #fff;
   font-family: Montserrat;
@@ -23,12 +32,13 @@
   font-style: normal;
   font-weight: 500;
   line-height: 18px;
-  letter-spacing: 0.1px;
 }
+
 .user {
   font-size: 14px;
   color: #c896ef;
 }
+
 .time {
   color: #e1dbed;
   font-family: Montserrat;
@@ -36,5 +46,4 @@
   font-style: normal;
   font-weight: 400;
   line-height: 14px;
-  letter-spacing: 0.1px;
 }

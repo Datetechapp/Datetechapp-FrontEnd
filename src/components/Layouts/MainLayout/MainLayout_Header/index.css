@@ -47,7 +47,6 @@
 
 .BtnUpload:hover {
   backdrop-filter: blur(5px);
-  backdrop-filter: blur(5px);
 }
 
 .BtnUpload:active {
@@ -68,9 +67,10 @@
   gap: 10px;
   flex-shrink: 0;
   border-radius: 50px;
-  background: var(--Panel_Stroke, #32303e);
+  background: #32303e;
   border: none;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .headerIcon img {
@@ -81,7 +81,17 @@
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
+
 }
+
+.headerIcon:hover {
+  background: #5F4F7F;
+}
+
+.bellActive {
+  background: #5F4F7F;
+}
+
 
 .userInfo {
   display: flex;
@@ -133,7 +143,7 @@
 }
 
 .navPanelUserName {
-  color: var(--White, #fff);
+  color: #fff;
   font-family: "Montserrat", sans-serif;
   font-size: 18px;
   font-style: normal;
@@ -144,7 +154,7 @@
 }
 
 .navPanelUserCity {
-  color: var(--super-white, var(--Back_White, #e1dbed));
+  color: #e1dbed;
   font-variant-numeric: lining-nums proportional-nums;
   font-family: "Montserrat", sans-serif;
   font-size: 14px;

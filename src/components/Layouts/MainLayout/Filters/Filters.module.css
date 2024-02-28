@@ -138,7 +138,6 @@
     cursor: ew-resize;
     -webkit-appearance: none;
     margin-top: -7px;
-    z-index: 7;
     position: relative;
   }
 
@@ -163,6 +162,7 @@
     border-radius: 20px;
     border: 1px solid var(--Violet_Active, #c896ef);
   }
+
   .range::-moz-range-thumb {
     border: 1px solid var(--Violet_Active, #c896ef);
     border-radius: 20px;
@@ -184,6 +184,7 @@
   .range::-ms-fill-lower {
     background-color: #c896ef;
   }
+
   .range::-ms-fill-upper {
     background-color: #5f4f7f;
   }
@@ -287,7 +288,6 @@
   position: absolute;
   top: 13.5px;
   left: 0;
-  z-index: 1;
 }
 
 .buttonArrowIcon {

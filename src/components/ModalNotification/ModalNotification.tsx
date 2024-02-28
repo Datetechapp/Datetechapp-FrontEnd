@@ -5,14 +5,21 @@ import { Button } from 'components/common';
 import { useNavigate } from 'react-router-dom';
 
 type NotificationProp = {
+  isOpen: boolean;
   onClose?: () => void;
 };
 
-const ModalNotification: FC<NotificationProp> = ({ onClose }) => {
+const ModalNotification: FC<NotificationProp> = ({ isOpen, onClose }) => {
   const navigate = useNavigate();
 
   return (
-    <div className={styles.notificationContainer} onMouseLeave={onClose}>
+    <div
+      className={styles.notificationContainer}
+      onMouseLeave={onClose}
+      style={{
+        maxHeight: isOpen ? '100%' : '0',
+      }}
+    >
       <h3 className={styles.notificationTitle}>Notifications</h3>
       <NotificationList />
       <Button

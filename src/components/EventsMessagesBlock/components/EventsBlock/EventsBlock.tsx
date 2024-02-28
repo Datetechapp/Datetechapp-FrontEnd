@@ -97,7 +97,9 @@ export function EventsBlock() {
         </div>
         <div className={styles.eventModalButtons}>
           <div className={styles.linearBorder}>
-            <Button className={styles.cancelButton}>Cancel</Button>
+            <Button className={styles.cancelButton} onClick={handleChangeOpen}>
+              Cancel
+            </Button>
           </div>
           <Button className={styles.editButton}>Edit</Button>
         </div>
