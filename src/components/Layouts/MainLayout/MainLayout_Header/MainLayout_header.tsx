@@ -1,5 +1,5 @@
 import { FC, useState, useEffect, useRef } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import DropdownContent from './DropdownContent/DropdownContent';
 import bell from '../../../../assets/feed/bell.svg';
 import calendar from '../../../../assets/feed/calendar.svg';
@@ -15,6 +15,8 @@ export const MainLayoutHeader: FC = () => {
   const [isPremiumModalOpen, setPremiumModalOpen] = useState(false);
   const [isNotificationModalOpen, setIsNotifaicationModalOpen] =
     useState(false);
+  const { pathname } = useLocation();
+  console.log(pathname);
 
   const dropdownRef = useRef<HTMLDivElement>(null);
   const handleDropdownClick = () => {
@@ -62,7 +64,9 @@ export const MainLayoutHeader: FC = () => {
         <div className="headerIcons">
           <button
             className={`headerIcon ${
-              isNotificationModalOpen ? 'bellActive' : ''
+              isNotificationModalOpen || pathname === '/notification'
+                ? 'bellActive'
+                : ''
             }`}
             onClick={handleOpenNotificationModal}
           >
