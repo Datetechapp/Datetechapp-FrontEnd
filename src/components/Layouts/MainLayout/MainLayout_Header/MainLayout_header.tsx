@@ -1,14 +1,15 @@
 import { FC, useState, useEffect, useRef } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
+
 import DropdownContent from './DropdownContent/DropdownContent';
 import bell from '../../../../assets/feed/bell.svg';
 import calendar from '../../../../assets/feed/calendar.svg';
 import arrow from '../../../../assets/feed/arrow.svg';
 import logo from '../../../../assets/ModalAuth/logo.svg';
-import avatar from '../../../../assets/user/avatar Ivan.svg';
-import './index.css';
+import avatar from '../../../../assets/user/avatarIvan.svg';
 import ModalPremium from './ModalPremium/ModalPremium';
 import ModalNotification from 'components/ModalNotification/ModalNotification';
+import './index.css';
 
 export const MainLayoutHeader: FC = () => {
   const [dropdownVisible, setDropdownVisible] = useState(false);
@@ -16,7 +17,6 @@ export const MainLayoutHeader: FC = () => {
   const [isNotificationModalOpen, setIsNotifaicationModalOpen] =
     useState(false);
   const { pathname } = useLocation();
-  console.log(pathname);
 
   const dropdownRef = useRef<HTMLDivElement>(null);
   const handleDropdownClick = () => {

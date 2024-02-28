@@ -1,5 +1,5 @@
 import React from 'react';
-import avatar from '../../../../assets/user/avatar Ivan.svg';
+import avatar from '../../../../assets/user/avatarIvan.svg';
 import styles from './NotificationItem.module.css';
 
 type Notification = {
