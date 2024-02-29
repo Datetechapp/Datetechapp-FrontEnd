@@ -1,0 +1,25 @@
+.imageWrapper {
+    position: relative;
+    border-radius: 100%;
+    width: 52px;
+    height: 52px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imageWrapper img {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+}
+
+.onlineStatus {
+    position: absolute;
+    bottom: 6px;
+    right: 5px;
+    background-color: #40d666;
+    width: 7px;
+    height: 7px;
+    border-radius: 100%;
+}

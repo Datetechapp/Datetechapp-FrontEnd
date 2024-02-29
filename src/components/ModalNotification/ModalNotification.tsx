@@ -21,7 +21,7 @@ const ModalNotification: FC<NotificationProp> = ({ isOpen, onClose }) => {
       }}
     >
       <h3 className={styles.notificationTitle}>Notifications</h3>
-      <NotificationList />
+      <NotificationList count={5} />
       <Button
         className={styles.btnNotification}
         onClick={() => navigate('/notification')}
