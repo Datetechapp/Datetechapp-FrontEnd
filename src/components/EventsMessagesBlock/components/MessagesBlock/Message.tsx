@@ -2,7 +2,7 @@ import { IMessageProps } from 'store/messages/types';
 import { ReactComponent as PremiumStar } from '../../../../assets/EventsMessagesBlock/PremiumStar.svg';
 import styles from './messagesBlock.module.css';
 import { useNavigate } from 'react-router-dom';
-import LogoIcon from 'components/common/logoIcon/LogoIcon';
+import { LogoIcon } from 'components/common/logoIcon';
 
 export function Message({ message }: { message: IMessageProps }) {
   const navigate = useNavigate();

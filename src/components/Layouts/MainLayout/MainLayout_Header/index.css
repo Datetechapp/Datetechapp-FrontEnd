@@ -81,17 +81,15 @@
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
-
 }
 
 .headerIcon:hover {
-  background: #5F4F7F;
+  background: #5f4f7f;
 }
 
 .bellActive {
-  background: #5F4F7F;
+  background: #5f4f7f;
 }
-
 
 .userInfo {
   display: flex;

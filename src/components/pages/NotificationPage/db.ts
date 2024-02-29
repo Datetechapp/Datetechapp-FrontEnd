@@ -26,7 +26,8 @@ export const notifications: INotificationProps[] = [
   },
   {
     id: '2',
-    image: Liza,
+    image: Mikhael,
+    imagePartner: Liza,
     type: 'event',
     name: 'Liza',
     time: '2021-10-29T10:00:00Z',
@@ -76,8 +77,9 @@ export const notifications: INotificationProps[] = [
   },
   {
     id: '7',
-    image: Liza,
     type: 'event',
+    image: Mikhael,
+    imagePartner: Liza,
     name: 'Liza',
     time: '2021-10-29T10:00:00Z',
     event: 'Dinner',

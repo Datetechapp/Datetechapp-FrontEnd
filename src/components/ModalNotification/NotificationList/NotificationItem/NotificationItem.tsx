@@ -1,6 +1,7 @@
-import LogoIcon from 'components/common/logoIcon/LogoIcon';
+import { LogoIcon } from 'components/common/logoIcon';
 import styles from './NotificationItem.module.css';
 import { INotificationProps } from 'store/notifications/types';
+import { GroupLogo } from 'components/common/group-logo';
 
 const NotificationItem = ({
   notification,
@@ -33,12 +34,21 @@ const NotificationItem = ({
   return (
     <div className={styles.notificationItem}>
       <div className={styles.notificationItemContainer}>
-        <LogoIcon
-          src={notification.image}
-          name={notification.name}
-          status={notification.status}
-          premium={notification.premium}
-        />
+        {notification.type === 'event' ? (
+          <GroupLogo
+            image={notification.image}
+            imagePartner={notification.imagePartner}
+          />
+        ) : (
+          <LogoIcon
+            src={notification.image}
+            name={notification.name}
+            status={notification.status}
+            premium={notification.premium}
+            type={notification.type}
+          />
+        )}
+
         <div className={styles.eventDetails}>
           <p className={styles.textEvent}>{textEvent}</p>
           <span className={styles.time}>{newTime}</span>
