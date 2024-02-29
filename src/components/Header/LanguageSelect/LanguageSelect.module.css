@@ -42,6 +42,7 @@
   transition: 0.4s ease-in;
 }
 .languagesItem_box {
+  list-style: none;
   cursor: pointer;
   padding: 4px 8px;
   border-radius: 4px;

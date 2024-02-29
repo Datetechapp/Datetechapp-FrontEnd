@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './LanguageSelect.module.css';
-import '../LanguagesSwich.css';
 import { languages } from '../language';
 import { useState } from 'react';
 import { ReactComponent as ActiveArrow } from '../../../assets/Header/activeArrow.svg';
