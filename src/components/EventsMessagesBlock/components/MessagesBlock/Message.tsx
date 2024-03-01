@@ -1,7 +1,8 @@
-import { IMessageProps } from 'store/messages/types';
-import { ReactComponent as PremiumStar } from '../../../../assets/EventsMessagesBlock/PremiumStar.svg';
 import styles from './messagesBlock.module.css';
 import { useNavigate } from 'react-router-dom';
+
+import { IMessageProps } from 'store/messages/types';
+import { ReactComponent as PremiumStar } from '../../../../assets/EventsMessagesBlock/PremiumStar.svg';
 import { LogoIcon } from 'components/common/logoIcon';
 
 export function Message({ message }: { message: IMessageProps }) {
@@ -14,7 +15,7 @@ export function Message({ message }: { message: IMessageProps }) {
     >
       <div className={styles.messageWrapper}>
         <LogoIcon
-          src={message.image}
+          image={message.image}
           name={message.name}
           status={message.status}
           premium={message.premium}

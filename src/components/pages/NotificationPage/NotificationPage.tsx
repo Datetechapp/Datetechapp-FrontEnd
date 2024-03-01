@@ -2,7 +2,6 @@ import style from './Notification.module.css';
 import { useSelector } from 'react-redux';
 
 import NotificationList from 'components/ModalNotification/NotificationList/NotificationList';
-import NotificationItem from 'components/ModalNotification/NotificationList/NotificationItem/NotificationItem';
 import { MainLayoutHeader } from 'components/Layouts/MainLayout/MainLayout_Header/MainLayout_header';
 import { getAllNotifications } from 'store/notifications/selectors';
 

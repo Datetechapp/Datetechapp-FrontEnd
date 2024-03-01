@@ -41,7 +41,12 @@ const NotificationItem = ({
             imagePartner={notification.imagePartner}
           />
         ) : (
-          <LogoIcon data={notification} />
+          <LogoIcon
+            image={notification.image}
+            name={notification.name}
+            status={notification.status}
+            premium={notification.premium}
+          />
         )}
 
         <div className={styles.eventDetails}>

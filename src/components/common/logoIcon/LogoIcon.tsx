@@ -1,27 +1,30 @@
-import { INotificationProps } from 'store/notifications/types';
-
 import styles from './logoIcon.module.css';
 
-export function LogoIcon({ data }: { data: INotificationProps }) {
+interface Props {
+  image: string;
+  name: string;
+  status: string;
+  premium?: boolean;
+}
+
+export function LogoIcon({ image, name, status, premium }: Props) {
   const lgSize = 48;
   const smSize = 44;
 
-  const imageSize = data.premium ? smSize : lgSize;
+  const imageSize = premium == true ? smSize : lgSize;
 
   return (
     <div className={styles.icon}>
       <div className={styles.imageWrapper}>
         <img
-          src={data.image}
-          alt={data.name}
+          src={image}
+          alt={name}
           style={{
             width: imageSize,
             height: imageSize,
           }}
         />
-        <div
-          className={data.status === 'online' ? styles.onlineStatus : ''}
-        ></div>
+        <div className={status === 'online' ? styles.onlineStatus : ''}></div>
       </div>
     </div>
   );
