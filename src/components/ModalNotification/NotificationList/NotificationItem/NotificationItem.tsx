@@ -1,5 +1,6 @@
-import { LogoIcon } from 'components/common/logoIcon';
 import styles from './NotificationItem.module.css';
+
+import { LogoIcon } from 'components/common/logoIcon';
 import { INotificationProps } from 'store/notifications/types';
 import { GroupLogo } from 'components/common/group-logo';
 
@@ -40,13 +41,7 @@ const NotificationItem = ({
             imagePartner={notification.imagePartner}
           />
         ) : (
-          <LogoIcon
-            src={notification.image}
-            name={notification.name}
-            status={notification.status}
-            premium={notification.premium}
-            type={notification.type}
-          />
+          <LogoIcon data={notification} />
         )}
 
         <div className={styles.eventDetails}>

@@ -1,11 +1,15 @@
 import styles from './NotificationList.module.css';
+
 import NotificationItem from './NotificationItem/NotificationItem';
-import { getAllNotifications } from '../../../store/notifications/selectors';
-import { useSelector } from 'react-redux';
+import { INotificationProps } from 'store/notifications/types';
 
-const NotificationList = ({ count }: { count?: number }) => {
-  const notifications = useSelector(getAllNotifications);
-
+const NotificationList = ({
+  count,
+  notifications,
+}: {
+  count?: number;
+  notifications: INotificationProps[];
+}) => {
   return (
     <div className={styles.notificationDescription}>
       {notifications.length === 0 ? (

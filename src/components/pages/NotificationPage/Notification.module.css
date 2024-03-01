@@ -25,7 +25,8 @@
   border-radius: 0px 0px 10px 10px;
   min-width: 490px;
   display: flex;
-  padding: 16px 4px;
+  flex-direction: column;
+  padding: 16px 8px;
   align-items: flex-start;
   height: 800px;
   overflow-y: scroll;
@@ -33,4 +34,10 @@
 
 .pageBox::-webkit-scrollbar {
   width: 0px;
+}
+
+.mainNotification {
+  width: 100%;
+  border-bottom: 1px solid #5F4F7F;
+  margin-bottom: 4px;
 }

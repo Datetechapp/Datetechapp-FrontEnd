@@ -1,41 +1,27 @@
+import { INotificationProps } from 'store/notifications/types';
+
 import styles from './logoIcon.module.css';
 
-type Props = {
-  src: string;
-  name: string;
-  status: string;
-  premium?: boolean;
-  type?: string;
-};
-
-export function LogoIcon({ src, name, status, premium, type }: Props) {
-  const gradientBackground =
-    'linear-gradient(180deg, rgba(151, 71, 255, 1) 0%, rgba(222, 119, 199, 1) 100%)';
-
-  const transparentBackground = 'transparent';
-
+export function LogoIcon({ data }: { data: INotificationProps }) {
   const lgSize = 48;
   const smSize = 44;
 
-  const imageSize = type === 'new' ? smSize : lgSize;
+  const imageSize = data.premium ? smSize : lgSize;
 
   return (
     <div className={styles.icon}>
-      <div
-        className={styles.imageWrapper}
-        style={{
-          background: premium ? gradientBackground : transparentBackground,
-        }}
-      >
+      <div className={styles.imageWrapper}>
         <img
-          src={src}
-          alt={name}
+          src={data.image}
+          alt={data.name}
           style={{
             width: imageSize,
             height: imageSize,
           }}
         />
-        <div className={status === 'online' ? styles.onlineStatus : ''}></div>
+        <div
+          className={data.status === 'online' ? styles.onlineStatus : ''}
+        ></div>
       </div>
     </div>
   );

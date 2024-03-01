@@ -49,7 +49,7 @@ export const notifications: INotificationProps[] = [
     id: '4',
     image: Liza,
     name: 'Liza',
-    type: 'accept',
+    type: 'new',
     time: '2021-10-25T12:00:00Z',
     event: 'Movie night',
     premium: false,
@@ -58,7 +58,7 @@ export const notifications: INotificationProps[] = [
   {
     id: '5',
     image: Ivan,
-    type: 'new',
+    type: 'accept',
     name: 'Ivan',
     time: '2021-11-01T11:00:00Z',
     event: 'Movie night',
@@ -68,7 +68,7 @@ export const notifications: INotificationProps[] = [
   {
     id: '6',
     image: Mikhael,
-    type: 'like',
+    type: 'new',
     name: 'Mikhael',
     time: '2021-11-01T12:15:23Z',
     event: 'Coffee date',
@@ -109,7 +109,7 @@ export const notifications: INotificationProps[] = [
   {
     id: '10',
     image: Ivan,
-    type: 'new',
+    type: 'like',
     name: 'Ivan',
     time: '2021-11-01T11:00:00Z',
     event: 'Movie night',
