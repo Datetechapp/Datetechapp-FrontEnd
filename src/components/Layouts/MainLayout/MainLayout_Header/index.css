@@ -8,10 +8,8 @@
 }
 
 .logo {
-  width: 67px;
   display: flex;
   flex: 0 1 auto;
-  align-items: center;
 }
 
 .logo,
@@ -22,12 +20,6 @@
 .header__buttons {
   display: flex;
   justify-content: center;
-}
-
-.logo img {
-  width: 67px;
-  margin-top: 18px;
-  margin-left: 3px;
 }
 
 .BtnUpload {
@@ -146,8 +138,6 @@
   font-size: 18px;
   font-style: normal;
   font-weight: 600;
-  line-height: 22px;
-  letter-spacing: 0.1px;
   text-align: left;
 }
 
