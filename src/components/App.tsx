@@ -1,23 +1,23 @@
-import { ModalAuth } from './ModalAuth';
-import { ModalRegister, ResetPassword } from './pages/ModalRegister';
-import { Routes, Route } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import { BackSection } from './BackSection/BackSection';
 import { MainLayout } from './Layouts/MainLayout/MainLayout';
-import { useLocation } from 'react-router-dom';
-import { VerificationPage } from './pages/ModalRegister/VerificationPage';
-import { Questionnaire } from './pages/Questionnaire';
+import { PaymentPageLayout } from './Layouts/PaymentPageLayout';
+import { PaymentHistory } from './Layouts/PaymentPageLayout/components/PaymentHistory';
+import { PaymentSubscription } from './Layouts/PaymentPageLayout/components/PaymentSubscription';
 import { SupportPageLayout } from './Layouts/SupportPageLayout';
+import { Messanger } from './Messanger';
+import { ModalAuth } from './ModalAuth';
 import {
   AccountSection,
   Faq,
   PaymentSection,
-  VideoSection,
   SafetySection,
+  VideoSection,
 } from './pages/Faq';
+import { ModalRegister, ResetPassword } from './pages/ModalRegister';
+import { VerificationPage } from './pages/ModalRegister/VerificationPage';
+import { Questionnaire } from './pages/Questionnaire';
 import { RequestPage } from './pages/RequestPage';
-import { PaymentPageLayout } from './Layouts/PaymentPageLayout';
-import { PaymentSubscription } from './Layouts/PaymentPageLayout/components/PaymentSubscription';
-import { PaymentHistory } from './Layouts/PaymentPageLayout/components/PaymentHistory';
 
 export const App = () => {
   const { pathname } = useLocation();
@@ -28,7 +28,7 @@ export const App = () => {
     pathname == '/reset_password';
 
   return (
-    <div>
+    <>
       {locationForBackSection ? (
         <BackSection>
           <Routes>
@@ -42,6 +42,7 @@ export const App = () => {
           <Route path="/verification" element={<VerificationPage />} />
           <Route path="/create-profile" element={<Questionnaire />} />
           <Route path="/feed" element={<MainLayout />} />
+          <Route path="/messenger" element={<Messanger />} />
           <Route path="/support" element={<SupportPageLayout />}>
             <Route path="faq" element={<Faq />}>
               <Route path="account" element={<AccountSection />} />
@@ -57,6 +58,6 @@ export const App = () => {
           </Route>
         </Routes>
       )}
-    </div>
+    </>
   );
 };

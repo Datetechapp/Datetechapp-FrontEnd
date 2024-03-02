@@ -1,15 +1,21 @@
-import css from './workspace.module.css';
-import React, { useCallback, useState, FC } from 'react';
-import { AudioPlayer } from './AudioPlayer/AudioPlayer';
 import {
-  ModalForFixMessage,
-  ModalForDeleteMessage,
-  ModalForForwardMessage,
-  Message,
+  useCallback,
+  useState,
+  type Dispatch,
+  type MouseEvent,
+  type SetStateAction,
+} from 'react';
+import {
   EmojiComponent,
+  Message,
+  ModalForDeleteMessage,
+  ModalForFixMessage,
+  ModalForForwardMessage,
   PinnedMessage,
   SearchMessages,
 } from '.';
+import { AudioPlayer } from './AudioPlayer/AudioPlayer';
+import css from './workspace.module.css';
 
 export interface MessageProps {
   id: string;
@@ -20,12 +26,12 @@ export interface MessageProps {
 }
 
 interface WorkspaceProps {
-  setSelectedMessageText: React.Dispatch<React.SetStateAction<string>>;
-  setShowReplyMessage: React.Dispatch<React.SetStateAction<boolean>>;
+  setSelectedMessageText: Dispatch<SetStateAction<string>>;
+  setShowReplyMessage: Dispatch<SetStateAction<boolean>>;
   selectedMessageText: string;
   showSearchMessages: boolean;
   showReplyMessage: boolean;
-  setShowSearchMessages: React.Dispatch<React.SetStateAction<boolean>>;
+  setShowSearchMessages: Dispatch<SetStateAction<boolean>>;
 }
 
 const messagesArr: MessageProps[] = [
@@ -66,7 +72,7 @@ const messagesArr: MessageProps[] = [
   },
 ];
 
-export const Workspace: FC<WorkspaceProps> = ({
+export const Workspace = ({
   setSelectedMessageText,
   showReplyMessage,
   setShowReplyMessage,
@@ -151,10 +157,7 @@ export const Workspace: FC<WorkspaceProps> = ({
   }, []);
 
   const handleContextMenu = useCallback(
-    (
-      event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-      messageId: string,
-    ) => {
+    (event: MouseEvent<HTMLDivElement>, messageId: string) => {
       event.preventDefault();
       setSelectedMessageId(messageId);
       setShowContextMenu(true);

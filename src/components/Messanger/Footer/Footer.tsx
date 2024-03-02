@@ -1,26 +1,27 @@
-import css from './footer.module.css';
-import { Input } from '../../common/input';
-import React, { useState, FC } from 'react';
-import { ReactComponent as EmojiIcon } from '../../../assets/Messanger/emojiIcon.svg';
-import { ReactComponent as Clip } from '../../../assets/Messanger/Clip.svg';
-import EmojiPicker, { EmojiClickData } from 'emoji-picker-react';
-import { ReplyMessage } from './ReplyMessage';
 import { UploadButton } from 'components/pages/Questionnaire/UploadButton';
+import EmojiPicker from 'emoji-picker-react';
+import { useState, type ChangeEvent } from 'react';
+import { useVoiceVisualizer } from 'react-voice-visualizer';
+import { ReactComponent as Clip } from '../../../assets/Messanger/Clip.svg';
+import { ReactComponent as EmojiIcon } from '../../../assets/Messanger/emojiIcon.svg';
+import { Input } from '../../common/input';
 import { ModalClipElements } from './ModalClipElements';
 import { RecordingAudio } from './RecordingAudio/RecordingAudio';
-import { useVoiceVisualizer, VoiceVisualizer } from 'react-voice-visualizer';
+import { ReplyMessage } from './ReplyMessage';
 
-interface FooterProps {
+import css from './footer.module.css';
+
+type FooterProps = {
   selectedMessageText: string;
   showReplyMessage: boolean;
   onShowReplyMessage: () => void;
-}
+};
 
-export const Footer: FC<FooterProps> = ({
+export const Footer = ({
   selectedMessageText,
   showReplyMessage,
   onShowReplyMessage,
-}) => {
+}: FooterProps) => {
   const [messageValue, setMessageValue] = useState('');
   const [showPicker, setShowPicker] = useState(false);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -29,31 +30,19 @@ export const Footer: FC<FooterProps> = ({
 
   const recorderControls = useVoiceVisualizer();
 
-  const handleTogglePicker = () => {
-    setShowPicker(!showPicker);
-  };
+  const handleTogglePicker = () => setShowPicker(!showPicker);
 
-  const handleEmojiClick = (
-    emojiObject: { emoji: string },
-    event: MouseEvent,
-  ) => {
+  const handleEmojiClick = (emojiObject: { emoji: string }) => {
     setMessageValue(messageValue + emojiObject.emoji);
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newMessage = e.target.value;
-
-    setMessageValue(newMessage);
+  const handleInputChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
+    setMessageValue(target.value);
   };
 
-  const handleUploadFile = (file: File) => {
-    setSelectedFile(file);
-    console.log('Загруженный файл:', file);
-  };
+  const handleUploadFile = (file: File) => setSelectedFile(file);
 
-  const handleCloseSelectedImage = () => {
-    setSelectedFile(null);
-  };
+  const handleCloseModal = () => setSelectedFile(null);
 
   return (
     <div>
@@ -62,7 +51,7 @@ export const Footer: FC<FooterProps> = ({
           <div className={css.clipElementsWrapper}>
             <ModalClipElements
               file={selectedFile}
-              onClose={handleCloseSelectedImage}
+              onClose={handleCloseModal}
               value={messageValue}
               onChange={handleInputChange}
             />

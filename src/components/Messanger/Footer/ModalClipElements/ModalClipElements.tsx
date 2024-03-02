@@ -1,44 +1,41 @@
-import React, { FC, useState } from 'react';
 import { Input } from 'components/common';
-import EmojiPicker, { EmojiClickData } from 'emoji-picker-react';
-import css from './modalClipElements.module.css';
+import EmojiPicker from 'emoji-picker-react';
+import { useState, type ChangeEvent, type MouseEvent } from 'react';
 import { ReactComponent as CloseIcon } from '../../../../assets/Messanger/CloseIconForClipElem.svg';
-import { ReactComponent as EmojiIcon } from '../../../../assets/Messanger/emojiIcon.svg';
 import { ReactComponent as SendIcon } from '../../../../assets/Messanger/SendIcon.svg';
+import { ReactComponent as EmojiIcon } from '../../../../assets/Messanger/emojiIcon.svg';
+import css from './modalClipElements.module.css';
 
-interface ModalClipElementsProps {
+type ModalClipElementsProps = {
   file: File | null;
   onClose: () => void;
   value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+};
 
-export const ModalClipElements: FC<ModalClipElementsProps> = ({
+export const ModalClipElements = ({
   file,
   onClose,
   value,
   onChange,
-}) => {
+}: ModalClipElementsProps) => {
   const [showEmojiBlock, setShowEmojiBlock] = useState(false);
 
   const handleTogglePicker = () => {
     setShowEmojiBlock(!showEmojiBlock);
   };
 
-  const handleEmojiClick = (
-    emojiObject: { emoji: string },
-    event: MouseEvent,
-  ) => {
+  const handleEmojiClick = (emojiObject: { emoji: string }) => {
     const emojiChangeEvent = {
       target: {
         value: value + emojiObject.emoji,
       },
-    } as React.ChangeEvent<HTMLInputElement>;
+    } as ChangeEvent<HTMLInputElement>;
 
     onChange(emojiChangeEvent);
   };
 
-  const handleBackgroundClick = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleBackgroundClick = (e: MouseEvent<HTMLDivElement>) => {
     if (e.target === e.currentTarget) {
       onClose();
     }
