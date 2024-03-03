@@ -1,9 +1,14 @@
 .pageContainer {
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  align-items: flex-start;
+  background-color: #1f1d2b;
+  background-image: url("../../../assets/NavPanel/Dust.svg");
+  height: 100vh;
 }
+
+.pageWrapper {
+  max-width: 490px;
+  margin: 0 auto;
+}
+
 .pageTitle {
   padding: 16px 0;
   color: #fff;
@@ -12,13 +17,27 @@
   font-style: normal;
   font-weight: 600;
   line-height: 24px;
-  letter-spacing: -0.5px;
+  align-self: center;
 }
+
 .pageBox {
   background-color: #32303e;
-  padding: 16px 8px;
   border-radius: 0px 0px 10px 10px;
   min-width: 490px;
   display: flex;
+  flex-direction: column;
+  padding: 16px 8px;
   align-items: flex-start;
+  height: 800px;
+  overflow-y: scroll;
+}
+
+.pageBox::-webkit-scrollbar {
+  width: 0px;
+}
+
+.mainNotification {
+  width: 100%;
+  border-bottom: 1px solid #5F4F7F;
+  margin-bottom: 4px;
 }

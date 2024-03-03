@@ -79,6 +79,8 @@
   align-items: center;
   padding: 6px;
   padding-bottom: 19px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .profileDots:hover {
@@ -98,7 +100,6 @@
   font-size: 12px;
   font-weight: 400;
   line-height: 14px;
-  letter-spacing: 0.1px;
   text-align: left;
   position: absolute;
   top: 44px;
@@ -142,11 +143,17 @@
   height: 32px;
   padding: 6px;
   border-radius: 29px;
-  background-color: #5f4f7f;
+  background-color: #5f4f7f80;
+  transition: background-color 0.3s ease;
+}
+
+.soundIcon rect {
+  display: none;
 }
 
 .soundIcon:hover {
   opacity: 1;
+  background-color: #5f4f7f;
 }
 
 .iconControls {
@@ -164,8 +171,8 @@
   top: 25px;
   left: 120px;
   border-radius: 8px;
-  border: 1px solid var(--Panel_Stroke, #32303e);
-  background: var(--Dark_Background, #1f1d2b);
+  border: 1px solid #32303e;
+  background: #1f1d2b;
   transform: rotate(0deg);
   bottom: 104px;
   width: 32px;
@@ -220,6 +227,11 @@
   height: 32px;
   padding: 6px;
   padding-bottom: 9px;
+  transition: background-color 0.3s ease;
+}
+
+.profileDotsCopy:hover {
+  background: #5f4f7f;
 }
 
 .copyLinkElement {
@@ -249,7 +261,6 @@
   font-size: 12px;
   font-weight: 400;
   line-height: 14px;
-  letter-spacing: 0.1px;
   text-align: left;
   width: 184px;
   height: 32px;

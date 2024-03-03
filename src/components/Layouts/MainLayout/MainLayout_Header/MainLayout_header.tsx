@@ -1,21 +1,30 @@
 import { FC, useState, useEffect, useRef } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
+
 import DropdownContent from './DropdownContent/DropdownContent';
 import bell from '../../../../assets/feed/bell.svg';
 import calendar from '../../../../assets/feed/calendar.svg';
 import arrow from '../../../../assets/feed/arrow.svg';
 import logo from '../../../../assets/ModalAuth/logo.svg';
-import avatar from '../../../../assets/user/avatar Ivan.svg';
-import './index.css';
+import avatar from '../../../../assets/user/avatarIvan.svg';
 import ModalPremium from './ModalPremium/ModalPremium';
+import ModalNotification from 'components/ModalNotification/ModalNotification';
+import './index.css';
 
 export const MainLayoutHeader: FC = () => {
   const [dropdownVisible, setDropdownVisible] = useState(false);
-  const [isModalOpen, setModalOpen] = useState(false);
+  const [isPremiumModalOpen, setPremiumModalOpen] = useState(false);
+  const [isNotificationModalOpen, setIsNotifaicationModalOpen] =
+    useState(false);
+  const { pathname } = useLocation();
 
   const dropdownRef = useRef<HTMLDivElement>(null);
   const handleDropdownClick = () => {
     setDropdownVisible(!dropdownVisible);
+  };
+
+  const handleOpenNotificationModal = () => {
+    setIsNotifaicationModalOpen(!isNotificationModalOpen);
   };
 
   const closeDropdown = () => {
@@ -39,8 +48,11 @@ export const MainLayoutHeader: FC = () => {
     };
   }, [closeDropdown]);
 
-  const closeModal = () => {
-    setModalOpen(false);
+  const closePremiumModal = () => {
+    setPremiumModalOpen(false);
+  };
+  const closeNotifucationModal = () => {
+    setIsNotifaicationModalOpen(false);
   };
 
   return (
@@ -50,7 +62,14 @@ export const MainLayoutHeader: FC = () => {
       </div>
       <div className="headerInfo">
         <div className="headerIcons">
-          <button className="headerBell headerIcon">
+          <button
+            className={`headerIcon ${
+              isNotificationModalOpen || pathname === '/notification'
+                ? 'bellActive'
+                : ''
+            }`}
+            onClick={handleOpenNotificationModal}
+          >
             <img src={bell} alt="notifications" />
           </button>
           <button className="headerCalendar headerIcon">
@@ -88,12 +107,19 @@ export const MainLayoutHeader: FC = () => {
         {dropdownVisible && (
           <DropdownContent
             closeDropdown={closeDropdown}
-            setModalOpen={setModalOpen}
+            setModalOpen={setPremiumModalOpen}
           />
         )}
-        {isModalOpen && (
-          <ModalPremium isOpen={isModalOpen} closeModal={closeModal} />
+        {isPremiumModalOpen && (
+          <ModalPremium
+            isOpen={isPremiumModalOpen}
+            closeModal={closePremiumModal}
+          />
         )}
+        <ModalNotification
+          isOpen={isNotificationModalOpen}
+          onClose={closeNotifucationModal}
+        />
       </div>
     </div>
   );

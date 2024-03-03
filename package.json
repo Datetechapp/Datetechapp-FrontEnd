@@ -55,7 +55,8 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "format": "prettier ./**/*.{js,ts,tsx,css,json} --check",
-    "format:fix": "prettier ./**/*.{js,ts,tsx,css,json} --write"
+    "format:fix": "prettier ./**/*.{js,ts,tsx,css,json} --write",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -96,6 +97,11 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "json-server": "^0.17.4",
     "prettier": "^3.0.3",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "husky": "^8.0.3"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": "eslint --cache --fix",
+    "*.{js,jsx,ts,tsx,scss,css,md}": "npm run format"
   }
 }

@@ -8,10 +8,8 @@
 }
 
 .logo {
-  width: 67px;
   display: flex;
   flex: 0 1 auto;
-  align-items: center;
 }
 
 .logo,
@@ -22,12 +20,6 @@
 .header__buttons {
   display: flex;
   justify-content: center;
-}
-
-.logo img {
-  width: 67px;
-  margin-top: 18px;
-  margin-left: 3px;
 }
 
 .BtnUpload {
@@ -46,7 +38,6 @@
 }
 
 .BtnUpload:hover {
-  backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
 }
 
@@ -68,9 +59,10 @@
   gap: 10px;
   flex-shrink: 0;
   border-radius: 50px;
-  background: var(--Panel_Stroke, #32303e);
+  background: #32303e;
   border: none;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .headerIcon img {
@@ -81,6 +73,14 @@
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
+}
+
+.headerIcon:hover {
+  background: #5f4f7f;
+}
+
+.bellActive {
+  background: #5f4f7f;
 }
 
 .userInfo {
@@ -133,18 +133,16 @@
 }
 
 .navPanelUserName {
-  color: var(--White, #fff);
+  color: #fff;
   font-family: "Montserrat", sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 600;
-  line-height: 22px;
-  letter-spacing: 0.1px;
   text-align: left;
 }
 
 .navPanelUserCity {
-  color: var(--super-white, var(--Back_White, #e1dbed));
+  color: #e1dbed;
   font-variant-numeric: lining-nums proportional-nums;
   font-family: "Montserrat", sans-serif;
   font-size: 14px;

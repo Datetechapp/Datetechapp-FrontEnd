@@ -20,7 +20,7 @@ import { PaymentSubscription } from './Layouts/PaymentPageLayout/components/Paym
 import { PaymentHistory } from './Layouts/PaymentPageLayout/components/PaymentHistory';
 import { MessangerLayout } from './Layouts/MessangerLayout';
 import { Messanger } from './Messanger';
-
+import NotificationPage from './pages/NotificationPage/NotificationPage';
 
 export const App = () => {
   const { pathname } = useLocation();
@@ -48,6 +48,7 @@ export const App = () => {
             <Route path="messager/:id?" element={<Messanger />} />
           </Route>
           <Route path="/feed" element={<MainLayout />} />
+          <Route path="/notification" element={<NotificationPage />} />
           <Route path="/support" element={<SupportPageLayout />}>
             <Route path="faq" element={<Faq />}>
               <Route path="account" element={<AccountSection />} />
