@@ -115,13 +115,15 @@
   flex-direction: column;
   color: #fff;
   gap: 7px;
-  overflow-y: auto;
-  overflow-x: hidden;
   position: relative;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .matchingProfiles::-webkit-scrollbar {
   width: 0px;
+  height: 0px;
 }
 
 .interestedActive {
