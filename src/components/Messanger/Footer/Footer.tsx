@@ -48,11 +48,10 @@ export const Footer = ({
     <div>
       <div className={css.blockForReplyMessage}>
         {selectedFile && (
-          <div className={css.clipElementsWrapper}>
+          <div className={css.clipElementsWrapper} onClick={handleCloseModal}>
             <ModalClipElements
               file={selectedFile}
               onClose={handleCloseModal}
-              value={messageValue}
               onChange={handleInputChange}
             />
           </div>
