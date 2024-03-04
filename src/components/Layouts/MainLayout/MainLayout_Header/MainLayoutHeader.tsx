@@ -9,13 +9,17 @@ import logo from '../../../../assets/ModalAuth/logo.svg';
 import avatar from '../../../../assets/user/avatarIvan.svg';
 import ModalPremium from './ModalPremium/ModalPremium';
 import ModalNotification from 'components/ModalNotification/ModalNotification';
-import './index.css';
+import { LanguageSelect } from 'components/Header/LanguageSelect/LanguageSelect';
+
+import styles from './mainLayoutHeader.module.css';
 
 export const MainLayoutHeader: FC = () => {
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const [isPremiumModalOpen, setPremiumModalOpen] = useState(false);
-  const [isNotificationModalOpen, setIsNotifaicationModalOpen] =
+  const [isNotificationModalOpen, setIsNotifiicationModalOpen] =
     useState(false);
+  const [isLanguageModalVisible, setLanguageModalVisible] = useState(false);
+
   const { pathname } = useLocation();
 
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -24,7 +28,7 @@ export const MainLayoutHeader: FC = () => {
   };
 
   const handleOpenNotificationModal = () => {
-    setIsNotifaicationModalOpen(!isNotificationModalOpen);
+    setIsNotifiicationModalOpen(!isNotificationModalOpen);
   };
 
   const closeDropdown = () => {
@@ -51,65 +55,68 @@ export const MainLayoutHeader: FC = () => {
   const closePremiumModal = () => {
     setPremiumModalOpen(false);
   };
-  const closeNotifucationModal = () => {
-    setIsNotifaicationModalOpen(false);
+  const closeNotificationModal = () => {
+    setIsNotifiicationModalOpen(false);
   };
 
   return (
-    <div className="headerWrapper">
-      <div className="logo">
+    <div className={styles.headerWrapper}>
+      <div className={styles.logo}>
         <img src={logo} alt="logo" />
       </div>
-      <div className="headerInfo">
-        <div className="headerIcons">
+      <div className={styles.headerInfo}>
+        <div className={styles.headerIcons}>
           <button
-            className={`headerIcon ${
+            className={`${styles.headerIcon} ${
               isNotificationModalOpen || pathname === '/notification'
-                ? 'bellActive'
+                ? styles.bellActive
                 : ''
             }`}
             onClick={handleOpenNotificationModal}
           >
             <img src={bell} alt="notifications" />
           </button>
-          <button className="headerCalendar headerIcon">
+          <button className={(styles.headerCalendar, styles.headerIcon)}>
             <img src={calendar} alt="calendar" />
           </button>
         </div>
 
-        <button className="userButton" onClick={handleDropdownClick}>
-          <div className="userInfo">
-            <div className="userPersonalInfo">
+        <button className={styles.userButton} onClick={handleDropdownClick}>
+          <div className={styles.userInfo}>
+            <div className={styles.userPersonalInfo}>
               <NavLink
                 to="self"
                 className={({ isActive }) =>
-                  isActive ? 'activeSelfLink' : 'deactiveSelfLink'
+                  isActive ? styles.activeSelfLink : styles.deactiveSelfLink
                 }
               >
-                <div className="navPanelUserPic">
-                  {' '}
+                <div className={styles.navPanelUserPic}>
                   <img src={avatar} alt="avatar" />{' '}
                 </div>
               </NavLink>
               <div>
-                <div className="navPanelUserName">Ivan</div>
-                <div className="navPanelUserCity">Now in Paris</div>
+                <div className={styles.navPanelUserName}>Ivan</div>
+                <div className={styles.navPanelUserCity}>Now in Paris</div>
               </div>
             </div>
 
             <img
               src={arrow}
               alt="button arrow"
-              className={`userImg ${dropdownVisible ? `arrowRotate` : ''}`}
+              className={` ${styles.userImg} ${
+                dropdownVisible ? styles.arrowRotate : ''
+              }`}
             />
           </div>
         </button>
-        {dropdownVisible && (
+
+        {dropdownVisible && !isLanguageModalVisible ? (
           <DropdownContent
             closeDropdown={closeDropdown}
             setModalOpen={setPremiumModalOpen}
+            setLanguageModalVisible={setLanguageModalVisible}
           />
-        )}
+        ) : null}
         {isPremiumModalOpen && (
           <ModalPremium
             isOpen={isPremiumModalOpen}
@@ -118,9 +125,25 @@ export const MainLayoutHeader: FC = () => {
         )}
         <ModalNotification
           isOpen={isNotificationModalOpen}
-          onClose={closeNotifucationModal}
+          onClose={closeNotificationModal}
         />
       </div>
+      {isLanguageModalVisible && (
+        <div className={styles.languageModal}>
+          <div className={styles.languageModalHeader}>
+            <img
+              src={arrow}
+              alt="arrow"
+              onClick={() => setLanguageModalVisible(false)}
+            />
+            <p>Language</p>
+          </div>
+          <LanguageSelect
+            isActiveMenu={isLanguageModalVisible}
+            setIsActiveMenu={setLanguageModalVisible}
+          />
+        </div>
+      )}
     </div>
   );
 };

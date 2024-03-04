@@ -6,7 +6,7 @@
   background-color: #32303e;
   min-width: 304px;
   border-radius: 0 0 5px 5px;
-  z-index: 10;
+  z-index: 2;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
@@ -27,6 +27,7 @@
   border-radius: 4px;
   gap: 8px;
   transition: background-color 0.3s ease-in-out;
+  cursor: pointer;
 }
 
 .dropdownItem > img {
@@ -38,7 +39,6 @@
   font:
     500 14px/18px "Montserrat",
     sans-serif;
-  letter-spacing: 0.1px;
   text-align: left;
 }
 
@@ -62,7 +62,6 @@
   font:
     600 16px/20px "Montserrat",
     sans-serif;
-  letter-spacing: 0.2px;
   text-align: center;
 }
 
@@ -80,6 +79,7 @@
   flex-direction: column;
   width: 100%;
   align-items: center;
+  justify-content: flex-start;
 }
 
 .logoutItem {

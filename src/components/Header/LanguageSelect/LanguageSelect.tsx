@@ -1,46 +1,45 @@
 import React from 'react';
-import styles from './LanguageSelect.module.css';
-import '../LanguagesSwich.css';
+
 import { languages } from '../language';
-import { useState } from 'react';
-import { ReactComponent as ActiveArrow } from '../../../assets/Header/activeArrow.svg';
-import { ReactComponent as PassiveArrow } from '../../../assets/Header/passiveArrow.svg';
+import { setLanguage } from 'store/language/slice';
+import { useAppDispatch } from 'hooks/hooks';
+import styles from './LanguageSelect.module.css';
 
-export const LanguageSelect = () => {
-  const [activeMenu, setActiveMenu] = useState(false);
-  const [selectLang, setselectLang] = useState('English');
+// import '../LanguagesSwich.css';
 
-  const handleActiveMenu = () => {
-    setActiveMenu(!activeMenu);
-  };
+export const LanguageSelect = ({
+  isActiveMenu,
+  setIsActiveMenu,
+}: {
+  isActiveMenu: boolean;
+  setIsActiveMenu: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
+  const dispatch = useAppDispatch();
   const switchLang = (event: React.MouseEvent) => {
-    const lang = event.currentTarget.textContent;
+    const lang = event.currentTarget.firstElementChild?.textContent;
 
-    setselectLang(lang || 'English');
+    setIsActiveMenu(false);
+    dispatch(setLanguage(lang));
   };
 
   return (
-    <div onClick={handleActiveMenu} className={styles.languageSelect}>
-      <p className={styles.selectLanguage}>{selectLang}</p>
-      {activeMenu ? <PassiveArrow /> : <ActiveArrow />}
-      {activeMenu && (
+    <>
+      {isActiveMenu && (
         <div className={styles.languagesBox}>
           <ul className={styles.languagesList}>
             {languages.map((language) => (
-              <div className={styles.languagesItem_box}>
-                <li
-                  key={language}
-                  className={styles.languagesItem}
-                  onClick={switchLang}
-                >
-                  {language}
-                </li>
+              <div
+                className={styles.languagesItemBox}
+                onClick={switchLang}
+                key={language}
+              >
+                <li className={styles.languagesItem}>{language}</li>
                 <span className={styles.language}>{language}</span>
               </div>
             ))}
           </ul>
         </div>
       )}
-    </div>
+    </>
   );
 };

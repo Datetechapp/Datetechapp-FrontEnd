@@ -1,10 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
 import { ReactComponent as PlayButtonIcon } from '../../../../../assets/feed/PlayIcon.svg';
 import { ReactComponent as ContactIcon } from '../../../../../assets/feed/Contact.svg';
 import { ReactComponent as QuestionIcon } from '../../../../../assets/feed/Question.svg';
 import { ReactComponent as GlobeIcon } from '../../../../../assets/feed/Globe.svg';
 import { ReactComponent as LogoutIcon } from '../../../../../assets/feed/Logout.svg';
+import { useAppSelector } from 'hooks/hooks';
+import { getLanguage } from 'store/language/selectors';
 import styles from './Dropdown.module.css';
 
 type MenuItem = {
@@ -16,16 +19,20 @@ type MenuItem = {
 type DropdownContentProps = {
   closeDropdown: () => void;
   setModalOpen: (isOpen: boolean) => void;
+  setLanguageModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const DropdownContent: React.FC<DropdownContentProps> = ({
   closeDropdown,
   setModalOpen,
+  setLanguageModalVisible,
 }) => {
   const openModalPremium = () => {
     setModalOpen(true);
     closeDropdown();
   };
+
+  const languageName = useAppSelector(getLanguage);
 
   const handleLinkClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target instanceof HTMLAnchorElement) {
@@ -37,7 +44,6 @@ const DropdownContent: React.FC<DropdownContentProps> = ({
     { path: '/feed', icon: PlayButtonIcon, text: 'For you' },
     { path: '/profile', icon: ContactIcon, text: 'View Profile' },
     { path: '/support/faq', icon: QuestionIcon, text: 'Feedback and help' },
-    { path: '/path4', icon: GlobeIcon, text: 'English' },
   ];
 
   return (
@@ -61,6 +67,13 @@ const DropdownContent: React.FC<DropdownContentProps> = ({
               <span>{item.text}</span>
             </Link>
           ))}
+          <div
+            className={styles.dropdownItem}
+            onClick={() => setLanguageModalVisible(true)}
+          >
+            <GlobeIcon />
+            <span>{languageName}</span>
+          </div>
         </div>
 
         <Link

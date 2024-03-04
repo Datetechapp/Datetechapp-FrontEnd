@@ -14,36 +14,13 @@
 }
 
 .logo,
-.header__buttons {
+.headerButtons {
   margin: 0 30px;
 }
 
-.header__buttons {
+.headerButtons {
   display: flex;
   justify-content: center;
-}
-
-.BtnUpload {
-  width: 184px;
-  height: 56px;
-  border: 1px solid #e9e3f5;
-  background: none;
-  color: #e9e3f5;
-  text-transform: capitalize;
-  cursor: pointer;
-  outline: inherit;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 25px;
-  border-radius: 5px;
-}
-
-.BtnUpload:hover {
-  backdrop-filter: blur(5px);
-}
-
-.BtnUpload:active {
-  background: #5f4f7f;
 }
 
 .headerIcons {

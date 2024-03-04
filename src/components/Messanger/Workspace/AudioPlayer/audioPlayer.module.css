@@ -1,6 +1,6 @@
 .audioPlayerWrapper {
   position: relative;
-  z-index: 5;
+  z-index: 1;
   height: 54px;
   background: var(--Dark_Background, #1f1d2b);
   border-bottom: 1.5px solid var(--panel-background, #272533);

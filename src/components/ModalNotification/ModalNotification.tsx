@@ -12,6 +12,8 @@ type NotificationProp = {
   onClose?: () => void;
 };
 
+const maxHeight = '600px';
+
 const ModalNotification: FC<NotificationProp> = ({ isOpen, onClose }) => {
   const navigate = useNavigate();
   const notifications = useSelector(getAllNotifications);
@@ -21,7 +23,7 @@ const ModalNotification: FC<NotificationProp> = ({ isOpen, onClose }) => {
       className={styles.notificationContainer}
       onMouseLeave={onClose}
       style={{
-        maxHeight: isOpen ? '100%' : '0',
+        maxHeight: isOpen ? maxHeight : '0',
       }}
     >
       <h3 className={styles.notificationTitle}>Notifications</h3>

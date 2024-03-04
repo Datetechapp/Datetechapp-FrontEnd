@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom';
 import style from './messangerLayout.module.css';
 
 import { EventsMessagesBlock } from 'components/EventsMessagesBlock';
-import { MainLayoutHeader } from '../MainLayout/MainLayout_Header/MainLayout_header';
+import { MainLayoutHeader } from '../MainLayout/MainLayout_Header/MainLayoutHeader';
 
 export const MessangerLayout = () => {
   return (
