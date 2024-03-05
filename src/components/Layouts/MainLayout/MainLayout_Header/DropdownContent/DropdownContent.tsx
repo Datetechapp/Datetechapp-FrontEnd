@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Dispatch, FC, MouseEvent } from 'react';
 import { Link } from 'react-router-dom';
 
 import { ReactComponent as PlayButtonIcon } from '../../../../../assets/feed/PlayIcon.svg';
@@ -19,10 +19,10 @@ type MenuItem = {
 type DropdownContentProps = {
   closeDropdown: () => void;
   setModalOpen: (isOpen: boolean) => void;
-  setLanguageModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  setLanguageModalVisible: Dispatch<React.SetStateAction<boolean>>;
 };
 
-const DropdownContent: React.FC<DropdownContentProps> = ({
+const DropdownContent: FC<DropdownContentProps> = ({
   closeDropdown,
   setModalOpen,
   setLanguageModalVisible,
@@ -34,7 +34,7 @@ const DropdownContent: React.FC<DropdownContentProps> = ({
 
   const languageName = useAppSelector(getLanguage);
 
-  const handleLinkClick = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleLinkClick = (e: MouseEvent<HTMLDivElement>) => {
     if (e.target instanceof HTMLAnchorElement) {
       closeDropdown();
     }

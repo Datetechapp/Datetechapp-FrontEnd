@@ -1,21 +1,19 @@
-import React from 'react';
+import React, { Dispatch, MouseEvent } from 'react';
 
 import { languages } from '../language';
 import { setLanguage } from 'store/language/slice';
 import { useAppDispatch } from 'hooks/hooks';
 import styles from './LanguageSelect.module.css';
 
-// import '../LanguagesSwich.css';
-
 export const LanguageSelect = ({
   isActiveMenu,
   setIsActiveMenu,
 }: {
   isActiveMenu: boolean;
-  setIsActiveMenu: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsActiveMenu: Dispatch<React.SetStateAction<boolean>>;
 }) => {
   const dispatch = useAppDispatch();
-  const switchLang = (event: React.MouseEvent) => {
+  const switchLang = (event: MouseEvent) => {
     const lang = event.currentTarget.firstElementChild?.textContent;
 
     setIsActiveMenu(false);
