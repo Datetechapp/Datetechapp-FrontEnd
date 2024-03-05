@@ -2,7 +2,7 @@ import style from './Notification.module.css';
 import { useSelector } from 'react-redux';
 
 import NotificationList from 'components/ModalNotification/NotificationList/NotificationList';
-import { MainLayoutHeader } from 'components/Layouts/MainLayout/MainLayout_Header/MainLayout_header';
+import { MainLayoutHeader } from 'components/Layouts/MainLayout/MainLayout_Header/MainLayoutHeader';
 import { getAllNotifications } from 'store/notifications/selectors';
 
 const NotificationPage = () => {

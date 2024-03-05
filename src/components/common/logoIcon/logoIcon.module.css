@@ -6,7 +6,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(180deg, rgba(151, 71, 255, 1) 0%, rgba(222, 119, 199, 1) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(151, 71, 255, 1) 0%,
+    rgba(222, 119, 199, 1) 100%
+  );
 }
 
 .imageWrapper img {
