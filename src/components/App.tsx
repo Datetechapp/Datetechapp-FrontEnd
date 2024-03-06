@@ -20,7 +20,7 @@ import { PaymentSubscription } from './Layouts/PaymentPageLayout/components/Paym
 import { PaymentHistory } from './Layouts/PaymentPageLayout/components/PaymentHistory';
 import { MessangerLayout } from './Layouts/MessangerLayout';
 import { Messanger } from './Messanger';
-
+import { ProfilePage } from './pages/Profile';
 
 export const App = () => {
   const { pathname } = useLocation();
@@ -58,9 +58,14 @@ export const App = () => {
             <Route path="request" element={<RequestPage />} />
           </Route>
           <Route path="/payment" element={<PaymentPageLayout />}>
-            <Route path="subscription" element={<PaymentSubscription />} />
+            <Route
+              index
+              path="subscription"
+              element={<PaymentSubscription />}
+            />
             <Route path="history" element={<PaymentHistory />} />
           </Route>
+          <Route path="/profile" element={<ProfilePage />} />
         </Routes>
       )}
     </div>
