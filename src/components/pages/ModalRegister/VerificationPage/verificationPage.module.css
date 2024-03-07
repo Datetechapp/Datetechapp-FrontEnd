@@ -21,11 +21,14 @@
 }
 
 .main::after {
+  --step: 1;
+  --steps: 9;
+  --stepsLeft: calc(var(--steps) - var(--step));
   content: "";
   position: absolute;
   top: 0;
-  left: 12.5%;
-  width: 87.5%;
+  left: calc(100% / var(--steps) * var(--step));
+  width: calc(100% / var(--steps) * var(--stepsLeft));
   height: 4px;
   background-color: gray;
 }

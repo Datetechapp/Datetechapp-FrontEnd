@@ -1,13 +1,13 @@
+import { useEffect, useState } from 'react';
+
 import { Event } from './Event';
 import { useAppSelector } from 'hooks/hooks';
 import { getAllEvents } from 'store/events/selectors';
-import { useEffect, useState } from 'react';
 import { ModalBox } from 'components/common/modal';
 import SimpleCloseIcon from '../../../../assets/SupportServicePanel/SimpleCloseIcon.svg';
 import { Button } from 'components/common';
-import { v4 as uid } from 'uuid';
+
 import styles from '../../eventsMessagesBlock.module.css';
-import 'animate.css';
 
 export function EventsBlock() {
   const defaultLengthOfEventItems = 6;
@@ -97,7 +97,9 @@ export function EventsBlock() {
         </div>
         <div className={styles.eventModalButtons}>
           <div className={styles.linearBorder}>
-            <Button className={styles.cancelButton}>Cancel</Button>
+            <Button className={styles.cancelButton} onClick={handleChangeOpen}>
+              Cancel
+            </Button>
           </div>
           <Button className={styles.editButton}>Edit</Button>
         </div>

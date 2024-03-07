@@ -8,44 +8,6 @@
   align-items: center;
 }
 
-.heartIcon {
-  width: 32px;
-  border: 3px;
-  fill: none;
-  transition:
-    fill 0.3s,
-    stroke 0.3s;
-  stroke: url(#paint0_linear_6978_64739);
-}
-
-.heartIcon:hover {
-  stroke: #de77c7;
-}
-
-.heartIcon:active {
-  stroke: url(#paint0_linear_6978_64739);
-  fill: url(#paint0_linear_6978_64739);
-}
-
-.closeIcon {
-  width: 21px;
-  fill: #c896ef;
-}
-
-.closeIcon:active {
-  fill: #b71a78;
-}
-
-.containerIcons:hover {
-  background-color: #32303e;
-  box-shadow: none;
-}
-
-.containerIcons:active {
-  background-color: #1f1d2b;
-  box-shadow: 0 0 10px 3px rgba(95, 79, 127, 0.5);
-}
-
 .containerIcons {
   width: 68px;
   height: 68px;
@@ -61,6 +23,44 @@
   transition:
     background-color 0.3s,
     box-shadow 0.3s;
+}
+
+.containerIcons:hover {
+  background-color: #32303e;
+  box-shadow: none;
+}
+
+.containerIcons:active {
+  background-color: #1f1d2b;
+  box-shadow: 0 0 10px 3px rgba(95, 79, 127, 0.5);
+}
+
+.heartIcon {
+  width: 32px;
+  border: 3px;
+  fill: none;
+  transition:
+    fill 0.3s,
+    stroke 0.3s;
+  stroke: url(#paint0_linear_6978_64739);
+}
+
+.closeIcon {
+  width: 21px;
+  fill: #c896ef;
+}
+
+.containerIcons:active .closeIcon {
+  fill: #b71a78;
+}
+
+.containerIcons:hover .heartIcon {
+  stroke: #de77c7;
+}
+
+.containerIcons:active .heartIcon {
+  stroke: url(#paint0_linear_6978_64739);
+  fill: url(#paint0_linear_6978_64739);
 }
 
 .myGradient {
@@ -87,7 +87,6 @@
   font-size: 16px;
   font-weight: 600;
   line-height: 20px;
-  letter-spacing: 0.2px;
   text-align: center;
   display: flex;
   align-items: center;
@@ -116,9 +115,15 @@
   flex-direction: column;
   color: #fff;
   gap: 7px;
-  overflow-y: auto;
-  overflow-x: hidden;
   position: relative;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.matchingProfiles::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
 }
 
 .interestedActive {

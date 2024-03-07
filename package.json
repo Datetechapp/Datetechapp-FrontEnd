@@ -36,6 +36,7 @@
     "react-scripts": "5.0.1",
     "react-select": "^5.7.7",
     "react-textarea-autosize": "^8.5.3",
+    "react-transition-group": "^4.4.5",
     "react-use": "^17.5.0",
     "react-voice-visualizer": "^1.7.4",
     "redux": "^4.2.1",
@@ -55,7 +56,8 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "format": "prettier ./**/*.{js,ts,tsx,css,json} --check",
-    "format:fix": "prettier ./**/*.{js,ts,tsx,css,json} --write"
+    "format:fix": "prettier ./**/*.{js,ts,tsx,css,json} --write",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -94,8 +96,13 @@
     "eslint-plugin-prettier": "^5.0.1",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.3",
     "json-server": "^0.17.4",
     "prettier": "^3.0.3",
     "typescript": "^5.3.3"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": "eslint --cache --fix",
+    "*.{js,jsx,ts,tsx,scss,css,md}": "npm run format"
   }
 }

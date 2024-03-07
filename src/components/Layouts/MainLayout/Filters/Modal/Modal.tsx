@@ -150,8 +150,6 @@ const Modal: React.FC<ModalProps> = ({
     'Graffiti',
     'Numismatics',
     'Stones and minerals',
-
-    //не знаю что такое Clothes decoration заменила на Dressmaking
   ];
 
   const getCheckboxOptions = () => {

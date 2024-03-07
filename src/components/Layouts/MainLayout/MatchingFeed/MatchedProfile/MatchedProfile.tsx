@@ -25,6 +25,8 @@ const MatchedProfile: React.FC<UserProfileCardProps> = ({
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isShareProfileVisible, setShareProfileVisible] = useState(false);
   const [isCopyLinkVisible, setCopyLinkVisible] = useState(false);
+  const shareDotsRef = useRef<HTMLDivElement>(null);
+  const copyDotsRef = useRef<HTMLDivElement>(null);
 
   const handleShareButtonClick = () => {
     setShareProfileVisible(!isShareProfileVisible);
@@ -33,6 +35,30 @@ const MatchedProfile: React.FC<UserProfileCardProps> = ({
   const handleCopyButtonClick = () => {
     setCopyLinkVisible(!isCopyLinkVisible);
   };
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      shareDotsRef.current &&
+      !shareDotsRef.current.contains(event.target as Node)
+    ) {
+      setShareProfileVisible(false);
+    }
+
+    if (
+      copyDotsRef.current &&
+      !copyDotsRef.current.contains(event.target as Node)
+    ) {
+      setCopyLinkVisible(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('click', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
 
   const handleVideoClick = () => {
     if (videoRef.current) {
@@ -111,7 +137,11 @@ const MatchedProfile: React.FC<UserProfileCardProps> = ({
             </div>
           </div>
         </div>
-        <div className={styles.profileDots} onClick={handleShareButtonClick}>
+        <div
+          className={styles.profileDots}
+          onClick={handleShareButtonClick}
+          ref={shareDotsRef}
+        >
           ...
           {isShareProfileVisible && (
             <div className={styles.shareProfileElement}>
@@ -185,6 +215,7 @@ const MatchedProfile: React.FC<UserProfileCardProps> = ({
           <div
             className={styles.profileDotsCopy}
             onClick={handleCopyButtonClick}
+            ref={copyDotsRef}
           >
             {isCopyLinkVisible && (
               <div className={styles.copyLinkElement}>

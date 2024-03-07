@@ -32,32 +32,6 @@
   background: #5f4f7f;
 }
 
-.imageWrapper {
-  position: relative;
-  border-radius: 100%;
-  width: 52px;
-  height: 52px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.imageWrapper img {
-  width: 48px;
-  height: 48px;
-  flex-shrink: 0;
-}
-
-.onlineStatus {
-  position: absolute;
-  bottom: 6px;
-  right: 5px;
-  background-color: #40d666;
-  width: 7px;
-  height: 7px;
-  border-radius: 100%;
-}
-
 .rightSideMessage {
   gap: 4px;
   display: flex;
@@ -68,6 +42,7 @@
 .headerMessage {
   display: flex;
   justify-content: space-between;
+  color: white;
 }
 
 .userName {
@@ -95,6 +70,7 @@
 .bodyMessage {
   flex-grow: 1;
   position: relative;
+  color: white;
 }
 
 .bodyMessage p {
@@ -123,7 +99,7 @@
 }
 
 .newMessageIcon p {
-  color: var(--Dark_Background, #1f1d2b);
+  color: #1f1d2b;
   font-family: Montserrat;
   font-size: 10px;
   font-weight: 600;

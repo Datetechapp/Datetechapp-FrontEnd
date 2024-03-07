@@ -197,7 +197,7 @@ export const Workspace = ({
         {showSearchMessages && (
           <SearchMessages setShowSearchMessages={setShowSearchMessages} />
         )}
-        {pinnedMessages?.length && (
+        {!!pinnedMessages?.length && (
           <PinnedMessage
             togglePinnedMessage={togglePinnedMessage}
             currentPinnedMessageIndex={currentPinnedMessageIndex}

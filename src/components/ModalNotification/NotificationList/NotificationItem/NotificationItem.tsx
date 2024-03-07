@@ -1,16 +1,14 @@
-import React from 'react';
-import avatar from '../../../../assets/user/avatar Ivan.svg';
 import styles from './NotificationItem.module.css';
 
-type Notification = {
-  id: number;
-  type: 'event' | 'like' | 'new' | 'decline' | 'accept';
-  user: string;
-  event: string | null;
-  time: string;
-};
+import { LogoIcon } from 'components/common/logoIcon';
+import { INotificationProps } from 'store/notifications/types';
+import { GroupLogo } from 'components/common/group-logo';
 
-const NotificationItem = ({ notification }: { notification: Notification }) => {
+const NotificationItem = ({
+  notification,
+}: {
+  notification: INotificationProps;
+}) => {
   const newTime = new Date(notification.time).toLocaleString('en-US', {
     day: 'numeric',
     month: 'short',
@@ -18,7 +16,7 @@ const NotificationItem = ({ notification }: { notification: Notification }) => {
     minute: 'numeric',
   });
 
-  const userName = <span className={styles.user}>{notification.user}</span>;
+  const userName = <span className={styles.user}>{notification.name}</span>;
 
   let textEvent;
 
@@ -37,7 +35,20 @@ const NotificationItem = ({ notification }: { notification: Notification }) => {
   return (
     <div className={styles.notificationItem}>
       <div className={styles.notificationItemContainer}>
-        <img src={avatar} alt="avatar" />
+        {notification.type === 'event' ? (
+          <GroupLogo
+            image={notification.image}
+            imagePartner={notification.imagePartner}
+          />
+        ) : (
+          <LogoIcon
+            image={notification.image}
+            name={notification.name}
+            status={notification.status}
+            premium={notification.premium}
+          />
+        )}
+
         <div className={styles.eventDetails}>
           <p className={styles.textEvent}>{textEvent}</p>
           <span className={styles.time}>{newTime}</span>

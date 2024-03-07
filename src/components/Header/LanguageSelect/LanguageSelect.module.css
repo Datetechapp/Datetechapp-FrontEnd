@@ -1,58 +1,39 @@
-.languageSelect {
-  display: flex;
-  gap: 12px;
-  justify-content: flex-end;
-  cursor: pointer;
-  position: relative;
-  width: 152px;
-  height: 25px;
-  align-self: center;
-  align-items: center;
-}
-
-.selectLanguage {
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 22px;
-  letter-spacing: 0.1px;
-}
-
 .languagesBox {
   min-width: 304px;
   padding: 16px 8px;
   border-radius: 0px 0px 5px 5px;
   background: #32303e;
-  position: absolute;
-  top: 40px;
-  left: -50px;
-  z-index: 1;
-  display: block;
+
   opacity: 1;
-  animation: languagevisible 0.5s ease-in-out;
+  animation: languageIsVisible 0.5s ease-in-out;
 }
+
 .languagesItem {
+  list-style: none;
   color: #fff;
   font-family: Montserrat;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
   line-height: 18px;
-  letter-spacing: 0.1px;
   transition: 0.4s ease-in;
 }
-.languagesItem_box {
+
+.languagesItemBox {
   cursor: pointer;
   padding: 4px 8px;
   border-radius: 4px;
   width: 100%;
 }
-.languagesItem_box:not(:last-child) {
+
+.languagesItemBox:not(:last-child) {
   margin-bottom: 8px;
 }
-.languagesItem_box:hover {
+
+.languagesItemBox:hover {
   background-color: #5f4f7f;
 }
+
 .language {
   padding-top: 4px;
   color: #e1dbed;
@@ -61,9 +42,9 @@
   font-style: normal;
   font-weight: 400;
   line-height: 14px;
-  letter-spacing: 0.1px;
 }
-@keyframes languagevisible {
+
+@keyframes languageIsVisible {
   0% {
     display: none;
     opacity: 0;

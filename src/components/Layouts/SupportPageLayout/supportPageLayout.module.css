@@ -1,20 +1,39 @@
 .container {
   display: flex;
+  flex-direction: column;
   background-color: #1f1d2b;
   width: 100%;
   color: #fff;
   height: 100vh;
 }
 
-.leftPart {
-  flex: 3;
+.wrapper {
+  display: flex;
+  padding-left: 32px;
 }
 
-.wrapper {
-  width: 95%;
-  margin: 0 auto;
+.wrapper div:first-child {
+  align-self: flex-start;
+}
+
+.main {
+  display: flex;
+  justify-content: space-between;
+}
+
+.leftPart {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.outlet {
+  flex: 1;
+  padding-right: 32px;
 }
 
 .rightPart {
-  flex: 1;
+  width: 382px;
+  flex-shrink: 0;
+  height: calc(100vh - 64px);
 }
