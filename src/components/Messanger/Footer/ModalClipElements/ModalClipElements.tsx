@@ -35,6 +35,8 @@ export const ModalClipElements = ({
 
   const handleDelete = () => setModal(true);
 
+  const handleSend = () => {}; // TODO: send to back-end
+
   const handleChange = ({ target }: ChangeEvent<HTMLTextAreaElement>) => {
     setCaption(target.value);
 
@@ -48,8 +50,6 @@ export const ModalClipElements = ({
         : (inputRef.current.style.borderRadius = '30px');
     }, 0);
   };
-
-  // TODO: useMemo for image urls
 
   const handleCancel = () => setModal(false);
 
@@ -82,7 +82,7 @@ export const ModalClipElements = ({
               onChange={handleChange}
               ref={textareaRef}
             />
-            <SendIcon className={css.sendIcon} />
+            <SendIcon className={css.sendIcon} onClick={handleSend} />
           </div>
         </div>
       </div>
