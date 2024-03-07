@@ -21,7 +21,6 @@
   display: grid;
   place-items: center;
   flex: 1;
-
   background: linear-gradient(180deg, rgb(151 71 255), rgb(222 119 199));
   border-radius: 5px;
 }
