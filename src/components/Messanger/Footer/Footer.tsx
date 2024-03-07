@@ -2,12 +2,14 @@ import { UploadButton } from 'components/pages/Questionnaire/UploadButton';
 import EmojiPicker from 'emoji-picker-react';
 import { useState, type ChangeEvent } from 'react';
 import { useVoiceVisualizer } from 'react-voice-visualizer';
-import { ReactComponent as Clip } from '../../../assets/Messanger/Clip.svg';
-import { ReactComponent as EmojiIcon } from '../../../assets/Messanger/emojiIcon.svg';
+
 import { Input } from '../../common/input';
 import { ModalClipElements } from './ModalClipElements';
 import { RecordingAudio } from './RecordingAudio/RecordingAudio';
 import { ReplyMessage } from './ReplyMessage';
+
+import { ReactComponent as Clip } from '../../../assets/Messanger/Clip.svg';
+import { ReactComponent as EmojiIcon } from '../../../assets/Messanger/emojiIcon.svg';
 
 import css from './footer.module.css';
 
@@ -22,7 +24,7 @@ export const Footer = ({
   showReplyMessage,
   onShowReplyMessage,
 }: FooterProps) => {
-  const [messageValue, setMessageValue] = useState('');
+  const [message, setMessage] = useState('');
   const [showPicker, setShowPicker] = useState(false);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [isRecording, setIsRecording] = useState(false);
@@ -33,11 +35,11 @@ export const Footer = ({
   const handleTogglePicker = () => setShowPicker(!showPicker);
 
   const handleEmojiClick = (emojiObject: { emoji: string }) => {
-    setMessageValue(messageValue + emojiObject.emoji);
+    setMessage(message + emojiObject.emoji);
   };
 
   const handleInputChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
-    setMessageValue(target.value);
+    setMessage(target.value);
   };
 
   const handleUploadFile = (file: File) => setSelectedFile(file);
@@ -48,13 +50,11 @@ export const Footer = ({
     <div>
       <div className={css.blockForReplyMessage}>
         {selectedFile && (
-          <div className={css.clipElementsWrapper} onClick={handleCloseModal}>
-            <ModalClipElements
-              file={selectedFile}
-              onClose={handleCloseModal}
-              onChange={handleInputChange}
-            />
-          </div>
+          <ModalClipElements
+            file={selectedFile}
+            onClose={handleCloseModal}
+            setMessage={setMessage}
+          />
         )}
         <div
           className={
@@ -103,7 +103,7 @@ export const Footer = ({
             }
             type="text"
             placeholder={isRecordedBlob || isRecording ? '' : 'Message...'}
-            value={messageValue}
+            value={message}
             onChange={handleInputChange}
             readOnly={isRecordedBlob || isRecording}
           />

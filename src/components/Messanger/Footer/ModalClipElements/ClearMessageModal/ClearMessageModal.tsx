@@ -10,12 +10,14 @@ type Props = {
 };
 
 export const ClearMessageModal = ({ onClose, onCancel, onClear }: Props) => {
+  // const handleChangeOpen = (e: MouseEvent) => e.stopImmediatePropagation();
+
   return (
-    <ModalBox open={true} handleChangeOpen={onClose} maxWidth={'432px'}>
+    <ModalBox open={true} handleChangeOpen={() => {}} maxWidth={'432px'}>
       <p className={css.modalHeader}>Clear message</p>
       <p className={css.modalText}>Are you sure you want to clear message?</p>
       <div className={css.modalButtons}>
-        <div className={css.linearBorder}>
+        <div>
           <Button className={css.cancelButton} onClick={onCancel}>
             Cancel
           </Button>
