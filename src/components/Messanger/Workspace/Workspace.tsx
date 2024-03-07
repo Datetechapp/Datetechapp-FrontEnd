@@ -1,10 +1,6 @@
-import {
-  useCallback,
-  useState,
-  type Dispatch,
-  type MouseEvent,
-  type SetStateAction,
-} from 'react';
+import type { Dispatch, MouseEvent, SetStateAction } from 'react';
+import { useCallback, useState } from 'react';
+
 import {
   EmojiComponent,
   Message,
@@ -15,6 +11,7 @@ import {
   SearchMessages,
 } from '.';
 import { AudioPlayer } from './AudioPlayer/AudioPlayer';
+
 import css from './workspace.module.css';
 
 export interface MessageProps {
