@@ -1,18 +1,12 @@
 import { TextareaAutosize } from '@mui/material';
-import {
-  useRef,
-  useState,
-  type ChangeEvent,
-  type MouseEvent,
-  type SetStateAction,
-  type Dispatch,
-} from 'react';
+import type { ChangeEvent, Dispatch, MouseEvent, SetStateAction } from 'react';
+import { useRef, useState } from 'react';
+
+import { ClearMessageModal } from './ClearMessageModal';
 
 import { ReactComponent as DeleteIcon } from '../../../../assets/Messanger/DeleteIcon.svg';
 import { ReactComponent as SendIcon } from '../../../../assets/Messanger/SendIcon.svg';
-import { ModalCommon } from 'components/common';
-import { ModalBox } from 'components/common/modal';
-import { ClearMessageModal } from './ClearMessageModal';
+
 import css from './modalClipElements.module.css';
 
 type ModalClipElementsProps = {
@@ -57,6 +51,16 @@ export const ModalClipElements = ({
 
   // TODO: useMemo for image urls
 
+  const handleCancel = () => setModal(false);
+
+  const handleClear = () => {
+    if (caption) {
+      setMessage(caption);
+    }
+    setModal(false);
+    onClose();
+  };
+
   return (
     <div className={css.wrapper} onClick={handleWrapperClick}>
       <div className={css.modal} onClick={handleModalClick}>
@@ -83,11 +87,7 @@ export const ModalClipElements = ({
         </div>
       </div>
       {isModal && (
-        <ClearMessageModal
-          onClose={() => {}}
-          onCancel={() => {}}
-          onClear={() => {}}
-        />
+        <ClearMessageModal onCancel={handleCancel} onClear={handleClear} />
       )}
     </div>
   );

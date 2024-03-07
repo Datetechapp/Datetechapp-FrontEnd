@@ -3,17 +3,17 @@ import { ModalBox } from 'components/common/modal';
 
 import css from './clearMessageModal.module.css';
 
-type Props = {
-  onClose: () => void;
+type ClearMessageModalProps = {
   onCancel: () => void;
   onClear: () => void;
 };
 
-export const ClearMessageModal = ({ onClose, onCancel, onClear }: Props) => {
-  // const handleChangeOpen = (e: MouseEvent) => e.stopImmediatePropagation();
-
+export const ClearMessageModal = ({
+  onCancel,
+  onClear,
+}: ClearMessageModalProps) => {
   return (
-    <ModalBox open={true} handleChangeOpen={() => {}} maxWidth={'432px'}>
+    <ModalBox open={true} maxWidth={'432px'}>
       <p className={css.modalHeader}>Clear message</p>
       <p className={css.modalText}>Are you sure you want to clear message?</p>
       <div className={css.modalButtons}>

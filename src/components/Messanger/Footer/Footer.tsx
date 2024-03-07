@@ -47,67 +47,62 @@ export const Footer = ({
   const handleCloseModal = () => setSelectedFile(null);
 
   return (
-    <div>
-      <div className={css.blockForReplyMessage}>
-        {selectedFile && (
-          <ModalClipElements
-            file={selectedFile}
-            onClose={handleCloseModal}
-            setMessage={setMessage}
+    <div className={css.blockForReplyMessage}>
+      {selectedFile && (
+        <ModalClipElements
+          file={selectedFile}
+          onClose={handleCloseModal}
+          setMessage={setMessage}
+        />
+      )}
+      <div
+        className={
+          !showReplyMessage
+            ? css.fieldForMessageWrapper
+            : css.fieldForMessageWrapperWithReply
+        }
+      >
+        {showReplyMessage && (
+          <ReplyMessage
+            text={selectedMessageText}
+            setShowReplyMessage={() => onShowReplyMessage()}
           />
         )}
-        <div
-          className={
-            !showReplyMessage
-              ? css.fieldForMessageWrapper
-              : css.fieldForMessageWrapperWithReply
-          }
-        >
-          {showReplyMessage && (
-            <ReplyMessage
-              text={selectedMessageText}
-              setShowReplyMessage={() => onShowReplyMessage()}
+        <div className={css.iconsWrapper}>
+          {!isRecording && !isRecordedBlob && (
+            <EmojiIcon className={css.emojiIcon} onClick={handleTogglePicker} />
+          )}
+          <div className={css.recordingAudioBlock}>
+            <RecordingAudio
+              setIsRecording={setIsRecording}
+              // setMessageValue={setMessage}
+              setIsRecordedBlob={setIsRecordedBlob}
+            />
+          </div>
+          {!isRecording && !isRecordedBlob && (
+            <UploadButton
+              icon={<Clip className={css.clipIcon} />}
+              onUpload={handleUploadFile}
+              inputId="clipUpload"
+              accept="image/*"
             />
           )}
-          <div className={css.iconsWrapper}>
-            {!isRecording && !isRecordedBlob && (
-              <EmojiIcon
-                className={css.emojiIcon}
-                onClick={handleTogglePicker}
-              />
-            )}
-            <div className={css.recordingAudioBlock}>
-              <RecordingAudio
-                setIsRecording={setIsRecording}
-                // setMessageValue={setMessageValue}
-                setIsRecordedBlob={setIsRecordedBlob}
-              />
-            </div>
-            {!isRecording && !isRecordedBlob && (
-              <UploadButton
-                icon={<Clip className={css.clipIcon} />}
-                onUpload={handleUploadFile}
-                inputId="clipUpload"
-                accept="image/*"
-              />
-            )}
-          </div>
-          {showPicker && <EmojiPicker onEmojiClick={handleEmojiClick} />}
-          <Input
-            className={
-              !isRecording && !isRecordedBlob
-                ? css.fieldForMessage
-                : !isRecording && isRecordedBlob
-                ? css.fieldWithBlob
-                : css.fieldForRecording
-            }
-            type="text"
-            placeholder={isRecordedBlob || isRecording ? '' : 'Message...'}
-            value={message}
-            onChange={handleInputChange}
-            readOnly={isRecordedBlob || isRecording}
-          />
         </div>
+        {showPicker && <EmojiPicker onEmojiClick={handleEmojiClick} />}
+        <Input
+          className={
+            !isRecording && !isRecordedBlob
+              ? css.fieldForMessage
+              : !isRecording && isRecordedBlob
+              ? css.fieldWithBlob
+              : css.fieldForRecording
+          }
+          type="text"
+          placeholder={isRecordedBlob || isRecording ? '' : 'Message...'}
+          value={message}
+          onChange={handleInputChange}
+          readOnly={isRecordedBlob || isRecording}
+        />
       </div>
     </div>
   );
