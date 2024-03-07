@@ -62,33 +62,35 @@ export const ModalClipElements = ({
   };
 
   return (
-    <div className={css.wrapper} onClick={handleWrapperClick}>
-      <div className={css.modal} onClick={handleModalClick}>
-        <div className={css.imageBlock}>
-          <img
-            src={URL.createObjectURL(file)}
-            className={css.image}
-            alt="Selected"
-            onLoad={(e) => URL.revokeObjectURL(e.currentTarget.src)}
-          />
-          <DeleteIcon className={css.deleteIcon} onClick={handleDelete} />
-        </div>
-        <div className={css.inputBlock}>
-          <div className={css.input} ref={inputRef}>
-            <TextareaAutosize
-              className={css.textarea}
-              placeholder="Add a caption..."
-              value={caption}
-              onChange={handleChange}
-              ref={textareaRef}
+    <>
+      <div className={css.wrapper} onClick={handleWrapperClick}>
+        <div className={css.modal} onClick={handleModalClick}>
+          <div className={css.imageBlock}>
+            <img
+              src={URL.createObjectURL(file)}
+              className={css.image}
+              alt="Selected"
+              onLoad={(e) => URL.revokeObjectURL(e.currentTarget.src)}
             />
-            <SendIcon className={css.sendIcon} onClick={handleSend} />
+            <DeleteIcon className={css.deleteIcon} onClick={handleDelete} />
+          </div>
+          <div className={css.inputBlock}>
+            <div className={css.input} ref={inputRef}>
+              <TextareaAutosize
+                className={css.textarea}
+                placeholder="Add a caption..."
+                value={caption}
+                onChange={handleChange}
+                ref={textareaRef}
+              />
+              <SendIcon className={css.sendIcon} onClick={handleSend} />
+            </div>
           </div>
         </div>
       </div>
       {isModal && (
         <ClearMessageModal onCancel={handleCancel} onClear={handleClear} />
       )}
-    </div>
+    </>
   );
 };
