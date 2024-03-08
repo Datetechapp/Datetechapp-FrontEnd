@@ -15,6 +15,8 @@ type ModalClipElementsProps = {
   setMessage: Dispatch<SetStateAction<string>>;
 };
 
+const INPUT_COLLAPSED_HEIGHT = 20;
+
 export const ModalClipElements = ({
   file,
   onClose,
@@ -45,7 +47,7 @@ export const ModalClipElements = ({
 
       const height = parseInt(textareaRef.current.style.height);
 
-      height > 20
+      height > INPUT_COLLAPSED_HEIGHT
         ? (inputRef.current.style.borderRadius = '12px')
         : (inputRef.current.style.borderRadius = '30px');
     }, 0);
