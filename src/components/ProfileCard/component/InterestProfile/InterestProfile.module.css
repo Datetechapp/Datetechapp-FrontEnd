@@ -5,3 +5,42 @@
     line-height: 129%;
     color: #fff;
 }
+.cardBoxInterestsContainer{
+    padding-bottom: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap:12px;
+}
+.interestsItem{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 8px;
+    padding: 5px 12px;
+    background: #5f4f7f;
+}
+
+.interestsText{
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 129%;
+    text-align: right;
+    color: #FFF;
+}
+.cardBoxAboutSubTitle{
+    padding-bottom: 8px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 129%;
+    color: #FFF;
+}
+.interestsItemInterests{
+    border-radius: 8px;
+    padding: 9px 12px;
+    background: #5f4f7f;
+}
+.moreInterests{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}

@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 import { useState } from 'react';
 import likeButton from './../../assets/Profile/likeButton.svg';
 import LikeButton from './component/LikeButton/LikeButton';
-import InterestProfile from './component/InterestProfile/InterestProfile';
+import { InterestProfile } from './component/InterestProfile';
 
 export const ProfileCard = () => {
   const [fullText, setFullText] = useState(false);
@@ -35,11 +35,6 @@ export const ProfileCard = () => {
               <button className={style.cardButtonDetails}>
                 <img src={dots} alt="dots" />
               </button>
-
-              {/* <Button
-              sx={{ p: 0, m: 0, width: 40 }}
-              children={<img src={dots} alt="dots" />}
-            ></Button> */}
             </div>
           </div>
         </div>
@@ -49,7 +44,7 @@ export const ProfileCard = () => {
               {fullText ? text : shortText}
             </span>
             <button onClick={() => setFullText(!fullText)}>
-              {!fullText ? 'Read more' : ' Hide'}
+              {!fullText ? 'Read more' : '...Hide'}
             </button>
           </div>
           <InterestProfile />
