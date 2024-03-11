@@ -14,12 +14,14 @@ interface FooterProps {
   selectedMessageText: string;
   showReplyMessage: boolean;
   onShowReplyMessage: () => void;
+  setBlobSrc: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const Footer: FC<FooterProps> = ({
   selectedMessageText,
   showReplyMessage,
   onShowReplyMessage,
+  setBlobSrc,
 }) => {
   const [messageValue, setMessageValue] = useState('');
   const [showPicker, setShowPicker] = useState(false);
@@ -93,6 +95,7 @@ export const Footer: FC<FooterProps> = ({
                 setIsRecording={setIsRecording}
                 // setMessageValue={setMessageValue}
                 setIsRecordedBlob={setIsRecordedBlob}
+                setBlobSrc={setBlobSrc}
               />
             </div>
             {!isRecording && !isRecordedBlob && (

@@ -1,11 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import css from './message.module.css';
 import { ReactComponent as PinnedIcon } from '../../../../assets/Messanger/iconForPinnedMessage.svg';
 import { ContextMenu } from '../ContextMenu';
+import { message } from 'antd';
+import { AudioMessageContent } from './AudioMessageContent';
 
 export interface MessageProps {
   id: string;
   text: string;
+  blob?: string;
+  type: string;
   isMe: boolean;
   timestamp: string;
   isSelected: boolean;
@@ -23,6 +27,8 @@ export interface MessageProps {
 export const Message: React.FC<MessageProps> = ({
   id,
   text,
+  blob,
+  type,
   isMe,
   timestamp,
   isSelected,
@@ -60,11 +66,23 @@ export const Message: React.FC<MessageProps> = ({
           }`}
           onContextMenu={(event) => onContextMenu(event, id)}
         >
-          <p className={css.messageText}>{text}</p>
-          <div className={css.messageInfo}>
-            {isPinned && <PinnedIcon className={css.pinnedIcon} />}
-            <span className={css.messageTimestampt}>{timestamp}</span>
-          </div>
+          {type === 'audio' && blob ? (
+            <AudioMessageContent
+              audioRef={{ current: null }}
+              timestamp={timestamp}
+              isPinned={isPinned}
+              blob={blob}
+            />
+          ) : (
+            <>
+              <p className={css.messageText}>{text}</p>
+
+              <div className={css.messageInfo}>
+                {isPinned && <PinnedIcon className={css.pinnedIcon} />}
+                <span className={css.messageTimestampt}>{timestamp}</span>
+              </div>
+            </>
+          )}
         </div>
         <ContextMenu
           show={isSelected}
