@@ -1,5 +1,4 @@
 import { UploadButton } from 'components/pages/Questionnaire/UploadButton';
-import EmojiPicker from 'emoji-picker-react';
 import { useState, type ChangeEvent } from 'react';
 import { useVoiceVisualizer } from 'react-voice-visualizer';
 
@@ -25,18 +24,11 @@ export const Footer = ({
   onShowReplyMessage,
 }: FooterProps) => {
   const [message, setMessage] = useState('');
-  const [showPicker, setShowPicker] = useState(false);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [isRecording, setIsRecording] = useState(false);
   const [isRecordedBlob, setIsRecordedBlob] = useState(false);
 
   const recorderControls = useVoiceVisualizer();
-
-  const handleTogglePicker = () => setShowPicker(!showPicker);
-
-  const handleEmojiClick = (emojiObject: { emoji: string }) => {
-    setMessage(message + emojiObject.emoji);
-  };
 
   const handleInputChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
     setMessage(target.value);
@@ -70,12 +62,12 @@ export const Footer = ({
         )}
         <div className={css.iconsWrapper}>
           {!isRecording && !isRecordedBlob && (
-            <EmojiIcon className={css.emojiIcon} onClick={handleTogglePicker} />
+            <EmojiIcon className={css.emojiIcon} />
           )}
           <div className={css.recordingAudioBlock}>
             <RecordingAudio
               setIsRecording={setIsRecording}
-              // setMessageValue={setMessage}
+              // setMessage={setMessage}
               setIsRecordedBlob={setIsRecordedBlob}
             />
           </div>
@@ -88,7 +80,6 @@ export const Footer = ({
             />
           )}
         </div>
-        {showPicker && <EmojiPicker onEmojiClick={handleEmojiClick} />}
         <Input
           className={
             !isRecording && !isRecordedBlob
