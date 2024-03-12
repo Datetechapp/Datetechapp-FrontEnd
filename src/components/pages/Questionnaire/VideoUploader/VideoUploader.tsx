@@ -1,19 +1,21 @@
-import { useEffect, useRef, useState, type ChangeEvent, type FC } from 'react';
+import { useEffect, useRef, useState, type ChangeEvent } from 'react';
+import { UploadButton } from '../UploadButton';
+
 import { ReactComponent as AddPhoto } from '../../../../assets/CreateAccountForm/addPhoto.svg';
 import { ReactComponent as CloseIcon } from '../../../../assets/CreateAccountForm/closeIcon.svg';
 import { ReactComponent as PauseIcon } from '../../../../assets/CreateAccountForm/pauseIcon.svg';
 import { ReactComponent as PlayIcon } from '../../../../assets/CreateAccountForm/playIcon.svg';
 import { ReactComponent as SoundOnIcon } from '../../../../assets/CreateAccountForm/soundIcon.svg';
 import { ReactComponent as SoundOffIcon } from '../../../../assets/CreateAccountForm/soundOff.svg';
-import { UploadButton } from '../UploadButton';
+
 import css from './videoUploader.module.css';
 
-interface VideoUploaderProps {
+type VideoUploaderProps = {
   onUpload: (fileData: Blob | null) => void;
   video: Blob | null;
-}
+};
 
-export const VideoUploader: FC<VideoUploaderProps> = ({ onUpload, video }) => {
+export const VideoUploader = ({ onUpload, video }: VideoUploaderProps) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [isVolumeBlockHovered, setIsVolumeBlockHovered] = useState(false);
@@ -21,40 +23,44 @@ export const VideoUploader: FC<VideoUploaderProps> = ({ onUpload, video }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const volumeRef = useRef<HTMLInputElement>(null);
 
-  const handleFileUpload = async (file: File) => {
+  const handleFileUpload = (files: FileList) => {
+    const file = files[0];
     const fileExtension = file.name.split('.').pop()!.toLowerCase();
     const allowedExtensions = ['mp4', 'mov', 'avi', 'wmv'];
     const allowedMaxSize = 1024 * 1024 * 1024;
 
     if (
-      allowedExtensions.includes(fileExtension) &&
-      file.size <= allowedMaxSize
+      !allowedExtensions.includes(fileExtension) ||
+      files[0].size > allowedMaxSize
     ) {
-      const reader = new FileReader();
-
-      reader.onload = () => {
-        const videoData = new Blob([
-          new Uint8Array(reader.result as ArrayBuffer),
-        ]);
-
-        onUpload(videoData);
-
-        if (videoRef.current) {
-          videoRef.current.src = URL.createObjectURL(file);
-        }
-      };
-      reader.readAsArrayBuffer(file);
-    } else {
       alert(
         'Неверный формат файла или превышен допустимый размер (1GB). Пожалуйста, загрузите файлы только в форматах MP4, MOV, AVI, WMV.',
-      );
+      ); // TODO: handle gracefully
+
+      return;
     }
+
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      const videoData = new Blob([
+        new Uint8Array(reader.result as ArrayBuffer),
+      ]);
+
+      onUpload(videoData);
+
+      if (videoRef.current) {
+        videoRef.current.src = URL.createObjectURL(file);
+      }
+    };
+    reader.readAsArrayBuffer(file);
   };
 
   const handleRemoveVideo = () => onUpload(null);
 
   const handleVideoClick = () => {
     if (!videoRef.current) return;
+
     videoRef.current.paused
       ? videoRef.current.play()
       : videoRef.current.pause();
@@ -75,15 +81,8 @@ export const VideoUploader: FC<VideoUploaderProps> = ({ onUpload, video }) => {
     }
   }, [volume]);
 
-  const handleVolumeChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
-    const newVolume = parseFloat(target.value);
-
-    setVolume(newVolume);
-
-    if (videoRef.current) {
-      videoRef.current.volume = newVolume;
-    }
-  };
+  const handleVolumeChange = ({ target }: ChangeEvent<HTMLInputElement>) =>
+    setVolume(parseFloat(target.value));
 
   const handleRangeChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
     const value = parseFloat(target.value);

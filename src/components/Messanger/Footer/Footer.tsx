@@ -34,7 +34,7 @@ export const Footer = ({
     setMessage(target.value);
   };
 
-  const handleUploadFile = (file: File) => setSelectedFile(file);
+  const handleUploadFile = (files: FileList) => setSelectedFile(files[0]);
 
   const handleCloseModal = () => setSelectedFile(null);
 
@@ -77,6 +77,7 @@ export const Footer = ({
               onUpload={handleUploadFile}
               inputId="clipUpload"
               accept="image/*"
+              multiple
             />
           )}
         </div>
