@@ -1,12 +1,20 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useWavesurfer } from '@wavesurfer/react';
 
 import styles from './audioMessageContent.module.css';
 import css from '../message.module.css';
+import { IAudioInfo } from '../../../../../store/audioInfo/types';
 import { ReactComponent as PlayIcon } from '../../../../../assets/Messanger/RecordingAudio/PlayIcon.svg';
 import { ReactComponent as PauseIcon } from '../../../../../assets/Messanger/RecordingAudio/PauseIcon.svg';
 import { ReactComponent as PinnedIcon } from '../../../../../assets/Messanger/iconForPinnedMessage.svg';
 import { formatTime } from './lib';
+import { useAppDispatch, useAppSelector } from 'hooks/hooks';
+import {
+  audioInfoDelete,
+  audioInfoUpdate,
+  audioInfoSet,
+} from 'store/audioInfo/slice';
+import { getAudioInfo } from 'store/audioInfo/selectors';
 
 type Props = {
   audioRef: React.RefObject<HTMLAudioElement>;
@@ -21,8 +29,10 @@ export function AudioMessageContent({
   blob,
 }: Props) {
   const containerRef = useRef(null);
+  const dispatch = useAppDispatch();
+  const { isPlaying } = useAppSelector(getAudioInfo);
 
-  const { wavesurfer, isPlaying, currentTime } = useWavesurfer({
+  const { wavesurfer, currentTime } = useWavesurfer({
     container: containerRef,
     height: 18,
     waveColor: '#1F1D2B',
@@ -41,11 +51,29 @@ export function AudioMessageContent({
   const handleAudioPlay = () => {
     audioRef.current?.play();
     onPlayPause();
+
+    const audioInfo: IAudioInfo = {
+      speed: 1,
+      volume: audioRef.current?.volume,
+      duration: currentTime,
+      isPlaying: true,
+    };
+
+    dispatch(audioInfoUpdate(audioInfo));
   };
+
+  useEffect(() => {
+    isPlaying && dispatch(audioInfoUpdate({ duration: currentTime }));
+  }, [currentTime]);
 
   const handleAudioPause = () => {
     audioRef.current?.pause();
     onPlayPause();
+    dispatch(audioInfoUpdate({ isPlaying: false }));
+  };
+
+  const handleAudioEnded = () => {
+    dispatch(audioInfoDelete());
   };
 
   return (
@@ -55,7 +83,7 @@ export function AudioMessageContent({
       ) : (
         <PlayIcon onClick={handleAudioPlay} className={styles.button} />
       )}
-      <audio ref={audioRef} src={blob} />
+      <audio ref={audioRef} src={blob} onEnded={handleAudioEnded} />
       <div className={styles.audioInfo}>
         <div ref={containerRef} />
 
