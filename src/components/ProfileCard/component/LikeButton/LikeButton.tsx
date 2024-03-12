@@ -1,13 +1,13 @@
 import style from './LikeButton.module.css';
+import { useState } from 'react';
 
 const LikeButton = () => {
+  const [match, setMatch] = useState(false);
+
   return (
-    <button
-      className={style.containerIcons}
-      // onClick={onClick}
-    >
+    <button className={style.containerIcons} onClick={() => setMatch(!match)}>
       <svg
-        className={`${style.heartIcon} ${style.matchingButtons}`}
+        className={match ? `${style.matchingButtons}` : `${style.heartIcon}`}
         width="40"
         height="40"
         viewBox="0 0 40 40"
@@ -26,9 +26,9 @@ const LikeButton = () => {
         <path
           d="M29.4114 17.6473C29.4114 15.0483 27.2167 12.9414 24.5095 12.9414C22.4853 12.9414 20.7477 14.1192 19.9997 15.7999C19.2516 14.1192 17.514 12.9414 15.4899 12.9414C12.7826 12.9414 10.5879 15.0483 10.5879 17.6473C10.5879 25.1982 19.9997 30.1963 19.9997 30.1963C19.9997 30.1963 29.4114 25.1982 29.4114 17.6473Z"
           stroke="url(#paint1_linear_9553_13091)"
-          stroke-width="1.76471"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="1.76471"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <defs>
           <linearGradient
@@ -39,8 +39,8 @@ const LikeButton = () => {
             y2="40"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#9747FF" />
-            <stop offset="1" stop-color="#DE77C7" />
+            <stop stopColor="#9747FF" />
+            <stop offset="1" stopColor="#DE77C7" />
           </linearGradient>
           <linearGradient
             id="paint1_linear_9553_13091"
@@ -50,8 +50,8 @@ const LikeButton = () => {
             y2="30.1963"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#9747FF" />
-            <stop offset="1" stop-color="#DE77C7" />
+            <stop stopColor="#9747FF" />
+            <stop offset="1" stopColor="#DE77C7" />
           </linearGradient>
         </defs>
       </svg>
