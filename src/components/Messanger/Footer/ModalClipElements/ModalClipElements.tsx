@@ -1,77 +1,98 @@
-import React, { FC, useState } from 'react';
-import { Input } from 'components/common';
-import EmojiPicker, { EmojiClickData } from 'emoji-picker-react';
-import css from './modalClipElements.module.css';
-import { ReactComponent as CloseIcon } from '../../../../assets/Messanger/CloseIconForClipElem.svg';
-import { ReactComponent as EmojiIcon } from '../../../../assets/Messanger/emojiIcon.svg';
+import { TextareaAutosize } from '@mui/material';
+import type { ChangeEvent, Dispatch, MouseEvent, SetStateAction } from 'react';
+import { useRef, useState } from 'react';
+
+import { ClearMessageModal } from './ClearMessageModal';
+
+import { ReactComponent as DeleteIcon } from '../../../../assets/Messanger/DeleteIcon.svg';
 import { ReactComponent as SendIcon } from '../../../../assets/Messanger/SendIcon.svg';
 
-interface ModalClipElementsProps {
-  file: File | null;
-  onClose: () => void;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
+import css from './modalClipElements.module.css';
 
-export const ModalClipElements: FC<ModalClipElementsProps> = ({
+type ModalClipElementsProps = {
+  file: File;
+  onClose: () => void;
+  setMessage: Dispatch<SetStateAction<string>>;
+};
+
+const INPUT_COLLAPSED_HEIGHT = 20;
+
+export const ModalClipElements = ({
   file,
   onClose,
-  value,
-  onChange,
-}) => {
-  const [showEmojiBlock, setShowEmojiBlock] = useState(false);
+  setMessage,
+}: ModalClipElementsProps) => {
+  const [isModal, setModal] = useState(false);
+  const [caption, setCaption] = useState('');
+  const inputRef = useRef<HTMLDivElement>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-  const handleTogglePicker = () => {
-    setShowEmojiBlock(!showEmojiBlock);
+  const handleWrapperClick = () => {
+    if (isModal) return;
+    setModal(true);
   };
 
-  const handleEmojiClick = (
-    emojiObject: { emoji: string },
-    event: MouseEvent,
-  ) => {
-    const emojiChangeEvent = {
-      target: {
-        value: value + emojiObject.emoji,
-      },
-    } as React.ChangeEvent<HTMLInputElement>;
+  const handleModalClick = (e: MouseEvent<HTMLDivElement>) =>
+    e.stopPropagation();
 
-    onChange(emojiChangeEvent);
+  const handleDelete = () => setModal(true);
+
+  const handleSend = () => {}; // TODO: send to back-end
+
+  const handleChange = ({ target }: ChangeEvent<HTMLTextAreaElement>) => {
+    setCaption(target.value);
+
+    setTimeout(() => {
+      if (!inputRef.current || !textareaRef.current) return;
+
+      const height = parseInt(textareaRef.current.style.height);
+
+      height > INPUT_COLLAPSED_HEIGHT
+        ? (inputRef.current.style.borderRadius = '12px')
+        : (inputRef.current.style.borderRadius = '30px');
+    }, 0);
   };
 
-  const handleBackgroundClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (e.target === e.currentTarget) {
-      onClose();
+  const handleCancel = () => setModal(false);
+
+  const handleClear = () => {
+    if (caption) {
+      setMessage(caption);
     }
+    setModal(false);
+    onClose();
   };
-
-  if (!file) return null;
 
   return (
-    <div className={css.background} onClick={handleBackgroundClick}>
-      <CloseIcon className={css.closeButton} onClick={onClose} />
-      <div className={css.blockClipElemWithDescription}>
-        <div className={css.centeredContainer}>
-          <img
-            src={URL.createObjectURL(file)}
-            className={css.clipElem}
-            alt="Selected"
-          />
-        </div>
-        <div className={css.blockInputForClipsDescription}>
-          {showEmojiBlock && <EmojiPicker onEmojiClick={handleEmojiClick} />}
-          <div className={css.blockIcons}>
-            <EmojiIcon className={css.emojiIcon} onClick={handleTogglePicker} />
-            <SendIcon className={css.sendIcon} />
+    <>
+      <div className={css.wrapper} onClick={handleWrapperClick}>
+        <div className={css.modal} onClick={handleModalClick}>
+          <div className={css.imageBlock}>
+            <img
+              src={URL.createObjectURL(file)}
+              className={css.image}
+              alt="Selected"
+              onLoad={(e) => URL.revokeObjectURL(e.currentTarget.src)}
+            />
+            <DeleteIcon className={css.deleteIcon} onClick={handleDelete} />
           </div>
-          <Input
-            className={css.fieldForMessage}
-            type="text"
-            placeholder="Add a caption..."
-            value={value}
-            onChange={onChange}
-          />
+          <div className={css.inputWrapper}>
+            <div className={css.inputBlock} ref={inputRef}>
+              <TextareaAutosize
+                className={css.textarea}
+                placeholder="Add a caption..."
+                value={caption}
+                onChange={handleChange}
+                ref={textareaRef}
+              />
+              <SendIcon className={css.sendIcon} onClick={handleSend} />
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+      {isModal && (
+        <ClearMessageModal onCancel={handleCancel} onClear={handleClear} />
+      )}
+    </>
   );
 };
