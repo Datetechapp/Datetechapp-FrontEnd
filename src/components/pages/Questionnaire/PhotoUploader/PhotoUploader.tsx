@@ -24,7 +24,7 @@ export const PhotoUploader = ({ onUpload, photo }: PhotoUploaderProps) => {
   const [editorScale, setEditorScale] = useState<number>(1.5);
   const editorRef = useRef<AvatarEditor | null>(null);
 
-  const handleFileUploaded = (files: FileList) => {
+  const handleFileUploaded = (files: File[]) => {
     const reader = new FileReader();
 
     reader.onload = () => {

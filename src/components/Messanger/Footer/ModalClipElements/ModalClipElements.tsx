@@ -10,7 +10,7 @@ import { ReactComponent as SendIcon } from '../../../../assets/Messanger/SendIco
 import css from './modalClipElements.module.css';
 
 type ModalClipElementsProps = {
-  file: File;
+  files: File[];
   onClose: () => void;
   setMessage: Dispatch<SetStateAction<string>>;
 };
@@ -18,7 +18,7 @@ type ModalClipElementsProps = {
 const INPUT_COLLAPSED_HEIGHT = 20;
 
 export const ModalClipElements = ({
-  file,
+  files,
   onClose,
   setMessage,
 }: ModalClipElementsProps) => {
@@ -68,12 +68,16 @@ export const ModalClipElements = ({
       <div className={css.wrapper} onClick={handleWrapperClick}>
         <div className={css.modal} onClick={handleModalClick}>
           <div className={css.imageBlock}>
-            <img
-              src={URL.createObjectURL(file)}
-              className={css.image}
-              alt="Selected"
-              onLoad={(e) => URL.revokeObjectURL(e.currentTarget.src)}
-            />
+            {files.map((file) => (
+              <img
+                key={file.name}
+                src={URL.createObjectURL(file)}
+                className={css.image}
+                alt="Selected"
+                onLoad={(e) => URL.revokeObjectURL(e.currentTarget.src)}
+              />
+            ))}
+
             <DeleteIcon className={css.deleteIcon} onClick={handleDelete} />
           </div>
           <div className={css.inputBlock}>

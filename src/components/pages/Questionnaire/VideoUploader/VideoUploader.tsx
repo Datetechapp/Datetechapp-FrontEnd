@@ -23,15 +23,15 @@ export const VideoUploader = ({ onUpload, video }: VideoUploaderProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const volumeRef = useRef<HTMLInputElement>(null);
 
-  const handleFileUpload = (files: FileList) => {
-    const file = files[0];
+  const handleFileUpload = (files: File[]) => {
+    const [file] = files;
     const fileExtension = file.name.split('.').pop()!.toLowerCase();
     const allowedExtensions = ['mp4', 'mov', 'avi', 'wmv'];
     const allowedMaxSize = 1024 * 1024 * 1024;
 
     if (
       !allowedExtensions.includes(fileExtension) ||
-      files[0].size > allowedMaxSize
+      file.size > allowedMaxSize
     ) {
       alert(
         'Неверный формат файла или превышен допустимый размер (1GB). Пожалуйста, загрузите файлы только в форматах MP4, MOV, AVI, WMV.',

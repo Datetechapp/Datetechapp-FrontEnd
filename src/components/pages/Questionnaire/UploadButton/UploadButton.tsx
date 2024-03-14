@@ -4,7 +4,7 @@ import { Input } from 'components/common';
 import css from './uploadButton.module.css';
 
 type UploadButtonProps = {
-  onUpload: (files: FileList) => void;
+  onUpload: (files: File[]) => void;
   inputId?: string;
   accept?: string;
   multiple?: boolean;
@@ -22,7 +22,7 @@ export const UploadButton = ({
 
   const handleInputChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
     if (target.files?.length) {
-      onUpload(target.files);
+      onUpload([...target.files]);
     }
   };
 

@@ -24,7 +24,7 @@ export const Footer = ({
   onShowReplyMessage,
 }: FooterProps) => {
   const [message, setMessage] = useState('');
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [files, setFiles] = useState<File[]>([]);
   const [isRecording, setIsRecording] = useState(false);
   const [isRecordedBlob, setIsRecordedBlob] = useState(false);
 
@@ -34,15 +34,15 @@ export const Footer = ({
     setMessage(target.value);
   };
 
-  const handleUploadFile = (files: FileList) => setSelectedFile(files[0]);
+  const handleUploadFile = (files: File[]) => setFiles(files);
 
-  const handleCloseModal = () => setSelectedFile(null);
+  const handleCloseModal = () => setFiles([]);
 
   return (
     <div className={css.blockForReplyMessage}>
-      {selectedFile && (
+      {files.length > 0 && (
         <ModalClipElements
-          file={selectedFile}
+          files={files}
           onClose={handleCloseModal}
           setMessage={setMessage}
         />
