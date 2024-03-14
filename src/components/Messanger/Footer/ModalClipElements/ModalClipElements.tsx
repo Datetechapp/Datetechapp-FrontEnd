@@ -1,6 +1,6 @@
 import { TextareaAutosize } from '@mui/material';
 import type { ChangeEvent, Dispatch, MouseEvent, SetStateAction } from 'react';
-import { useRef, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 
 import { ClearMessageModal } from './ClearMessageModal';
 
@@ -26,6 +26,16 @@ export const ModalClipElements = ({
   const [caption, setCaption] = useState('');
   const inputRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  const imageSources = useMemo(() => {
+    const srcs = files
+      .filter((file) => file.type.includes('image'))
+      .map(URL.createObjectURL);
+
+    srcs.length = 10;
+
+    return srcs;
+  }, [files]);
 
   const handleWrapperClick = () => {
     if (isModal) return;
@@ -68,16 +78,9 @@ export const ModalClipElements = ({
       <div className={css.wrapper} onClick={handleWrapperClick}>
         <div className={css.modal} onClick={handleModalClick}>
           <div className={css.imageBlock}>
-            {files.map((file) => (
-              <img
-                key={file.name}
-                src={URL.createObjectURL(file)}
-                className={css.image}
-                alt="Selected"
-                onLoad={(e) => URL.revokeObjectURL(e.currentTarget.src)}
-              />
+            {imageSources.map((src) => (
+              <img key={src} src={src} className={css.image} alt="Selected" />
             ))}
-
             <DeleteIcon className={css.deleteIcon} onClick={handleDelete} />
           </div>
           <div className={css.inputBlock}>
