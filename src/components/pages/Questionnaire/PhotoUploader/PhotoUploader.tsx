@@ -30,7 +30,11 @@ export const PhotoUploader = ({ onUpload, photo }: PhotoUploaderProps) => {
   const handlePositionChange = (position: Coordinates) =>
     setEditorPosition(position);
 
-  const handleDeletePhoto = () => onUpload(null);
+  const handleDeletePhoto = () => {
+    onUpload(null);
+    setEditorScale(1.5);
+    setEditorPosition({ x: 0.5, y: 0.5 });
+  };
 
   const handleRangeChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
     const value = parseFloat(target.value);
