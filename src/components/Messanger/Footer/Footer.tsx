@@ -42,6 +42,7 @@ export const Footer = ({
     <div className={css.blockForReplyMessage}>
       {files.length > 0 && (
         <ModalClipElements
+          message={message}
           files={files}
           onClose={handleCloseModal}
           setMessage={setMessage}

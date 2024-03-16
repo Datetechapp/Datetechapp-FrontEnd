@@ -10,6 +10,7 @@ import { ReactComponent as SendIcon } from '../../../../assets/Messanger/SendIco
 import css from './modalClipElements.module.css';
 
 type ModalClipElementsProps = {
+  message: string;
   files: File[];
   onClose: () => void;
   setMessage: Dispatch<SetStateAction<string>>;
@@ -18,12 +19,13 @@ type ModalClipElementsProps = {
 const INPUT_COLLAPSED_HEIGHT = 20;
 
 export const ModalClipElements = ({
+  message,
   files,
   onClose,
   setMessage,
 }: ModalClipElementsProps) => {
   const [isModal, setModal] = useState(false);
-  const [caption, setCaption] = useState('');
+  const [caption, setCaption] = useState(() => (setMessage(''), message));
   const inputRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -32,7 +34,7 @@ export const ModalClipElements = ({
       .filter((file) => file.type.includes('image'))
       .map(URL.createObjectURL);
 
-    srcs.length = 10;
+    srcs.length = 10; // TODO: forcibly update the number of images to only ten, change logic if it's needed
 
     return srcs;
   }, [files]);
