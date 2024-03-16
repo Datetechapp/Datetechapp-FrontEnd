@@ -78,9 +78,7 @@ export const VideoUploader = ({ onUpload, video }: VideoUploaderProps) => {
   }, [volume]);
 
   useEffect(() => {
-    if (!volumeRef.current) return;
-
-    volumeRef.current.style.setProperty(
+    volumeRef.current?.style.setProperty(
       '--thumb-percentage',
       `${volume * 100}%`,
     );
