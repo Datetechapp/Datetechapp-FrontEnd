@@ -48,10 +48,6 @@ export const VideoUploader = ({ onUpload, video }: VideoUploaderProps) => {
       ]);
 
       onUpload(videoData);
-
-      if (videoRef.current) {
-        videoRef.current.src = URL.createObjectURL(file);
-      }
     };
     reader.readAsArrayBuffer(file);
   };
@@ -114,7 +110,7 @@ export const VideoUploader = ({ onUpload, video }: VideoUploaderProps) => {
       ) : (
         <div className={css.videoWrapper}>
           <video className={css.videoCreateAcc} ref={videoRef}>
-            <source src={video ? URL.createObjectURL(video) : ''} />
+            <source src={URL.createObjectURL(video)} />
           </video>
           <CloseIcon className={css.closeIcon} onClick={handleRemoveVideo} />
           {!volume ? (
