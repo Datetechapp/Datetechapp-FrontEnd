@@ -11,7 +11,7 @@ import { ReactComponent as SoundOffIcon } from '../../../../assets/CreateAccount
 import css from './videoUploader.module.css';
 
 type VideoUploaderProps = {
-  onUpload: (fileData: Blob | null) => void;
+  onUpload: (video: Blob | null) => void;
   video: Blob | null;
 };
 
