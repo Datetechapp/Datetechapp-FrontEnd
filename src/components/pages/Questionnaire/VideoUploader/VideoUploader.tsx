@@ -11,7 +11,7 @@ import { ReactComponent as SoundOffIcon } from '../../../../assets/CreateAccount
 import css from './videoUploader.module.css';
 
 type VideoUploaderProps = {
-  onUpload: (video: Blob | null) => void;
+  onUpload: (video: File | null) => void;
   video: Blob | null;
 };
 
@@ -40,7 +40,8 @@ export const VideoUploader = ({ onUpload, video }: VideoUploaderProps) => {
       return;
     }
 
-    file.arrayBuffer().then((data) => onUpload(new Blob([data])));
+    onUpload(file);
+    setIsPlaying(false);
   };
 
   const handleRemoveVideo = () => onUpload(null);
