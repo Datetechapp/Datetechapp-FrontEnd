@@ -1,6 +1,6 @@
 import { TextareaAutosize } from '@mui/material';
 import type { ChangeEvent, Dispatch, MouseEvent, SetStateAction } from 'react';
-import { useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 import { ClearMessageModal } from './ClearMessageModal';
 
@@ -25,19 +25,25 @@ export const ModalClipElements = ({
   setMessage,
 }: ModalClipElementsProps) => {
   const [isModal, setModal] = useState(false);
-  const [caption, setCaption] = useState(() => (setMessage(''), message));
+  const [caption, setCaption] = useState(message);
   const inputRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-  const imageSources = useMemo(() => {
-    const srcs = files
+  const imageURLs = useMemo(() => {
+    const imageURLs = files
       .filter((file) => file.type.includes('image'))
       .map(URL.createObjectURL);
 
-    srcs.length = 10; // TODO: forcibly update the number of images to only ten, change logic if it's needed
+    imageURLs.length = 10; // TOFIX: forcibly update the number of images to only ten
 
-    return srcs;
+    return imageURLs;
   }, [files]);
+
+  useEffect(() => {
+    setMessage('');
+
+    return () => imageURLs.forEach((imageURL) => URL.revokeObjectURL(imageURL));
+  }, []);
 
   const handleWrapperClick = () => {
     if (isModal) return;
@@ -80,8 +86,8 @@ export const ModalClipElements = ({
       <div className={css.wrapper} onClick={handleWrapperClick}>
         <div className={css.modal} onClick={handleModalClick}>
           <div className={css.imageBlock}>
-            {imageSources.map((src) => (
-              <img key={src} src={src} className={css.image} alt="Selected" />
+            {imageURLs.map((src) => (
+              <img key={src} src={src} className={css.image} alt="" />
             ))}
             <DeleteIcon className={css.deleteIcon} onClick={handleDelete} />
           </div>
