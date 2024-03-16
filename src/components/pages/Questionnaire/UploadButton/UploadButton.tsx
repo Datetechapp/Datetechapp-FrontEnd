@@ -21,9 +21,8 @@ export const UploadButton = ({
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleInputChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
-    if (target.files?.length) {
-      onUpload([...target.files]);
-    }
+    target.files?.length && onUpload([...target.files]);
+    inputRef.current && (inputRef.current.value = '');
   };
 
   return (

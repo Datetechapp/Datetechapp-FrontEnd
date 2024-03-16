@@ -24,23 +24,22 @@ export const Footer = ({
   onShowReplyMessage,
 }: FooterProps) => {
   const [message, setMessage] = useState('');
-  const [files, setFiles] = useState<File[]>([]);
+  const [files, setFiles] = useState<File[] | null>(null);
   const [isRecording, setIsRecording] = useState(false);
   const [isRecordedBlob, setIsRecordedBlob] = useState(false);
 
   const recorderControls = useVoiceVisualizer();
 
-  const handleInputChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = ({ target }: ChangeEvent<HTMLInputElement>) =>
     setMessage(target.value);
-  };
 
   const handleUploadFile = (files: File[]) => setFiles(files);
 
-  const handleCloseModal = () => setFiles([]);
+  const handleCloseModal = () => setFiles(null);
 
   return (
     <div className={css.blockForReplyMessage}>
-      {files.length > 0 && (
+      {files && (
         <ModalClipElements
           message={message}
           files={files}
