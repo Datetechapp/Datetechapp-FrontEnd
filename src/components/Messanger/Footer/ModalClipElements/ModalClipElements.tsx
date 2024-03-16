@@ -39,11 +39,7 @@ export const ModalClipElements = ({
     return imageURLs;
   }, [files]);
 
-  useEffect(() => {
-    setMessage('');
-
-    return () => imageURLs.forEach((imageURL) => URL.revokeObjectURL(imageURL));
-  }, []);
+  useEffect(() => setMessage(''), []);
 
   const handleWrapperClick = () => {
     if (isModal) return;
