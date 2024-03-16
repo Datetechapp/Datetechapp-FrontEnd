@@ -64,18 +64,27 @@ export const VideoUploader = ({ onUpload, video }: VideoUploaderProps) => {
   };
 
   useEffect(() => {
-    const rangeInput = volumeRef.current;
+    const handlePlayEnd = () => setIsPlaying(false);
 
-    if (rangeInput) {
-      rangeInput.style.setProperty('--thumb-percentage', `${volume * 100}%`);
-    }
-  }, [volume, isVolumeBlockHovered, isHovered]);
+    videoRef.current?.addEventListener('ended', handlePlayEnd);
+
+    return () => videoRef.current?.removeEventListener('ended', handlePlayEnd);
+  }, [video]);
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.volume = volume;
-    }
+    if (!videoRef.current) return;
+
+    videoRef.current.volume = volume;
   }, [volume]);
+
+  useEffect(() => {
+    if (!volumeRef.current) return;
+
+    volumeRef.current.style.setProperty(
+      '--thumb-percentage',
+      `${volume * 100}%`,
+    );
+  }, [volume, isVolumeBlockHovered, isHovered]);
 
   const handleVolumeChange = ({ target }: ChangeEvent<HTMLInputElement>) =>
     setVolume(parseFloat(target.value));
