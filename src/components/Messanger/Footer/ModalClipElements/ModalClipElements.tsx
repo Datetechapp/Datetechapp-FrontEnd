@@ -87,8 +87,8 @@ export const ModalClipElements = ({
             ))}
             <DeleteIcon className={css.deleteIcon} onClick={handleDelete} />
           </div>
-          <div className={css.inputBlock}>
-            <div className={css.input} ref={inputRef}>
+          <div className={css.inputWrapper}>
+            <div className={css.inputBlock} ref={inputRef}>
               <TextareaAutosize
                 className={css.textarea}
                 placeholder="Add a caption..."
