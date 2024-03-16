@@ -31,7 +31,7 @@ export function Questionnaire() {
   const [sex, setSex] = useState('');
   const [gender, setGender] = useState('');
   const [sexOrientation, setSexOrientation] = useState('');
-  const [photo, setPhoto] = useState<string | null>(null);
+  const [photo, setPhoto] = useState<File | null>(null);
   const [video, setVideo] = useState<Blob | null>(null);
   const [showSexOrientation, setShowSexOrientation] = useState(false);
   const [showModalUploadVideo, setShowModalUploadVideo] = useState(false);
@@ -124,9 +124,9 @@ export function Questionnaire() {
 
   const handleCheckChange = () => setShowSexOrientation(!showSexOrientation);
 
-  const handlePhotoUpload = (file: string | null) => setPhoto(file);
+  const handlePhotoUpload = (file: File | null) => setPhoto(file);
 
-  const handleVideoUpload = (fileData: Blob | null) => setVideo(fileData);
+  const handleVideoUpload = (file: Blob | null) => setVideo(file);
 
   const handleSubmit = () => {
     const [city, country] = location.split(', ');
@@ -339,7 +339,7 @@ export function Questionnaire() {
                 Add a profile photo so that other users can get a better look at
                 you
               </p>
-              <PhotoUploader onUpload={handlePhotoUpload} photo={photo || ''} />
+              <PhotoUploader onUpload={handlePhotoUpload} photo={photo} />
               {!photo && (
                 <p className={css.warning}>
                   We accept JPGs and PNGs of at least 500x500px

@@ -23,8 +23,7 @@ export const VideoUploader = ({ onUpload, video }: VideoUploaderProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const volumeRef = useRef<HTMLInputElement>(null);
 
-  const handleFileUpload = (files: File[]) => {
-    const [file] = files;
+  const handleFileUpload = ([file]: File[]) => {
     const fileExtension = file.name.split('.').pop()!.toLowerCase();
     const allowedExtensions = ['mp4', 'mov', 'avi', 'wmv'];
     const allowedMaxSize = 1024 * 1024 * 1024;
@@ -40,16 +39,7 @@ export const VideoUploader = ({ onUpload, video }: VideoUploaderProps) => {
       return;
     }
 
-    const reader = new FileReader();
-
-    reader.onload = () => {
-      const videoData = new Blob([
-        new Uint8Array(reader.result as ArrayBuffer),
-      ]);
-
-      onUpload(videoData);
-    };
-    reader.readAsArrayBuffer(file);
+    file.arrayBuffer().then((data) => onUpload(new Blob([data])));
   };
 
   const handleRemoveVideo = () => onUpload(null);

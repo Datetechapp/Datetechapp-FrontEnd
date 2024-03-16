@@ -4,6 +4,7 @@ import { UploadButton } from '../UploadButton';
 
 import { ReactComponent as AddPhoto } from '../../../../assets/CreateAccountForm/addPhoto.svg';
 import { ReactComponent as CloseIcon } from '../../../../assets/CreateAccountForm/closeIcon.svg';
+
 import css from './photoUploader.module.css';
 
 type Coordinates = {
@@ -12,8 +13,8 @@ type Coordinates = {
 };
 
 type PhotoUploaderProps = {
-  onUpload: (imageData: string | null) => void;
-  photo: string;
+  onUpload: (photo: File | null) => void;
+  photo: File | null;
 };
 
 export const PhotoUploader = ({ onUpload, photo }: PhotoUploaderProps) => {
@@ -21,19 +22,10 @@ export const PhotoUploader = ({ onUpload, photo }: PhotoUploaderProps) => {
     x: 0.5,
     y: 0.5,
   });
-  const [editorScale, setEditorScale] = useState<number>(1.5);
+  const [editorScale, setEditorScale] = useState(1.5);
   const editorRef = useRef<AvatarEditor | null>(null);
 
-  const handleFileUploaded = (files: File[]) => {
-    const reader = new FileReader();
-
-    reader.onload = () => {
-      onUpload(reader.result as string);
-      setEditorPosition({ x: 0.5, y: 0.5 });
-      setEditorScale(1.5);
-    };
-    reader.readAsDataURL(files[0]);
-  };
+  const handleFileUpload = ([file]: File[]) => onUpload(file);
 
   const handlePositionChange = (position: Coordinates) =>
     setEditorPosition(position);
@@ -91,7 +83,7 @@ export const PhotoUploader = ({ onUpload, photo }: PhotoUploaderProps) => {
       ) : (
         <div className={css.buttonWrapper}>
           <UploadButton
-            onUpload={handleFileUploaded}
+            onUpload={handleFileUpload}
             inputId="photo-upload-button"
             accept=".jpg,.jpeg,.png,.svg"
             icon={<AddPhoto className={css.addFileIcon} />}
