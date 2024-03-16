@@ -42,6 +42,7 @@ export const VideoUploader = ({ onUpload, video }: VideoUploaderProps) => {
 
     onUpload(file);
     setIsPlaying(false);
+    setIsMuted(false);
   };
 
   const handleRemoveVideo = () => onUpload(null);
