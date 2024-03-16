@@ -17,6 +17,7 @@ type VideoUploaderProps = {
 
 export const VideoUploader = ({ onUpload, video }: VideoUploaderProps) => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [isVolumeBlockHovered, setIsVolumeBlockHovered] = useState(false);
   const [volume, setVolume] = useState(0.5);
@@ -51,6 +52,13 @@ export const VideoUploader = ({ onUpload, video }: VideoUploaderProps) => {
       ? videoRef.current.play()
       : videoRef.current.pause();
     setIsPlaying(!videoRef.current.paused);
+  };
+
+  const handleVideoMute = () => {
+    if (!videoRef.current) return;
+
+    videoRef.current.muted = !videoRef.current.muted;
+    setIsMuted(videoRef.current.muted);
   };
 
   useEffect(() => {
@@ -103,19 +111,19 @@ export const VideoUploader = ({ onUpload, video }: VideoUploaderProps) => {
             <source src={URL.createObjectURL(video)} />
           </video>
           <CloseIcon className={css.closeIcon} onClick={handleRemoveVideo} />
-          {!volume ? (
+          {isMuted ? (
             <SoundOffIcon
               className={css.soundIcon}
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setTimeout(() => setIsHovered(false), 300)}
-              onClick={() => setVolume(1)}
+              onClick={handleVideoMute}
             />
           ) : (
             <SoundOnIcon
               className={css.soundIcon}
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setTimeout(() => setIsHovered(false), 500)}
-              onClick={() => setVolume(0)}
+              onClick={handleVideoMute}
             />
           )}
           {(isHovered || isVolumeBlockHovered) && (
@@ -139,14 +147,13 @@ export const VideoUploader = ({ onUpload, video }: VideoUploaderProps) => {
               />
             </div>
           )}
-          {!isPlaying && (
-            <PlayIcon className={css.iconControls} onClick={handleVideoClick} />
-          )}
-          {isPlaying && (
+          {isPlaying ? (
             <PauseIcon
               className={css.iconControls}
               onClick={handleVideoClick}
             />
+          ) : (
+            <PlayIcon className={css.iconControls} onClick={handleVideoClick} />
           )}
         </div>
       )}
