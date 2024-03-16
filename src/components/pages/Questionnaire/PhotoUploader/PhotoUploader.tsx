@@ -25,16 +25,16 @@ export const PhotoUploader = ({ onUpload, photo }: PhotoUploaderProps) => {
   const [editorScale, setEditorScale] = useState(1.5);
   const editorRef = useRef<AvatarEditor | null>(null);
 
-  const handleFileUpload = ([file]: File[]) => onUpload(file);
+  const handleFileUpload = ([file]: File[]) => {
+    onUpload(file);
+    setEditorScale(1.5);
+    setEditorPosition({ x: 0.5, y: 0.5 });
+  };
 
   const handlePositionChange = (position: Coordinates) =>
     setEditorPosition(position);
 
-  const handleDeletePhoto = () => {
-    onUpload(null);
-    setEditorScale(1.5);
-    setEditorPosition({ x: 0.5, y: 0.5 });
-  };
+  const handleDeletePhoto = () => onUpload(null);
 
   const handleRangeChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
     const value = parseFloat(target.value);
