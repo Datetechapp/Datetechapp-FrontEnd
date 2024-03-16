@@ -1,25 +1,7 @@
-import type { ChangeEvent, FocusEvent, RefObject } from 'react';
+import type { ComponentProps, RefObject } from 'react';
 
-type InputProps = {
-  id?: string;
-  value?: string;
-  className?: string;
-  type: string;
-  autoComplete?: string;
-  name?: string;
-  placeholder?: string;
-  accept?: string;
-  min?: string;
-  max?: string;
-  readOnly?: boolean;
+type InputProps = ComponentProps<'input'> & {
   inputRef?: RefObject<HTMLInputElement>;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  onFocus?: (e: FocusEvent<HTMLInputElement>) => void;
-  onBlur?: (e: FocusEvent<HTMLInputElement>) => void;
-  defaultChecked?: boolean;
-  isDisabled?: boolean;
-  multiple?: boolean;
-  style?: object;
 };
 
 export const Input = ({
@@ -39,7 +21,7 @@ export const Input = ({
   max,
   readOnly,
   defaultChecked,
-  isDisabled,
+  disabled,
   multiple,
 }: InputProps) => (
   <input
@@ -59,7 +41,7 @@ export const Input = ({
     max={max}
     readOnly={readOnly}
     defaultChecked={defaultChecked}
-    disabled={isDisabled}
+    disabled={disabled}
     multiple={multiple}
   />
 );
