@@ -72,6 +72,7 @@ export const Message: React.FC<MessageProps> = ({
               timestamp={timestamp}
               isPinned={isPinned}
               blob={blob}
+              id={id}
             />
           ) : (
             <>

@@ -29,7 +29,6 @@ export const RecordingAudio: React.FC<RecordingAudioProps> = ({
   const recorderControls = useVoiceVisualizer();
 
   const {
-    isRecordingInProgress: isRecorderRecording,
     startRecording,
     stopRecording,
     recordedBlob,
@@ -77,7 +76,11 @@ export const RecordingAudio: React.FC<RecordingAudioProps> = ({
   };
 
   const sendRecordBlob = () => {
-    setBlobSrc(audioSrc);
+    console.log('recordedBlob', audioSrc);
+    clearCanvas();
+    setRecordingTime(0);
+    setIsRecordedBlob(false);
+    setIsRecording(false);
   };
 
   const handleMicrophoneClick = () => {
@@ -159,23 +162,6 @@ export const RecordingAudio: React.FC<RecordingAudioProps> = ({
         isThereACancel={false}
         darkModal={true}
       />
-      {/* <div
-        className={
-          !isPlaying ? css.visualizerContainerHidden : css.visualizerContainer
-        }
-      >
-        <VoiceVisualizer
-          controls={recorderControls}
-          ref={audioRef}
-          backgroundColor="#FFFFFF"
-          mainBarColor="#1F1D2B"
-          secondaryBarColor="#C896EF"
-          width={400}
-          height={50}
-          isControlPanelShown={false}
-          isDefaultUIShown={true}
-        />
-      </div> */}
     </div>
   );
 };

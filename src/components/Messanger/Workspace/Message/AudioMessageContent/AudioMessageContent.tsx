@@ -3,17 +3,12 @@ import { useWavesurfer } from '@wavesurfer/react';
 
 import styles from './audioMessageContent.module.css';
 import css from '../message.module.css';
-import { IAudioInfo } from '../../../../../store/audioInfo/types';
 import { ReactComponent as PlayIcon } from '../../../../../assets/Messanger/RecordingAudio/PlayIcon.svg';
 import { ReactComponent as PauseIcon } from '../../../../../assets/Messanger/RecordingAudio/PauseIcon.svg';
 import { ReactComponent as PinnedIcon } from '../../../../../assets/Messanger/iconForPinnedMessage.svg';
 import { formatTime } from './lib';
 import { useAppDispatch, useAppSelector } from 'hooks/hooks';
-import {
-  audioInfoDelete,
-  audioInfoUpdate,
-  audioInfoSet,
-} from 'store/audioInfo/slice';
+import { audioInfoDelete, audioInfoUpdate } from 'store/audioInfo/slice';
 import { getAudioInfo } from 'store/audioInfo/selectors';
 
 type Props = {
@@ -21,16 +16,23 @@ type Props = {
   timestamp: string;
   isPinned: boolean;
   blob: string;
+  id: string;
 };
 export function AudioMessageContent({
   audioRef,
   timestamp,
   isPinned,
   blob,
+  id,
 }: Props) {
   const containerRef = useRef(null);
   const dispatch = useAppDispatch();
-  const { isPlaying } = useAppSelector(getAudioInfo);
+  const {
+    isPlaying,
+    volume,
+    id: audioId,
+    blob: audioBlob,
+  } = useAppSelector(getAudioInfo);
 
   const { wavesurfer, currentTime } = useWavesurfer({
     container: containerRef,
@@ -45,45 +47,67 @@ export function AudioMessageContent({
     normalize: true,
   });
 
-  const onPlayPause = useCallback(() => {
-    wavesurfer && wavesurfer.playPause();
-  }, [wavesurfer]);
   const handleAudioPlay = () => {
-    audioRef.current?.play();
-    onPlayPause();
-
-    const audioInfo: IAudioInfo = {
-      speed: 1,
-      volume: audioRef.current?.volume,
+    const audioInfoStart = {
+      id,
       duration: currentTime,
       isPlaying: true,
+      isPinned: true,
+      blob,
     };
 
-    dispatch(audioInfoUpdate(audioInfo));
+    dispatch(audioInfoUpdate(audioInfoStart));
+  };
+
+  const handleAudioPause = () => {
+    dispatch(audioInfoUpdate({ isPlaying: false }));
+  };
+
+  const handleAudioEnded = () => {
+    wavesurfer && wavesurfer.stop();
+    dispatch(audioInfoDelete());
   };
 
   useEffect(() => {
     isPlaying && dispatch(audioInfoUpdate({ duration: currentTime }));
   }, [currentTime]);
 
-  const handleAudioPause = () => {
-    audioRef.current?.pause();
-    onPlayPause();
-    dispatch(audioInfoUpdate({ isPlaying: false }));
-  };
+  useEffect(() => {
+    wavesurfer && wavesurfer.setVolume(volume!);
+  }, [volume]);
 
-  const handleAudioEnded = () => {
-    dispatch(audioInfoDelete());
-  };
+  useEffect(() => {
+    if (isPlaying && id === audioId) {
+      wavesurfer && wavesurfer.play();
+    } else {
+      wavesurfer && wavesurfer.pause();
+    }
+  }, [audioBlob, id, isPlaying]);
+
+  useEffect(() => {
+    if (wavesurfer) {
+      wavesurfer.on('finish', () => {
+        handleAudioEnded();
+      });
+    }
+  }, [wavesurfer]);
 
   return (
     <div className={styles.container}>
-      {isPlaying ? (
+      {isPlaying && id === audioId ? (
         <PauseIcon onClick={handleAudioPause} className={styles.button} />
       ) : (
         <PlayIcon onClick={handleAudioPlay} className={styles.button} />
       )}
-      <audio ref={audioRef} src={blob} onEnded={handleAudioEnded} />
+      {id === audioId && (
+        <audio
+          ref={audioRef}
+          src={audioBlob}
+          onEnded={handleAudioEnded}
+          id={id}
+        />
+      )}
+
       <div className={styles.audioInfo}>
         <div ref={containerRef} />
 

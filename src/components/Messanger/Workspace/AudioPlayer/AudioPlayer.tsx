@@ -12,17 +12,11 @@ import { ReactComponent as MuteIcon } from '../../../../assets/AudioPlayer/MuteI
 import { ReactComponent as CloseIcon } from '../../../../assets/AudioPlayer/closeIcon.svg';
 import { useAppDispatch, useAppSelector } from 'hooks/hooks';
 import { getAudioInfo } from 'store/audioInfo/selectors';
-import { audioInfoUpdate } from 'store/audioInfo/slice';
-
-// interface AudioPlayesProps {
-//        audioRef: HTMLAudioElement;
-// }
+import { audioInfoDelete, audioInfoUpdate } from 'store/audioInfo/slice';
 
 export const AudioPlayer = () => {
-  // const [speed, setSpeed] = useState<number>(1);
   const [isHovered, setIsHovered] = useState(false);
   const [isVolumeBlockHovered, setIsVolumeBlockHovered] = useState(false);
-  // const [volume, setVolume] = useState(0.5);
 
   const volumeRef = useRef<HTMLInputElement | null>(null);
 
@@ -32,16 +26,12 @@ export const AudioPlayer = () => {
   useEffect(() => {
     const rangeInput = volumeRef.current as HTMLInputElement;
 
+    console.log(volume);
+
     if (rangeInput) {
       rangeInput.style.setProperty('--thumb-percentage', `${volume! * 100}%`);
     }
   }, [volume, isVolumeBlockHovered, isHovered]);
-
-  // useEffect(() => {
-  //        if (audioRef.current) {
-  //               audioRef.current.volume = volume;
-  //        }
-  // }, [volume]);
 
   const handleVolumeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newVolume = parseFloat(event.target.value);
@@ -116,7 +106,7 @@ export const AudioPlayer = () => {
             onClick={() => dispatch(audioInfoUpdate({ volume: 1 }))}
           />
         )}
-        <CloseIcon />
+        <CloseIcon onClick={() => dispatch(audioInfoDelete())} />
         {(isHovered || isVolumeBlockHovered) && (
           <div
             className={css.volumeBlock}

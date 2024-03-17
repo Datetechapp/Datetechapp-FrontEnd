@@ -10,6 +10,8 @@ import {
   PinnedMessage,
   SearchMessages,
 } from '.';
+import { useAppSelector } from 'hooks/hooks';
+import { getAudioInfo } from 'store/audioInfo/selectors';
 
 export interface MessageProps {
   id: string;
@@ -75,9 +77,18 @@ const messagesArr: MessageProps[] = [
   {
     id: '5',
     type: 'audio',
-    blob: 'blob:http://localhost:3000/c9fe7466-2e29-496c-9df4-436c0d801bfa',
+    blob: 'blob:http://localhost:3000/b970b358-87ae-42b3-8439-6e3d674941d4',
     text: '',
     isMe: true,
+    timestamp: '12:40',
+    isPinned: false,
+  },
+  {
+    id: '6',
+    type: 'audio',
+    blob: 'blob:http://localhost:3000/8e0dfb43-3e72-42bb-a9b0-ceb462e0d0c7',
+    text: '',
+    isMe: false,
     timestamp: '12:40',
     isPinned: false,
   },
@@ -100,6 +111,7 @@ export const Workspace: FC<WorkspaceProps> = ({
   const [showModalDelete, setShowModalDelete] = useState(false);
   const [pinnedMessages, setPinnedMessages] = useState<MessageProps[]>([]);
   const [currentPinnedMessageIndex, setCurrentPinnedMessageIndex] = useState(0);
+  const { isPinned } = useAppSelector(getAudioInfo);
 
   const [highlighted, setHighlighted] = useState(false);
 
@@ -208,7 +220,8 @@ export const Workspace: FC<WorkspaceProps> = ({
       }
     >
       <div className={css.headerWorkspace}>
-        <AudioPlayer />
+        {isPinned && <AudioPlayer />}
+
         {showSearchMessages && (
           <SearchMessages setShowSearchMessages={setShowSearchMessages} />
         )}

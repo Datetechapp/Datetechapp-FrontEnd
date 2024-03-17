@@ -1,14 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { IAudioInfo } from './types';
 
 const SLICE_NAME = 'audioInfo';
 
 const initialState = {
   audioInfo: {
+    id: '',
     speed: 1,
     volume: 0.5,
     duration: 0,
     isPlaying: false,
+    isPinned: false,
+    blob: '',
   },
 };
 

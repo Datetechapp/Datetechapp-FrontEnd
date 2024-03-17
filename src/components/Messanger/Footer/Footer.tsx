@@ -8,7 +8,6 @@ import { ReplyMessage } from './ReplyMessage';
 import { UploadButton } from 'components/pages/Questionnaire/UploadButton';
 import { ModalClipElements } from './ModalClipElements';
 import { RecordingAudio } from './RecordingAudio/RecordingAudio';
-import { useVoiceVisualizer, VoiceVisualizer } from 'react-voice-visualizer';
 
 interface FooterProps {
   selectedMessageText: string;
@@ -28,8 +27,6 @@ export const Footer: FC<FooterProps> = ({
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [isRecording, setIsRecording] = useState(false);
   const [isRecordedBlob, setIsRecordedBlob] = useState(false);
-
-  const recorderControls = useVoiceVisualizer();
 
   const handleTogglePicker = () => {
     setShowPicker(!showPicker);
