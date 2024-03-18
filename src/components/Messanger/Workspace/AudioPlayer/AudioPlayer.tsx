@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef, FC, useCallback } from 'react';
-import css from './audioPlayer.module.css';
+import React, { useState, useEffect, useRef } from 'react';
+
 import { ReactComponent as FirstSpeed } from '../../../../assets/AudioPlayer/firstSpeed.svg';
 import { ReactComponent as SecondSpeed } from '../../../../assets/AudioPlayer/secondSpeed.svg';
 import { ReactComponent as ThirdSpeed } from '../../../../assets/AudioPlayer/thirdSpeed.svg';
@@ -13,6 +13,7 @@ import { ReactComponent as CloseIcon } from '../../../../assets/AudioPlayer/clos
 import { useAppDispatch, useAppSelector } from 'hooks/hooks';
 import { getAudioInfo } from 'store/audioInfo/selectors';
 import { audioInfoDelete, audioInfoUpdate } from 'store/audioInfo/slice';
+import css from './audioPlayer.module.css';
 
 export const AudioPlayer = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -96,7 +97,7 @@ export const AudioPlayer = () => {
           <VolumeIcon
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => {
-              setTimeout(() => setIsHovered(false), 500);
+              setTimeout(() => setIsHovered(false), 300);
             }}
             onClick={() => dispatch(audioInfoUpdate({ volume: 0 }))}
           />

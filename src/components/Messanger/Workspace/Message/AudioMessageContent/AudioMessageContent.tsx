@@ -42,7 +42,6 @@ export function AudioMessageContent({
     height: 18,
     waveColor: '#1F1D2B',
     progressColor: '#C896EF',
-    //when we have a stable blob we will use so url: blob,
     url: blob,
     barAlign: 'bottom',
     cursorWidth: 0,

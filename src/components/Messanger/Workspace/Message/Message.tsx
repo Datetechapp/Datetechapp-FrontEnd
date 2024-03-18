@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import css from './message.module.css';
+import React, { useEffect } from 'react';
+
 import { ReactComponent as PinnedIcon } from '../../../../assets/Messanger/iconForPinnedMessage.svg';
 import { ContextMenu } from '../ContextMenu';
-import { message } from 'antd';
 import { AudioMessageContent } from './AudioMessageContent';
+import css from './message.module.css';
 
 export interface MessageProps {
   id: string;
@@ -24,7 +24,7 @@ export interface MessageProps {
   highlighted: boolean;
 }
 
-export const Message: React.FC<MessageProps> = ({
+export const Message = ({
   id,
   text,
   blob,
@@ -38,7 +38,7 @@ export const Message: React.FC<MessageProps> = ({
   currentPinnedMessageIndex,
   setHighlighted,
   highlighted,
-}) => {
+}: MessageProps) => {
   useEffect(() => {
     if (highlighted) {
       const timer = setTimeout(() => {

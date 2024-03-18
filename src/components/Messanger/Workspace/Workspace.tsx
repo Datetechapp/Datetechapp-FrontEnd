@@ -1,5 +1,5 @@
 import css from './workspace.module.css';
-import React, { useCallback, useState, FC } from 'react';
+import React, { useCallback, useState } from 'react';
 import { AudioPlayer } from './AudioPlayer/AudioPlayer';
 import {
   ModalForFixMessage,
@@ -94,7 +94,7 @@ const messagesArr: MessageProps[] = [
   },
 ];
 
-export const Workspace: FC<WorkspaceProps> = ({
+export const Workspace = ({
   setSelectedMessageText,
   showReplyMessage,
   setShowReplyMessage,
