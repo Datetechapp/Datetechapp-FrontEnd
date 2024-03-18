@@ -17,6 +17,7 @@ type ModalClipElementsProps = {
 };
 
 const INPUT_COLLAPSED_HEIGHT = 20;
+const MAX_NUMBER_OF_IMAGES = 10;
 
 export const ModalClipElements = ({
   message,
@@ -34,17 +35,14 @@ export const ModalClipElements = ({
       .filter((file) => file.type.includes('image'))
       .map(URL.createObjectURL);
 
-    imageURLs.length = 10; // TOFIX: forcibly update the number of images to only ten
+    imageURLs.length = MAX_NUMBER_OF_IMAGES; // TOFIX: forcibly update the number of images to only ten
 
     return imageURLs;
   }, [files]);
 
   useEffect(() => setMessage(''), []);
 
-  const handleWrapperClick = () => {
-    if (isModal) return;
-    setModal(true);
-  };
+  const handleWrapperClick = () => setModal(true);
 
   const handleModalClick = (e: MouseEvent<HTMLDivElement>) =>
     e.stopPropagation();
