@@ -27,8 +27,8 @@ export const AudioPlayer = () => {
   useEffect(() => {
     const rangeInput = volumeRef.current as HTMLInputElement;
 
-    if (rangeInput && volume) {
-      rangeInput.style.setProperty('--thumb-percentage', `${volume * 100}%`);
+    if (rangeInput) {
+      rangeInput.style.setProperty('--thumb-percentage', `${volume! * 100}%`);
     }
   }, [volume, isVolumeBlockHovered, isHovered]);
 
