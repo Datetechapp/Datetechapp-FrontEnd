@@ -1,9 +1,9 @@
 import css from './footer.module.css';
 import { Input } from '../../common/input';
-import React, { useState, FC } from 'react';
+import { useState, ChangeEvent, Dispatch, SetStateAction } from 'react';
 import { ReactComponent as EmojiIcon } from '../../../assets/Messanger/emojiIcon.svg';
 import { ReactComponent as Clip } from '../../../assets/Messanger/Clip.svg';
-import EmojiPicker, { EmojiClickData } from 'emoji-picker-react';
+import EmojiPicker from 'emoji-picker-react';
 import { ReplyMessage } from './ReplyMessage';
 import { UploadButton } from 'components/pages/Questionnaire/UploadButton';
 import { ModalClipElements } from './ModalClipElements';
@@ -13,15 +13,15 @@ interface FooterProps {
   selectedMessageText: string;
   showReplyMessage: boolean;
   onShowReplyMessage: () => void;
-  setBlobSrc: React.Dispatch<React.SetStateAction<string>>;
+  setBlobSrc: Dispatch<SetStateAction<string>>;
 }
 
-export const Footer: FC<FooterProps> = ({
+export const Footer = ({
   selectedMessageText,
   showReplyMessage,
   onShowReplyMessage,
   setBlobSrc,
-}) => {
+}: FooterProps) => {
   const [messageValue, setMessageValue] = useState('');
   const [showPicker, setShowPicker] = useState(false);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -39,7 +39,7 @@ export const Footer: FC<FooterProps> = ({
     setMessageValue(messageValue + emojiObject.emoji);
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const newMessage = e.target.value;
 
     setMessageValue(newMessage);
