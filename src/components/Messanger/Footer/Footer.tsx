@@ -3,7 +3,6 @@ import { Input } from '../../common/input';
 import { useState, ChangeEvent, Dispatch, SetStateAction } from 'react';
 import { ReactComponent as EmojiIcon } from '../../../assets/Messanger/emojiIcon.svg';
 import { ReactComponent as Clip } from '../../../assets/Messanger/Clip.svg';
-import EmojiPicker from 'emoji-picker-react';
 import { ReplyMessage } from './ReplyMessage';
 import { UploadButton } from 'components/pages/Questionnaire/UploadButton';
 import { ModalClipElements } from './ModalClipElements';
@@ -30,13 +29,6 @@ export const Footer = ({
 
   const handleTogglePicker = () => {
     setShowPicker(!showPicker);
-  };
-
-  const handleEmojiClick = (
-    emojiObject: { emoji: string },
-    event: MouseEvent,
-  ) => {
-    setMessageValue(messageValue + emojiObject.emoji);
   };
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -104,7 +96,6 @@ export const Footer = ({
               />
             )}
           </div>
-          {showPicker && <EmojiPicker onEmojiClick={handleEmojiClick} />}
           <Input
             className={
               !isRecording && !isRecordedBlob
