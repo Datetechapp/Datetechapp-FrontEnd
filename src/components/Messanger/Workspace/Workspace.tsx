@@ -1,5 +1,5 @@
-import css from './workspace.module.css';
-import React, { useCallback, useState } from 'react';
+import React, { Dispatch, SetStateAction, useCallback, useState } from 'react';
+
 import { AudioPlayer } from './AudioPlayer/AudioPlayer';
 import {
   ModalForFixMessage,
@@ -12,6 +12,7 @@ import {
 } from '.';
 import { useAppSelector } from 'hooks/hooks';
 import { getAudioInfo } from 'store/audioInfo/selectors';
+import css from './workspace.module.css';
 
 export interface MessageProps {
   id: string;
@@ -24,12 +25,12 @@ export interface MessageProps {
 }
 
 interface WorkspaceProps {
-  setSelectedMessageText: React.Dispatch<React.SetStateAction<string>>;
-  setShowReplyMessage: React.Dispatch<React.SetStateAction<boolean>>;
+  setSelectedMessageText: Dispatch<SetStateAction<string>>;
+  setShowReplyMessage: Dispatch<SetStateAction<boolean>>;
   selectedMessageText: string;
   showSearchMessages: boolean;
   showReplyMessage: boolean;
-  setShowSearchMessages: React.Dispatch<React.SetStateAction<boolean>>;
+  setShowSearchMessages: Dispatch<SetStateAction<boolean>>;
   blobSrc?: string;
 }
 
@@ -77,7 +78,7 @@ const messagesArr: MessageProps[] = [
   {
     id: '5',
     type: 'audio',
-    blob: 'blob:http://localhost:3000/b970b358-87ae-42b3-8439-6e3d674941d4',
+    blob: 'blob:http://localhost:3000/24df7636-72c5-4c89-bf61-1ef594f8532c',
     text: '',
     isMe: true,
     timestamp: '12:40',
@@ -86,7 +87,7 @@ const messagesArr: MessageProps[] = [
   {
     id: '6',
     type: 'audio',
-    blob: 'blob:http://localhost:3000/8e0dfb43-3e72-42bb-a9b0-ceb462e0d0c7',
+    blob: 'blob:http://localhost:3000/761c59ef-802d-40b4-aec1-8bda594e1559',
     text: '',
     isMe: false,
     timestamp: '12:40',

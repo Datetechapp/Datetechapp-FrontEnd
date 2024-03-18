@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, ChangeEvent } from 'react';
 
 import { ReactComponent as FirstSpeed } from '../../../../assets/AudioPlayer/firstSpeed.svg';
 import { ReactComponent as SecondSpeed } from '../../../../assets/AudioPlayer/secondSpeed.svg';
@@ -32,13 +32,13 @@ export const AudioPlayer = () => {
     }
   }, [volume, isVolumeBlockHovered, isHovered]);
 
-  const handleVolumeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleVolumeChange = (event: ChangeEvent<HTMLInputElement>) => {
     const newVolume = parseFloat(event.target.value);
 
     dispatch(audioInfoUpdate({ volume: newVolume }));
   };
 
-  const handleRangeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleRangeChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = parseFloat(e.target.value);
 
     if (!isNaN(value)) {

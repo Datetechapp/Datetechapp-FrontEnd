@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { Dispatch, SetStateAction, useEffect } from 'react';
 
 import { ReactComponent as PinnedIcon } from '../../../../assets/Messanger/iconForPinnedMessage.svg';
 import { ContextMenu } from '../ContextMenu';
@@ -20,7 +20,7 @@ export interface MessageProps {
   ) => void;
   onContextMenuAction: (text: string) => void;
   currentPinnedMessageIndex: number;
-  setHighlighted: React.Dispatch<React.SetStateAction<boolean>>;
+  setHighlighted: Dispatch<SetStateAction<boolean>>;
   highlighted: boolean;
 }
 

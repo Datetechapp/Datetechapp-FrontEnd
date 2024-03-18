@@ -1,8 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { RefObject, useEffect, useRef } from 'react';
 import { useWavesurfer } from '@wavesurfer/react';
 
-import styles from './audioMessageContent.module.css';
-import css from '../message.module.css';
 import { ReactComponent as PlayIcon } from '../../../../../assets/Messanger/RecordingAudio/PlayIcon.svg';
 import { ReactComponent as PauseIcon } from '../../../../../assets/Messanger/RecordingAudio/PauseIcon.svg';
 import { ReactComponent as PinnedIcon } from '../../../../../assets/Messanger/iconForPinnedMessage.svg';
@@ -10,9 +8,11 @@ import { formatTime } from './lib';
 import { useAppDispatch, useAppSelector } from 'hooks/hooks';
 import { audioInfoDelete, audioInfoUpdate } from 'store/audioInfo/slice';
 import { getAudioInfo } from 'store/audioInfo/selectors';
+import styles from './audioMessageContent.module.css';
+import css from '../message.module.css';
 
 type Props = {
-  audioRef: React.RefObject<HTMLAudioElement>;
+  audioRef: RefObject<HTMLAudioElement>;
   timestamp: string;
   isPinned: boolean;
   blob: string;
