@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useWavesurfer } from '@wavesurfer/react';
 
 import styles from './audioMessageContent.module.css';
@@ -32,13 +32,17 @@ export function AudioMessageContent({
     volume,
     id: audioId,
     blob: audioBlob,
+    speed,
   } = useAppSelector(getAudioInfo);
+
+  const preservePitch = true;
 
   const { wavesurfer, currentTime } = useWavesurfer({
     container: containerRef,
     height: 18,
     waveColor: '#1F1D2B',
     progressColor: '#C896EF',
+    //when we have a stable blob we will use so url: blob,
     url: blob,
     barAlign: 'bottom',
     cursorWidth: 0,
@@ -92,6 +96,12 @@ export function AudioMessageContent({
     }
   }, [wavesurfer]);
 
+  useEffect(() => {
+    if (wavesurfer) {
+      wavesurfer && wavesurfer.setPlaybackRate(speed, preservePitch);
+    }
+  }, [speed]);
+
   return (
     <div className={styles.container}>
       {isPlaying && id === audioId ? (
@@ -103,7 +113,7 @@ export function AudioMessageContent({
         <audio
           ref={audioRef}
           src={audioBlob}
-          onEnded={handleAudioEnded}
+          // onEnded={handleAudioEnded}
           id={id}
         />
       )}

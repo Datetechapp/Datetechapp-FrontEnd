@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, FC } from 'react';
+import React, { useState, useEffect, useRef, FC, useCallback } from 'react';
 import css from './audioPlayer.module.css';
 import { ReactComponent as FirstSpeed } from '../../../../assets/AudioPlayer/firstSpeed.svg';
 import { ReactComponent as SecondSpeed } from '../../../../assets/AudioPlayer/secondSpeed.svg';
@@ -20,13 +20,11 @@ export const AudioPlayer = () => {
 
   const volumeRef = useRef<HTMLInputElement | null>(null);
 
-  const { speed, volume, duration, isPlaying } = useAppSelector(getAudioInfo);
+  const { speed, volume, isPlaying } = useAppSelector(getAudioInfo);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     const rangeInput = volumeRef.current as HTMLInputElement;
-
-    console.log(volume);
 
     if (rangeInput) {
       rangeInput.style.setProperty('--thumb-percentage', `${volume! * 100}%`);
@@ -36,11 +34,7 @@ export const AudioPlayer = () => {
   const handleVolumeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newVolume = parseFloat(event.target.value);
 
-    // setVolume(newVolume);
-
-    // if (audioRef.current) {
-    //        audioRef.current.volume = newVolume;
-    // }
+    dispatch(audioInfoUpdate({ volume: newVolume }));
   };
 
   const handleRangeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -60,19 +54,30 @@ export const AudioPlayer = () => {
   };
 
   const handlePlayPause = () => {
-    dispatch(audioInfoUpdate({ isPlaying: isPlaying === true ? false : true }));
+    dispatch(audioInfoUpdate({ isPlaying: !isPlaying }));
+  };
+
+  const handleSpeedFaster = () => {
+    if (speed < 3) {
+      dispatch(audioInfoUpdate({ speed: speed + 1 }));
+    }
+  };
+  const handleSpeedSlower = () => {
+    if (speed > 1) {
+      dispatch(audioInfoUpdate({ speed: speed - 1 }));
+    }
   };
 
   return (
     <div className={css.audioPlayerWrapper}>
       <div className={css.scrollBarBlock}>
-        <RewindAudio />
+        <RewindAudio onClick={handleSpeedSlower} />
         {isPlaying ? (
           <PauseIcon width={24} height={24} onClick={handlePlayPause} />
         ) : (
           <PlayIcon width={24} height={24} onClick={handlePlayPause} />
         )}
-        <FastFowardAudio />
+        <FastFowardAudio onClick={handleSpeedFaster} />
       </div>
       <div>
         <p className={css.name}>Michael</p>
@@ -80,13 +85,11 @@ export const AudioPlayer = () => {
       </div>
       <div className={css.audioSettings}>
         {speed === 1 ? (
-          <FirstSpeed onClick={() => dispatch(audioInfoUpdate({ speed: 1 }))} />
+          <FirstSpeed />
         ) : speed === 2 ? (
-          <SecondSpeed
-            onClick={() => dispatch(audioInfoUpdate({ speed: 2 }))}
-          />
+          <SecondSpeed />
         ) : (
-          <ThirdSpeed onClick={() => dispatch(audioInfoUpdate({ speed: 3 }))} />
+          <ThirdSpeed />
         )}
 
         {volume ? (
