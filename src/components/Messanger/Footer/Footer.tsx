@@ -1,7 +1,6 @@
-import { UploadButton } from 'components/pages/Questionnaire/UploadButton';
-import { useState, type ChangeEvent } from 'react';
-import { useVoiceVisualizer } from 'react-voice-visualizer';
+import { ChangeEvent, Dispatch, SetStateAction, useState } from 'react';
 
+import { UploadButton } from 'components/pages/Questionnaire/UploadButton';
 import { Input } from '../../common/input';
 import { ModalClipElements } from './ModalClipElements';
 import { RecordingAudio } from './RecordingAudio/RecordingAudio';
@@ -16,19 +15,19 @@ type FooterProps = {
   selectedMessageText: string;
   showReplyMessage: boolean;
   onShowReplyMessage: () => void;
+  setBlobSrc: Dispatch<SetStateAction<string>>;
 };
 
 export const Footer = ({
   selectedMessageText,
   showReplyMessage,
   onShowReplyMessage,
+  setBlobSrc,
 }: FooterProps) => {
   const [message, setMessage] = useState('');
   const [files, setFiles] = useState<File[] | null>(null);
   const [isRecording, setIsRecording] = useState(false);
   const [isRecordedBlob, setIsRecordedBlob] = useState(false);
-
-  const recorderControls = useVoiceVisualizer();
 
   const handleInputChange = ({ target }: ChangeEvent<HTMLInputElement>) =>
     setMessage(target.value);
@@ -69,6 +68,7 @@ export const Footer = ({
               setIsRecording={setIsRecording}
               // setMessage={setMessage}
               setIsRecordedBlob={setIsRecordedBlob}
+              setBlobSrc={setBlobSrc}
             />
           </div>
           {!isRecording && !isRecordedBlob && (

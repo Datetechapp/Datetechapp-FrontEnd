@@ -13,11 +13,13 @@ import { ModalCommon } from 'components/common';
 interface RecordingAudioProps {
   setIsRecording: React.Dispatch<React.SetStateAction<boolean>>;
   setIsRecordedBlob: React.Dispatch<React.SetStateAction<boolean>>;
+  setBlobSrc: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const RecordingAudio: React.FC<RecordingAudioProps> = ({
   setIsRecording,
   setIsRecordedBlob,
+  setBlobSrc,
 }) => {
   const [recordingTime, setRecordingTime] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -27,7 +29,6 @@ export const RecordingAudio: React.FC<RecordingAudioProps> = ({
   const recorderControls = useVoiceVisualizer();
 
   const {
-    isRecordingInProgress: isRecorderRecording,
     startRecording,
     stopRecording,
     recordedBlob,
@@ -72,6 +73,14 @@ export const RecordingAudio: React.FC<RecordingAudioProps> = ({
 
   const onResumeAudioPlayback = () => {
     console.log('onResumeAudioPlayback');
+  };
+
+  const sendRecordBlob = () => {
+    console.log('recordedBlob', audioSrc);
+    clearCanvas();
+    setRecordingTime(0);
+    setIsRecordedBlob(false);
+    setIsRecording(false);
   };
 
   const handleMicrophoneClick = () => {
@@ -129,7 +138,7 @@ export const RecordingAudio: React.FC<RecordingAudioProps> = ({
           {isPlaying && (
             <PauseIcon className={css.playIcon} onClick={handleAudioClick} />
           )}
-          <SendIcon className={css.sendIcon} />
+          <SendIcon className={css.sendIcon} onClick={sendRecordBlob} />
           <DeleteIcon className={css.deleteIcon} onClick={handleDeleteRecord} />
           <audio ref={audioRef} src={audioSrc} onEnded={onEndAudioPlayback} />
           <p className={css.timeIsRecorded}>
@@ -153,15 +162,6 @@ export const RecordingAudio: React.FC<RecordingAudioProps> = ({
         isThereACancel={false}
         darkModal={true}
       />
-      {/* <div className={!isPlaying ? css.visualizerContainerHidden : css.visualizerContainer}>
-                            <VoiceVisualizer
-                                   controls={recorderControls}
-                                   // ref={audioRef}
-                                   backgroundColor="#4B4A54"
-                                   mainBarColor="#1F1D2B"
-                                   secondaryBarColor="#C896EF"
-                            />
-                     </div> */}
     </div>
   );
 };
