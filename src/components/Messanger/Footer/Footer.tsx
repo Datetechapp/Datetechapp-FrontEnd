@@ -8,7 +8,7 @@ import { UploadButton } from 'components/pages/Questionnaire/UploadButton';
 import { ModalClipElements } from './ModalClipElements';
 import { RecordingAudio } from './RecordingAudio/RecordingAudio';
 
-interface FooterProps {
+type FooterProps = {
   selectedMessageText: string;
   showReplyMessage: boolean;
   onShowReplyMessage: () => void;
@@ -52,6 +52,7 @@ export const Footer = ({
             onChange={handleInputChange}
           />
         </div>
+
       )}
       <div
         className={

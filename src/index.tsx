@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Modal from 'react-modal';
-import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { store } from './store';
+import { BrowserRouter } from 'react-router-dom';
 import { App } from './components/App';
+import { store } from './store';
+
 import './assets/fonts/fonts.css';
+import './index.css';
 
 Modal.setAppElement('#root');
 

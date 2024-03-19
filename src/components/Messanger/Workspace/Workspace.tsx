@@ -2,11 +2,11 @@ import React, { Dispatch, SetStateAction, useCallback, useState } from 'react';
 
 import { AudioPlayer } from './AudioPlayer/AudioPlayer';
 import {
-  ModalForFixMessage,
-  ModalForDeleteMessage,
-  ModalForForwardMessage,
-  Message,
   EmojiComponent,
+  Message,
+  ModalForDeleteMessage,
+  ModalForFixMessage,
+  ModalForForwardMessage,
   PinnedMessage,
   SearchMessages,
 } from '.';
@@ -182,10 +182,7 @@ export const Workspace = ({
   }, []);
 
   const handleContextMenu = useCallback(
-    (
-      event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-      messageId: string,
-    ) => {
+    (event: MouseEvent<HTMLDivElement>, messageId: string) => {
       event.preventDefault();
       setSelectedMessageId(messageId);
       setShowContextMenu(true);

@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import { Footer, Header, Workspace } from '.';
+
 import css from './messanger.module.css';
-import { Header, Workspace, Footer } from '.';
 
 export const Messanger = () => {
   const [selectedMessageText, setSelectedMessageText] = useState('');
@@ -8,9 +9,7 @@ export const Messanger = () => {
   const [showSearchMessages, setShowSearchMessages] = useState(false);
   const [blobSrc, setBlobSrc] = useState('');
 
-  const handleShowReplyMessage = () => {
-    setShowReplyMessage(false);
-  };
+  const handleShowReplyMessage = () => setShowReplyMessage(false);
 
   return (
     <div className={css.messangerWrapper}>
