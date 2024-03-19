@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useVoiceVisualizer } from 'react-voice-visualizer';
 import { ReactComponent as Microphone } from '../../../../assets/Messanger/RecordingAudio/Microphone.svg';
 import { ReactComponent as StopIcon } from '../../../../assets/Messanger/RecordingAudio/StopIcon.svg';
@@ -36,14 +36,17 @@ export const RecordingAudio: React.FC<RecordingAudioProps> = ({
     audioSrc,
   } = recorderControls;
 
+  const timeRef = useRef<ReturnType<typeof setInterval>>();
+
   useEffect(() => {
-    let intervalId: ReturnType<typeof setInterval>;
+    if (!isRunning) return;
 
-    if (isRunning) {
-      intervalId = setInterval(() => setRecordingTime(recordingTime + 1), 10);
-    }
+    timeRef.current = setInterval(
+      () => setRecordingTime(recordingTime + 1),
+      10,
+    );
 
-    return () => clearInterval(intervalId);
+    return () => clearInterval(timeRef.current);
   }, [isRunning, recordingTime]);
 
   const minutes = Math.floor(recordingTime / 6000);
