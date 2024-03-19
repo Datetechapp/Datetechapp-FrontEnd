@@ -37,7 +37,6 @@ interface WorkspaceProps {
   showSearchMessages: boolean;
   showReplyMessage: boolean;
   setShowSearchMessages: Dispatch<SetStateAction<boolean>>;
-  blobSrc?: string;
 }
 
 const messagesArr: MessageProps[] = [
@@ -84,7 +83,7 @@ const messagesArr: MessageProps[] = [
   {
     id: '5',
     type: 'audio',
-    blob: 'blob:http://localhost:3000/5b7a9b8d-b652-4bc9-a5c7-eb7c8f65342f',
+    blob: 'blob:http://localhost:3000/b87f9df3-5b7b-4fde-9b15-0a6c49aa4aca',
     text: '',
     isMe: true,
     timestamp: '12:40',
@@ -93,7 +92,7 @@ const messagesArr: MessageProps[] = [
   {
     id: '6',
     type: 'audio',
-    blob: 'blob:http://localhost:3000/761c59ef-802d-40b4-aec1-8bda594e1559',
+    blob: 'blob:http://localhost:3000/8f163ac5-141d-4f1f-9821-91685a62725a',
     text: '',
     isMe: false,
     timestamp: '12:40',
@@ -108,7 +107,6 @@ export const Workspace = ({
   selectedMessageText,
   showSearchMessages,
   setShowSearchMessages,
-  blobSrc,
 }: WorkspaceProps) => {
   const [showContextMenu, setShowContextMenu] = useState(false);
   const [showSmileyMenu, setShowSmileyMenu] = useState(false);
@@ -255,7 +253,7 @@ export const Workspace = ({
                 highlighted={highlighted}
                 setHighlighted={setHighlighted}
                 id={message.id}
-                blob={blobSrc || message.blob}
+                blob={message.blob}
                 type={message.type}
                 text={message.text}
                 isMe={message.isMe}

@@ -15,14 +15,12 @@ type FooterProps = {
   selectedMessageText: string;
   showReplyMessage: boolean;
   onShowReplyMessage: () => void;
-  setBlobSrc: Dispatch<SetStateAction<string>>;
 };
 
 export const Footer = ({
   selectedMessageText,
   showReplyMessage,
   onShowReplyMessage,
-  setBlobSrc,
 }: FooterProps) => {
   const [message, setMessage] = useState('');
   const [files, setFiles] = useState<File[] | null>(null);
@@ -68,7 +66,6 @@ export const Footer = ({
               setIsRecording={setIsRecording}
               // setMessage={setMessage}
               setIsRecordedBlob={setIsRecordedBlob}
-              setBlobSrc={setBlobSrc}
             />
           </div>
           {!isRecording && !isRecordedBlob && (

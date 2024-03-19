@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useVoiceVisualizer } from 'react-voice-visualizer';
 import { ReactComponent as Microphone } from '../../../../assets/Messanger/RecordingAudio/Microphone.svg';
 import { ReactComponent as StopIcon } from '../../../../assets/Messanger/RecordingAudio/StopIcon.svg';
 import { ReactComponent as RecordingPoint } from '../../../../assets/Messanger/RecordingAudio/RecordingPoint.svg';
@@ -6,20 +7,17 @@ import { ReactComponent as PlayIcon } from '../../../../assets/Messanger/Recordi
 import { ReactComponent as SendIcon } from '../../../../assets/Messanger/RecordingAudio/SendIcon.svg';
 import { ReactComponent as DeleteIcon } from '../../../../assets/Messanger/RecordingAudio/deleteIcon.svg';
 import { ReactComponent as PauseIcon } from '../../../../assets/Messanger/RecordingAudio/PauseIcon.svg';
-import css from './recordingAudio.module.css';
-import { useVoiceVisualizer, VoiceVisualizer } from 'react-voice-visualizer';
 import { ModalCommon } from 'components/common';
+import css from './recordingAudio.module.css';
 
 interface RecordingAudioProps {
   setIsRecording: React.Dispatch<React.SetStateAction<boolean>>;
   setIsRecordedBlob: React.Dispatch<React.SetStateAction<boolean>>;
-  setBlobSrc: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const RecordingAudio: React.FC<RecordingAudioProps> = ({
   setIsRecording,
   setIsRecordedBlob,
-  setBlobSrc,
 }) => {
   const [recordingTime, setRecordingTime] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -38,9 +36,6 @@ export const RecordingAudio: React.FC<RecordingAudioProps> = ({
     audioSrc,
   } = recorderControls;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const timerRef = useRef<any>(null);
-
   useEffect(() => {
     let intervalId: ReturnType<typeof setInterval>;
 
@@ -50,10 +45,6 @@ export const RecordingAudio: React.FC<RecordingAudioProps> = ({
 
     return () => clearInterval(intervalId);
   }, [isRunning, recordingTime]);
-
-  const padZero = useCallback((value: number) => {
-    return value.toString().padStart(2, '0');
-  }, []);
 
   const minutes = Math.floor(recordingTime / 6000);
   const seconds = Math.floor((recordingTime / 100) % 60);
@@ -89,12 +80,10 @@ export const RecordingAudio: React.FC<RecordingAudioProps> = ({
       setIsRecording(false);
       setIsRunning(!isRunning);
       setIsRecordedBlob(true);
-      // clearInterval(timerRef.current);
     } else {
       startRecording();
       setIsRunning(!isRunning);
       setIsRecording(true);
-      // recordingTimer();
     }
   };
 
@@ -114,7 +103,6 @@ export const RecordingAudio: React.FC<RecordingAudioProps> = ({
     setIsOpenModalDeleteRecord(true);
     clearCanvas();
     setRecordingTime(0);
-    // timerRef.current = 0;
     setIsRecordedBlob(false);
     setIsRecording(false);
   };
