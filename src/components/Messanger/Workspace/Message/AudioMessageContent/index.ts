@@ -1,0 +1,1 @@
+export { AudioMessageContent } from './AudioMessageContent';

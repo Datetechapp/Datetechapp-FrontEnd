@@ -7,6 +7,7 @@ export const Messanger = () => {
   const [selectedMessageText, setSelectedMessageText] = useState('');
   const [showReplyMessage, setShowReplyMessage] = useState(false);
   const [showSearchMessages, setShowSearchMessages] = useState(false);
+  const [blobSrc, setBlobSrc] = useState('');
 
   const handleShowReplyMessage = () => setShowReplyMessage(false);
 
@@ -20,11 +21,13 @@ export const Messanger = () => {
         selectedMessageText={selectedMessageText}
         setSelectedMessageText={setSelectedMessageText}
         setShowReplyMessage={setShowReplyMessage}
+        blobSrc={blobSrc}
       />
       <Footer
         selectedMessageText={selectedMessageText}
         showReplyMessage={showReplyMessage}
         onShowReplyMessage={handleShowReplyMessage}
+        setBlobSrc={setBlobSrc}
       />
     </div>
   );

@@ -1,51 +1,58 @@
-import { UploadButton } from 'components/pages/Questionnaire/UploadButton';
-import { useState, type ChangeEvent } from 'react';
-import { useVoiceVisualizer } from 'react-voice-visualizer';
-
+import css from './footer.module.css';
 import { Input } from '../../common/input';
+import { useState, ChangeEvent, Dispatch, SetStateAction } from 'react';
+import { ReactComponent as EmojiIcon } from '../../../assets/Messanger/emojiIcon.svg';
+import { ReactComponent as Clip } from '../../../assets/Messanger/Clip.svg';
+import { ReplyMessage } from './ReplyMessage';
+import { UploadButton } from 'components/pages/Questionnaire/UploadButton';
 import { ModalClipElements } from './ModalClipElements';
 import { RecordingAudio } from './RecordingAudio/RecordingAudio';
-import { ReplyMessage } from './ReplyMessage';
-
-import { ReactComponent as Clip } from '../../../assets/Messanger/Clip.svg';
-import { ReactComponent as EmojiIcon } from '../../../assets/Messanger/emojiIcon.svg';
-
-import css from './footer.module.css';
 
 type FooterProps = {
   selectedMessageText: string;
   showReplyMessage: boolean;
   onShowReplyMessage: () => void;
-};
+  setBlobSrc: Dispatch<SetStateAction<string>>;
+}
 
 export const Footer = ({
   selectedMessageText,
   showReplyMessage,
   onShowReplyMessage,
+  setBlobSrc,
 }: FooterProps) => {
-  const [message, setMessage] = useState('');
+  const [messageValue, setMessageValue] = useState('');
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [isRecording, setIsRecording] = useState(false);
   const [isRecordedBlob, setIsRecordedBlob] = useState(false);
 
-  const recorderControls = useVoiceVisualizer();
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const newMessage = e.target.value;
 
-  const handleInputChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
-    setMessage(target.value);
+    setMessageValue(newMessage);
   };
 
-  const handleUploadFile = (file: File) => setSelectedFile(file);
+  const handleUploadFile = (file: File) => {
+    setSelectedFile(file);
+    console.log('Загруженный файл:', file);
+  };
 
-  const handleCloseModal = () => setSelectedFile(null);
+  const handleCloseSelectedImage = () => {
+    setSelectedFile(null);
+  };
 
   return (
     <div className={css.blockForReplyMessage}>
       {selectedFile && (
-        <ModalClipElements
-          file={selectedFile}
-          onClose={handleCloseModal}
-          setMessage={setMessage}
-        />
+        <div className={css.clipElementsWrapper}>
+          <ModalClipElements
+            file={selectedFile}
+            onClose={handleCloseSelectedImage}
+            value={messageValue}
+            onChange={handleInputChange}
+          />
+        </div>
+
       )}
       <div
         className={
@@ -67,8 +74,9 @@ export const Footer = ({
           <div className={css.recordingAudioBlock}>
             <RecordingAudio
               setIsRecording={setIsRecording}
-              // setMessage={setMessage}
+              // setMessageValue={setMessageValue}
               setIsRecordedBlob={setIsRecordedBlob}
+              setBlobSrc={setBlobSrc}
             />
           </div>
           {!isRecording && !isRecordedBlob && (
@@ -90,7 +98,7 @@ export const Footer = ({
           }
           type="text"
           placeholder={isRecordedBlob || isRecording ? '' : 'Message...'}
-          value={message}
+          value={messageValue}
           onChange={handleInputChange}
           readOnly={isRecordedBlob || isRecording}
         />

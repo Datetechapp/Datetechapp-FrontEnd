@@ -1,6 +1,6 @@
-import type { Dispatch, MouseEvent, SetStateAction } from 'react';
-import { useCallback, useState } from 'react';
+import React, { Dispatch, SetStateAction, useCallback, useState } from 'react';
 
+import { AudioPlayer } from './AudioPlayer/AudioPlayer';
 import {
   EmojiComponent,
   Message,
@@ -10,12 +10,14 @@ import {
   PinnedMessage,
   SearchMessages,
 } from '.';
-import { AudioPlayer } from './AudioPlayer/AudioPlayer';
-
+import { useAppSelector } from 'hooks/hooks';
+import { getAudioInfo } from 'store/audioInfo/selectors';
 import css from './workspace.module.css';
 
 export interface MessageProps {
   id: string;
+  type: string;
+  blob?: string;
   text: string;
   isMe: boolean;
   timestamp: string;
@@ -29,11 +31,13 @@ interface WorkspaceProps {
   showSearchMessages: boolean;
   showReplyMessage: boolean;
   setShowSearchMessages: Dispatch<SetStateAction<boolean>>;
+  blobSrc?: string;
 }
 
 const messagesArr: MessageProps[] = [
   {
     id: '0',
+    type: 'text',
     text: 'Hi! You have a cool video.Djfsdghvj fsjafhvdj shzj,chznm dzM<Fcnvm cn,zfmvn ja,mfdncm ,samfhznkjm k,jamshdzvn dsgkjvlx nxsvmn j,m n a,sxzmvn ,m anvjcz,mxn',
     isMe: false,
     timestamp: '12:30',
@@ -41,6 +45,7 @@ const messagesArr: MessageProps[] = [
   },
   {
     id: '1',
+    type: 'text',
     text: "Hi!Thanks. I'm very pleased.",
     isMe: true,
     timestamp: '12:31',
@@ -48,6 +53,7 @@ const messagesArr: MessageProps[] = [
   },
   {
     id: '2',
+    type: 'text',
     text: 'I would like to meet you.',
     isMe: false,
     timestamp: '12:35',
@@ -55,6 +61,7 @@ const messagesArr: MessageProps[] = [
   },
   {
     id: '3',
+    type: 'text',
     text: "but I'm very tired today",
     isMe: false,
     timestamp: '12:36',
@@ -62,7 +69,26 @@ const messagesArr: MessageProps[] = [
   },
   {
     id: '4',
+    type: 'text',
     text: 'i will write to you tomorrow..',
+    isMe: false,
+    timestamp: '12:40',
+    isPinned: false,
+  },
+  {
+    id: '5',
+    type: 'audio',
+    blob: 'blob:http://localhost:3000/5b7a9b8d-b652-4bc9-a5c7-eb7c8f65342f',
+    text: '',
+    isMe: true,
+    timestamp: '12:40',
+    isPinned: false,
+  },
+  {
+    id: '6',
+    type: 'audio',
+    blob: 'blob:http://localhost:3000/761c59ef-802d-40b4-aec1-8bda594e1559',
+    text: '',
     isMe: false,
     timestamp: '12:40',
     isPinned: false,
@@ -76,6 +102,7 @@ export const Workspace = ({
   selectedMessageText,
   showSearchMessages,
   setShowSearchMessages,
+  blobSrc,
 }: WorkspaceProps) => {
   const [showContextMenu, setShowContextMenu] = useState(false);
   const [showSmileyMenu, setShowSmileyMenu] = useState(false);
@@ -85,6 +112,7 @@ export const Workspace = ({
   const [showModalDelete, setShowModalDelete] = useState(false);
   const [pinnedMessages, setPinnedMessages] = useState<MessageProps[]>([]);
   const [currentPinnedMessageIndex, setCurrentPinnedMessageIndex] = useState(0);
+  const { isPinned } = useAppSelector(getAudioInfo);
 
   const [highlighted, setHighlighted] = useState(false);
 
@@ -190,7 +218,8 @@ export const Workspace = ({
       }
     >
       <div className={css.headerWorkspace}>
-        <AudioPlayer />
+        {isPinned && <AudioPlayer />}
+
         {showSearchMessages && (
           <SearchMessages setShowSearchMessages={setShowSearchMessages} />
         )}
@@ -201,7 +230,9 @@ export const Workspace = ({
             setCurrentPinnedMessageIndex={setCurrentPinnedMessageIndex}
             pinnedMessages={pinnedMessages}
             setPinnedMessages={setPinnedMessages}
-            text={pinnedMessages[currentPinnedMessageIndex]?.text}
+            text={
+              pinnedMessages[currentPinnedMessageIndex]?.text || 'Voice Message'
+            }
           />
         )}
       </div>
@@ -213,12 +244,13 @@ export const Workspace = ({
               {showSmileyMenu && selectedMessageId === message.id && (
                 <EmojiComponent isMe={message.isMe} />
               )}
-
               <Message
                 currentPinnedMessageIndex={currentPinnedMessageIndex}
                 highlighted={highlighted}
                 setHighlighted={setHighlighted}
                 id={message.id}
+                blob={blobSrc || message.blob}
+                type={message.type}
                 text={message.text}
                 isMe={message.isMe}
                 timestamp={message.timestamp}
@@ -226,7 +258,7 @@ export const Workspace = ({
                 isPinned={pinnedMessages.some(
                   (pinnedMessage) => pinnedMessage.id === message.id,
                 )}
-                onContextMenu={(event) => {
+                onContextMenu={(event: React.MouseEvent<HTMLDivElement>) => {
                   if (event) {
                     setSelectedMessageText(message.text);
                     handleContextMenu(event, message.id);

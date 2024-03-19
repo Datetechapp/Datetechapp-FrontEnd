@@ -1,5 +1,6 @@
 export interface IMessageProps {
   id: string;
+  type: string;
   image: string;
   weekDay: string;
   name: string;
