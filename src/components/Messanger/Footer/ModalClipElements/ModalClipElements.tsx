@@ -1,6 +1,6 @@
 import { TextareaAutosize } from '@mui/material';
 import type { ChangeEvent, Dispatch, MouseEvent, SetStateAction } from 'react';
-import { useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 
 import { ClearMessageModal } from './ClearMessageModal';
 
@@ -10,27 +10,43 @@ import { ReactComponent as SendIcon } from '../../../../assets/Messanger/SendIco
 import css from './modalClipElements.module.css';
 
 type ModalClipElementsProps = {
-  file: File;
+  message: string;
+  files: File[];
   onClose: () => void;
   setMessage: Dispatch<SetStateAction<string>>;
 };
 
 const INPUT_COLLAPSED_HEIGHT = 20;
+const MAX_NUMBER_OF_IMAGES = 10;
 
 export const ModalClipElements = ({
-  file,
+  message,
+  files,
   onClose,
   setMessage,
 }: ModalClipElementsProps) => {
   const [isModal, setModal] = useState(false);
-  const [caption, setCaption] = useState('');
+  const [caption, setCaption] = useState(message);
   const inputRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-  const handleWrapperClick = () => {
-    if (isModal) return;
-    setModal(true);
-  };
+  const imageURLs = useMemo(() => {
+    const imageURLs = files
+      .filter((file) => file.type.includes('image'))
+      .map(URL.createObjectURL);
+
+    imageURLs.length = MAX_NUMBER_OF_IMAGES; // TOFIX: forcibly update the number of images to only ten
+
+    return imageURLs;
+  }, [files]);
+
+  useEffect(() => {
+    setMessage('');
+
+    return () => imageURLs.forEach(URL.revokeObjectURL);
+  }, []);
+
+  const handleWrapperClick = () => setModal(true);
 
   const handleModalClick = (e: MouseEvent<HTMLDivElement>) =>
     e.stopPropagation();
@@ -68,12 +84,9 @@ export const ModalClipElements = ({
       <div className={css.wrapper} onClick={handleWrapperClick}>
         <div className={css.modal} onClick={handleModalClick}>
           <div className={css.imageBlock}>
-            <img
-              src={URL.createObjectURL(file)}
-              className={css.image}
-              alt="Selected"
-              onLoad={(e) => URL.revokeObjectURL(e.currentTarget.src)}
-            />
+            {imageURLs.map((src) => (
+              <img key={src} src={src} className={css.image} alt="" />
+            ))}
             <DeleteIcon className={css.deleteIcon} onClick={handleDelete} />
           </div>
           <div className={css.inputWrapper}>

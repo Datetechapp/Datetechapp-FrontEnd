@@ -1,12 +1,15 @@
-import css from './footer.module.css';
-import { Input } from '../../common/input';
-import { useState, ChangeEvent, Dispatch, SetStateAction } from 'react';
-import { ReactComponent as EmojiIcon } from '../../../assets/Messanger/emojiIcon.svg';
-import { ReactComponent as Clip } from '../../../assets/Messanger/Clip.svg';
-import { ReplyMessage } from './ReplyMessage';
+import { ChangeEvent, Dispatch, SetStateAction, useState } from 'react';
+
 import { UploadButton } from 'components/pages/Questionnaire/UploadButton';
+import { Input } from '../../common/input';
 import { ModalClipElements } from './ModalClipElements';
 import { RecordingAudio } from './RecordingAudio/RecordingAudio';
+import { ReplyMessage } from './ReplyMessage';
+
+import { ReactComponent as Clip } from '../../../assets/Messanger/Clip.svg';
+import { ReactComponent as EmojiIcon } from '../../../assets/Messanger/emojiIcon.svg';
+
+import css from './footer.module.css';
 
 type FooterProps = {
   selectedMessageText: string;
@@ -22,32 +25,26 @@ export const Footer = ({
   setBlobSrc,
 }: FooterProps) => {
   const [message, setMessage] = useState('');
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [files, setFiles] = useState<File[] | null>(null);
   const [isRecording, setIsRecording] = useState(false);
   const [isRecordedBlob, setIsRecordedBlob] = useState(false);
 
-  const handleInputChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = ({ target }: ChangeEvent<HTMLInputElement>) =>
     setMessage(target.value);
-  };
 
-  const handleUploadFile = (file: File) => setSelectedFile(file);
+  const handleUploadFile = (files: File[]) => setFiles(files);
 
-  const handleCloseSelectedImage = () => {
-    setSelectedFile(null);
-  };
-
-  const handleCloseModal = () => setSelectedFile(null);
+  const handleCloseModal = () => setFiles(null);
 
   return (
     <div className={css.blockForReplyMessage}>
-      {selectedFile && (
-        <div className={css.clipElementsWrapper}>
-          <ModalClipElements
-            file={selectedFile}
-            onClose={handleCloseModal}
-            setMessage={setMessage}
-          />
-        </div>
+      {files && (
+        <ModalClipElements
+          message={message}
+          files={files}
+          onClose={handleCloseModal}
+          setMessage={setMessage}
+        />
       )}
       <div
         className={
@@ -69,7 +66,7 @@ export const Footer = ({
           <div className={css.recordingAudioBlock}>
             <RecordingAudio
               setIsRecording={setIsRecording}
-              // setMessageValue={setMessageValue}
+              // setMessage={setMessage}
               setIsRecordedBlob={setIsRecordedBlob}
               setBlobSrc={setBlobSrc}
             />
@@ -80,6 +77,7 @@ export const Footer = ({
               onUpload={handleUploadFile}
               inputId="clipUpload"
               accept="image/*"
+              multiple
             />
           )}
         </div>

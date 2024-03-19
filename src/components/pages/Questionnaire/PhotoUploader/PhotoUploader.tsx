@@ -1,8 +1,10 @@
-import { useRef, useState, type ChangeEvent, type FC } from 'react';
+import { useRef, useState, type ChangeEvent } from 'react';
 import AvatarEditor from 'react-avatar-editor';
+import { UploadButton } from '../UploadButton';
+
 import { ReactComponent as AddPhoto } from '../../../../assets/CreateAccountForm/addPhoto.svg';
 import { ReactComponent as CloseIcon } from '../../../../assets/CreateAccountForm/closeIcon.svg';
-import { UploadButton } from '../UploadButton';
+
 import css from './photoUploader.module.css';
 
 type Coordinates = {
@@ -10,28 +12,23 @@ type Coordinates = {
   y: number;
 };
 
-interface PhotoUploaderProps {
-  onUpload: (imageData: string | null) => void;
-  photo: string;
-}
+type PhotoUploaderProps = {
+  onUpload: (photo: File | null) => void;
+  photo: File | null;
+};
 
-export const PhotoUploader: FC<PhotoUploaderProps> = ({ onUpload, photo }) => {
+export const PhotoUploader = ({ onUpload, photo }: PhotoUploaderProps) => {
   const [editorPosition, setEditorPosition] = useState<Coordinates>({
     x: 0.5,
     y: 0.5,
   });
-  const [editorScale, setEditorScale] = useState<number>(1.5);
+  const [editorScale, setEditorScale] = useState(1.5);
   const editorRef = useRef<AvatarEditor | null>(null);
 
-  const handleFileUploaded = (file: File) => {
-    const reader = new FileReader();
-
-    reader.onload = () => {
-      onUpload(reader.result as string);
-      setEditorPosition({ x: 0.5, y: 0.5 });
-      setEditorScale(1.5);
-    };
-    reader.readAsDataURL(file);
+  const handleFileUpload = ([file]: File[]) => {
+    onUpload(file);
+    setEditorScale(1.5);
+    setEditorPosition({ x: 0.5, y: 0.5 });
   };
 
   const handlePositionChange = (position: Coordinates) =>
@@ -90,7 +87,7 @@ export const PhotoUploader: FC<PhotoUploaderProps> = ({ onUpload, photo }) => {
       ) : (
         <div className={css.buttonWrapper}>
           <UploadButton
-            onUpload={handleFileUploaded}
+            onUpload={handleFileUpload}
             inputId="photo-upload-button"
             accept=".jpg,.jpeg,.png,.svg"
             icon={<AddPhoto className={css.addFileIcon} />}
