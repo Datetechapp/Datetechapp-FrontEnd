@@ -1,4 +1,10 @@
-import React, { Dispatch, SetStateAction, useCallback, useState } from 'react';
+import React, {
+  Dispatch,
+  MouseEvent,
+  SetStateAction,
+  useCallback,
+  useState,
+} from 'react';
 
 import { AudioPlayer } from './AudioPlayer/AudioPlayer';
 import {

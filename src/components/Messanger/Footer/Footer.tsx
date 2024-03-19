@@ -13,7 +13,7 @@ type FooterProps = {
   showReplyMessage: boolean;
   onShowReplyMessage: () => void;
   setBlobSrc: Dispatch<SetStateAction<string>>;
-}
+};
 
 export const Footer = ({
   selectedMessageText,
@@ -21,25 +21,22 @@ export const Footer = ({
   onShowReplyMessage,
   setBlobSrc,
 }: FooterProps) => {
-  const [messageValue, setMessageValue] = useState('');
+  const [message, setMessage] = useState('');
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [isRecording, setIsRecording] = useState(false);
   const [isRecordedBlob, setIsRecordedBlob] = useState(false);
 
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const newMessage = e.target.value;
-
-    setMessageValue(newMessage);
+  const handleInputChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
+    setMessage(target.value);
   };
 
-  const handleUploadFile = (file: File) => {
-    setSelectedFile(file);
-    console.log('Загруженный файл:', file);
-  };
+  const handleUploadFile = (file: File) => setSelectedFile(file);
 
   const handleCloseSelectedImage = () => {
     setSelectedFile(null);
   };
+
+  const handleCloseModal = () => setSelectedFile(null);
 
   return (
     <div className={css.blockForReplyMessage}>
@@ -47,12 +44,10 @@ export const Footer = ({
         <div className={css.clipElementsWrapper}>
           <ModalClipElements
             file={selectedFile}
-            onClose={handleCloseSelectedImage}
-            value={messageValue}
-            onChange={handleInputChange}
+            onClose={handleCloseModal}
+            setMessage={setMessage}
           />
         </div>
-
       )}
       <div
         className={
@@ -98,7 +93,7 @@ export const Footer = ({
           }
           type="text"
           placeholder={isRecordedBlob || isRecording ? '' : 'Message...'}
-          value={messageValue}
+          value={message}
           onChange={handleInputChange}
           readOnly={isRecordedBlob || isRecording}
         />
