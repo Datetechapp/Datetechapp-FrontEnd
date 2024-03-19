@@ -197,7 +197,6 @@
 .icon {
   display: flex;
   align-items: flex-end;
-
 }
 
 .iconRightPartOuter {
@@ -432,6 +431,12 @@
   font-family: Montserrat;
   font-size: 16px;
   font-weight: 600;
+  transition: background 0.2s ease-in-out;
+}
+
+.cancelButton:hover {
+  outline: 1px solid #fff;
+  background: rgba(121, 116, 116, 0.904);
 }
 
 .editButton {
@@ -448,4 +453,9 @@
   font-family: Montserrat;
   font-size: 16px;
   font-weight: 600;
+  transition: background 0.2s ease-in-out;
+}
+
+.editButton:hover {
+  background: linear-gradient(270deg, #5e1cb4 0%, #8b41ea 45.31%, #ab23db 100%);
 }

@@ -47,9 +47,8 @@
   background-color: gray;
 }
 
-.nameQuestion::before, 
-.nameQuestion::after
- {
+.nameQuestion::before,
+.nameQuestion::after {
   --step: 2;
 }
 

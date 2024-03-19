@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom';
 import { NavBar } from './components';
 import styles from './supportPageLayout.module.css';
 import { SupportServicePanel } from './components/SupportServicePanel';
-import { MainLayoutHeader } from '../MainLayout/MainLayout_Header/MainLayout_header';
+import { MainLayoutHeader } from '../MainLayout/MainLayout_Header/MainLayoutHeader';
 import { memo, useState } from 'react';
 import { IMessage } from './components/SupportServicePanel/type';
 import { data } from './components/SupportServicePanel/data';

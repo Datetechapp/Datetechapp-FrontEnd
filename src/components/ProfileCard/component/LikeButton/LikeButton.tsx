@@ -1,9 +1,13 @@
 import style from './LikeButton.module.css';
 import { useState } from 'react';
 
-const LikeButton = () => {
-  const [match, setMatch] = useState(false);
-
+const LikeButton = ({
+  match,
+  setMatch,
+}: {
+  match: boolean;
+  setMatch: (match: boolean) => void;
+}) => {
   return (
     <button className={style.containerIcons} onClick={() => setMatch(!match)}>
       <svg

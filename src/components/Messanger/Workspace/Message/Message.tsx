@@ -1,11 +1,15 @@
-import React, { useEffect } from 'react';
-import css from './message.module.css';
+import React, { Dispatch, SetStateAction, useEffect } from 'react';
+
 import { ReactComponent as PinnedIcon } from '../../../../assets/Messanger/iconForPinnedMessage.svg';
 import { ContextMenu } from '../ContextMenu';
+import { AudioMessageContent } from './AudioMessageContent';
+import css from './message.module.css';
 
 export interface MessageProps {
   id: string;
   text: string;
+  blob?: string;
+  type: string;
   isMe: boolean;
   timestamp: string;
   isSelected: boolean;
@@ -16,13 +20,15 @@ export interface MessageProps {
   ) => void;
   onContextMenuAction: (text: string) => void;
   currentPinnedMessageIndex: number;
-  setHighlighted: React.Dispatch<React.SetStateAction<boolean>>;
+  setHighlighted: Dispatch<SetStateAction<boolean>>;
   highlighted: boolean;
 }
 
-export const Message: React.FC<MessageProps> = ({
+export const Message = ({
   id,
   text,
+  blob,
+  type,
   isMe,
   timestamp,
   isSelected,
@@ -32,7 +38,7 @@ export const Message: React.FC<MessageProps> = ({
   currentPinnedMessageIndex,
   setHighlighted,
   highlighted,
-}) => {
+}: MessageProps) => {
   useEffect(() => {
     if (highlighted) {
       const timer = setTimeout(() => {
@@ -60,11 +66,24 @@ export const Message: React.FC<MessageProps> = ({
           }`}
           onContextMenu={(event) => onContextMenu(event, id)}
         >
-          <p className={css.messageText}>{text}</p>
-          <div className={css.messageInfo}>
-            {isPinned && <PinnedIcon className={css.pinnedIcon} />}
-            <span className={css.messageTimestampt}>{timestamp}</span>
-          </div>
+          {type === 'audio' && blob ? (
+            <AudioMessageContent
+              audioRef={{ current: null }}
+              timestamp={timestamp}
+              isPinned={isPinned}
+              blob={blob}
+              id={id}
+            />
+          ) : (
+            <>
+              <p className={css.messageText}>{text}</p>
+
+              <div className={css.messageInfo}>
+                {isPinned && <PinnedIcon className={css.pinnedIcon} />}
+                <span className={css.messageTimestampt}>{timestamp}</span>
+              </div>
+            </>
+          )}
         </div>
         <ContextMenu
           show={isSelected}

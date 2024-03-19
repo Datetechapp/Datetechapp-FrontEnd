@@ -97,6 +97,7 @@ export const events: IEventProps[] = [
 export const messages: IMessageProps[] = [
   {
     id: '0',
+    type: 'text',
     message: 'Hi! You have a cool video sdsaddasdsadasdad.',
     image: Mikhael,
     name: 'Mikhael',
@@ -108,6 +109,7 @@ export const messages: IMessageProps[] = [
   },
   {
     id: '1',
+    type: 'text',
     message: 'I would like to meet you.',
     image: Liza,
     name: 'Liza',
@@ -119,6 +121,7 @@ export const messages: IMessageProps[] = [
   },
   {
     id: '2',
+    type: 'text',
     message: "Hi! Thanks. I'm very pleased.",
     image: Mikhael,
     name: 'Mikhael',
@@ -130,6 +133,7 @@ export const messages: IMessageProps[] = [
   },
   {
     id: '3',
+    type: 'text',
     message: "But I'm very tired today sdasdasdsad",
     image: Mikhael,
     name: 'Mikhael',
@@ -141,6 +145,7 @@ export const messages: IMessageProps[] = [
   },
   {
     id: '4',
+    type: 'text',
     message: 'I will write to you tomorrow okey?s asdasdasdasdas',
     image: Liza,
     name: 'Liza',

@@ -12,7 +12,7 @@
   max-width: 960px;
   align-self: flex-end;
   border-radius: 10px 10px 0 10px;
-  background: var(--violet-stroke, #5f4f7f);
+  background: #5f4f7f;
   padding: 4px 8px;
   display: flex;
   gap: 8px;
@@ -24,23 +24,22 @@
   align-self: flex-start;
   padding: 4px 8px;
   border-radius: 10px 10px 10px 0;
-  background: var(--gray-for-message, #4b4a54);
+  background: #4b4a54;
   align-self: center;
   display: flex;
   gap: 8px;
 }
 
 .messageText {
-  color: var(--white, #e9e3f5);
+  color: #e9e3f5;
   font-family: Montserrat, Arial, Helvetica, sans-serif;
   font-size: 16px;
   font-weight: 500;
   line-height: 25px;
-  letter-spacing: -0.5px;
 }
 
 .messageTimestampt {
-  color: var(--white, #e9e3f5);
+  color: #e9e3f5;
   font-family: Montserrat;
   font-size: 12px;
   font-weight: 400;
@@ -64,7 +63,7 @@
 
 .highlighted {
   transition: background-color 1s linear;
-  background-color: var(--Panel_Stroke, #32303e);
+  background-color: #32303e;
 }
 
 @keyframes fadeOut {

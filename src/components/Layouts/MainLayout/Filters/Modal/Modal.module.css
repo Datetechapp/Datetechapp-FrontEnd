@@ -1,28 +1,32 @@
 .modal_overlay {
-  position: absolute;
+  position: fixed;
   top: 0;
+  bottom: 0;
+  right: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 10;
 }
 
 .modal_content {
   padding: 24px 16px;
-  flex-direction: column;
   align-items: flex-start;
   gap: 30px;
   width: 557px;
-  display: inline-flex;
+  max-height: 90%;
+  display: flex;
+  flex-flow: column nowrap;
   padding: 24px 16px;
   border-radius: 10px;
-  border: 1px solid var(--Violet_Active, #c896ef);
-  background: var(--Dark_Elements_Background, #201b27);
+  border: 1px solid #c896ef;
+  background: #201b27;
   color: #fff;
+  margin: auto;
 }
 
 .modal_button_save,
@@ -36,13 +40,12 @@
   gap: 8px;
   border-radius: 5px;
   border: 1px solid #9747ff;
-  color: var(--White, #fff);
+  color: #fff;
   text-align: center;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
   line-height: 20px;
-  letter-spacing: 0.2px;
 }
 
 .modal_upperline {
@@ -53,23 +56,31 @@
 }
 
 .upperline_number {
-  color: var(--super-white, var(--Back_White, #e1dbed));
+  color: #e1dbed;
   font-family: Montserrat;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
   line-height: 20px;
-  letter-spacing: 0.2px;
 }
 
 .modal_checkboxes {
   display: flex;
+  padding: 4px;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: flex-start;
   gap: 8px;
-  overflow: auto;
   max-height: 410px;
+  -webkit-overflow-scrolling: touch;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.modal_checkboxes::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 
 .checkbox {
@@ -82,25 +93,25 @@
   height: 40px;
   padding: 10px 14px;
   align-items: center;
-  color: var(--White, #fff);
+  color: #fff;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
   line-height: 20px;
-  letter-spacing: 0.2px;
   font-family: "Montserrat", sans-serif;
   border-radius: 30px;
-  background: var(--Panel_Background, #272533);
+  background: #272533;
 }
 
 .checkbox:checked + label:nth-child(-n + 5) {
   border-radius: 30px;
-  border: 1px solid var(--Violet_Active, #c896ef);
-  background: var(--Dark_Background, #1f1d2b);
+  outline: 0.5px solid #c896ef;
+  outline-offset: 0;
+  background: #1f1d2b;
 }
 
 .disabledCheckbox + label {
-  color: var(--Violet_Stroke, #5f4f7f);
+  color: #5f4f7f;
   border: none;
   pointer-events: none;
 }
@@ -120,17 +131,16 @@
 }
 
 .modal_button_cancel {
-  background: var(--Dark_Elements_Background, #201b27);
+  background: #201b27;
 }
 
 h1 {
-  color: var(--White, #fff);
+  color: #fff;
   font-family: "Montserrat", sans-serif;
   font-size: 22px;
   font-style: normal;
   font-weight: 600;
   line-height: 24px;
-  letter-spacing: -0.5px;
 }
 
 .modal_button_save:hover {
@@ -145,12 +155,12 @@ h1 {
 
 .modal_button_save:disabled {
   border-radius: 5px;
-  background: var(--Dark_Grey_Menu, #302e3d);
+  background: #302e3d;
 }
 
 .modal_button_cancel:hover {
   border-radius: 5px;
-  border: 1px solid var(--White, #fff);
+  border: 1px solid #fff;
   background: rgba(217, 217, 217, 0.2);
   backdrop-filter: blur(12px);
 }

@@ -3,6 +3,7 @@
   padding: 6px 165px 6px 143px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid var(--Grey, #96a3b4);
   background: var(--Dark_Background, #1f1d2b);
   color: var(--White, #fff);
@@ -29,4 +30,30 @@
 }
 
 .logOutBtn:active {
+}
+
+.languagesContainer {
+  position: absolute;
+  top: 50px;
+  left: -50%;
+  z-index: 2;
+}
+
+.languageSelect {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  cursor: pointer;
+  position: relative;
+  width: 152px;
+  height: 25px;
+  align-self: center;
+  align-items: center;
+}
+
+.selectLanguage {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 22px;
 }

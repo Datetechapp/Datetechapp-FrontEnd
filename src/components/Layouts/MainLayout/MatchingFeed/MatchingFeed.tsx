@@ -1,4 +1,4 @@
-import React, { useState, useEffect, MouseEventHandler } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './MatchingFeed.module.css';
 import profilePic from '../../../../assets/feed/profile_img.png';
 import MatchedProfile from './MatchedProfile/MatchedProfile';

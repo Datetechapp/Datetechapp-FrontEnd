@@ -6,7 +6,6 @@
   font-size: 16px;
   line-height: 25px;
   color: #e9e3f5;
-  letter-spacing: -0.5px;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -16,7 +15,11 @@
   margin: 24px auto 0px;
 }
 
-.header__logo {
+.headerNav {
+  display: flex;
+}
+
+.headerLogo {
   height: 48px;
   cursor: pointer;
 }
@@ -50,9 +53,34 @@
   transition: 0.4s ease-in;
 }
 
-.header__buttons {
+.headerRightPart {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 30px;
+  gap: 32px;
+  position: relative;
+}
+
+.languagesContainer {
+  position: absolute;
+  top: 50px;
+  left: -50%;
+  z-index: 2;
+}
+
+.languageSelect {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  cursor: pointer;
+  position: relative;
+  width: 152px;
+  height: 25px;
+  align-self: center;
+  align-items: center;
+}
+
+.selectLanguage {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 22px;
 }

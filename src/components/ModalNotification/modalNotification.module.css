@@ -1,25 +1,26 @@
 .notificationContainer {
   max-width: 373px;
-  padding: 0 16px;
-  width: 100%;
   position: absolute;
-  top: 95px;
-  right: 50px;
+  top: 64px;
+  right: 10%;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   border-radius: 0px 0px 10px 10px;
+  transition: all 0.3s linear;
   background: #32303e;
+  z-index: 6;
 }
 
 .notificationTitle {
   border-bottom: 1px solid #5f4f7f;
   padding: 16px 0;
+  margin-inline: 16px;
   font-family: Montserrat;
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
   line-height: 20px;
-  letter-spacing: 0.2px;
   color: #fff;
 }
 
@@ -32,6 +33,7 @@
   display: inline-block;
   text-align: center;
   width: 100%;
+  font-size: 14px;
   color: #c896ef;
   background-color: inherit;
   cursor: pointer;

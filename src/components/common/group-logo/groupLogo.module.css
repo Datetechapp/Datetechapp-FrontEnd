@@ -1,0 +1,23 @@
+.wrapper {
+  position: relative;
+  width: 48px;
+  height: 48px;
+}
+
+.logo {
+  aspect-ratio: 1 / 1;
+  width: 32px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 0;
+}
+
+.logoPartner {
+  aspect-ratio: 1 / 1;
+  width: 37px;
+  z-index: 3;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}

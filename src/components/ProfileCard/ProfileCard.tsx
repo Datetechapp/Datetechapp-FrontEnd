@@ -9,9 +9,11 @@ import { InterestProfile } from './component/InterestProfile';
 import { Popover } from 'antd';
 import copyLinkIcon from './../../assets/Profile/copy link.svg';
 import reportProfileIcon from './../../assets/Profile/reportProfile.svg';
+import message from './../../assets/Profile/message.svg';
 
 export const ProfileCard = () => {
   const [fullText, setFullText] = useState(false);
+  const [match, setMatch] = useState(false);
 
   const text =
     'Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных домах на берегу Семантика большого языкового океана. Маленький ручеек Даль журчит по всей стране и обеспечивает ее всеми необходимыми правилами';
@@ -45,7 +47,8 @@ export const ProfileCard = () => {
               </div>
             </div>
             <div className={style.cardInfoDetails}>
-              <LikeButton />
+              <LikeButton match={match} setMatch={setMatch} />
+              {match && <img src={message} alt="message" />}
               <Popover
                 content={content}
                 title=""
