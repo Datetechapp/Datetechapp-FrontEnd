@@ -1,5 +1,5 @@
 import style from './ProfileCard.module.css';
-import avatar from '../../assets/user/avatar Ivan.svg';
+import avatar from '../../assets/user/avatarIvan.svg';
 import capricorn from './../../assets/Profile/сapricorn.svg';
 import dots from './../../assets/Profile/dots.svg';
 import Button from '@mui/material/Button';

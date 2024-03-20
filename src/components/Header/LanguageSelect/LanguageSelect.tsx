@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-import React from 'react';
-import styles from './LanguageSelect.module.css';
-=======
 import React, { Dispatch, MouseEvent } from 'react';
 
->>>>>>> 523def322146fe10d91dfbe16c2069a199b70a9e
 import { languages } from '../language';
 import { setLanguage } from 'store/language/slice';
 import { useAppDispatch } from 'hooks/hooks';

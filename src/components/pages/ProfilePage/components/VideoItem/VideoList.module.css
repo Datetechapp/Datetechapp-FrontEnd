@@ -1,0 +1,163 @@
+.videoItemContainer {
+  border-radius: 20px;
+}
+.openVideoList {
+  display: flex;
+  gap: 64px;
+  width: 100%;
+}
+.openVideoList img {
+  margin-top: 32px;
+  cursor: pointer;
+}
+
+.overlayVideos {
+  max-height: 100%;
+}
+
+.videoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.videoContainer img {
+  width: 380px;
+  height: 500px;
+}
+
+.videoItemContainer {
+  position: relative;
+  border-radius: 10px;
+}
+
+.iconControls {
+  display: flex;
+  flex-direction: column;
+}
+
+.videoControls {
+  position: absolute;
+  z-index: 5;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+}
+
+.volumeControls {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+}
+
+.volumeBlock {
+  transform: rotate(90deg);
+}
+
+.soundIcon {
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  padding: 6px;
+  border-radius: 29px;
+  background-color: #5f4f7f;
+}
+
+.soundIcon:hover {
+  opacity: 1;
+}
+
+.volumeBlock {
+  position: absolute;
+  top: -120px;
+  border-radius: 8px;
+  border: 1px solid var(--Panel_Stroke, #32303e);
+  background: var(--Dark_Background, #1f1d2b);
+  transform: rotate(0deg);
+  bottom: 104px;
+  width: 32px;
+  height: 104px;
+}
+
+.editorVolume {
+  position: absolute;
+  bottom: 50px;
+  left: -20px;
+  width: 72px;
+  -webkit-appearance: none;
+  height: 4px;
+  background: linear-gradient(
+    to right,
+    #c896ef 0%,
+    #c896ef var(--thumb-percentage, 50%),
+    #5f4f7f var(--thumb-percentage, 50%),
+    #5f4f7f 100%
+  );
+  border-radius: 3px;
+  outline: none;
+  align-self: center;
+  width: 72px;
+  border: 4px;
+  rotate: -90deg;
+}
+
+.editorVolume::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background-color: #c896ef;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.popoverContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.circleWithDots {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background-color: #fff;
+  position: relative;
+}
+
+.circleWithDots::before,
+.circleWithDots::after {
+  content: "";
+  width: 3px;
+  height: 3px;
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.circleWithDots::before {
+  left: 8px;
+}
+
+.circleWithDots::after {
+  right: 8px;
+}
+
+.popoverContainer span {
+  padding-left: 8px;
+  font-weight: 400;
+  font-size: 12px;
+  text-transform: none;
+}
+
+.copyLinkSpan {
+  color: #5f4f7f;
+}
+
+.reportLinkSpan {
+  color: #d75048;
+}

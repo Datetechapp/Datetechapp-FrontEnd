@@ -18,13 +18,8 @@
   line-height: 18px;
   transition: 0.4s ease-in;
 }
-<<<<<<< HEAD
-.languagesItem_box {
-  list-style: none;
-=======
 
 .languagesItemBox {
->>>>>>> 523def322146fe10d91dfbe16c2069a199b70a9e
   cursor: pointer;
   padding: 4px 8px;
   border-radius: 4px;
