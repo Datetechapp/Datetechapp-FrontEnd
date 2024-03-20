@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  align-items: center;
+  margin: 6px 8px;
+  background: transparent;
+  gap: 4px;
+}
+
+.button {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+
+.button rect {
+  fill: #1f1d2bb2;
+}
+
+.audioInfo {
+  width: 110px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.lowPart {
+  display: flex;
+  justify-content: space-between;
+}
+
+.audioDuration {
+  font-size: 16px;
+  font-weight: 400;
+  color: #ffffff;
+}

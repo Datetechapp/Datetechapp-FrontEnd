@@ -1,27 +1,10 @@
-import type { FC, ChangeEvent, FocusEvent, MutableRefObject } from 'react';
+import type { ComponentProps, RefObject } from 'react';
 
-interface InputProps {
-  id?: string;
-  value?: string;
-  className?: string;
-  type: string;
-  autoComplete?: string;
-  name?: string;
-  placeholder?: string;
-  accept?: string;
-  min?: string;
-  max?: string;
-  readOnly?: boolean;
-  inputRef?: MutableRefObject<HTMLInputElement | null>;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  onFocus?: (e: FocusEvent<HTMLInputElement>) => void;
-  onBlur?: (e: ChangeEvent<HTMLInputElement>) => void;
-  defaultChecked?: boolean;
-  isDisabled?: boolean;
-  style?: object;
-}
+type InputProps = ComponentProps<'input'> & {
+  inputRef?: RefObject<HTMLInputElement>;
+};
 
-export const Input: FC<InputProps> = ({
+export const Input = ({
   id,
   value,
   onChange,
@@ -38,8 +21,9 @@ export const Input: FC<InputProps> = ({
   max,
   readOnly,
   defaultChecked,
-  isDisabled,
-}) => (
+  disabled,
+  multiple,
+}: InputProps) => (
   <input
     id={id}
     className={className}
@@ -57,6 +41,7 @@ export const Input: FC<InputProps> = ({
     max={max}
     readOnly={readOnly}
     defaultChecked={defaultChecked}
-    disabled={isDisabled}
+    disabled={disabled}
+    multiple={multiple}
   />
 );

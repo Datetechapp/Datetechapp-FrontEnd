@@ -1,24 +1,24 @@
+import { useCallback, type Dispatch, type SetStateAction } from 'react';
 import Modal from 'react-modal';
-import React, { FC, useCallback } from 'react';
-import css from './modalUpload.module.css';
 import { Button } from '../../../common';
+
 import cancel from '../../../../assets/ModalAuth/Cancel.svg';
 
-interface ModalUploadVideoProps {
-  isShowModalUploadVideo: boolean;
-  setIsShowModalUploadVideo: React.Dispatch<React.SetStateAction<boolean>>;
-  setStep: React.Dispatch<React.SetStateAction<number>>;
-  step: number;
-  onUpload: (fileData: Blob | null, isRemoved?: boolean) => void;
-}
+import css from './modalUpload.module.css';
 
-export const ModalUploadVideo: FC<ModalUploadVideoProps> = ({
+type ModalUploadVideoProps = {
+  isShowModalUploadVideo: boolean;
+  setIsShowModalUploadVideo: Dispatch<SetStateAction<boolean>>;
+  setStep: Dispatch<SetStateAction<number>>;
+  step: number;
+};
+
+export const ModalUploadVideo = ({
   isShowModalUploadVideo,
   setIsShowModalUploadVideo,
   setStep,
   step,
-  onUpload,
-}) => {
+}: ModalUploadVideoProps) => {
   const handleNotShowModal = useCallback(() => {
     document.body.style.overflow = 'unset';
     setIsShowModalUploadVideo(false);

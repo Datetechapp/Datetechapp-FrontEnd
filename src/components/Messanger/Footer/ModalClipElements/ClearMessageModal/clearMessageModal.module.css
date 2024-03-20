@@ -1,0 +1,49 @@
+.modalHeader {
+  margin: 0 auto 12px;
+  font: 600 22px/24px var(--ff);
+  letter-spacing: -0.5px;
+  color: #c896ef;
+}
+
+.modalText {
+  margin: 0 auto 24px;
+  font: 400 16px/20px var(--ff);
+  color: #ffffff;
+}
+
+.modalButtons {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+}
+
+.modalButtons > * {
+  display: grid;
+  place-items: center;
+  flex: 1;
+  background: linear-gradient(180deg, rgb(151 71 255), rgb(222 119 199));
+  border-radius: 5px;
+}
+
+.cancelButton,
+.clearButton {
+  --border-width: 1px;
+  width: 100%;
+  padding: 14px;
+  font: 600 16px/20px var(--ff);
+  letter-spacing: 0.2px;
+  border: none;
+  border-radius: 5px;
+}
+
+.cancelButton {
+  width: calc(100% - var(--border-width) * 2);
+  height: calc(100% - var(--border-width) * 2);
+  background-color: #201b27;
+  color: #e1dbed;
+}
+
+.clearButton {
+  background-color: transparent;
+  color: #ffffff;
+}

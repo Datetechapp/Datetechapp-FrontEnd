@@ -1,32 +1,28 @@
-import React, { useRef } from 'react';
+import { useRef, type ChangeEvent, type ReactNode } from 'react';
 import { Input } from 'components/common';
+
 import css from './uploadButton.module.css';
 
-interface UploadButtonProps {
-  onUpload: (file: File) => void;
+type UploadButtonProps = {
+  onUpload: (files: File[]) => void;
   inputId?: string;
   accept?: string;
-  icon?: React.ReactNode;
-}
+  multiple?: boolean;
+  icon?: ReactNode;
+};
 
-export const UploadButton: React.FC<UploadButtonProps> = ({
+export const UploadButton = ({
   onUpload,
   inputId,
   accept,
   icon,
-}) => {
+  multiple,
+}: UploadButtonProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.files && event.target.files?.length) {
-      const file = event.target.files[0];
-
-      onUpload(file);
-
-      if (inputRef.current) {
-        inputRef.current.value = '';
-      }
-    }
+  const handleInputChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
+    target.files?.length && onUpload([...target.files]);
+    inputRef.current && (inputRef.current.value = '');
   };
 
   return (
@@ -47,6 +43,7 @@ export const UploadButton: React.FC<UploadButtonProps> = ({
         className={css.inputForVideo}
         onChange={handleInputChange}
         accept={accept || 'image/*'}
+        multiple={multiple}
       />
     </div>
   );

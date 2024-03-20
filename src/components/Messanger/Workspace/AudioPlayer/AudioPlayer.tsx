@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef, FC } from 'react';
-import css from './audioPlayer.module.css';
+import { useState, useEffect, useRef, ChangeEvent } from 'react';
+
 import { ReactComponent as FirstSpeed } from '../../../../assets/AudioPlayer/firstSpeed.svg';
 import { ReactComponent as SecondSpeed } from '../../../../assets/AudioPlayer/secondSpeed.svg';
 import { ReactComponent as ThirdSpeed } from '../../../../assets/AudioPlayer/thirdSpeed.svg';
@@ -10,44 +10,35 @@ import { ReactComponent as PauseIcon } from '../../../../assets/AudioPlayer/Paus
 import { ReactComponent as VolumeIcon } from '../../../../assets/AudioPlayer/VolumeAudio.svg';
 import { ReactComponent as MuteIcon } from '../../../../assets/AudioPlayer/MuteIcon.svg';
 import { ReactComponent as CloseIcon } from '../../../../assets/AudioPlayer/closeIcon.svg';
-
-// interface AudioPlayesProps {
-//        audioRef: HTMLAudioElement;
-// }
+import { useAppDispatch, useAppSelector } from 'hooks/hooks';
+import { getAudioInfo } from 'store/audioInfo/selectors';
+import { audioInfoDelete, audioInfoUpdate } from 'store/audioInfo/slice';
+import css from './audioPlayer.module.css';
 
 export const AudioPlayer = () => {
-  const [speed, setSpeed] = useState<number>(1);
   const [isHovered, setIsHovered] = useState(false);
   const [isVolumeBlockHovered, setIsVolumeBlockHovered] = useState(false);
-  const [volume, setVolume] = useState(0.5);
 
   const volumeRef = useRef<HTMLInputElement | null>(null);
+
+  const { speed, volume, isPlaying } = useAppSelector(getAudioInfo);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     const rangeInput = volumeRef.current as HTMLInputElement;
 
     if (rangeInput) {
-      rangeInput.style.setProperty('--thumb-percentage', `${volume * 100}%`);
+      rangeInput.style.setProperty('--thumb-percentage', `${volume! * 100}%`);
     }
   }, [volume, isVolumeBlockHovered, isHovered]);
 
-  // useEffect(() => {
-  //        if (audioRef.current) {
-  //               audioRef.current.volume = volume;
-  //        }
-  // }, [volume]);
-
-  const handleVolumeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleVolumeChange = (event: ChangeEvent<HTMLInputElement>) => {
     const newVolume = parseFloat(event.target.value);
 
-    setVolume(newVolume);
-
-    // if (audioRef.current) {
-    //        audioRef.current.volume = newVolume;
-    // }
+    dispatch(audioInfoUpdate({ volume: newVolume }));
   };
 
-  const handleRangeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleRangeChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = parseFloat(e.target.value);
 
     if (!isNaN(value)) {
@@ -63,12 +54,31 @@ export const AudioPlayer = () => {
     }
   };
 
+  const handlePlayPause = () => {
+    dispatch(audioInfoUpdate({ isPlaying: !isPlaying }));
+  };
+
+  const handleSpeedFaster = () => {
+    if (speed < 3) {
+      dispatch(audioInfoUpdate({ speed: speed + 1 }));
+    }
+  };
+  const handleSpeedSlower = () => {
+    if (speed > 1) {
+      dispatch(audioInfoUpdate({ speed: speed - 1 }));
+    }
+  };
+
   return (
     <div className={css.audioPlayerWrapper}>
       <div className={css.scrollBarBlock}>
-        <RewindAudio />
-        <PlayIcon />
-        <FastFowardAudio />
+        <RewindAudio onClick={handleSpeedSlower} />
+        {isPlaying ? (
+          <PauseIcon width={24} height={24} onClick={handlePlayPause} />
+        ) : (
+          <PlayIcon width={24} height={24} onClick={handlePlayPause} />
+        )}
+        <FastFowardAudio onClick={handleSpeedFaster} />
       </div>
       <div>
         <p className={css.name}>Michael</p>
@@ -76,20 +86,20 @@ export const AudioPlayer = () => {
       </div>
       <div className={css.audioSettings}>
         {speed === 1 ? (
-          <FirstSpeed onClick={() => setSpeed(2)} />
+          <FirstSpeed />
         ) : speed === 2 ? (
-          <SecondSpeed onClick={() => setSpeed(3)} />
+          <SecondSpeed />
         ) : (
-          <ThirdSpeed onClick={() => setSpeed(1)} />
+          <ThirdSpeed />
         )}
 
         {volume ? (
           <VolumeIcon
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => {
-              setTimeout(() => setIsHovered(false), 500);
+              setTimeout(() => setIsHovered(false), 300);
             }}
-            onClick={() => setVolume(0)}
+            onClick={() => dispatch(audioInfoUpdate({ volume: 0 }))}
           />
         ) : (
           <MuteIcon
@@ -97,10 +107,10 @@ export const AudioPlayer = () => {
             onMouseLeave={() => {
               setTimeout(() => setIsHovered(false), 500);
             }}
-            onClick={() => setVolume(1)}
+            onClick={() => dispatch(audioInfoUpdate({ volume: 1 }))}
           />
         )}
-        <CloseIcon />
+        <CloseIcon onClick={() => dispatch(audioInfoDelete())} />
         {(isHovered || isVolumeBlockHovered) && (
           <div
             className={css.volumeBlock}

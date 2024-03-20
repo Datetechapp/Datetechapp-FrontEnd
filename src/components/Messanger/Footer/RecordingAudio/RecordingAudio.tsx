@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { useVoiceVisualizer } from 'react-voice-visualizer';
 import { ReactComponent as Microphone } from '../../../../assets/Messanger/RecordingAudio/Microphone.svg';
 import { ReactComponent as StopIcon } from '../../../../assets/Messanger/RecordingAudio/StopIcon.svg';
 import { ReactComponent as RecordingPoint } from '../../../../assets/Messanger/RecordingAudio/RecordingPoint.svg';
@@ -6,9 +7,8 @@ import { ReactComponent as PlayIcon } from '../../../../assets/Messanger/Recordi
 import { ReactComponent as SendIcon } from '../../../../assets/Messanger/RecordingAudio/SendIcon.svg';
 import { ReactComponent as DeleteIcon } from '../../../../assets/Messanger/RecordingAudio/deleteIcon.svg';
 import { ReactComponent as PauseIcon } from '../../../../assets/Messanger/RecordingAudio/PauseIcon.svg';
-import css from './recordingAudio.module.css';
-import { useVoiceVisualizer, VoiceVisualizer } from 'react-voice-visualizer';
 import { ModalCommon } from 'components/common';
+import css from './recordingAudio.module.css';
 
 interface RecordingAudioProps {
   setIsRecording: React.Dispatch<React.SetStateAction<boolean>>;
@@ -27,7 +27,6 @@ export const RecordingAudio: React.FC<RecordingAudioProps> = ({
   const recorderControls = useVoiceVisualizer();
 
   const {
-    isRecordingInProgress: isRecorderRecording,
     startRecording,
     stopRecording,
     recordedBlob,
@@ -37,22 +36,18 @@ export const RecordingAudio: React.FC<RecordingAudioProps> = ({
     audioSrc,
   } = recorderControls;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const timerRef = useRef<any>(null);
+  const timeRef = useRef<ReturnType<typeof setInterval>>();
 
   useEffect(() => {
-    let intervalId: ReturnType<typeof setInterval>;
+    if (!isRunning) return;
 
-    if (isRunning) {
-      intervalId = setInterval(() => setRecordingTime(recordingTime + 1), 10);
-    }
+    timeRef.current = setInterval(
+      () => setRecordingTime(recordingTime + 1),
+      10,
+    );
 
-    return () => clearInterval(intervalId);
+    return () => clearInterval(timeRef.current);
   }, [isRunning, recordingTime]);
-
-  const padZero = useCallback((value: number) => {
-    return value.toString().padStart(2, '0');
-  }, []);
 
   const minutes = Math.floor(recordingTime / 6000);
   const seconds = Math.floor((recordingTime / 100) % 60);
@@ -74,18 +69,24 @@ export const RecordingAudio: React.FC<RecordingAudioProps> = ({
     console.log('onResumeAudioPlayback');
   };
 
+  const sendRecordBlob = () => {
+    console.log('recordedBlob', audioSrc);
+    clearCanvas();
+    setRecordingTime(0);
+    setIsRecordedBlob(false);
+    setIsRecording(false);
+  };
+
   const handleMicrophoneClick = () => {
     if (isRecordingInProgress) {
       stopRecording();
       setIsRecording(false);
       setIsRunning(!isRunning);
       setIsRecordedBlob(true);
-      // clearInterval(timerRef.current);
     } else {
       startRecording();
       setIsRunning(!isRunning);
       setIsRecording(true);
-      // recordingTimer();
     }
   };
 
@@ -105,7 +106,6 @@ export const RecordingAudio: React.FC<RecordingAudioProps> = ({
     setIsOpenModalDeleteRecord(true);
     clearCanvas();
     setRecordingTime(0);
-    // timerRef.current = 0;
     setIsRecordedBlob(false);
     setIsRecording(false);
   };
@@ -129,7 +129,7 @@ export const RecordingAudio: React.FC<RecordingAudioProps> = ({
           {isPlaying && (
             <PauseIcon className={css.playIcon} onClick={handleAudioClick} />
           )}
-          <SendIcon className={css.sendIcon} />
+          <SendIcon className={css.sendIcon} onClick={sendRecordBlob} />
           <DeleteIcon className={css.deleteIcon} onClick={handleDeleteRecord} />
           <audio ref={audioRef} src={audioSrc} onEnded={onEndAudioPlayback} />
           <p className={css.timeIsRecorded}>
@@ -153,15 +153,6 @@ export const RecordingAudio: React.FC<RecordingAudioProps> = ({
         isThereACancel={false}
         darkModal={true}
       />
-      {/* <div className={!isPlaying ? css.visualizerContainerHidden : css.visualizerContainer}>
-                            <VoiceVisualizer
-                                   controls={recorderControls}
-                                   // ref={audioRef}
-                                   backgroundColor="#4B4A54"
-                                   mainBarColor="#1F1D2B"
-                                   secondaryBarColor="#C896EF"
-                            />
-                     </div> */}
     </div>
   );
 };

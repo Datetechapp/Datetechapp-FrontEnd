@@ -1,18 +1,29 @@
-import css from './workspace.module.css';
-import React, { useCallback, useState, FC } from 'react';
+import React, {
+  Dispatch,
+  MouseEvent,
+  SetStateAction,
+  useCallback,
+  useState,
+} from 'react';
+
 import { AudioPlayer } from './AudioPlayer/AudioPlayer';
 import {
-  ModalForFixMessage,
-  ModalForDeleteMessage,
-  ModalForForwardMessage,
-  Message,
   EmojiComponent,
+  Message,
+  ModalForDeleteMessage,
+  ModalForFixMessage,
+  ModalForForwardMessage,
   PinnedMessage,
   SearchMessages,
 } from '.';
+import { useAppSelector } from 'hooks/hooks';
+import { getAudioInfo } from 'store/audioInfo/selectors';
+import css from './workspace.module.css';
 
 export interface MessageProps {
   id: string;
+  type: string;
+  blob?: string;
   text: string;
   isMe: boolean;
   timestamp: string;
@@ -20,17 +31,18 @@ export interface MessageProps {
 }
 
 interface WorkspaceProps {
-  setSelectedMessageText: React.Dispatch<React.SetStateAction<string>>;
-  setShowReplyMessage: React.Dispatch<React.SetStateAction<boolean>>;
+  setSelectedMessageText: Dispatch<SetStateAction<string>>;
+  setShowReplyMessage: Dispatch<SetStateAction<boolean>>;
   selectedMessageText: string;
   showSearchMessages: boolean;
   showReplyMessage: boolean;
-  setShowSearchMessages: React.Dispatch<React.SetStateAction<boolean>>;
+  setShowSearchMessages: Dispatch<SetStateAction<boolean>>;
 }
 
 const messagesArr: MessageProps[] = [
   {
     id: '0',
+    type: 'text',
     text: 'Hi! You have a cool video.Djfsdghvj fsjafhvdj shzj,chznm dzM<Fcnvm cn,zfmvn ja,mfdncm ,samfhznkjm k,jamshdzvn dsgkjvlx nxsvmn j,m n a,sxzmvn ,m anvjcz,mxn',
     isMe: false,
     timestamp: '12:30',
@@ -38,6 +50,7 @@ const messagesArr: MessageProps[] = [
   },
   {
     id: '1',
+    type: 'text',
     text: "Hi!Thanks. I'm very pleased.",
     isMe: true,
     timestamp: '12:31',
@@ -45,6 +58,7 @@ const messagesArr: MessageProps[] = [
   },
   {
     id: '2',
+    type: 'text',
     text: 'I would like to meet you.',
     isMe: false,
     timestamp: '12:35',
@@ -52,6 +66,7 @@ const messagesArr: MessageProps[] = [
   },
   {
     id: '3',
+    type: 'text',
     text: "but I'm very tired today",
     isMe: false,
     timestamp: '12:36',
@@ -59,14 +74,33 @@ const messagesArr: MessageProps[] = [
   },
   {
     id: '4',
+    type: 'text',
     text: 'i will write to you tomorrow..',
+    isMe: false,
+    timestamp: '12:40',
+    isPinned: false,
+  },
+  {
+    id: '5',
+    type: 'audio',
+    blob: 'blob:http://localhost:3000/b87f9df3-5b7b-4fde-9b15-0a6c49aa4aca',
+    text: '',
+    isMe: true,
+    timestamp: '12:40',
+    isPinned: false,
+  },
+  {
+    id: '6',
+    type: 'audio',
+    blob: 'blob:http://localhost:3000/8f163ac5-141d-4f1f-9821-91685a62725a',
+    text: '',
     isMe: false,
     timestamp: '12:40',
     isPinned: false,
   },
 ];
 
-export const Workspace: FC<WorkspaceProps> = ({
+export const Workspace = ({
   setSelectedMessageText,
   showReplyMessage,
   setShowReplyMessage,
@@ -82,6 +116,7 @@ export const Workspace: FC<WorkspaceProps> = ({
   const [showModalDelete, setShowModalDelete] = useState(false);
   const [pinnedMessages, setPinnedMessages] = useState<MessageProps[]>([]);
   const [currentPinnedMessageIndex, setCurrentPinnedMessageIndex] = useState(0);
+  const { isPinned } = useAppSelector(getAudioInfo);
 
   const [highlighted, setHighlighted] = useState(false);
 
@@ -151,10 +186,7 @@ export const Workspace: FC<WorkspaceProps> = ({
   }, []);
 
   const handleContextMenu = useCallback(
-    (
-      event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-      messageId: string,
-    ) => {
+    (event: MouseEvent<HTMLDivElement>, messageId: string) => {
       event.preventDefault();
       setSelectedMessageId(messageId);
       setShowContextMenu(true);
@@ -190,7 +222,8 @@ export const Workspace: FC<WorkspaceProps> = ({
       }
     >
       <div className={css.headerWorkspace}>
-        <AudioPlayer />
+        {isPinned && <AudioPlayer />}
+
         {showSearchMessages && (
           <SearchMessages setShowSearchMessages={setShowSearchMessages} />
         )}
@@ -201,7 +234,9 @@ export const Workspace: FC<WorkspaceProps> = ({
             setCurrentPinnedMessageIndex={setCurrentPinnedMessageIndex}
             pinnedMessages={pinnedMessages}
             setPinnedMessages={setPinnedMessages}
-            text={pinnedMessages[currentPinnedMessageIndex]?.text}
+            text={
+              pinnedMessages[currentPinnedMessageIndex]?.text || 'Voice Message'
+            }
           />
         )}
       </div>
@@ -213,12 +248,13 @@ export const Workspace: FC<WorkspaceProps> = ({
               {showSmileyMenu && selectedMessageId === message.id && (
                 <EmojiComponent isMe={message.isMe} />
               )}
-
               <Message
                 currentPinnedMessageIndex={currentPinnedMessageIndex}
                 highlighted={highlighted}
                 setHighlighted={setHighlighted}
                 id={message.id}
+                blob={message.blob}
+                type={message.type}
                 text={message.text}
                 isMe={message.isMe}
                 timestamp={message.timestamp}
@@ -226,7 +262,7 @@ export const Workspace: FC<WorkspaceProps> = ({
                 isPinned={pinnedMessages.some(
                   (pinnedMessage) => pinnedMessage.id === message.id,
                 )}
-                onContextMenu={(event) => {
+                onContextMenu={(event: React.MouseEvent<HTMLDivElement>) => {
                   if (event) {
                     setSelectedMessageText(message.text);
                     handleContextMenu(event, message.id);

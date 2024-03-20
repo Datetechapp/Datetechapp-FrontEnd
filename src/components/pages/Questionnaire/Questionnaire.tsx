@@ -13,10 +13,8 @@ import {
 import { QuestionBlock } from './QuestionBlock';
 
 import { ReactComponent as PreviousStep } from '../../../assets/CreateAccountForm/newPreviousStepArrow.svg';
-import css from './questionnaire.module.css';
 
-const textForName = 'Tell us more! What do you like to be called?';
-const textForButton = 'Continue';
+import css from './questionnaire.module.css';
 
 export function Questionnaire() {
   const [step, setStep] = useState(0);
@@ -31,8 +29,8 @@ export function Questionnaire() {
   const [sex, setSex] = useState('');
   const [gender, setGender] = useState('');
   const [sexOrientation, setSexOrientation] = useState('');
-  const [photo, setPhoto] = useState<string | null>(null);
-  const [video, setVideo] = useState<Blob | null>(null);
+  const [photo, setPhoto] = useState<File | null>(null);
+  const [video, setVideo] = useState<File | null>(null);
   const [showSexOrientation, setShowSexOrientation] = useState(false);
   const [showModalUploadVideo, setShowModalUploadVideo] = useState(false);
   const [location, setLocation] = useState('');
@@ -124,9 +122,9 @@ export function Questionnaire() {
 
   const handleCheckChange = () => setShowSexOrientation(!showSexOrientation);
 
-  const handlePhotoUpload = (file: string | null) => setPhoto(file);
+  const handlePhotoUpload = (file: File | null) => setPhoto(file);
 
-  const handleVideoUpload = (fileData: Blob | null) => setVideo(fileData);
+  const handleVideoUpload = (file: File | null) => setVideo(file);
 
   const handleSubmit = () => {
     const [city, country] = location.split(', ');
@@ -141,6 +139,7 @@ export function Questionnaire() {
       photo,
       video,
     };
+
     console.log(form); // TODO: update object and remove when back-end is ready
   };
 
@@ -195,9 +194,9 @@ export function Questionnaire() {
       >
         {step === 0 && (
           <QuestionBlock
-            title={textForName}
+            title="Tell us more! What do you like to be called?"
             setValue={handleNameChange}
-            textBtn={textForButton}
+            textBtn="Continue"
             value={name}
             nextStep={setStep}
             step={step}
@@ -339,7 +338,7 @@ export function Questionnaire() {
                 Add a profile photo so that other users can get a better look at
                 you
               </p>
-              <PhotoUploader onUpload={handlePhotoUpload} photo={photo || ''} />
+              <PhotoUploader onUpload={handlePhotoUpload} photo={photo} />
               {!photo && (
                 <p className={css.warning}>
                   We accept JPGs and PNGs of at least 500x500px
@@ -374,7 +373,6 @@ export function Questionnaire() {
                   setIsShowModalUploadVideo={setShowModalUploadVideo}
                   setStep={setStep}
                   step={step}
-                  onUpload={handleVideoUpload}
                 />
               )}
               {!video && (
