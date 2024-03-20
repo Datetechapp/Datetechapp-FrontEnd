@@ -1,6 +1,4 @@
 .searchBlockWrapper {
-  margin-top: 32px;
-  width: 392px;
   position: relative;
 }
 
@@ -41,6 +39,7 @@
   background-color: var(--Dark_Elements_Background, #201b27);
   border: 1px solid var(--Grey, #96a3b4);
   border-radius: 8px;
+  z-index:1500;
 }
 
 .match,

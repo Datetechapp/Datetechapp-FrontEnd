@@ -21,6 +21,7 @@ import { PaymentHistory } from './Layouts/PaymentPageLayout/components/PaymentHi
 import { MessangerLayout } from './Layouts/MessangerLayout';
 import { Messanger } from './Messanger';
 import NotificationPage from './pages/NotificationPage/NotificationPage';
+import { ProfilePage } from './pages/ProfilePage';
 
 export const App = () => {
   const { pathname } = useLocation();
@@ -62,6 +63,7 @@ export const App = () => {
             <Route path="subscription" element={<PaymentSubscription />} />
             <Route path="history" element={<PaymentHistory />} />
           </Route>
+          <Route path="/profile" element={<ProfilePage />} />
         </Routes>
       )}
     </div>

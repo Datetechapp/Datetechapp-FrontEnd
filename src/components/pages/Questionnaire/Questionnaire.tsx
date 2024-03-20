@@ -4,7 +4,7 @@ import { ChangeEvent, useState } from 'react';
 import { Button, Checkbox, Input } from 'components/common';
 import { HeaderSecondary } from 'components/pages/Questionnaire/HeaderSecondary';
 import {
-  GenderDropdawn,
+  GenderDropdown,
   Locations,
   ModalUploadVideo,
   PhotoUploader,
@@ -266,7 +266,7 @@ export function Questionnaire() {
             />
             <div className={css.form}>
               <h2 className={css.title}>How do you identify?</h2>
-              <GenderDropdawn
+              <GenderDropdown
                 onChange={handleGenderChange}
                 showGenders
                 gender={gender}
@@ -292,7 +292,7 @@ export function Questionnaire() {
             />
             <div className={css.form}>
               <h2 className={css.title}>Show me in searches for...</h2>
-              <GenderDropdawn
+              <GenderDropdown
                 onChange={handleOrientationChange}
                 showGenders={false}
                 sex={sexOrientation}
@@ -435,7 +435,9 @@ export function Questionnaire() {
               <h2 className={css.title}>
                 We need your locations for best matches
               </h2>
-              <Locations setLocation={setLocation} location={location} />
+              <div className={css.searchBlockWrapper}>
+                <Locations setLocation={setLocation} location={location} />
+              </div>
               <Button
                 className={location ? css.continueBtnValid : css.continueBtn}
                 onClick={handleSubmit}

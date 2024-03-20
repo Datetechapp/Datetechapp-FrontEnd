@@ -6,8 +6,8 @@ import {
   getDescriptionGender,
 } from 'store/gendersAndPurpose/selectors';
 import { GenderRadio } from '../GenderRadio';
-import css from './genderDropdawn.module.css';
-import { Dropdawn } from '../../../common/dropdawn';
+import css from './genderDropdown.module.css';
+import { CommonGenderDropdown } from '../../../common/genderDropdown';
 
 interface GenderDropdownProps {
   onChange: (
@@ -20,7 +20,7 @@ interface GenderDropdownProps {
   sex?: string;
 }
 
-export const GenderDropdawn: FC<GenderDropdownProps> = ({
+export const GenderDropdown: FC<GenderDropdownProps> = ({
   onChange,
   showGenders,
   gender,
@@ -86,7 +86,7 @@ export const GenderDropdawn: FC<GenderDropdownProps> = ({
         />
       </div>
       {showGenders && (
-        <Dropdawn
+        <CommonGenderDropdown
           value={gender || ''}
           name="gender"
           // genders={gendersArr}

@@ -160,6 +160,11 @@
   letter-spacing: -0.5px;
 }
 
+.searchBlockWrapper {
+  margin-top: 32px;
+  width: 392px;
+}
+
 .subtitle {
   margin-top: 12px;
   color: var(--White, #fff);

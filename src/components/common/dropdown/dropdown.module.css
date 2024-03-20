@@ -1,0 +1,54 @@
+:root {
+  --selected-color: #c896ef;
+}
+
+.dropdownButton {
+    width: 124px;
+  height: 36px;
+  padding: 6px 12px 0;
+  margin: 8px 0;
+  border: 1px solid #5f4f7f;
+  border-radius: 5px;
+  outline: none;
+  background: transparent;
+  color: white;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+}
+
+.dropdownButton:focus {
+  border-color: var(--selected-color);
+}
+
+.options {
+  height: 244px;
+  width: 124px;
+  padding: 3px 0;
+  border: 1.5px solid #96a3b4;
+  border-radius: 5px;
+  background: #201b27;
+  position: absolute;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.options::-webkit-scrollbar {
+  display: none;
+}
+
+.option {
+  padding: 8px 16px;
+  cursor: pointer;
+  color: white;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+}
+
+.selected {
+  background: var(--selected-color);
+}
