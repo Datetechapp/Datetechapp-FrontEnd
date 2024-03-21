@@ -77,16 +77,16 @@ input:focus {
   width: 70px;
 }
 
-.birthDay>div div {
-  z-index:1;
+.birthDay > div div {
+  z-index: 1;
 }
 
 .location {
   max-width: 353px;
 }
 
-.location label>div {
- margin: 8px 0 12px;
+.location label > div {
+  margin: 8px 0 12px;
 }
 
 .saveBtn {
@@ -103,6 +103,11 @@ input:focus {
   font-size: 16px;
   line-height: 20px;
   transition: all 0.5s ease-in-out;
+}
+
+.saveBtn:disabled {
+  background: var(--Dark_Grey_Menu, #302e3d);
+  color: var(--Violet_Stroke, #5f4f7f);
 }
 
 .error {
