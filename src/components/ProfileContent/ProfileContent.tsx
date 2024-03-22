@@ -1,9 +1,8 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import { FC } from 'react';
 import s from './ProfileContent.module.css';
+import { ProfileContentT, VideoItemT } from './../pages/ProfilePage/types';
 
-export const ProfileContent: FC<any> = ({
+export const ProfileContent: FC<ProfileContentT> = ({
   setOpenVideoList,
   setSelectedVideo,
   videoItems,
@@ -19,7 +18,7 @@ export const ProfileContent: FC<any> = ({
     >
       <h3 className={s.contentTitle}>Videos</h3>
       <div className={s.mainContent}>
-        {videoItems.map((img: any) => (
+        {videoItems.map((img: VideoItemT) => (
           <video
             poster={img.img}
             className={s.img}

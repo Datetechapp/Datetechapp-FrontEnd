@@ -1,5 +1,4 @@
 import style from './LikeButton.module.css';
-import { useState } from 'react';
 
 const LikeButton = ({
   match,

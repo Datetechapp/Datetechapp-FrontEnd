@@ -1,7 +1,7 @@
 import { Button, Popover } from 'antd';
 import React, { FC, ReactNode } from 'react';
 import style from './PopoverItem.module.css';
-import copyLinkIcon from './../../../../../assets/Profile/copy link.svg';
+import copyLinkIcon from './../../../../../assets/Profile/copyLink.svg';
 import reportProfileIcon from './../../../../../assets/Profile/reportProfile.svg';
 import { TooltipPlacement } from 'antd/es/tooltip';
 type PopoverT = {

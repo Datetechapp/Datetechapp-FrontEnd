@@ -8,7 +8,6 @@ import { reducer as paymentReducer } from './payments/slice';
 import { reducer as notificationReducer } from './notifications/slice';
 import { reducer as languageReducer } from './language/slice';
 import { reducer as audioInfoReducer } from './audioInfo/slice';
-import { reducer as videoItemReducer } from './videoUser/slice';
 
 const reducer = combineReducers({
   gendersAndPurposes: genderAndPurposesReducer,
@@ -19,7 +18,6 @@ const reducer = combineReducers({
   notifications: notificationReducer,
   language: languageReducer,
   audioInfo: audioInfoReducer,
-  videoItem: videoItemReducer,
 });
 
 export const store = configureStore({

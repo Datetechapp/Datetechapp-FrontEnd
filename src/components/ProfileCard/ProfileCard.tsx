@@ -5,7 +5,6 @@ import dots from './../../assets/Profile/dots.svg';
 import { useState } from 'react';
 import LikeButton from './component/LikeButton/LikeButton';
 import { InterestProfile } from './component/InterestProfile';
-import { Popover } from 'antd';
 import message from './../../assets/Profile/message.svg';
 import { PopoverItem } from 'components/pages/ProfilePage/components/PopoverItem';
 
