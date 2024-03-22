@@ -2,6 +2,31 @@
   width: 100%;
 }
 
+.profileInfo input {
+  width: 100%;
+  height: 36px;
+  padding-inline: 12px;
+  margin-block: 8px;
+  border: 1px solid #5f4f7f;
+  border-radius: 5px;
+  outline: none;
+  background: transparent;
+  color: white;
+  font-family: var(--ff);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.profileInfo input::placeholder {
+  font-size: 14px;
+  color: #5f4f7f;
+}
+
+.profileInfo input:focus {
+  border-color: #c896ef;
+}
+
 .profileInfo label {
   font-size: 14px;
   line-height: 18px;
@@ -39,31 +64,6 @@
   width: 50%;
 }
 
-input {
-  width: 100%;
-  height: 36px;
-  padding-inline: 12px;
-  margin-block: 8px;
-  border: 1px solid #5f4f7f;
-  border-radius: 5px;
-  outline: none;
-  background: transparent;
-  color: white;
-  font-family: var(--ff);
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 20px;
-}
-
-input::placeholder {
-  font-size: 14px;
-  color: #5f4f7f;
-}
-
-input:focus {
-  border-color: #c896ef;
-}
-
 .birthDay {
   display: flex;
   column-gap: 5px;
@@ -80,9 +80,12 @@ input:focus {
 .location {
   max-width: 353px;
 }
+.location div {
+  height: unset;
+}
 
-.location label > div {
-  margin: 8px 0 12px;
+.location input {
+  padding: 14px 16px 14px 48px;
 }
 
 .saveBtn {
