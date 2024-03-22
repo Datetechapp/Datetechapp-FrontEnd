@@ -108,14 +108,7 @@ export function AudioMessageContent({
       ) : (
         <PlayIcon onClick={handleAudioPlay} className={styles.button} />
       )}
-      {id === audioId && (
-        <audio
-          ref={audioRef}
-          src={audioBlob}
-          // onEnded={handleAudioEnded}
-          id={id}
-        />
-      )}
+      {id === audioId && <audio ref={audioRef} src={audioBlob} id={id} />}
 
       <div className={styles.audioInfo}>
         <div ref={containerRef} />

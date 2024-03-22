@@ -139,6 +139,7 @@ export function Questionnaire() {
       photo,
       video,
     };
+
     console.log(form); // TODO: update object and remove when back-end is ready
   };
 
