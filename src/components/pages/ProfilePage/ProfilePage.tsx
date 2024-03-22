@@ -13,37 +13,29 @@ import { ProfileContent } from 'components/ProfileContent';
 import profileImg1 from './../../../assets/Profile/profileImage1.png';
 import profileImg2 from './../../../assets/Profile/profileImage2.png';
 
-import { VideoList } from './components/VideoItem';
+import { VideoList } from './components/VideoList';
+import { useDispatch } from 'react-redux';
+import { videoItemsSet } from 'store/videoUser/slice';
 
 const videoItems = [
-  {
-    id: 1,
-    img: profileImg1,
-    src: profileImg1,
-  },
-  {
-    id: 2,
-    img: profileImg2,
-    src: profileImg1,
-  },
-  {
-    id: 3,
-    img: profileImg1,
-    src: profileImg1,
-  },
-  { id: 4, img: profileImg2, src: 'https://is.gd/UMPvwU' },
-  { id: 5, img: profileImg1, src: 'https://is.gd/UMPvwU' },
-  { id: 6, img: profileImg2, src: 'https://is.gd/UMPvwU' },
-  { id: 7, img: profileImg1, src: 'https://is.gd/UMPvwU' },
-  { id: 8, img: profileImg2, src: 'https://is.gd/UMPvwU' },
+  { id: 0, img: profileImg1, src: 'https://is.gd/UMPvwU', isPlaying: false },
+  { id: 1, img: profileImg2, src: 'https://is.gd/UMPvwU', isPlaying: false },
+  { id: 2, img: profileImg1, src: 'https://is.gd/UMPvwU', isPlaying: false },
+  { id: 3, img: profileImg2, src: 'https://is.gd/UMPvwU', isPlaying: false },
+  { id: 4, img: profileImg1, src: 'https://is.gd/UMPvwU', isPlaying: false },
+  { id: 5, img: profileImg2, src: 'https://is.gd/UMPvwU', isPlaying: false },
+  { id: 6, img: profileImg1, src: 'https://is.gd/UMPvwU', isPlaying: false },
+  { id: 7, img: profileImg2, src: 'https://is.gd/UMPvwU', isPlaying: false },
 ];
 
 export const ProfilePage = () => {
   const [openVideoList, setOpenVideoList] = useState(false);
-
-  console.log(openVideoList);
+  const [selectedVideo, setSelectedVideo] = useState<number | null>(null);
+  // const dispatch = useDispatch();
 
   useEffect(() => {
+    // dispatch(videoItemsSet(videoItems));
+
     if (openVideoList) {
       document.body.style.overflow = 'hidden';
     } else {
@@ -74,6 +66,7 @@ export const ProfilePage = () => {
             <ProfileCard />
             {openVideoList && (
               <VideoList
+                selectedVideo={selectedVideo}
                 setOpenVideoList={setOpenVideoList}
                 videoItems={videoItems}
               />
@@ -81,6 +74,7 @@ export const ProfilePage = () => {
           </div>
 
           <ProfileContent
+            setSelectedVideo={setSelectedVideo}
             openVideoList={openVideoList}
             setOpenVideoList={setOpenVideoList}
             videoItems={videoItems}

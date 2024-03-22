@@ -3,7 +3,6 @@
 import { FC } from 'react';
 import s from './ProfileContent.module.css';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const ProfileContent: FC<any> = ({
   setOpenVideoList,
   setSelectedVideo,
@@ -27,7 +26,7 @@ export const ProfileContent: FC<any> = ({
             key={img.id}
             onClick={() => {
               setOpenVideoList(true);
-              // setSelectedVideo(img.id);
+              setSelectedVideo(img.id);
             }}
           >
             <source src={img.src} />
