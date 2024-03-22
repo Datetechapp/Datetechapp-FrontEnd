@@ -10,17 +10,22 @@ import { profileSchema } from './validate.schema';
 import SimpleCloseIcon from '../../../../../assets/ForCommonModal/closeButton.svg';
 import styles from './ModalEditProfile.module.css';
 
-interface Values {
+interface ProfileInfoWithoutPhoto {
   name: string;
   day: string;
+  month: string;
   year: string;
   location: string;
   about: string;
 }
 
+interface ProfileInfo extends ProfileInfoWithoutPhoto {
+  photo: File | null;
+}
+
 type SetFieldFunction = (field: string, value: string) => void;
 
-const mockValues = {
+const mockValues: ProfileInfoWithoutPhoto = {
   name: 'Nike Borzov',
   day: '15',
   month: '7',
@@ -62,8 +67,8 @@ export function ModalEditProfile({
     setCustomField(value);
   };
 
-  const handleSubmit = (values: Values) => {
-    const profileInfo = { ...values, photo };
+  const handleSubmit = (values: ProfileInfoWithoutPhoto) => {
+    const profileInfo: ProfileInfo = { ...values, photo };
 
     console.log('val=', profileInfo);
   };
@@ -104,9 +109,9 @@ export function ModalEditProfile({
                     placeholder="Your name"
                     component={MyInput}
                   />
-                  {errors.name && touched.name ? (
+                  {errors.name && touched.name && (
                     <div className={styles.error}>{errors.name}</div>
-                  ) : null}
+                  )}
                 </label>
 
                 <label>
@@ -136,12 +141,12 @@ export function ModalEditProfile({
                     />
                     <Field name="year" component={MyInput} />
                   </div>
-                  {errors.day && touched.day ? (
+                  {errors.day && touched.day && (
                     <div className={styles.error}>{errors.day}</div>
-                  ) : null}
-                  {errors.year && touched.year ? (
+                  )}
+                  {errors.year && touched.year && (
                     <div className={styles.error}>{errors.year}</div>
-                  ) : null}
+                  )}
                 </label>
               </div>
               <div className={styles.location}>
@@ -164,9 +169,9 @@ export function ModalEditProfile({
                     }
                   />
                 </label>
-                {errors.location && touched.location ? (
+                {errors.location && touched.location && (
                   <div className={styles.error}>{errors.location}</div>
-                ) : null}
+                )}
               </div>
               <div>
                 <label>

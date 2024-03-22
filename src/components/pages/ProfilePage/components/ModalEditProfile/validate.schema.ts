@@ -1,4 +1,4 @@
-import * as Yup from 'yup';
+import { object, string, number } from 'yup';
 import moment from 'moment';
 
 const minDayNumber = 1;
@@ -7,13 +7,13 @@ const minAge = 18;
 const minNameLength = 2;
 const maxNameLength = 50;
 
-export const profileSchema = Yup.object().shape({
-  name: Yup.string()
+export const profileSchema = object().shape({
+  name: string()
     .min(minNameLength, 'Too Short!')
     .max(maxNameLength, 'Too Long!')
     .matches(/^[a-zA-Z ]+$/, 'The name must contain only letters')
     .required('Required name'),
-  day: Yup.number()
+  day: number()
     .min(minDayNumber)
     .max(maxDayNumber)
     .required('Required')
@@ -23,8 +23,8 @@ export const profileSchema = Yup.object().shape({
 
       return isValidDate;
     }),
-  month: Yup.number(),
-  year: Yup.string().test(
+  month: number(),
+  year: string().test(
     'is-valid-age',
     `You can't be under ${minAge}`,
     (value, context) => {
@@ -39,5 +39,5 @@ export const profileSchema = Yup.object().shape({
       return age >= minAge;
     },
   ),
-  about: Yup.string(),
+  about: string(),
 });

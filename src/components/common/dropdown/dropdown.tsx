@@ -30,13 +30,16 @@ export function Dropdown({ selected, options, onChange }: DropdownProps) {
 
   return (
     <div className={styles.wrapper}>
-      <div className={styles.dropdownButton} onClick={handleOpen}>
+      <div
+        className={`${styles.dropdownButton} ${isOpen ? styles.opened : ''}`}
+        onClick={handleOpen}
+      >
         {selectedValue}
       </div>
       {isOpen && (
         <div className={styles.options}>
           {options &&
-            options?.length > 0 &&
+            options.length > 0 &&
             options.map(({ key, value }) => (
               <div
                 className={`${styles.option} ${

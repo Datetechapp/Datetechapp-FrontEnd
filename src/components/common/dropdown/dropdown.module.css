@@ -3,10 +3,10 @@
 }
 
 .dropdownButton {
-    width: 124px;
+  width: 124px;
   height: 36px;
   padding: 6px 12px 0;
-  margin: 8px 0;
+  margin-block: 8px;
   border: 1px solid #5f4f7f;
   border-radius: 5px;
   outline: none;
@@ -16,16 +16,19 @@
   font-size: 16px;
   line-height: 20px;
   text-align: center;
+  z-index: 1;
 }
 
-.dropdownButton:focus {
+.dropdownButton:focus,
+.dropdownButton.opened {
+  transition: border-color 0.3s easy;
   border-color: var(--selected-color);
 }
 
 .options {
   height: 244px;
   width: 124px;
-  padding: 3px 0;
+  padding-block: 3px;
   border: 1.5px solid #96a3b4;
   border-radius: 5px;
   background: #201b27;
@@ -33,6 +36,7 @@
   overflow-y: scroll;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  z-index: 1;
 }
 
 .options::-webkit-scrollbar {

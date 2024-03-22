@@ -39,7 +39,7 @@
   background-color: var(--Dark_Elements_Background, #201b27);
   border: 1px solid var(--Grey, #96a3b4);
   border-radius: 8px;
-  z-index:1500;
+  z-index: 1300;
 }
 
 .match,
