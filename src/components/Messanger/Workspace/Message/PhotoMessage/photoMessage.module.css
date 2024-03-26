@@ -13,11 +13,9 @@
 }
 
 .messageText {
+  padding: 4px 8px;
+  font: 16px/20px var(--ff);
   color: #e9e3f5;
-  font-family: var(--ff);
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 25px;
 }
 
 .imageBlock {

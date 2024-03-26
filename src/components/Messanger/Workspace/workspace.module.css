@@ -6,11 +6,11 @@
   height: calc(100% - 145px);
   overflow-y: scroll;
   scrollbar-width: thin;
-  scrollbar-color: #9747ff #1f1d2a;
+  scrollbar-color: rgb(0 0 0 / 0) #1f1d2a;
 }
 
-.workspaceWithReplyWrapper {
-  height: 72.3vh;
+.workspaceWrapper:hover {
+  scrollbar-color: #9747ff #1f1d2a;
 }
 
 .headerWorkspace {

@@ -42,19 +42,12 @@ interface WorkspaceProps {
 }
 
 const imgSize = () => Math.floor(Math.random() * 100 + 100);
-
-const photos = [
-  new URL(`https://source.unsplash.com/random/${imgSize()}x${imgSize()}`).href,
-  new URL(`https://source.unsplash.com/random/${imgSize()}x${imgSize()}`).href,
-  new URL(`https://source.unsplash.com/random/${imgSize()}x${imgSize()}`).href,
-  new URL(`https://source.unsplash.com/random/${imgSize()}x${imgSize()}`).href,
-  new URL(`https://source.unsplash.com/random/${imgSize()}x${imgSize()}`).href,
-  new URL(`https://source.unsplash.com/random/${imgSize()}x${imgSize()}`).href,
-  new URL(`https://source.unsplash.com/random/${imgSize()}x${imgSize()}`).href,
-  new URL(`https://source.unsplash.com/random/${imgSize()}x${imgSize()}`).href,
-  new URL(`https://source.unsplash.com/random/${imgSize()}x${imgSize()}`).href,
-  new URL(`https://source.unsplash.com/random/${imgSize()}x${imgSize()}`).href,
-];
+const photos = Array.from(
+  { length: 10 },
+  () =>
+    new URL(`https://source.unsplash.com/random/${imgSize()}x${imgSize()}`)
+      .href,
+);
 
 const messagesArr: MessageProps[] = [
   {
@@ -250,11 +243,7 @@ export const Workspace = ({
   };
 
   return (
-    <div
-      className={
-        !showReplyMessage ? css.workspaceWrapper : css.workspaceWithReplyWrapper
-      }
-    >
+    <div className={css.workspaceWrapper}>
       <div className={css.headerWorkspace}>
         {isPinned && <AudioPlayer />}
 

@@ -25,10 +25,10 @@ export const PhotoMessage = ({
         {data.map((src) => (
           <img key={src} src={src} className={css.image} alt="" />
         ))}
-        {/* <p className={css.messageText}>{text}</p>
-        {isPinned && <PinnedIcon className={css.pinnedIcon} />}
-        <span className={css.messageTimestampt}>{timestamp}</span> */}
       </div>
+      {text && <p className={css.messageText}>{text}</p>}
+      {/* {isPinned && <PinnedIcon className={css.pinnedIcon} />} */}
+      {/* <span className={css.messageTimestampt}>{timestamp}</span> */}
     </div>
   );
 };
