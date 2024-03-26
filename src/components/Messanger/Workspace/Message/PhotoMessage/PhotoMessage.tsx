@@ -1,7 +1,6 @@
 import { ReactComponent as PinnedIcon } from '../../../../../assets/Messanger/iconForPinnedMessage.svg';
 
-import css from '../message.module.css';
-import styles from './photoMessage.module.css';
+import css from './photoMessage.module.css';
 
 type PhotoMessageProps = {
   id: string;
@@ -21,11 +20,14 @@ export const PhotoMessage = ({
   isPinned,
 }: PhotoMessageProps) => {
   return (
-    <div className={isMe ? styles.wrapperMe : styles.wrapperOther}>
-      <div className={css.messageInfo}>
-        <p className={css.messageText}>{text}</p>
+    <div className={isMe ? css.wrapperMe : css.wrapperOther}>
+      <div className={css.imageBlock}>
+        {data.map((src) => (
+          <img key={src} src={src} className={css.image} alt="" />
+        ))}
+        {/* <p className={css.messageText}>{text}</p>
         {isPinned && <PinnedIcon className={css.pinnedIcon} />}
-        <span className={css.messageTimestampt}>{timestamp}</span>
+        <span className={css.messageTimestampt}>{timestamp}</span> */}
       </div>
     </div>
   );

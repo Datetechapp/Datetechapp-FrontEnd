@@ -3,6 +3,10 @@
   flex: 1;
   flex-direction: column;
   justify-content: space-between;
+  height: calc(100% - 145px);
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: #9747ff #1f1d2a;
 }
 
 .workspaceWithReplyWrapper {

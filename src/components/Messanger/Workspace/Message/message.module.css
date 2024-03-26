@@ -1,16 +1,13 @@
 .other {
-  display: flex;
-  gap: 10px;
+  align-self: start;
 }
 
 .me {
-  display: flex;
-  justify-content: end;
+  align-self: end;
 }
 
 .messageInfoMe {
   max-width: 960px;
-  align-self: flex-end;
   border-radius: 10px 10px 0 10px;
   background: #5f4f7f;
   padding: 4px 8px;
@@ -24,7 +21,6 @@
   padding: 4px 8px;
   border-radius: 10px 10px 10px 0;
   background: #4b4a54;
-  align-self: center;
   display: flex;
   gap: 8px;
 }
@@ -44,6 +40,14 @@
   font-weight: 400;
   line-height: 14px;
   height: 12px;
+}
+
+.photoMe {
+  border-radius: 8px 8px 0 8px;
+}
+
+.photoOther {
+  border-radius: 8px 8px 8px 0;
 }
 
 .selectedBlockMessage {

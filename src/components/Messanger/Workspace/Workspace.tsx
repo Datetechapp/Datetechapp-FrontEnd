@@ -41,22 +41,19 @@ interface WorkspaceProps {
   setShowSearchMessages: Dispatch<SetStateAction<boolean>>;
 }
 
+const imgSize = () => Math.floor(Math.random() * 100 + 100);
+
 const photos = [
-  new URL('../../../assets/photos/amar-preciado.jpg', import.meta.url).href,
-  new URL('../../../assets/photos/arun-thomas.jpg', import.meta.url).href,
-  new URL('../../../assets/photos/dids.jpg', import.meta.url).href,
-  new URL('../../../assets/photos/evgeniy-petkevich.jpg', import.meta.url).href,
-  new URL('../../../assets/photos/francesco-ungaro.jpg', import.meta.url).href,
-  new URL('../../../assets/photos/jordan-rushton.jpg', import.meta.url).href,
-  new URL('../../../assets/photos/michael-king.jpg', import.meta.url).href,
-  new URL('../../../assets/photos/mike-kit.jpg', import.meta.url).href,
-  new URL('../../../assets/photos/mohan-nannapaneni.jpg', import.meta.url).href,
-  new URL('../../../assets/photos/nubia-navarro.jpg', import.meta.url).href,
-  new URL('../../../assets/photos/pixabay-158725.jpg', import.meta.url).href,
-  new URL('../../../assets/photos/pixabay-162140.jpg', import.meta.url).href,
-  new URL('../../../assets/photos/pixabay-40803.jpg', import.meta.url).href,
-  new URL('../../../assets/photos/pixabay-416179.jpg', import.meta.url).href,
-  new URL('../../../assets/photos/pixabay-458976.jpg', import.meta.url).href,
+  new URL(`https://source.unsplash.com/random/${imgSize()}x${imgSize()}`).href,
+  new URL(`https://source.unsplash.com/random/${imgSize()}x${imgSize()}`).href,
+  new URL(`https://source.unsplash.com/random/${imgSize()}x${imgSize()}`).href,
+  new URL(`https://source.unsplash.com/random/${imgSize()}x${imgSize()}`).href,
+  new URL(`https://source.unsplash.com/random/${imgSize()}x${imgSize()}`).href,
+  new URL(`https://source.unsplash.com/random/${imgSize()}x${imgSize()}`).href,
+  new URL(`https://source.unsplash.com/random/${imgSize()}x${imgSize()}`).href,
+  new URL(`https://source.unsplash.com/random/${imgSize()}x${imgSize()}`).href,
+  new URL(`https://source.unsplash.com/random/${imgSize()}x${imgSize()}`).href,
+  new URL(`https://source.unsplash.com/random/${imgSize()}x${imgSize()}`).href,
 ];
 
 const messagesArr: MessageProps[] = [
