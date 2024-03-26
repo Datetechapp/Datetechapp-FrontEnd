@@ -90,9 +90,6 @@
 }
 
 .imageBlock:has(img:nth-child(7)) {
-  grid-template-rows: 125px 74px 65px;
-  grid-template-columns: repeat(6, 1fr);
-
   img:is(:nth-child(5), :nth-child(6), :nth-child(7)) {
     grid-column: span 2;
   }
