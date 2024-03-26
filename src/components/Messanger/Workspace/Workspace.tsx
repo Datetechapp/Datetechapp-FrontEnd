@@ -1,5 +1,6 @@
-import React, {
+import {
   Dispatch,
+  Fragment,
   MouseEvent,
   SetStateAction,
   useCallback,
@@ -23,11 +24,12 @@ import css from './workspace.module.css';
 export interface MessageProps {
   id: string;
   type: string;
-  blob?: string;
   text: string;
   isMe: boolean;
   timestamp: string;
   isPinned: boolean;
+  blob?: string;
+  data?: string[];
 }
 
 interface WorkspaceProps {
@@ -38,6 +40,24 @@ interface WorkspaceProps {
   showReplyMessage: boolean;
   setShowSearchMessages: Dispatch<SetStateAction<boolean>>;
 }
+
+const photos = [
+  new URL('../../../assets/photos/amar-preciado.jpg', import.meta.url).href,
+  new URL('../../../assets/photos/arun-thomas.jpg', import.meta.url).href,
+  new URL('../../../assets/photos/dids.jpg', import.meta.url).href,
+  new URL('../../../assets/photos/evgeniy-petkevich.jpg', import.meta.url).href,
+  new URL('../../../assets/photos/francesco-ungaro.jpg', import.meta.url).href,
+  new URL('../../../assets/photos/jordan-rushton.jpg', import.meta.url).href,
+  new URL('../../../assets/photos/michael-king.jpg', import.meta.url).href,
+  new URL('../../../assets/photos/mike-kit.jpg', import.meta.url).href,
+  new URL('../../../assets/photos/mohan-nannapaneni.jpg', import.meta.url).href,
+  new URL('../../../assets/photos/nubia-navarro.jpg', import.meta.url).href,
+  new URL('../../../assets/photos/pixabay-158725.jpg', import.meta.url).href,
+  new URL('../../../assets/photos/pixabay-162140.jpg', import.meta.url).href,
+  new URL('../../../assets/photos/pixabay-40803.jpg', import.meta.url).href,
+  new URL('../../../assets/photos/pixabay-416179.jpg', import.meta.url).href,
+  new URL('../../../assets/photos/pixabay-458976.jpg', import.meta.url).href,
+];
 
 const messagesArr: MessageProps[] = [
   {
@@ -98,6 +118,24 @@ const messagesArr: MessageProps[] = [
     timestamp: '12:40',
     isPinned: false,
   },
+  {
+    id: '7',
+    type: 'photo',
+    data: photos.slice(Math.random() * 5, Math.random() * photos.length + 5),
+    text: 'The text is displayed here ...',
+    isMe: false,
+    timestamp: '12:45',
+    isPinned: false,
+  },
+  {
+    id: '8',
+    type: 'photo',
+    data: photos.slice(Math.random() * 5, Math.random() * photos.length + 5),
+    text: 'The text is displayed here ...',
+    isMe: true,
+    timestamp: '12:50',
+    isPinned: false,
+  },
 ];
 
 export const Workspace = ({
@@ -115,10 +153,9 @@ export const Workspace = ({
   const [showModalForward, setShowModalForward] = useState(false);
   const [showModalDelete, setShowModalDelete] = useState(false);
   const [pinnedMessages, setPinnedMessages] = useState<MessageProps[]>([]);
+  const [highlighted, setHighlighted] = useState(false);
   const [currentPinnedMessageIndex, setCurrentPinnedMessageIndex] = useState(0);
   const { isPinned } = useAppSelector(getAudioInfo);
-
-  const [highlighted, setHighlighted] = useState(false);
 
   const handleShowModal = useCallback((action: string) => {
     document.body.style.overflow = 'hidden';
@@ -186,7 +223,7 @@ export const Workspace = ({
   }, []);
 
   const handleContextMenu = useCallback(
-    (event: MouseEvent<HTMLDivElement>, messageId: string) => {
+    (event: MouseEvent, messageId: string) => {
       event.preventDefault();
       setSelectedMessageId(messageId);
       setShowContextMenu(true);
@@ -244,7 +281,7 @@ export const Workspace = ({
         <div className={css.messagesContainer}>
           <p className={css.dateOfMessages}>25 May 2023</p>
           {messagesArr.map((message) => (
-            <div key={message.id}>
+            <Fragment key={message.id}>
               {showSmileyMenu && selectedMessageId === message.id && (
                 <EmojiComponent isMe={message.isMe} />
               )}
@@ -254,6 +291,7 @@ export const Workspace = ({
                 setHighlighted={setHighlighted}
                 id={message.id}
                 blob={message.blob}
+                data={message.data}
                 type={message.type}
                 text={message.text}
                 isMe={message.isMe}
@@ -262,15 +300,13 @@ export const Workspace = ({
                 isPinned={pinnedMessages.some(
                   (pinnedMessage) => pinnedMessage.id === message.id,
                 )}
-                onContextMenu={(event: React.MouseEvent<HTMLDivElement>) => {
-                  if (event) {
-                    setSelectedMessageText(message.text);
-                    handleContextMenu(event, message.id);
-                  }
+                onContextMenu={(event) => {
+                  setSelectedMessageText(message.text);
+                  handleContextMenu(event, message.id);
                 }}
                 onContextMenuAction={handleContextMenuAction}
               />
-            </div>
+            </Fragment>
           ))}
         </div>
       </div>

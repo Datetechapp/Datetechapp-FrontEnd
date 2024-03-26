@@ -21,7 +21,6 @@
 
 .messageInfoOther {
   max-width: 960px;
-  align-self: flex-start;
   padding: 4px 8px;
   border-radius: 10px 10px 10px 0;
   background: #4b4a54;
@@ -31,16 +30,16 @@
 }
 
 .messageText {
-  color: #e9e3f5;
-  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  color: #ffffff;
+  font-family: var(--ff);
   font-size: 16px;
-  font-weight: 500;
-  line-height: 25px;
+  font-weight: 400;
+  line-height: 20px;
 }
 
 .messageTimestampt {
   color: #e9e3f5;
-  font-family: Montserrat;
+  font-family: var(--ff);
   font-size: 12px;
   font-weight: 400;
   line-height: 14px;

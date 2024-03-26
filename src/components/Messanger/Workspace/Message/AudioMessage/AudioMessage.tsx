@@ -8,8 +8,11 @@ import { formatTime } from './lib';
 import { useAppDispatch, useAppSelector } from 'hooks/hooks';
 import { audioInfoDelete, audioInfoUpdate } from 'store/audioInfo/slice';
 import { getAudioInfo } from 'store/audioInfo/selectors';
-import styles from './audioMessageContent.module.css';
+
+import styles from './audioMessage.module.css';
 import css from '../message.module.css';
+
+const PRESERVE_PITCH = true;
 
 type Props = {
   audioRef: RefObject<HTMLAudioElement>;
@@ -18,7 +21,8 @@ type Props = {
   blob: string;
   id: string;
 };
-export function AudioMessageContent({
+
+export function AudioMessage({
   audioRef,
   timestamp,
   isPinned,
@@ -34,8 +38,6 @@ export function AudioMessageContent({
     blob: audioBlob,
     speed,
   } = useAppSelector(getAudioInfo);
-
-  const preservePitch = true;
 
   const { wavesurfer, currentTime } = useWavesurfer({
     container: containerRef,
@@ -80,25 +82,17 @@ export function AudioMessageContent({
   }, [volume]);
 
   useEffect(() => {
-    if (isPlaying && id === audioId) {
-      wavesurfer && wavesurfer.play();
-    } else {
-      wavesurfer && wavesurfer.pause();
-    }
+    if (!wavesurfer) return;
+
+    isPlaying && id === audioId ? wavesurfer.play() : wavesurfer.pause();
   }, [audioBlob, id, isPlaying]);
 
   useEffect(() => {
-    if (wavesurfer) {
-      wavesurfer.on('finish', () => {
-        handleAudioEnded();
-      });
-    }
+    wavesurfer && wavesurfer.on('finish', handleAudioEnded);
   }, [wavesurfer]);
 
   useEffect(() => {
-    if (wavesurfer) {
-      wavesurfer && wavesurfer.setPlaybackRate(speed, preservePitch);
-    }
+    wavesurfer && wavesurfer.setPlaybackRate(speed, PRESERVE_PITCH);
   }, [speed]);
 
   return (

@@ -1,23 +1,22 @@
-import React, { Dispatch, SetStateAction, useEffect } from 'react';
+import { Dispatch, SetStateAction, useEffect, type MouseEvent } from 'react';
 
+import { AudioMessage, PhotoMessage } from '.';
 import { ReactComponent as PinnedIcon } from '../../../../assets/Messanger/iconForPinnedMessage.svg';
 import { ContextMenu } from '../ContextMenu';
-import { AudioMessageContent } from './AudioMessageContent';
+
 import css from './message.module.css';
 
 export interface MessageProps {
   id: string;
   text: string;
   blob?: string;
+  data?: string[];
   type: string;
   isMe: boolean;
   timestamp: string;
   isSelected: boolean;
   isPinned: boolean;
-  onContextMenu: (
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-    messageId: string,
-  ) => void;
+  onContextMenu: (event: MouseEvent, messageId: string) => void;
   onContextMenuAction: (text: string) => void;
   currentPinnedMessageIndex: number;
   setHighlighted: Dispatch<SetStateAction<boolean>>;
@@ -28,6 +27,7 @@ export const Message = ({
   id,
   text,
   blob,
+  data,
   type,
   isMe,
   timestamp,
@@ -59,22 +59,14 @@ export const Message = ({
           : ''
       }`}
     >
-      <div>
+      <>
         <div
           className={`${isMe ? css.messageInfoMe : css.messageInfoOther} ${
             isSelected ? css.selectedMessage : ''
           }`}
           onContextMenu={(event) => onContextMenu(event, id)}
         >
-          {type === 'audio' && blob ? (
-            <AudioMessageContent
-              audioRef={{ current: null }}
-              timestamp={timestamp}
-              isPinned={isPinned}
-              blob={blob}
-              id={id}
-            />
-          ) : (
+          {type === 'text' && (
             <>
               <p className={css.messageText}>{text}</p>
 
@@ -84,6 +76,25 @@ export const Message = ({
               </div>
             </>
           )}
+          {type === 'audio' && blob && (
+            <AudioMessage
+              audioRef={{ current: null }}
+              timestamp={timestamp}
+              isPinned={isPinned}
+              blob={blob}
+              id={id}
+            />
+          )}
+          {type === 'photo' && data && (
+            <PhotoMessage
+              id={id}
+              timestamp={timestamp}
+              isMe={isMe}
+              text={text}
+              data={data}
+              isPinned={isPinned}
+            />
+          )}
         </div>
         <ContextMenu
           show={isSelected}
@@ -91,7 +102,7 @@ export const Message = ({
           isPinned={isPinned}
           onContextMenuAction={onContextMenuAction}
         />
-      </div>
+      </>
     </div>
   );
 };
