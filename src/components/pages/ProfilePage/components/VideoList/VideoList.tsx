@@ -8,12 +8,9 @@ import { ReactComponent as PauseIcon } from '../../../../../assets/CreateAccount
 import { PopoverItem } from '../PopoverItem';
 import { useDispatch } from 'react-redux';
 import { VideoItemT, VideoListT } from '../../types';
+import { videoItems } from './../../videos';
 
-export const VideoList = ({
-  setOpenVideoList,
-  videoItems,
-  selectedVideo,
-}: VideoListT) => {
+export const VideoList = ({ setOpenVideoList, selectedVideo }: VideoListT) => {
   const dispatch = useDispatch();
   const [isHovered, setIsHovered] = useState(false);
   const DEFAULT_VOLUME = 0.5;

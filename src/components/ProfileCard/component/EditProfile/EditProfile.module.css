@@ -1,0 +1,16 @@
+.editIconContainer {
+  cursor: pointer;
+  padding: 8px 20px;
+  margin-left: auto;
+  display: flex;
+  align-items: start;
+}
+.editIconContainer span {
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+  text-align: left;
+  color: #5f4f7f;
+  padding-right: 8px;
+}

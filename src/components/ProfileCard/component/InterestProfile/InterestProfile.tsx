@@ -1,11 +1,20 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useLocation } from 'react-router-dom';
+import { EditProfile } from '../EditProfile';
 import style from './InterestProfile.module.css';
 import { interests } from './interests';
 import { moreInterests } from './interests';
 
-export const InterestProfile = () => {
+export const InterestProfile = ({ children }: any) => {
+  const location = useLocation();
+  const isMyProfile = location.pathname === '/my-profile';
+
   return (
     <div className={style.cardBoxAbout}>
-      <p className={style.cardBoxAboutTitle}>More about me</p>
+      <p className={style.cardBoxAboutTitle}>
+        <span>More about me</span>
+        {isMyProfile && <EditProfile />}
+      </p>
       <div className={style.cardBoxInterestsContainer}>
         {interests.map((int, ind) => (
           <div className={style.interestsItem} key={ind}>

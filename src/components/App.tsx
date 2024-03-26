@@ -21,6 +21,7 @@ import NotificationPage from './pages/NotificationPage/NotificationPage';
 import { Questionnaire } from './pages/Questionnaire';
 import { RequestPage } from './pages/RequestPage';
 import { ProfilePage } from './pages/ProfilePage';
+import { MyProfilePage } from './pages/MyProfilePage';
 
 export const App = () => {
   const { pathname } = useLocation();
@@ -67,6 +68,7 @@ export const App = () => {
             <Route path="history" element={<PaymentHistory />} />
           </Route>
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/my-profile" element={<MyProfilePage />} />
         </Routes>
       )}
     </>

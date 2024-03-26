@@ -1,12 +1,13 @@
 import { FC } from 'react';
 import s from './ProfileContent.module.css';
 import { ProfileContentT, VideoItemT } from './../pages/ProfilePage/types';
+import { videoItems } from 'components/pages/ProfilePage/videos';
 
 export const ProfileContent: FC<ProfileContentT> = ({
   setOpenVideoList,
   setSelectedVideo,
-  videoItems,
   openVideoList,
+  title,
 }) => {
   return (
     <div
@@ -16,7 +17,7 @@ export const ProfileContent: FC<ProfileContentT> = ({
           : `${s.contentProfileContainer}`
       }
     >
-      <h3 className={s.contentTitle}>Videos</h3>
+      <div className={s.contentTitle}>{title}</div>
       <div className={s.mainContent}>
         {videoItems.map((img: VideoItemT) => (
           <video

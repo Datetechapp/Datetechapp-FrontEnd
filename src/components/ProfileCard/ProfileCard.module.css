@@ -45,22 +45,6 @@
   letter-spacing: 0.01em;
   color: #96a3b4;
 }
-.cardInfoDetails {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  justify-content: center;
-  margin-left: auto;
-}
-.cardInfoDetails img:hover svg path {
-  fill: #fff;
-}
-.cardButtonDetails {
-  width: 40px;
-  height: 40px;
-  border: none;
-  background: inherit;
-}
 .cardBoxDescription {
   padding: 16px 0 24px 0;
 }

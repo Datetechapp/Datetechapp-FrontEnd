@@ -1,10 +1,10 @@
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, ReactNode, SetStateAction } from 'react';
 
 export type ProfileContentT = {
   setOpenVideoList: Dispatch<SetStateAction<boolean>>;
   setSelectedVideo: Dispatch<SetStateAction<string | ''>>;
-  videoItems: VideoItemT[];
   openVideoList: boolean;
+  title: ReactNode;
 };
 
 export type VideoItemT = {
@@ -16,6 +16,5 @@ export type VideoItemT = {
 
 export type VideoListT = {
   setOpenVideoList: Dispatch<SetStateAction<boolean>>;
-  videoItems: VideoItemT[];
   selectedVideo: string;
 };

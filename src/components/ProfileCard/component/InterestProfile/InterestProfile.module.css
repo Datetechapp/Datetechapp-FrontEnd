@@ -4,6 +4,8 @@
   font-size: 14px;
   line-height: 129%;
   color: #fff;
+  display: flex;
+  align-items: center;
 }
 .cardBoxInterestsContainer {
   padding-bottom: 12px;

@@ -1,18 +1,15 @@
+import { useState } from 'react';
+import s from './MyProfilePage.module.css';
+import { ProfileLayout } from './../../Layouts/ProfileLayout';
+import { EditProfile } from 'components/ProfileCard/component/EditProfile';
 import { ProfileCard } from 'components/ProfileCard';
-import { useEffect, useState } from 'react';
-import s from './ProfilePage.module.css';
+import { VideoList } from '../ProfilePage/components/VideoList';
 import { ProfileContent } from 'components/ProfileContent';
-import { ProfileLayout } from 'components/Layouts/ProfileLayout';
-import { DetailsCard } from 'components/ProfileCard/component/DetailsCard';
-import { VideoList } from './components/VideoList';
+import { Button } from 'antd';
 
-export const ProfilePage = () => {
+export const MyProfilePage = () => {
   const [openVideoList, setOpenVideoList] = useState(false);
   const [selectedVideo, setSelectedVideo] = useState('');
-
-  useEffect(() => {
-    document.body.style.overflow = openVideoList ? 'hidden' : 'auto';
-  }, [openVideoList]);
 
   return (
     <ProfileLayout>
@@ -30,7 +27,7 @@ export const ProfilePage = () => {
               : `${s.commonCardContainer}`
           }
         >
-          <ProfileCard children={<DetailsCard />} />
+          <ProfileCard children={<EditProfile />} />
           {openVideoList && (
             <VideoList
               selectedVideo={selectedVideo}
@@ -40,7 +37,28 @@ export const ProfilePage = () => {
         </div>
 
         <ProfileContent
-          title={<span>Videos</span>}
+          title={
+            <div className={s.linksBox}>
+              <Button
+                style={{
+                  border: 'none',
+                  background: 'transparent',
+                  color: '#5F4F7F',
+                }}
+              >
+                My Video
+              </Button>
+              <Button
+                style={{
+                  border: 'none',
+                  background: 'transparent',
+                  color: '#FFFFFF',
+                }}
+              >
+                Hidden
+              </Button>
+            </div>
+          }
           setSelectedVideo={setSelectedVideo}
           openVideoList={openVideoList}
           setOpenVideoList={setOpenVideoList}
