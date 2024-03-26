@@ -1,0 +1,19 @@
+.heartIcon path,
+.matchingButtons path {
+  transition: all 0.5s ease-in-out;
+}
+.heartIcon:hover path {
+  fill: url(#paint0_linear_9553_13091);
+  stroke: url(#paint0_linear_9553_13091);
+}
+.containerIcons {
+  background: inherit;
+  border: none;
+}
+.matchingButtons path {
+  fill: #fff;
+  stroke: #fff;
+}
+.matchingButtons rect {
+  fill: url(#paint0_linear_9553_13091);
+}

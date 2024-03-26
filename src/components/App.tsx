@@ -20,6 +20,7 @@ import { VerificationPage } from './pages/ModalRegister/VerificationPage';
 import NotificationPage from './pages/NotificationPage/NotificationPage';
 import { Questionnaire } from './pages/Questionnaire';
 import { RequestPage } from './pages/RequestPage';
+import { ProfilePage } from './pages/ProfilePage';
 
 export const App = () => {
   const { pathname } = useLocation();
@@ -58,9 +59,14 @@ export const App = () => {
             <Route path="request" element={<RequestPage />} />
           </Route>
           <Route path="/payment" element={<PaymentPageLayout />}>
-            <Route path="subscription" element={<PaymentSubscription />} />
+            <Route
+              index
+              path="subscription"
+              element={<PaymentSubscription />}
+            />
             <Route path="history" element={<PaymentHistory />} />
           </Route>
+          <Route path="/profile" element={<ProfilePage />} />
         </Routes>
       )}
     </>

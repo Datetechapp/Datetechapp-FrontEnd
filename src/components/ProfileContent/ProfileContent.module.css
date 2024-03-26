@@ -1,0 +1,16 @@
+.openContentProfileContainer {
+  margin-left: 538px;
+}
+.contentTitle {
+  padding-bottom: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  color: #ffffff;
+}
+.mainContent {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+}
