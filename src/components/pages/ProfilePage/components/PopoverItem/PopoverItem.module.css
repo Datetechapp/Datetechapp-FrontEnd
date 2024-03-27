@@ -1,0 +1,20 @@
+.popoverContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.popoverContainer span {
+  padding-left: 8px;
+  font-weight: 400;
+  font-size: 12px;
+  text-transform: none;
+}
+
+.copyLinkSpan {
+  color: #5f4f7f;
+}
+
+.reportLinkSpan {
+  color: #d75048;
+}

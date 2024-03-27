@@ -1,0 +1,1 @@
+export { InterestProfile } from './InterestProfile';

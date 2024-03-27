@@ -59,7 +59,11 @@ export const App = () => {
             <Route path="request" element={<RequestPage />} />
           </Route>
           <Route path="/payment" element={<PaymentPageLayout />}>
-            <Route path="subscription" element={<PaymentSubscription />} />
+            <Route
+              index
+              path="subscription"
+              element={<PaymentSubscription />}
+            />
             <Route path="history" element={<PaymentHistory />} />
           </Route>
           <Route path="/profile" element={<ProfilePage />} />
