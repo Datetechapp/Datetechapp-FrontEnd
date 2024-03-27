@@ -68,7 +68,6 @@ export const Locations = ({ location, setLocation }: Props) => {
   );
 
   const handleInputChange = (value: string) => {
-    setLocation('');
     setInputValue(value);
     fetchDebounce(value);
   };

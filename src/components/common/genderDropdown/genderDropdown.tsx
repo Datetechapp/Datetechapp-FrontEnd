@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import css from './dropdawn.module.css';
+import css from './genderDropdown.module.css';
 import { ReactComponent as ArrowRight } from '../../../assets/CreateAccountForm/arrowOpenDropdawn.svg';
 import { ReactComponent as CloseIcon } from '../../../assets/CreateAccountForm/closeForDropdawn.svg';
 
@@ -11,7 +11,7 @@ interface DropdownProps {
   onChange: (value: string) => void;
 }
 
-export function Dropdawn({
+export function CommonGenderDropdown({
   value,
   genders,
   onChange,

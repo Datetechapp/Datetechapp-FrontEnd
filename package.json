@@ -77,7 +77,7 @@
     "validators": "^0.3.1",
     "wavesurfer.js": "^7.7.5",
     "web-vitals": "^2.1.4",
-    "yup": "^1.1.1"
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.13",

@@ -1,12 +1,16 @@
-import { ProfileCard } from 'components/ProfileCard';
 import { useEffect, useState } from 'react';
-import s from './ProfilePage.module.css';
+
 import { MainLayoutHeader } from '../../Layouts/MainLayout/MainLayout_Header/MainLayoutHeader';
+import { Button } from 'components/common';
 import { ProfileContent } from 'components/ProfileContent';
+import { ProfileCard } from 'components/ProfileCard';
+import { ModalEditProfile } from './components/ModalEditProfile';
+import { VideoList } from './components/VideoList';
+
 import profileImg1 from './../../../assets/Profile/profileImage1.png';
 import profileImg2 from './../../../assets/Profile/profileImage2.png';
 
-import { VideoList } from './components/VideoList';
+import s from './ProfilePage.module.css';
 
 const videoItems = [
   { id: '0', img: profileImg1, src: 'https://is.gd/UMPvwU', isPlaying: false },
@@ -22,6 +26,12 @@ const videoItems = [
 export const ProfilePage = () => {
   const [openVideoList, setOpenVideoList] = useState(false);
   const [selectedVideo, setSelectedVideo] = useState('');
+
+  const [open, setOpen] = useState(false);
+
+  const handleEdit = () => {
+    setOpen(true);
+  };
 
   useEffect(() => {
     document.body.style.overflow = openVideoList ? 'hidden' : 'auto';
@@ -65,6 +75,8 @@ export const ProfilePage = () => {
           />
         </div>
       </div>
+      <Button onClick={handleEdit}>Edit profile</Button>
+      <ModalEditProfile isOpen={open} setOpen={setOpen} />
     </div>
   );
 };

@@ -1,0 +1,1 @@
+export { ModalEditProfile } from './ModalEditProfile';

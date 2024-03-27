@@ -18,9 +18,9 @@ import {
 import { ModalRegister, ResetPassword } from './pages/ModalRegister';
 import { VerificationPage } from './pages/ModalRegister/VerificationPage';
 import NotificationPage from './pages/NotificationPage/NotificationPage';
+import { ProfilePage } from './pages/ProfilePage';
 import { Questionnaire } from './pages/Questionnaire';
 import { RequestPage } from './pages/RequestPage';
-import { ProfilePage } from './pages/ProfilePage';
 
 export const App = () => {
   const { pathname } = useLocation();
