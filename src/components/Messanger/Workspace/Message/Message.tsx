@@ -98,7 +98,6 @@ export const Message = ({
         )}
         {type === 'photo' && data && (
           <PhotoMessage
-            id={id}
             timestamp={timestamp}
             isMe={isMe}
             text={text}

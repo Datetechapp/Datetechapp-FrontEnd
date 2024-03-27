@@ -3,7 +3,6 @@ import { ReactComponent as PinnedIcon } from '../../../../../assets/Messanger/ic
 import css from './photoMessage.module.css';
 
 type PhotoMessageProps = {
-  id: string;
   timestamp: string;
   isMe: boolean;
   text: string;
@@ -12,7 +11,6 @@ type PhotoMessageProps = {
 };
 
 export const PhotoMessage = ({
-  id,
   timestamp,
   isMe,
   text,
@@ -26,9 +24,19 @@ export const PhotoMessage = ({
           <img key={src} src={src} className={css.image} alt="" />
         ))}
       </div>
-      {text && <p className={css.messageText}>{text}</p>}
-      {/* {isPinned && <PinnedIcon className={css.pinnedIcon} />} */}
-      {/* <span className={css.messageTimestampt}>{timestamp}</span> */}
+      {!text && (
+        <div className={css.photoData}>
+          {isPinned && <PinnedIcon className={css.pinnedIcon} />}
+          <span className={css.messageTimestampt}>{timestamp}</span>
+        </div>
+      )}
+      {text && (
+        <div className={`${css.messageText}`}>
+          {text}
+          {isPinned && <PinnedIcon className={css.pinnedIcon} />}
+          <span className={css.messageTimestampt}>{timestamp}</span>
+        </div>
+      )}
     </div>
   );
 };
