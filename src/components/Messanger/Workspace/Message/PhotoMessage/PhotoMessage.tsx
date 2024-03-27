@@ -33,8 +33,10 @@ export const PhotoMessage = ({
       {text && (
         <div className={`${css.messageText}`}>
           {text}
-          {isPinned && <PinnedIcon className={css.pinnedIcon} />}
-          <span className={css.messageTimestampt}>{timestamp}</span>
+          <span className={css.messageTimestampt}>
+            {isPinned && <PinnedIcon className={css.pinnedIcon} />}
+            {timestamp}
+          </span>
         </div>
       )}
     </div>

@@ -218,5 +218,8 @@
   position: relative;
   top: 0.175rem;
   float: right;
+  display: flex;
+  gap: 4px;
+  align-items: center;
   margin-left: 0.4375rem;
 }
