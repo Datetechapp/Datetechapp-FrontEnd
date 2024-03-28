@@ -6,12 +6,14 @@ import { ReactComponent as SoundOffIcon } from '../../../../../assets/CreateAcco
 import { ReactComponent as PlayIcon } from '../../../../../assets/CreateAccountForm/playIcon.svg';
 import { ReactComponent as PauseIcon } from '../../../../../assets/CreateAccountForm/pauseIcon.svg';
 import { PopoverItem } from '../PopoverItem';
-import { useDispatch } from 'react-redux';
 import { VideoItemT, VideoListT } from '../../types';
 import { videoItems } from './../../videos';
 
-export const VideoList = ({ setOpenVideoList, selectedVideo }: VideoListT) => {
-  const dispatch = useDispatch();
+export const VideoList = ({
+  setOpenVideoList,
+  selectedVideo,
+  selectedButton,
+}: VideoListT) => {
   const [isHovered, setIsHovered] = useState(false);
   const DEFAULT_VOLUME = 0.5;
   const [volume, setVolume] = useState(DEFAULT_VOLUME);
@@ -156,6 +158,7 @@ export const VideoList = ({ setOpenVideoList, selectedVideo }: VideoListT) => {
                   )}
                   <div className={s.btnDots}>
                     <PopoverItem
+                      selectedButton={selectedButton}
                       placement={'top'}
                       buttonStyle={{
                         width: '32px',

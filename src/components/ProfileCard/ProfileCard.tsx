@@ -1,11 +1,11 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import style from './ProfileCard.module.css';
 import avatar from '../../assets/user/avatarIvan.svg';
 import capricorn from './../../assets/Profile/сapricorn.svg';
 import { useState } from 'react';
 import { InterestProfile } from './component/InterestProfile';
+import { ProfileCardT } from './../../components/pages/ProfilePage/types';
 
-export const ProfileCard = ({ children }: any) => {
+export const ProfileCard = ({ children }: ProfileCardT) => {
   const [fullText, setFullText] = useState(false);
 
   const text =

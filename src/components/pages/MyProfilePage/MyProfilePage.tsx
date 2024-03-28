@@ -3,37 +3,31 @@ import s from './MyProfilePage.module.css';
 import { ProfileLayout } from './../../Layouts/ProfileLayout';
 import { EditProfile } from 'components/ProfileCard/component/EditProfile';
 import { ProfileCard } from 'components/ProfileCard';
-import { VideoList } from '../ProfilePage/components/VideoList';
 import { ProfileContent } from 'components/ProfileContent';
 import { Button } from 'antd';
 
 export const MyProfilePage = () => {
-  const [openVideoList, setOpenVideoList] = useState(false);
-  const [selectedVideo, setSelectedVideo] = useState('');
+  const [openMyVideoList, setOpenMyVideoList] = useState(false);
+  const [openVideos, setOpenVideos] = useState(true);
+  const [selectedButton, setSelectedButton] = useState('My Video');
 
   return (
     <ProfileLayout>
       <div
         className={
-          openVideoList
+          openMyVideoList
             ? `${s.openMainContentProfile}`
             : `${s.mainContentProfile}`
         }
       >
         <div
           className={
-            openVideoList
+            openMyVideoList
               ? `${s.openVideoListContainer}`
               : `${s.commonCardContainer}`
           }
         >
           <ProfileCard children={<EditProfile />} />
-          {openVideoList && (
-            <VideoList
-              selectedVideo={selectedVideo}
-              setOpenVideoList={setOpenVideoList}
-            />
-          )}
         </div>
 
         <ProfileContent
@@ -43,7 +37,11 @@ export const MyProfilePage = () => {
                 style={{
                   border: 'none',
                   background: 'transparent',
-                  color: '#5F4F7F',
+                  color: openVideos ? '#FFFFFF' : '#5F4F7F',
+                }}
+                onClick={() => {
+                  setSelectedButton('My Video');
+                  setOpenVideos(true);
                 }}
               >
                 My Video
@@ -52,16 +50,21 @@ export const MyProfilePage = () => {
                 style={{
                   border: 'none',
                   background: 'transparent',
-                  color: '#FFFFFF',
+                  color: !openVideos ? '#FFFFFF' : '#5F4F7F',
+                }}
+                onClick={() => {
+                  setSelectedButton('Hidden');
+                  setOpenVideos(false);
+                  setOpenMyVideoList(false);
                 }}
               >
                 Hidden
               </Button>
             </div>
           }
-          setSelectedVideo={setSelectedVideo}
-          openVideoList={openVideoList}
-          setOpenVideoList={setOpenVideoList}
+          selectedButton={selectedButton}
+          openVideoList={openMyVideoList}
+          setOpenVideoList={setOpenMyVideoList}
         />
       </div>
     </ProfileLayout>

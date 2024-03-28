@@ -19,6 +19,7 @@ export const DetailsCard = () => {
         />
       )}
       <PopoverItem
+        selectedButton=""
         placement={'bottom'}
         overlayStyle={{ marginTop: '15px' }}
         buttonStyle={{
