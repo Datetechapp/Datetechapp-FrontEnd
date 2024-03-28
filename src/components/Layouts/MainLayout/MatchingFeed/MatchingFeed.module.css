@@ -1,4 +1,5 @@
 .matchingContainer {
+  position: relative;
   display: flex;
   height: 100%;
   width: 100%;
@@ -77,6 +78,8 @@
   flex-direction: column;
   gap: 20px;
   position: relative;
+  height: calc(100vh - 68px);
+  z-index: 0;
 }
 
 .matchingNav {
@@ -110,13 +113,13 @@
 
 .matchingProfiles {
   width: 324px;
-  height: 630px;
+  height: 90%;
   display: flex;
   flex-direction: column;
   color: #fff;
   gap: 7px;
-  position: relative;
-  overflow: auto;
+  overflow-y: scroll;
+  overflow-x: visible;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -151,8 +154,8 @@
   position: absolute;
   width: 120px;
   height: 24px;
-  top: 710px;
-  left: 967px;
+  bottom: 16px;
+  right: 57px;
   gap: 8px;
   display: flex;
   flex-direction: row;
@@ -166,7 +169,7 @@
   height: 24px;
   border-radius: 4px;
   background-color: #39364a;
-  cursor: auto;
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;

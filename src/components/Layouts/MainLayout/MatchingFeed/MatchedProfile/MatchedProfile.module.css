@@ -1,6 +1,5 @@
 .profileMatched {
   width: 324px;
-  height: 530px;
   border-radius: 10px;
   background-color: #302e3d;
   display: flex;
@@ -11,25 +10,33 @@
 }
 
 .videoContainer {
-  position: relative;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 324px;
+  position: relative;
 }
 
 .videoProfile {
-  width: 324px;
-  height: 476px;
+  width: 100%;
 }
 
-.overlayIcons {
+.videoControls {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.videoControls:hover {
+  opacity: 0.8;
+}
+
+.overlayIcons {
   display: flex;
   flex-direction: column;
+  gap: 8px;
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
 }
 
 .profileName {
@@ -81,6 +88,7 @@
   padding-bottom: 19px;
   cursor: pointer;
   transition: all 0.3s ease;
+  z-index: 1;
 }
 
 .profileDots:hover {
@@ -103,7 +111,7 @@
   text-align: left;
   position: absolute;
   top: 44px;
-  left: 120px;
+  right: 8px;
   padding: 8px;
   border-radius: 5px;
   gap: 4px;
@@ -114,7 +122,6 @@
 
 .profileDots:hover .shareProfileElement {
   display: flex;
-  z-index: 12;
 }
 
 .shareProfileElement:hover {
@@ -135,9 +142,6 @@
 }
 
 .soundIcon {
-  position: absolute;
-  top: 140px;
-  left: 120px;
   cursor: pointer;
   width: 32px;
   height: 32px;
@@ -166,15 +170,19 @@
   padding: 8px 9px;
 }
 
+.overlayVolume {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
 .volumeBlock {
   position: absolute;
-  top: 25px;
-  left: 120px;
+  bottom: 40px;
   border-radius: 8px;
   border: 1px solid #32303e;
   background: #1f1d2b;
   transform: rotate(0deg);
-  bottom: 104px;
   width: 32px;
   height: 104px;
 }
@@ -213,21 +221,18 @@
 }
 
 .profileDotsCopy {
-  position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
   cursor: pointer;
-  top: 180px;
-  left: 120px;
   border-radius: 29px;
   background: #5f4f7f80;
   width: 32px;
   height: 32px;
   padding: 6px;
   padding-bottom: 9px;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .profileDotsCopy:hover {
@@ -236,28 +241,26 @@
 
 .copyLinkElement {
   position: absolute;
+  right: 8px;
+  bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
   width: 200px;
   height: 84px;
-  top: -85px;
-  left: -160px;
   padding: 8px;
   border-radius: 5px;
   gap: 4px;
   box-shadow: 0px 2px 4px 0px #0000000a;
   background-color: #ffffff;
   color: #5f4f7f;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  z-index: 9;
 }
 
 .copyElement,
 .reportElement {
   display: flex;
   align-items: center;
-  width: 100%;
   font-size: 12px;
   font-weight: 400;
   line-height: 14px;

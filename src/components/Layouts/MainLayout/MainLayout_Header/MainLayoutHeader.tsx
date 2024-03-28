@@ -85,7 +85,7 @@ export const MainLayoutHeader: FC = () => {
           <div className={styles.userInfo}>
             <div className={styles.userPersonalInfo}>
               <NavLink
-                to="self"
+                to="/profile"
                 className={({ isActive }) =>
                   isActive ? styles.activeSelfLink : styles.deactiveSelfLink
                 }

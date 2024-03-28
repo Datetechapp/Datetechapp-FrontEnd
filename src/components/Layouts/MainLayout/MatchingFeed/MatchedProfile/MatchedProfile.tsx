@@ -1,35 +1,35 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, ChangeEvent } from 'react';
+
 import share from '../../../../../assets/feed/share.svg';
 import copy from '../../../../../assets/feed/copy.svg';
 import report from '../../../../../assets/feed/report.svg';
-import styles from './MatchedProfile.module.css';
 import { ReactComponent as SoundOnIcon } from '../../../../../assets/CreateAccountForm/soundIcon.svg';
 import { ReactComponent as SoundOffIcon } from '../../../../../assets/CreateAccountForm/soundOff.svg';
 import { ReactComponent as PlayIcon } from '../../../../../assets/CreateAccountForm/playIcon.svg';
 import { ReactComponent as PauseIcon } from '../../../../../assets/CreateAccountForm/pauseIcon.svg';
 import { UserProfileCardProps } from '../interfaces';
+import styles from './MatchedProfile.module.css';
 
-const MatchedProfile: React.FC<UserProfileCardProps> = ({
+const DEFAULT_VOLUME = 0.5;
+
+const MatchedProfile = ({
   profile,
-  onDelete,
   setSelectedProfileId,
-}) => {
+}: UserProfileCardProps) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [isVolumeBlockHovered, setIsVolumeBlockHovered] = useState(false);
-
-  const DEFAULT_VOLUME = 0.5;
-
+  const [isShareProfileVisible, setIsShareProfileVisible] = useState(false);
+  const [isCopyLinkVisible, setCopyLinkVisible] = useState(false);
   const [volume, setVolume] = useState(DEFAULT_VOLUME);
 
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isShareProfileVisible, setShareProfileVisible] = useState(false);
-  const [isCopyLinkVisible, setCopyLinkVisible] = useState(false);
+  const volumeRef = useRef<HTMLInputElement | null>(null);
   const shareDotsRef = useRef<HTMLDivElement>(null);
   const copyDotsRef = useRef<HTMLDivElement>(null);
 
   const handleShareButtonClick = () => {
-    setShareProfileVisible(!isShareProfileVisible);
+    setIsShareProfileVisible(!isShareProfileVisible);
   };
 
   const handleCopyButtonClick = () => {
@@ -41,7 +41,7 @@ const MatchedProfile: React.FC<UserProfileCardProps> = ({
       shareDotsRef.current &&
       !shareDotsRef.current.contains(event.target as Node)
     ) {
-      setShareProfileVisible(false);
+      setIsShareProfileVisible(false);
     }
 
     if (
@@ -72,8 +72,6 @@ const MatchedProfile: React.FC<UserProfileCardProps> = ({
     }
   };
 
-  const volumeRef = useRef<HTMLInputElement | null>(null);
-
   useEffect(() => {
     const rangeInput = volumeRef.current as HTMLInputElement;
 
@@ -88,7 +86,7 @@ const MatchedProfile: React.FC<UserProfileCardProps> = ({
     }
   }, [volume]);
 
-  const handleVolumeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleVolumeChange = (event: ChangeEvent<HTMLInputElement>) => {
     const newVolume = parseFloat(event.target.value);
 
     setVolume(newVolume);
@@ -98,7 +96,7 @@ const MatchedProfile: React.FC<UserProfileCardProps> = ({
     }
   };
 
-  const handleRangeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleRangeChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = parseFloat(e.target.value);
 
     if (!isNaN(value)) {
@@ -153,65 +151,60 @@ const MatchedProfile: React.FC<UserProfileCardProps> = ({
       </div>
 
       <div className={styles.videoContainer}>
-        <video className={styles.videoProfile}>
+        <video
+          className={styles.videoProfile}
+          poster={profile.img}
+          height={'100%'}
+          width={'100%'}
+          ref={videoRef}
+        >
           <source src={profile.video} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         <div className={styles.overlayIcons}>
-          {!volume ? (
-            <SoundOffIcon
-              className={styles.soundIcon}
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => {
-                setTimeout(() => setIsHovered(false), 300);
-              }}
-              onClick={() => setVolume(1)}
-            />
-          ) : (
-            <SoundOnIcon
-              className={styles.soundIcon}
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => {
-                setTimeout(() => setIsHovered(false), 500);
-              }}
-              onClick={() => setVolume(0)}
-            />
-          )}
-          {(isHovered || isVolumeBlockHovered) && (
-            <div
-              className={styles.volumeBlock}
-              onMouseEnter={() => setIsVolumeBlockHovered(true)}
-              onMouseLeave={() => setIsVolumeBlockHovered(false)}
-            >
-              <input
-                ref={volumeRef}
-                className={styles.editorVolume}
-                type="range"
-                min="0"
-                max="1"
-                step="0.01"
-                value={volume}
-                onChange={(e) => {
-                  handleVolumeChange(e);
-                  handleRangeChange(e);
-                }}
-              />
-            </div>
-          )}
-          <div className={styles.videoControls}>
-            {!isPlaying && (
-              <PlayIcon
-                className={`${styles.iconControls}`}
-                onClick={handleVideoClick}
-              />
+          <div className={styles.overlayVolume}>
+            {(isHovered || isVolumeBlockHovered) && (
+              <div
+                className={styles.volumeBlock}
+                onMouseEnter={() => setIsVolumeBlockHovered(true)}
+                onMouseLeave={() => setIsVolumeBlockHovered(false)}
+              >
+                <input
+                  ref={volumeRef}
+                  className={styles.editorVolume}
+                  type="range"
+                  min="0"
+                  max="1"
+                  step="0.01"
+                  value={volume}
+                  onChange={(e) => {
+                    handleVolumeChange(e);
+                    handleRangeChange(e);
+                  }}
+                />
+              </div>
             )}
-            {isPlaying && (
-              <PauseIcon
-                className={`${styles.iconControls}`}
-                onClick={handleVideoClick}
+            {!volume ? (
+              <SoundOffIcon
+                className={styles.soundIcon}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => {
+                  setTimeout(() => setIsHovered(false), 300);
+                }}
+                onClick={() => setVolume(1)}
+              />
+            ) : (
+              <SoundOnIcon
+                className={styles.soundIcon}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => {
+                  setTimeout(() => setIsHovered(false), 500);
+                }}
+                onClick={() => setVolume(0)}
               />
             )}
           </div>
+
           <div
             className={styles.profileDotsCopy}
             onClick={handleCopyButtonClick}
@@ -231,6 +224,20 @@ const MatchedProfile: React.FC<UserProfileCardProps> = ({
             )}
             ...
           </div>
+        </div>
+        <div className={styles.videoControls}>
+          {!isPlaying && (
+            <PlayIcon
+              className={`${styles.iconControls}`}
+              onClick={handleVideoClick}
+            />
+          )}
+          {isPlaying && (
+            <PauseIcon
+              className={`${styles.iconControls}`}
+              onClick={handleVideoClick}
+            />
+          )}
         </div>
       </div>
     </div>

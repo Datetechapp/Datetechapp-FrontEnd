@@ -11,7 +11,6 @@ export interface ButtonProps {
 
 export interface UserProfileCardProps {
   profile: ProfileData;
-  onDelete: (id: number) => void;
   setSelectedProfileId: React.Dispatch<React.SetStateAction<number | null>>;
 }
 
